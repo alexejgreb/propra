@@ -12,7 +12,7 @@ public class DBConnection {
 	private static Connection con = null;
 	
 	public static void initializeDB(String adresse, String benutzer, String password) { 
-		
+		//
 		try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection(adresse, benutzer, password);
