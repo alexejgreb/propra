@@ -39,7 +39,7 @@ public class DBConnection {
 	
 	public static int registerBar(String name, String street, String place, String plz, String password) {
 														//TODO
-		initializeDB();
+		//initializeDB();
 		try {
 			//neuer Eintrag für Kneipe in Tabelle Kneipen erstellen
 			stmt.executeUpdate("INSERT INTO Kneipen(name, street, place, plz) VALUES (" + "\"" + name + "\"" + ", " + "\"" + street + "\"" + ", " 
@@ -51,7 +51,7 @@ public class DBConnection {
 				bar_id = res.getInt("bar_id");
 			}
 			res.close();
-			closeDB();
+			//closeDB();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,14 +63,14 @@ public class DBConnection {
 		//Prüft beim Login, ob Bar registriert ist 
 		bar_id = barId; 
 		boolean existent = false;
-		initializeDB();
+		
 
 		try {
 			ResultSet res = stmt.executeQuery("SELECT * FROM Kneipen WHERE id = " + barId + "AND password = " + "\"" + password + "\"" + ";");
 			if ( res.next()) {
 				existent = true;
 			}
-			closeDB();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -79,14 +79,14 @@ public class DBConnection {
 	
 	public static void insertBarQuestion(String question, String answer_1, String answer_2, String answer_3, String answer_4, String correct_answer) {
 		//TODO
-		initializeDB();
+		
 		try {
 			
 			stmt.executeUpdate("INSERT INTO Fragen(question, answer_1, answer_2, answer_3, answer_4, correct_answer, bar_id) VALUES (" + "\"" + question + "\"" + ", " + "\"" +
 			answer_1 + "\"" + ", " + "\"" + answer_2 + "\"" + ", " + "\"" + answer_3 + "\"" + ", " + "\"" + answer_4 + "\"" + ", " + "\"" + correct_answer +
 			"\"" + ", " + bar_id + ");");
 			
-			closeDB();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -95,6 +95,7 @@ public class DBConnection {
 	//update frage
 	public static void main(String[] args) {
 		initializeDB();		//adresse eingeben
+		//methode
 		closeDB();
 	}
 	
