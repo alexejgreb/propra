@@ -11,11 +11,11 @@ public class DBConnection {
 	private static Statement stmt = null;
 	private static Connection con = null;
 	
-	public static void initializeDB() { 
+	public static void initializeDB(String adresse, String benutzer, String password) { 
 		
 		try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://alexej.synology.me:5796/", "propra", "Kneipenquiz1920!");
+		con = DriverManager.getConnection(adresse, benutzer, password);
 		System.out.println("Verbunden!" + con.getMetaData().getDatabaseProductName());
 		stmt = con.createStatement();
 		
@@ -94,7 +94,7 @@ public class DBConnection {
 	
 	//update frage
 	public static void main(String[] args) {
-		initializeDB();
+		initializeDB();		//adresse eingeben
 		closeDB();
 	}
 	
