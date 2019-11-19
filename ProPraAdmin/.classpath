@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/Haith/Desktop/Projekt1/rs2xml - Kopie.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Haith/Desktop/Projekt1/sqlite-jdbc-3.8.11.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Haith/Desktop/Projekt1/JTattoo-1.6.12.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Maxiv/Downloads/oclc-dbutils-1.0.20080317.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxiv/git/propra/Ressources/JTattoo-1.6.12.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxiv/git/propra/Ressources/mariadb-java-client-2.5.1-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxiv/git/propra/Ressources/mysql-connector-java-8.0.18.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxiv/git/propra/Ressources/rs2xml - Kopie.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maxiv/git/propra/Ressources/sqlite-jdbc-3.8.11.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Maxiv/eclipse-workspace/ProPraAdmin/lib/oclc-dbutils-1.0.20080317.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
