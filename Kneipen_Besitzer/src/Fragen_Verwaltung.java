@@ -34,6 +34,8 @@ public class Fragen_Verwaltung {
 	private JTextField t5;
 	private JTextField t6;
 public JTextArea ta;
+private JTextField textField;
+private JTextField textField_1;
 	/**
 	 * Launch the application.
 	 * @throws UnsupportedLookAndFeelException 
@@ -89,6 +91,10 @@ public JTextArea ta;
 		frame.getContentPane().add(button_1);
 		
 		JButton button_2 = new JButton("Update");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		button_2.setBounds(20, 157, 118, 45);
 		frame.getContentPane().add(button_2);
 		
@@ -127,94 +133,121 @@ public JTextArea ta;
 		frame.getContentPane().add(button_5);
 		
 		table = new JTable();
-		table.setBounds(20, 447, 1074, 167);
+		table.setBounds(20, 481, 1074, 133);
 		frame.getContentPane().add(table);
 		
 		JComboBox cb1 = new JComboBox();
-		cb1.setBounds(390, 46, 141, 22);
+		cb1.setBounds(306, 52, 53, 22);
 		frame.getContentPane().add(cb1);
 		
 		JLabel label = new JLabel("Frage_Nr:");
-		label.setForeground(Color.ORANGE);
+		label.setForeground(new Color(0, 100, 0));
 		label.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label.setBounds(243, 40, 106, 30);
+		label.setBounds(188, 46, 106, 30);
 		frame.getContentPane().add(label);
 		
 		JTextArea t1 = new JTextArea();
-		t1.setBounds(306, 104, 347, 80);
+		t1.setBounds(306, 104, 437, 80);
 		frame.getContentPane().add(t1);
 		
 		JLabel label_1 = new JLabel("Frage:");
-		label_1.setForeground(Color.ORANGE);
+		label_1.setForeground(new Color(0, 100, 0));
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 17));
 		label_1.setBounds(188, 95, 106, 36);
 		frame.getContentPane().add(label_1);
 		
 		t2 = new JTextField();
 		t2.setColumns(10);
-		t2.setBounds(306, 194, 344, 36);
+		t2.setBounds(306, 194, 437, 36);
 		frame.getContentPane().add(t2);
 		
 		JLabel label_2 = new JLabel("Antwort:");
-		label_2.setForeground(Color.ORANGE);
+		label_2.setForeground(new Color(0, 100, 0));
 		label_2.setFont(new Font("Tahoma", Font.BOLD, 17));
 		label_2.setBounds(177, 192, 117, 36);
 		frame.getContentPane().add(label_2);
 		
 		t3 = new JTextField();
 		t3.setColumns(10);
-		t3.setBounds(306, 243, 344, 36);
+		t3.setBounds(306, 243, 437, 36);
 		frame.getContentPane().add(t3);
-		
-		JLabel label_3 = new JLabel("Möglichkeit1:");
-		label_3.setForeground(Color.ORANGE);
-		label_3.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_3.setBounds(161, 241, 137, 36);
-		frame.getContentPane().add(label_3);
 		
 		t4 = new JTextField();
 		t4.setColumns(10);
-		t4.setBounds(306, 292, 344, 36);
+		t4.setBounds(306, 292, 437, 36);
 		frame.getContentPane().add(t4);
-		
-		JLabel label_4 = new JLabel("Möglichkeit2:");
-		label_4.setForeground(Color.ORANGE);
-		label_4.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_4.setBounds(161, 290, 121, 36);
-		frame.getContentPane().add(label_4);
 		
 		t5 = new JTextField();
 		t5.setColumns(10);
-		t5.setBounds(306, 340, 344, 36);
+		t5.setBounds(306, 340, 437, 36);
 		frame.getContentPane().add(t5);
 		
-		JLabel label_5 = new JLabel("Möglichkeit3:");
-		label_5.setForeground(Color.ORANGE);
-		label_5.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_5.setBounds(161, 339, 121, 36);
-		frame.getContentPane().add(label_5);
+		JLabel lblC = new JLabel("C:");
+		lblC.setForeground(new Color(0, 100, 0));
+		lblC.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblC.setBounds(277, 333, 25, 36);
+		frame.getContentPane().add(lblC);
 		
 		t6 = new JTextField();
 		t6.setColumns(10);
-		t6.setBounds(306, 393, 344, 36);
+		t6.setBounds(306, 393, 437, 36);
 		frame.getContentPane().add(t6);
-		
-		JLabel label_6 = new JLabel("Möglichkeit4:");
-		label_6.setForeground(Color.ORANGE);
-		label_6.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_6.setBounds(173, 389, 121, 43);
-		frame.getContentPane().add(label_6);
+	
+	JScrollPane scrollPane = new JScrollPane();
+	scrollPane.setBounds(778, 72, 304, 353);
+	frame.getContentPane().add(scrollPane);
 		
 	ta = new JTextArea();
-		ta.setBounds(703, 35, 379, 353);
-		frame.getContentPane().add(ta);
+	scrollPane.setViewportView(ta);
 		
 		JButton button_7 = new JButton("Print");
-		button_7.setBounds(985, 398, 97, 36);
+		button_7.setBounds(985, 438, 97, 30);
 		frame.getContentPane().add(button_7);
 		
 		JButton btnExit = new JButton("EXIT");
 		btnExit.setBounds(20, 389, 118, 45);
 		frame.getContentPane().add(btnExit);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(371, 52, 372, 22);
+		frame.getContentPane().add(comboBox);
+		
+		JLabel label_7 = new JLabel("Kneipe_Nummer:");
+		label_7.setForeground(Color.RED);
+		label_7.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		label_7.setBounds(926, 13, 168, 16);
+		frame.getContentPane().add(label_7);
+		
+		textField = new JTextField();
+		textField.setText("#KneipeXXXY");
+		textField.setEditable(false);
+		textField.setColumns(10);
+		textField.setBounds(904, 41, 93, 22);
+		frame.getContentPane().add(textField);
+		
+		textField_1 = new JTextField();
+		textField_1.setText("310514");
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
+		textField_1.setBounds(1009, 41, 68, 22);
+		frame.getContentPane().add(textField_1);
+		
+		JLabel lblD = new JLabel("D:");
+		lblD.setForeground(new Color(0, 100, 0));
+		lblD.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblD.setBounds(279, 391, 25, 36);
+		frame.getContentPane().add(lblD);
+		
+		JLabel lblB = new JLabel("B:");
+		lblB.setForeground(new Color(0, 100, 0));
+		lblB.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblB.setBounds(277, 290, 25, 36);
+		frame.getContentPane().add(lblB);
+		
+		JLabel lblA = new JLabel("A:");
+		lblA.setForeground(new Color(0, 100, 0));
+		lblA.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblA.setBounds(277, 241, 25, 36);
+		frame.getContentPane().add(lblA);
 	}
 }

@@ -1,13 +1,6 @@
 
-
-
-
-
-
-
- 
- 
  import java.awt.EventQueue;
+
 
 
 
@@ -323,6 +316,7 @@ public static  JTextArea ta;
 					
 					while (rs.next()){
 						String FrageNr = rs.getString("FrageNr");
+						
 						cb2.addItem(FrageNr);
 						
 					}
@@ -334,16 +328,7 @@ public static  JTextArea ta;
 					e2.printStackTrace();
 				
 				}
-		 		
-		 		
-		 		
-		 		
-		 		
-		 		
-		 		
-		 		
-		 		
-		 	}
+		}
 		 });
 		cb1.setBounds(407, 64, 97, 22);
 		frame.getContentPane().add(cb1);
@@ -442,7 +427,7 @@ public static  JTextArea ta;
 		 		
 		 		
 		 		
-try {	 ///  
+try {	 ///CODE Verbessern !!!!!  
 					
 				    String query="select Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl from (Fragen_Pool , Quiz_Fragen) where Quiz_Fragen.Frage_Nr = Fragen_Pool.FrageNr and Quiz_Fragen.Spiel_Nummer =? and Quiz_Fragen.Frage_Nr=?";
 				    

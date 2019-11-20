@@ -42,6 +42,7 @@ private JTextField a,w1,w2,w3,w4;
 private static JComboBox CB1;
 private JTextArea ta,ff ;
 private static JScrollPane scrollPane;
+private static JButton Btp_zurueck;
 	/**
 	 * Launch the application.
 	 * @throws UnsupportedLookAndFeelException 
@@ -130,7 +131,7 @@ private static JScrollPane scrollPane;
 				int z;
 
 				try {	
-				    String query="select max(FrageNr) from Fragen_Pool where Vermerk=0";  /// Max Frei von Regale brauche ich umm m�glich die Komplette neue Ware in einem Regal zu lagern , sonst wird in mehrere Regale gelagert
+				    String query="select max(FrageNr) from Fragen_Pool where Vermerk=0";  ///
 					PreparedStatement pst1=con.prepareStatement(query);
 					
 					ResultSet rs= pst1.executeQuery();
@@ -147,7 +148,7 @@ private static JScrollPane scrollPane;
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}	
-				z= Integer.parseInt(lb1.getText())+1	; ///// Max FrageNr 
+				z= Integer.parseInt(lb1.getText())+1	; /////
 				lb2.setText(String.valueOf(z));
 				
 				try{
@@ -193,7 +194,7 @@ private static JScrollPane scrollPane;
 				lb1.setVisible(false);
 				lb2.setVisible(false);
 				//con=Database1.dbConnector();
-				int YesorNo = JOptionPane.showConfirmDialog(null, " Sie sie sicher wollen sie dieses Frage mit dem FrageNr:  ,"+CB1.getSelectedItem().toString()+",   entfernen !!!!!","Frage Entfernen",JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, " Sind Sie sicher wollen sie dieses Frage mit dem FrageNr:  ,"+CB1.getSelectedItem().toString()+",   entfernen !!!!!","Frage Entfernen",JOptionPane.YES_NO_OPTION);
 				
 				if(YesorNo==0){
 				
@@ -281,15 +282,7 @@ private static JScrollPane scrollPane;
 				w4.setText("");
 			}catch(Exception e3){
 				JOptionPane.showMessageDialog(null,e3);
-			}
-				
-			
-				
-				
-				
-				
-				
-			}
+			}}
 		});
 		Btp_edit.setBounds(28, 150, 118, 45);
 		frame.getContentPane().add(Btp_edit);
@@ -303,7 +296,7 @@ private static JScrollPane scrollPane;
 		Btp_Exit.setBounds(28, 208, 118, 45);
 		frame.getContentPane().add(Btp_Exit);
 		
-		JButton Btp_zurueck = new JButton("Zurück");
+		 Btp_zurueck = new JButton("Zurück");
 		Btp_zurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -459,7 +452,7 @@ private static JScrollPane scrollPane;
 		   CB1.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
 		   		
-try {	 /// Jetzt brauchen wir Info �ber das ausgewh�lte Regal um in den PDF auszudr�cken 
+try {	 ///
 					
 				    String query="select  Frage ,ErsteWahl ,ZweiteWahl,DritteWahl,VierteWahl,RichtigeAntwort from Fragen_Pool WHERE FrageNr= ? ";
 				    

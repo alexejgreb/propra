@@ -1,5 +1,6 @@
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -46,11 +47,12 @@ public class Spiel_Starten {
 	private static JLabel lb2;
 	private static JLabel l3;
 	private static JLabel l4;
-	private static JLabel l11;
+	private static JLabel lbl,l11;
 private JTextArea ta,t2;
 private JComboBox cb,cc;
 private static JComboBox c1;
 private JButton btnNewButton_1;
+private static JButton btnAuto;
 	/**
 	 * Launch the application.
 	 * @throws UnsupportedLookAndFeelException 
@@ -67,7 +69,7 @@ private JButton btnNewButton_1;
 				try {
 					Spiel_Starten window = new Spiel_Starten();
 					window.frame.setVisible(true);
-					
+					lbl.setVisible(false);
 					tf.setVisible(false);
 					tr.setVisible(false);
 					l.setVisible(false);
@@ -82,7 +84,7 @@ private JButton btnNewButton_1;
 					s.setVisible(false);
 					tz.setVisible(false);
 					
-					
+					btnAuto.setEnabled(false);
 					
 					////
 					
@@ -177,8 +179,12 @@ private JButton btnNewButton_1;
 	private static JLabel s;
 	private JLabel lblNewLabel_3;
 	private static JLabel tz, s2;
-	private static JLabel ss;
-	private JLabel lblNewLabel_4;
+	private static JLabel lic,ss;
+	private JTextField textField;
+	private JTextField aar;
+	private JTextField aar2;
+	private JLabel bild1;
+	private JLabel n;
 	
 	
 	public void Clock(){
@@ -226,7 +232,8 @@ private JButton btnNewButton_1;
 				
 				
 				////
-				
+				aar.setVisible(false);
+				aar2.setVisible(false);
 				try{
 					String query2="select Licence_Nr from Spiel_Licence where vermerk =1 and Licence_Nr='"+licence.getText()+"' limit 1";
 					PreparedStatement pst1=con.prepareStatement(query2);
@@ -234,6 +241,7 @@ private JButton btnNewButton_1;
 					ResultSet rs= pst1.executeQuery();
 					
 					while (rs.next()){
+						
 						l.setText("1");
 						
 						
@@ -242,9 +250,9 @@ private JButton btnNewButton_1;
 					rs.close();
 					
 					}
-				catch(Exception e2){
-					e2.printStackTrace();
-				
+				catch(Exception e22){
+					e22.printStackTrace();
+					JOptionPane.showMessageDialog(null,e22);
 				}
 				
 				////
@@ -275,7 +283,8 @@ private JButton btnNewButton_1;
         				cc.setEnabled(true);
         				btnNewButton_1.setEnabled(true);
         				btnBenden.setEnabled(true);
-        		//
+        				btnAuto.setEnabled(true);
+        				JOptionPane.showMessageDialog(null,"Diese Lizenc '"+licence.getText()+"' gültig n ur für ein einzigen Spiel");
         				try {	 /// 		
         				    String query="select max (Spiel_Nummer) from Spiel_Gnehmigt";
         				    
@@ -292,8 +301,9 @@ private JButton btnNewButton_1;
         						pst1.close();
         						
 
-        					} catch (Exception e3) {
-        						e3.printStackTrace();
+        					} catch (Exception e31) {
+        						e31.printStackTrace();
+        						JOptionPane.showMessageDialog(null,e31);
         					}	
         				
         				//
@@ -304,49 +314,169 @@ private JButton btnNewButton_1;
         				
 				try{
 					String query2="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1";
-					PreparedStatement pst1=con.prepareStatement(query2);
+					PreparedStatement pst2=con.prepareStatement(query2);
 					
-					ResultSet rs= pst1.executeQuery();
+					ResultSet rs2= pst2.executeQuery();
 					
-					while (rs.next()){
-						String Spiel_Nummer = rs.getString("Spiel_Nummer");
+					while (rs2.next()){
+						String Spiel_Nummer = rs2.getString("Spiel_Nummer");
 						CB1.addItem(Spiel_Nummer);
 						
 					}
 					
-					rs.close();
+					rs2.close();
 					
 					}
-				catch(Exception e2){
-					e2.printStackTrace();
-				
+				catch(Exception e0){
+					//e2.printStackTrace();
+					JOptionPane.showMessageDialog(null,e0);
 				}
 				try{
-					String query2="select FrageNr from Fragen_Pool";
-					PreparedStatement pst1=con.prepareStatement(query2);
+					String query4="select FrageNr from Fragen_Pool";
+					PreparedStatement pst4=con.prepareStatement(query4);
 					
-					ResultSet rs= pst1.executeQuery();
-					while (rs.next()){
-						String FrageNr = rs.getString("FrageNr");
+					ResultSet rs4= pst4.executeQuery();
+					while (rs4.next()){
+						String FrageNr = rs4.getString("FrageNr");
 						c1.addItem(FrageNr);
 						
 					}
 					
-					rs.close();
+					rs4.close();
 					
 					}
-				catch(Exception e2){
-					e2.printStackTrace();
-				
+				catch(Exception e1){
+					//e2.printStackTrace();
+					JOptionPane.showMessageDialog(null,e1);
 				}
-				
+			
                  }
                  if(i==0){
-                	 JOptionPane.showMessageDialog(null,"Ungültige Zugangsdaten");
-                		cb.setEnabled(false);
-        				cc.setEnabled(false);
-        				btnNewButton_1.setEnabled(false);
-        				//btnBenden.setEnabled(false);
+                	lbl.setText(textField_1.getText()+textField_2.getText());
+                	//
+                		try{
+        					String query2="select Licence_Nr from Spiel_Licence where vermerk ='"+textField_1.getText()+"' and Licence_Nr='"+lbl.getText()+"' limit 1";
+        					PreparedStatement pst1=con.prepareStatement(query2);
+        					
+        					ResultSet rs= pst1.executeQuery();
+        					
+        					if (rs.next()){
+        						
+        						btnNewButton_1.setEnabled(true);
+                				btnBenden.setEnabled(true);
+                				btnAuto.setEnabled(true);
+                				
+        						
+        						String Licence_Nr = rs.getString("Licence_Nr");
+    							licence.setText(Licence_Nr);
+        						l.setText("2");
+        						rs.close();
+        						JOptionPane.showMessageDialog(null,"Sie dürfen Beliebig oft Spiele Starten , Die Krombacher behält das Recht ihre Lizenc jeder Zeit zu Kündigen sofern nicht anders vereinbart :)");
+        					}
+    							
+    							/////
+                		else{
+   						 JOptionPane.showMessageDialog(null,"Ungültige Zugangsdaten");
+   	                		cb.setEnabled(false);
+   	        				cc.setEnabled(false);
+   	        				btnNewButton_1.setEnabled(false);
+   	        				//btnBenden.setEnabled(false);
+   					}
+        					int i2 =Integer.parseInt(l.getText());	
+        					if(i2==2){
+    							cb.setEnabled(true);
+    	        				cc.setEnabled(true);
+    	        				btnNewButton_1.setEnabled(true);
+    	        				btnBenden.setEnabled(true);
+    	        		//
+    	        				try {	 /// 		
+    	        				    String query0="select max (Spiel_Nummer) from Spiel_Gnehmigt";
+    	        				    
+    	        					PreparedStatement pst10=con.prepareStatement(query0);
+    	        					
+    	        					ResultSet rs0= pst10.executeQuery();
+    	        					
+    	        					 if ((rs0.next()))
+    	        					 {
+    	        						
+    	        						 t1.setText(rs0.getString("max (Spiel_Nummer)"));
+    	        					 }
+    	        					
+    	        						pst10.close();
+    	        						
+
+    	        					} catch (Exception e3) {
+    	        						e3.printStackTrace();
+    	        					}	
+    	        				
+    	        				//
+    	        				
+    	        				 int k =Integer.parseInt(t1.getText());
+    	                         int k1=k+1;
+    	                         t1.setText(String.valueOf(k1));	
+    	        				
+    					try{
+    						String query22="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1";
+    						PreparedStatement pst11=con.prepareStatement(query22);
+    						
+    						ResultSet rs1= pst11.executeQuery();
+    						
+    						while (rs1.next()){
+    							String Spiel_Nummer = rs1.getString("Spiel_Nummer");
+    							CB1.addItem(Spiel_Nummer);
+    							
+    						}
+    						
+    						rs1.close();
+    						
+    						}
+    					catch(Exception e4){
+    						//e2.printStackTrace();
+    						JOptionPane.showMessageDialog(null,e4);
+    					
+    					}
+    					try{
+    						String query23="select FrageNr from Fragen_Pool";
+    						PreparedStatement pst13=con.prepareStatement(query23);
+    						
+    						ResultSet rs3= pst13.executeQuery();
+    						while (rs3.next()){
+    							String FrageNr = rs3.getString("FrageNr");
+    							c1.addItem(FrageNr);
+    							
+    						}
+    						
+    						rs3.close();
+    						
+    						}
+    					catch(Exception e3){
+    						//e2.printStackTrace();
+    						JOptionPane.showMessageDialog(null,e3);
+    					
+    					}
+    				btnAuto.setEnabled(true);
+    							
+    							
+    							
+    							//////
+    							
+    							
+        				
+        					
+        					
+        					
+        					}}
+        				catch(Exception e2){
+        					//e2.printStackTrace();
+        					JOptionPane.showMessageDialog(null,e2);
+        				
+        				}
+                	 
+                		
+                	 
+                	 
+                	 
+                
                  }
 			}
 		});
@@ -362,9 +492,9 @@ private JButton btnNewButton_1;
 		licence.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Frage_Nr:");
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setBounds(281, 99, 97, 24);
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblNewLabel.setBounds(238, 99, 140, 24);
 		frame.getContentPane().add(lblNewLabel);
 		
 		 c1 = new JComboBox();
@@ -408,43 +538,43 @@ try {	 ///
 		 		
 		 	}
 		 });
-		c1.setBounds(412, 96, 82, 22);
+		c1.setBounds(412, 96, 41, 22);
 		frame.getContentPane().add(c1);
 		
 		JLabel lblFrage = new JLabel("Frage:");
-		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblFrage.setForeground(Color.BLACK);
-		lblFrage.setBounds(281, 136, 73, 25);
+		lblFrage.setBounds(238, 139, 159, 25);
 		frame.getContentPane().add(lblFrage);
 		
-		JLabel lblNewLabel_1 = new JLabel("ErsteWahl:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		JLabel lblNewLabel_1 = new JLabel("A:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblNewLabel_1.setForeground(Color.BLACK);
-		lblNewLabel_1.setBounds(217, 236, 137, 16);
+		lblNewLabel_1.setBounds(367, 223, 41, 28);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblZweitewahl = new JLabel("ZweiteWahl:");
+		JLabel lblZweitewahl = new JLabel("B:");
 		lblZweitewahl.setForeground(Color.BLACK);
-		lblZweitewahl.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblZweitewahl.setBounds(215, 265, 137, 16);
+		lblZweitewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblZweitewahl.setBounds(367, 264, 41, 25);
 		frame.getContentPane().add(lblZweitewahl);
 		
-		JLabel lblDrittewahl = new JLabel("DritteWahl:");
-		lblDrittewahl.setFont(new Font("Tahoma", Font.BOLD, 18));
+		JLabel lblDrittewahl = new JLabel("C:");
+		lblDrittewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblDrittewahl.setForeground(Color.BLACK);
-		lblDrittewahl.setBounds(215, 306, 118, 16);
+		lblDrittewahl.setBounds(367, 298, 41, 24);
 		frame.getContentPane().add(lblDrittewahl);
 		
-		JLabel lblViertewahl = new JLabel("VierteWahl:");
-		lblViertewahl.setFont(new Font("Tahoma", Font.BOLD, 18));
+		JLabel lblViertewahl = new JLabel("D:");
+		lblViertewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblViertewahl.setForeground(Color.BLACK);
-		lblViertewahl.setBounds(215, 335, 147, 16);
+		lblViertewahl.setBounds(367, 332, 41, 29);
 		frame.getContentPane().add(lblViertewahl);
 		
 		JLabel lblRichtigeantwort = new JLabel("Richtige_Antwort:");
-		lblRichtigeantwort.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblRichtigeantwort.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblRichtigeantwort.setForeground(Color.BLACK);
-		lblRichtigeantwort.setBounds(181, 195, 181, 16);
+		lblRichtigeantwort.setBounds(181, 184, 227, 33);
 		frame.getContentPane().add(lblRichtigeantwort);
 		
 		t3 = new JTextField();
@@ -482,7 +612,7 @@ try {	 ///
 		t7.setBounds(412, 333, 444, 22);
 		frame.getContentPane().add(t7);
 		
-		 btnNewButton_1 = new JButton("Hinzufügen");
+		 btnNewButton_1 = new JButton("Manuell");
 		 btnNewButton_1.setEnabled(false);
 		btnNewButton_1.setForeground(new Color(255, 0, 0));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -491,7 +621,9 @@ try {	 ///
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
+				btnNewButton_1.setEnabled(true);
+				btnBenden.setEnabled(false);
+				btnAuto.setEnabled(false);
 				lb.setText(tf.getText());
 				lb2.setText(tr.getText());
 				
@@ -549,6 +681,9 @@ try {	 ///
 				if(s==0){
 					JOptionPane.showMessageDialog(null,"Reicht");
 					
+					int i9 =Integer.parseInt(l.getText());
+					
+					if(i9==1){
 					try{
 						 
 						
@@ -588,14 +723,74 @@ try {	 ///
 					
 					
 
-					ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n======================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n======================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n======================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
-							" \t"+" \n======================================\n"+" \n======================================\n"+Zeit.getText()+"\n======================================\n"+"\n======================================\n"+"\n======================================\n");
+					ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+							" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
 					
 					l.setText("0");
 					licence.setText("");
 					btnNewButton_1.setEnabled(false);
 					btnBenden.setEnabled(false);
 					t1.setText("");
+					
+				}
+				if(i9==2){
+					
+					
+					////
+					
+try{
+						/* 
+						
+						String value115=licence.getText();
+				String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value115+"' ";
+				PreparedStatement pst3=con.prepareStatement(sql22);
+				pst3.execute();
+				
+				*/
+				
+				String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Kneipe_Nummer,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel)values (?,?,?,?,?,?,?,?,?,?)";
+				PreparedStatement pst=con.prepareStatement(sql);
+				pst.setString(1, t1.getText());
+				pst.setString(2, Zeit.getText());
+				pst.setString(3, licence.getText());
+				pst.setString(4, textField_1.getText());
+				pst.setString(5, "1");
+				pst.setString(6, comboBox.getSelectedItem().toString());
+				pst.setString(7, comboBox_1.getSelectedItem().toString());
+				pst.setString(8, comboBox_2.getSelectedItem().toString());
+				pst.setString(9, comboBox_3.getSelectedItem().toString());
+				pst.setString(10, comboBox_4.getSelectedItem().toString());
+				
+				
+				pst.execute();
+				JOptionPane.showMessageDialog(null,"Gespeichert");
+				
+				
+				
+				
+				
+				
+					}
+					catch(Exception e11){
+						e11.printStackTrace();
+					}
+					
+					
+
+					ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+							" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
+					
+					l.setText("0");
+					licence.setText("");
+					btnNewButton_1.setEnabled(false);
+					btnBenden.setEnabled(false);
+					t1.setText("");
+					
+					/////
+					
+					
+					
+				}
 				}
 				if(i11==i21 & i2121 !=1){
 					JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
@@ -610,7 +805,7 @@ try {	 ///
 				
 			
 		});
-		btnNewButton_1.setBounds(12, 85, 129, 45);
+		btnNewButton_1.setBounds(12, 136, 129, 33);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -625,15 +820,47 @@ try {	 ///
 		 btnBenden.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent e) {
 		 		
-		 		
+		 		btnNewButton_1.setEnabled(false);
+				btnBenden.setEnabled(true);
+				btnAuto.setEnabled(false);
 		 		
 		 		int i =Integer.parseInt(ss.getText());
 		 		
 		 		if(i==1){
 		 		
-                 int YesorNo = JOptionPane.showConfirmDialog(null, " Sie sie sicher wollen sie dieses Spiel mit der SpielNr:  ,"+s.getText()+",   Beenden!!!!!","Spiel Beenden",JOptionPane.YES_NO_OPTION);
+                 int YesorNo = JOptionPane.showConfirmDialog(null, " Sind sie sicher wollen sie dieses Spiel mit der SpielNr:  ,"+s.getText()+",   Beenden!!!!!","Spiel Beenden",JOptionPane.YES_NO_OPTION);
 				
 				if(YesorNo==0){
+					
+					lic.setText(textField_1.getText()+textField_2.getText());
+					///
+					try{
+						String query2="select * from Spiel_Licence where Licence_Nr='"+lic.getText()+"' and Vermerk != 0";
+						PreparedStatement pst1=con.prepareStatement(query2);
+						
+						ResultSet rs= pst1.executeQuery();
+						
+						while (rs.next()){
+							
+							n.setText("1");
+							
+							
+						}
+						
+						rs.close();
+						
+						}
+					catch(Exception e22){
+						e22.printStackTrace();
+						JOptionPane.showMessageDialog(null,e22);
+					}
+					///
+					
+					int d =Integer.parseInt(n.getText());
+					
+					
+					if(d==0){
+					
 					String value1155=CB1.getSelectedItem().toString();
 		 		try {
 				
@@ -666,7 +893,7 @@ try {	 ///
 					PreparedStatement pst1=con.prepareStatement(query2);
 					
 					ResultSet rs= pst1.executeQuery();
-					c1.removeAllItems();
+					//c1.removeAllItems();
 					while (rs.next()){
 						
 						
@@ -703,7 +930,36 @@ try {	 ///
 					}
 				
 		 		////
-				
+					}else if(d==1){
+						
+						
+						
+						
+						String value1155=CB1.getSelectedItem().toString();
+			 		try {
+					
+					String sql22="update Spiel_Gnehmigt set status =0 where Spiel_Nummer ='"+value1155+"' ";
+					PreparedStatement pst3;
+					
+						pst3 = con.prepareStatement(sql22);
+						pst3.execute();
+						
+						ta.append("\t\t Spiel_Beendet: \n\n"+"Spiel_Nr:\t"+s.getText()+"\n======================================\n"+"Datum:\t"+Zeit.getText()+"\n======================================\n"+"Kneipe_Nr:\t"+textField_1.getText()+"\n\n"+"\n\n======================================\n\n"+
+								" \t"+" \n======================================\n");
+						
+						
+						JOptionPane.showMessageDialog(null,"Erfolgreich Beendet und nicht statt gefunden");
+						
+						btnNewButton_1.setEnabled(false);
+					} catch (SQLException e1) {
+						// TODO uto-generated catch block
+						e1.printStackTrace();
+					}	
+						
+						
+						
+						
+					}
 				
 				
 				}
@@ -720,7 +976,7 @@ try {	 ///
 		 });
 		btnBenden.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnBenden.setForeground(new Color(255, 0, 0));
-		btnBenden.setBounds(12, 136, 129, 45);
+		btnBenden.setBounds(12, 229, 129, 33);
 		frame.getContentPane().add(btnBenden);
 		
 		JLabel lblZeit = new JLabel("Spiel_Nummer");
@@ -759,7 +1015,7 @@ try {	 ///
 		});
 		btnZurck.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnZurck.setForeground(new Color(255, 0, 0));
-		btnZurck.setBounds(12, 195, 129, 45);
+		btnZurck.setBounds(12, 280, 129, 33);
 		frame.getContentPane().add(btnZurck);
 		
 		JButton btnbersicht = new JButton("Übersicht");
@@ -830,7 +1086,7 @@ try {	 ///
 		});
 		btnbersicht.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnbersicht.setForeground(new Color(255, 0, 0));
-		btnbersicht.setBounds(12, 251, 129, 45);
+		btnbersicht.setBounds(12, 188, 129, 33);
 		frame.getContentPane().add(btnbersicht);
 		
 		JButton btnNewButton_3 = new JButton("Print");
@@ -849,21 +1105,16 @@ try {	 ///
 		btnNewButton_3.setBounds(1134, 95, 97, 25);
 		frame.getContentPane().add(btnNewButton_3);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\Jahres-Pk-der-Krombacher-Gruppe.jpg"));
-		lblNewLabel_2.setBounds(0, 617, 1251, 20);
-		frame.getContentPane().add(lblNewLabel_2);
-		
 		JLabel lblFragenrunde = new JLabel("Fragen/Runde");
 		lblFragenrunde.setForeground(Color.RED);
 		lblFragenrunde.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblFragenrunde.setBounds(345, 70, 153, 16);
+		lblFragenrunde.setBounds(705, 104, 137, 16);
 		frame.getContentPane().add(lblFragenrunde);
 		
 		JLabel lblAnzahlRunden = new JLabel("Anzahl Runden");
 		lblAnzahlRunden.setForeground(Color.RED);
 		lblAnzahlRunden.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAnzahlRunden.setBounds(616, 70, 137, 16);
+		lblAnzahlRunden.setBounds(695, 65, 137, 19);
 		frame.getContentPane().add(lblAnzahlRunden);
 		
 		 cb = new JComboBox();
@@ -874,7 +1125,7 @@ try {	 ///
 		 	}
 		 });
 		cb.setModel(new DefaultComboBoxModel(new String[] {"10", "15", "20"}));
-		cb.setBounds(489, 68, 73, 22);
+		cb.setBounds(834, 96, 56, 22);
 		frame.getContentPane().add(cb);
 		
 		 cc = new JComboBox();
@@ -887,7 +1138,7 @@ try {	 ///
 		 	}
 		 });
 		cc.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
-		cc.setBounds(766, 66, 73, 22);
+		cc.setBounds(834, 64, 56, 22);
 		frame.getContentPane().add(cc);
 		
 	 lb = new JLabel("0");
@@ -908,7 +1159,7 @@ try {	 ///
 		tf = new JTextField();
 		tf.setText("10");
 		tf.setEditable(false);
-		tf.setBounds(536, 97, 30, 22);
+		tf.setBounds(454, 61, 30, 22);
 		frame.getContentPane().add(tf);
 		tf.setColumns(10);
 		
@@ -916,7 +1167,7 @@ try {	 ///
 		tr.setText("1");
 		tr.setEditable(false);
 		tr.setColumns(10);
-		tr.setBounds(811, 97, 30, 22);
+		tr.setBounds(412, 64, 30, 22);
 		frame.getContentPane().add(tr);
 		
 		 l4 = new JLabel("0");
@@ -1062,16 +1313,70 @@ try {	 ///
 		frame.getContentPane().add(s2);
 		
 		ss = new JLabel("0");
-		ss.setBounds(136, 307, 56, 16);
+		ss.setBounds(218, 306, 56, 16);
 		frame.getContentPane().add(ss);
 		
-		lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\krombacher-historie-2008-1.jpeg"));
-		lblNewLabel_4.setBounds(0, 0, 1251, 615);
-		frame.getContentPane().add(lblNewLabel_4);
-		
-		 tz = new JLabel("New label");
+		 tz = new JLabel("*");
 		tz.setBounds(169, 351, 56, 16);
 		frame.getContentPane().add(tz);
+		
+		textField = new JTextField();
+		textField.setBounds(465, 96, 41, 22);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		 btnAuto = new JButton("Auto.");
+		btnAuto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				aar.setVisible(true);
+				aar2.setVisible(true);
+				
+				btnNewButton_1.setEnabled(false);
+				btnBenden.setEnabled(false);
+				btnAuto.setEnabled(true);
+				
+				aar.setText("Anzahl_Runden: "+cc.getSelectedItem().toString());
+				aar2.setText("Fragen/Runde :"+cb.getSelectedItem().toString());
+				btnNewButton_1.setEnabled(false);
+				Auto_Fragen FQ= new Auto_Fragen();
+				FQ.Fragen_Quiz();
+				
+			}
+		});
+		btnAuto.setForeground(Color.RED);
+		btnAuto.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnAuto.setBounds(12, 95, 129, 33);
+		frame.getContentPane().add(btnAuto);
+		
+		aar = new JTextField();
+		aar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		aar.setEditable(false);
+		aar.setBounds(518, 64, 144, 22);
+		frame.getContentPane().add(aar);
+		aar.setColumns(10);
+		
+		aar2 = new JTextField();
+		aar2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		aar2.setEditable(false);
+		aar2.setColumns(10);
+		aar2.setBounds(518, 99, 144, 22);
+		frame.getContentPane().add(aar2);
+		
+		 lbl = new JLabel("*");
+		lbl.setBounds(277, 351, 56, 16);
+		frame.getContentPane().add(lbl);
+		
+		bild1 = new JLabel("");
+		bild1.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\krombacher-spot-mood-flaschen (1).jpg"));
+		bild1.setBounds(0, 0, 1263, 649);
+		frame.getContentPane().add(bild1);
+		
+		 lic = new JLabel("New label");
+		lic.setBounds(208, 266, 56, 16);
+		frame.getContentPane().add(lic);
+		
+		n = new JLabel("0");
+		n.setBounds(208, 306, 56, 16);
+		frame.getContentPane().add(n);
 	}
 }

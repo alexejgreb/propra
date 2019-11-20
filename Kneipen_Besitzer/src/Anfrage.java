@@ -1,6 +1,8 @@
 import java.awt.EventQueue;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,6 +27,7 @@ import java.awt.Color;
 
 public class Anfrage {
 private JTextArea ta;
+private static JLabel test;
 	private JFrame frame;
 
 	/**
@@ -43,6 +46,7 @@ private JTextArea ta;
 				try {
 					Anfrage window = new Anfrage();
 					window.frame.setVisible(true);
+					test.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -141,18 +145,44 @@ private JTextArea ta;
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+			 
+				
+				try {			
+    			    String query="select * from Spiel_Licence where Vermerk ='"+t1.getText()+"'";
+    			    
+    				PreparedStatement pst1=con.prepareStatement(query);
+    				
+    				ResultSet rs= pst1.executeQuery();
+    				
+    				 if ((rs.next()))
+    				 {
+    					
+    					 test.setText("1");
+    				 }
+    				
+    					pst1.close();
+    					
+
+    				} catch (Exception e3) {
+    					e3.printStackTrace();
+    				}
+    			
+    			
+    		int i11 =Integer.parseInt(test.getText());
+    			
+    			if(i11==1){
+    				JOptionPane.showMessageDialog(null,"Sie haben eine unbefristete Lizenc bekommen ");
+    			}else{
 				
 				
 				
-				 
-				 
-				 
-				 
-				 
-				 	
+				
+				
+				
+				
 				try{
 					
-					// Neue Frage Hinzufügen
+					// 
 					
 					String sql = "INSERT INTO Kneipe_Teilnehmer (Kneipe_Nr,Adresse,Telefon_Nr,Besitzer,Email,Vermerk)VALUES (?,?,?,?,?,?)" ;
 					PreparedStatement pst=con.prepareStatement(sql);
@@ -166,10 +196,10 @@ private JTextArea ta;
 					pst.setString(6, "0");
 					
 					pst.execute();
-					JOptionPane.showMessageDialog(null,"Versendet");
+					JOptionPane.showMessageDialog(null,"Versendet!!!");
 
-					ta.append("\t\t Anfrage_Versendet: \n\n"+"Kneipe_Nr:\t\t\t"+t1.getText()+"\n======================================\n"+"Besitzer:\t\t\t"+t4.getText()+"\n\n"+"Telefon_Nr:\t\t\t"+t3.getText()+"\n\n"+
-						" \t\t\t"+" \n======================================\n");	
+					ta.append("\tAnfrage_Versendet: \n\n"+"Kneipe_Nr:\t"+t1.getText()+"\n======================================\n"+"Besitzer:\t"+t4.getText()+"\n\n"+"Telefon_Nr:\t"+t3.getText()+"\n\n"+
+						" \t"+" \n======================================\n");	
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}	
@@ -180,7 +210,7 @@ private JTextArea ta;
 		
 				
 				
-			}
+			}}
 		});
 		btnNewButton.setBounds(388, 384, 112, 36);
 		frame.getContentPane().add(btnNewButton);
@@ -229,5 +259,9 @@ private JTextArea ta;
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\Jahres-Pk-der-Krombacher-Gruppe.jpg"));
 		lblNewLabel.setBounds(0, 0, 882, 530);
 		frame.getContentPane().add(lblNewLabel);
+		
+		 test = new JLabel("0");
+		test.setBounds(82, 45, 56, 16);
+		frame.getContentPane().add(test);
 	}
 }

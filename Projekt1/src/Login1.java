@@ -36,6 +36,8 @@ import javax.swing.SwingConstants;public class Login1 {
 				try {
 					Login1 window = new Login1();
 					window.frame.setVisible(true);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -90,7 +92,7 @@ import javax.swing.SwingConstants;public class Login1 {
 				
 			 pwd=Integer.valueOf(pwd1.getText());
 				
-				if(pwd==1010){
+				if(pwd==1212){
 					Admin ad= new Admin();
 					try {
 						ad.NewScreen();
