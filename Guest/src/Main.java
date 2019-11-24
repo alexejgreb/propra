@@ -1,24 +1,38 @@
 import java.util.Timer;
 
-public class Main {
+public class Main implements TaskShowQuestion.Callback {
+    private Timer timer;
 
     public static void main(String[] args) {
-        //sTimeHandler timeHandler = new TimeHandler();
-       // System.out.println(timeHandler.getTimeStampFromDB().toLocalDateTime());
-
-        Timer timer = new Timer();
-
-        // Start in 2 Sekunden
-        timer.schedule(new TaskShowQuestion(), 2000);
-
-        // Start in einer Sekunde dann Ablauf alle 5 Sekunden
-        timer.schedule(new TaskShowQuestion(), 1000, 5000);
-        QuestionHandler questionHandler = new QuestionHandler();
-        for (Question question: questionHandler.getQuiz("906")){
-            System.out.println(question);
-        }
+        Main ma = new Main();
+        ma.start();
 
     }
 
+    private void start() {
+        TimeHandler timeHandler = new TimeHandler();
+        System.out.println(timeHandler.getTimeStampFromDB().toLocalDateTime());
 
+        timer = new Timer();
+
+        QuestionHandler questionHandler = new QuestionHandler();
+        Quiz selectedQuiz = questionHandler.getQuizFromDB("906");
+        // TODO Diese beiden oberen Codezeilen müssen später ersetzt werden, da dann das vom User
+        //  ausgewählte Spiel geladen wird und hier als statische Variable referenziert wird.
+
+        // Start in einer Sekunde dann Ablauf alle 30 Sekunden
+        TaskShowQuestion task = new TaskShowQuestion(selectedQuiz, this);
+        timer.scheduleAtFixedRate(task, 100, 30000);
+
+        System.out.println("Main finished");
+    }
+
+    @Override
+    public void call() {
+        if (timer != null) {
+            timer.cancel();
+        }
+
+        System.out.println("Timer finished");
+    }
 }

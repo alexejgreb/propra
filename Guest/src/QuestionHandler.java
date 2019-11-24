@@ -1,16 +1,17 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+
+
 
 public class QuestionHandler {
 
     Connection con = DataBaseConnector.dbConnector();
-    List<Question> quiz = new ArrayList<Question>();
+    Quiz quiz = new Quiz();
 
 
-    public List<Question> getQuiz(String NumberGame) {
+
+    public Quiz getQuizFromDB(String NumberGame) {
         String queryForQuiz = "SELECT DISTINCT FrageNr, Frage, ErsteWahl, ZweiteWahl, DritteWahl, VierteWahl, RichtigeAntwort FROM Fragen_Pool, Quiz_Fragen WHERE Quiz_Fragen.Spiel_Nummer = " + NumberGame + " AND Fragen_Pool.FrageNr = Quiz_Fragen.Frage_Nr";
         ResultSet resultSet;
         PreparedStatement preparedStatement;
@@ -35,7 +36,7 @@ public class QuestionHandler {
                 correctAnswer = resultSet.getString(7);
 
                 questionFull = new Question(numberOfQuestion, question, answer1, answer2, answer3, answer4, correctAnswer);
-                quiz.add(questionFull);
+                quiz.getListQuestions().add(questionFull);
             }
             resultSet.close();
         } catch (Exception e) {
@@ -44,4 +45,5 @@ public class QuestionHandler {
 
         return quiz;
     }
+
 }
