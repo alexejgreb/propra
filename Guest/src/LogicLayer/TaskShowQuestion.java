@@ -1,3 +1,6 @@
+package LogicLayer;
+
+import LogicLayer.Quiz;
 
 import java.util.TimerTask;
 
@@ -28,7 +31,7 @@ public class TaskShowQuestion extends TimerTask {
 
             return;
         } else {
-            System.out.println("Quiz finished and Tread canceled");
+            System.out.println("LogicLayer.Quiz finished and Tread canceled");
             // schreibe GesamtpunktZahl in Gesamtscore von Nutzer und zeige score des Spiels an
             // schreibe Gesamtpunktzahl in Tabelle, sodass Wirt sie auslesen kann.
              if (callback != null) {

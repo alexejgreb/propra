@@ -75,7 +75,6 @@ public class UIDefault extends JFrame {
 		contentPane.add(buttonRegistration);
 		buttonRegistration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UIRegistration.main(null);
 			}
 		});
 		
@@ -84,11 +83,14 @@ public class UIDefault extends JFrame {
 		contentPane.add(ButtonGuest);
 		ButtonGuest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UIGuest.main(null);
 			}
 		});
 		
-			
+		
+		
+		
+
+		
 		JLabel LabelHeader = new JLabel("Willkommen");
 		LabelHeader.setBounds(5, 5, 424, 14);
 		contentPane.add(LabelHeader);

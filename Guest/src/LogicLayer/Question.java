@@ -1,3 +1,5 @@
+package LogicLayer;
+
 public class Question {
 
     public Question(String numberOfQuestion, String question, String answer1, String answer2, String answer3, String answer4, String correctAnswer) {
@@ -76,7 +78,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{" +
+        return "LogicLayer.Question{" +
                 "numberOfQuestion=" + numberOfQuestion +
                 ", question='" + question + '\'' +
                 ", answer1='" + answer1 + '\'' +
