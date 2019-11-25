@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 public class QuestionHandler {
 
-    Connection con = DataBaseConnector.dbConnector();
+    Connection con = DataBaseConnector.dbConnectorMariaDB();
     Quiz quiz = new Quiz();
 
 
