@@ -70,17 +70,18 @@ public class UIDefault extends JFrame {
 				
 				tempUserMail=textFieldUserLogin.getText();
 				tempUserPW=passwordFieldUserPw.getPassword();
-				String userPWString = Arrays.toString(tempUserPW);
+				String userPWString = String.valueOf(tempUserPW);
 
 				if (Login.checkIfRegistered(tempUserMail, userPWString)){
 					Login.saveGuestInfo(tempUserMail, userPWString);
 					UIUserDefault.main(null);
+					dispose();
 				} else {
 
 					System.out.println("Logindaten falsch, Konto nicht gefunden!");
 
 				}
-				dispose();
+
 			}
 		});
 		

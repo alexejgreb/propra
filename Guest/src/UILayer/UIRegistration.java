@@ -1,5 +1,7 @@
 package UILayer;
 
+import LogicLayer.Login;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -7,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 
 import javax.swing.JTextField;
@@ -21,6 +25,10 @@ public class UIRegistration extends JFrame {
 	private JTextField textFieldUserMail;
 	private JPasswordField passwordFieldUserPw;
 	private JPasswordField passwordFieldUserPwRepeat;
+	private String tempUserName;
+	private String tempEmail;
+	private char[] tempUserPW;
+	private char[] tempUserPWrepeat;
 
 	/**
 	 * Launch the application.
@@ -90,6 +98,27 @@ public class UIRegistration extends JFrame {
 		JButton ButtonRegistration = new JButton("Anmelden");
 		ButtonRegistration.setBounds(0, 0, 0, 0);
 		contentPane.add(ButtonRegistration);
+		ButtonRegistration.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				tempUserName = textFieldUserName.getText();
+				tempEmail = textFieldUserMail.getText();
+				tempUserPW = passwordFieldUserPw.getPassword();
+				tempUserPWrepeat = passwordFieldUserPwRepeat.getPassword();
+				String userPWString = String.valueOf(tempUserPW);
+				String userPWStringRepeat = String.valueOf(tempUserPWrepeat);
+
+				if(userPWString.equals(userPWStringRepeat)){
+					Login.registerGuest(tempUserName, tempEmail, userPWString);
+					UIGuest.main(null);
+					dispose();
+				} else {
+					System.out.println("Passwortfelder stimmen nicht überein!");
+				}
+
+
+			}
+		});
 	}
 
 }

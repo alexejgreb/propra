@@ -163,7 +163,7 @@ public class Login {
         //int points_tmp;
         String password_hash = hashString(password);
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT* FROM Kunden2_Info WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
+        String query = "SELECT* FROM Kunden_Info2 WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
