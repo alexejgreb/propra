@@ -18,9 +18,6 @@ import java.awt.Button;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.Arrays;
-
-import LogicLayer.Login;
 
 public class UIDefault extends JFrame {
 
@@ -66,17 +63,9 @@ public class UIDefault extends JFrame {
 			
 			public void actionPerformed(ActionEvent arg0) {
 
+				
 				tempUserMail=textFieldUserLogin.getText();
 				tempUserPW=passwordFieldUserPw.getPassword();
-				String userPWString = ""+ Arrays.toString(tempUserPW);
-
-				if(Login.checkIfRegistered(tempUserMail, userPWString)){
-					Login.saveGuestInfo(tempUserMail, userPWString);
-					UIUserDefault.main(null);
-				}
-				else{
-					System.out.println("Falscher Login");
-				}
 				
 			}
 		});
@@ -86,7 +75,6 @@ public class UIDefault extends JFrame {
 		contentPane.add(buttonRegistration);
 		buttonRegistration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 			}
 		});
 		
