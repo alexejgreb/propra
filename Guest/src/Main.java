@@ -4,6 +4,9 @@ public class Main implements TaskShowQuestion.Callback {
     private Timer timer;
 
     public static void main(String[] args) {
+        DataBaseConnector.setServerAddress(args[0]);
+        DataBaseConnector.setServerUsername(args[1]);
+        DataBaseConnector.setServerPassword(args[2]);
         Main ma = new Main();
         ma.start();
 

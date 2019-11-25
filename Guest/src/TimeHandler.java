@@ -1,11 +1,9 @@
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.time.temporal.TemporalUnit;
 
 
 public class TimeHandler {
 
-    Connection con = DataBaseConnector.dbConnector();
+    Connection con = DataBaseConnector.dbConnectorMariaDB();
     Timestamp timeStampNow;
     Timestamp timeStampStart;
 
