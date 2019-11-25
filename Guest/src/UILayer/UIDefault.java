@@ -5,19 +5,11 @@ import LogicLayer.Login;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Label;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
 import java.awt.Button;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
@@ -70,18 +62,27 @@ public class UIDefault extends JFrame {
 				
 				tempUserMail=textFieldUserLogin.getText();
 				tempUserPW=passwordFieldUserPw.getPassword();
-				String userPWString = String.valueOf(tempUserPW);
+				String userPWString = Arrays.toString(tempUserPW);
 
 				if (Login.checkIfRegistered(tempUserMail, userPWString)){
 					Login.saveGuestInfo(tempUserMail, userPWString);
 					UIUserDefault.main(null);
 					dispose();
 				} else {
-
+					JDialog JDialogWrongPW = new JDialog();
+					JDialogWrongPW.setTitle("Passwort oder Mail Adresse falsch");
+					JDialogWrongPW.add(new JLabel("Passwort oder Mail Adresse falsch"));
+					JDialogWrongPW.add(new JButton("Okay"));
+					/*JButton.addActionListener(new ActionListener){
+						public void actionPerformed2(ActionEvent arg0) {
+							dispose();
+						}
+					}*/
+					JDialogWrongPW.setSize(400,200);
+					JDialogWrongPW.setVisible(true);
 					System.out.println("Logindaten falsch, Konto nicht gefunden!");
 
 				}
-
 			}
 		});
 		
