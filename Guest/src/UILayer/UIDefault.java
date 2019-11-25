@@ -1,5 +1,7 @@
 package UILayer;
 
+import LogicLayer.Login;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -18,12 +20,14 @@ import java.awt.Button;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Arrays;
 
 public class UIDefault extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldUserLogin;
 	private JPasswordField passwordFieldUserPw;
+	private String tempUserName;
 	private String tempUserMail;
 	private char[] tempUserPW;
 
@@ -66,7 +70,17 @@ public class UIDefault extends JFrame {
 				
 				tempUserMail=textFieldUserLogin.getText();
 				tempUserPW=passwordFieldUserPw.getPassword();
-				
+				String userPWString = Arrays.toString(tempUserPW);
+
+				if (Login.checkIfRegistered(tempUserMail, userPWString)){
+					Login.saveGuestInfo(tempUserMail, userPWString);
+					UIUserDefault.main(null);
+				} else {
+
+					System.out.println("Logindaten falsch, Konto nicht gefunden!");
+
+				}
+				dispose();
 			}
 		});
 		
@@ -75,6 +89,9 @@ public class UIDefault extends JFrame {
 		contentPane.add(buttonRegistration);
 		buttonRegistration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UIRegistration.main(null);
+				dispose();
+
 			}
 		});
 		
@@ -83,6 +100,8 @@ public class UIDefault extends JFrame {
 		contentPane.add(ButtonGuest);
 		ButtonGuest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UIGuest.main(null);
+				dispose();
 			}
 		});
 		
