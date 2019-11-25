@@ -19,11 +19,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class UIGuestStart extends JFrame {
+public class UIDefault extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldUserLogin;
 	private JPasswordField passwordFieldUserPw;
+	private String tempUserMail;
+	private char[] tempUserPW;
 
 	/**
 	 * Launch the application.
@@ -32,7 +34,7 @@ public class UIGuestStart extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIGuestStart frame = new UIGuestStart();
+					UIDefault frame = new UIDefault();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +46,40 @@ public class UIGuestStart extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public UIGuestStart() {
+	public UIDefault() {
+		JButton ButtonUserLogin = new JButton("Login");
+		ButtonUserLogin.setBounds(5, 149, 89, 23);
+		contentPane.add(ButtonUserLogin);
+		ButtonUserLogin.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent arg0) {
+
+				
+				tempUserMail=textFieldUserLogin.getText();
+				tempUserPW=passwordFieldUserPw.getPassword();
+				
+			}
+		});
+		
+		Button buttonRegistration = new Button("Anmelden");
+		buttonRegistration.setBounds(5, 330, 70, 22);
+		contentPane.add(buttonRegistration);
+		buttonRegistration.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		Button ButtonGuest = new Button("Weiter als Gast");
+		ButtonGuest.setBounds(338, 330, 110, 22);
+		contentPane.add(ButtonGuest);
+		ButtonGuest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 500);
 		contentPane = new JPanel();
@@ -81,33 +116,21 @@ public class UIGuestStart extends JFrame {
 		LabelRegistration.setBounds(5, 248, 327, 20);
 		contentPane.add(LabelRegistration);
 		
-		Button buttonRegistration = new Button("Anmelden");
-		buttonRegistration.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		buttonRegistration.setBounds(5, 330, 70, 22);
-		contentPane.add(buttonRegistration);
+		
 		
 		Label LabelGuest = new Label("Oder Spiel als Gast");
 		LabelGuest.setBounds(338, 248, 215, 22);
 		contentPane.add(LabelGuest);
-		
-		Button ButtonGuest = new Button("Weiter als Gast");
-		ButtonGuest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		ButtonGuest.setBounds(338, 330, 110, 22);
-		contentPane.add(ButtonGuest);
-		
-		JButton ButtonUserLogin = new JButton("Login");
-		ButtonUserLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		ButtonUserLogin.setBounds(5, 149, 89, 23);
-		contentPane.add(ButtonUserLogin);
 	}
+		
+		public String getUserMail() {
+			return tempUserMail;
+		}
+		
+		public char[] getUserPW() {
+			return tempUserPW;
+		}
+	
+	
 }
+
