@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DataBaseConnector {
-    //	Connection con = null;
+    ///	Connection con = null;
     public static Connection dbConnectorMariaDB() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

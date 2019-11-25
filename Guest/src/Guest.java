@@ -4,7 +4,7 @@ public class Guest {
     private String userName;
     private String email;
     private String password;
-    //private int points;
+    ///private int points;
 
     public Guest(int guestID, String userName, String email, String password){
         this.guestID = guestID;

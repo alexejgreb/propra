@@ -11,7 +11,7 @@ public class Login {
     String password_hash = hashString(password);
     Connection con = DataBaseConnector.dbConnectorMariaDB();
     String insert = "INSERT INTO Kunden_Info2 (Benutzername, Email, Passwort) VALUES (?,?,?)";
-    //TODO Tabelle umbennen
+    ///TODO Tabelle umbennen
     try {
         PreparedStatement pstmt = con.prepareStatement(insert);
         pstmt.setString(1, userName);
