@@ -47,11 +47,20 @@ public class UIDefault extends JFrame {
 	 * Create the frame.
 	 */
 	public UIDefault() {
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 700, 500);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
 		JButton ButtonUserLogin = new JButton("Login");
 		ButtonUserLogin.setBounds(5, 149, 89, 23);
 		contentPane.add(ButtonUserLogin);
 		ButtonUserLogin.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
+			
 			public void actionPerformed(ActionEvent arg0) {
 
 				
@@ -66,6 +75,7 @@ public class UIDefault extends JFrame {
 		contentPane.add(buttonRegistration);
 		buttonRegistration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UIRegistration.main(null);
 			}
 		});
 		
@@ -74,19 +84,11 @@ public class UIDefault extends JFrame {
 		contentPane.add(ButtonGuest);
 		ButtonGuest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UIGuest.main(null);
 			}
 		});
 		
-		
-		
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 500);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
+			
 		JLabel LabelHeader = new JLabel("Willkommen");
 		LabelHeader.setBounds(5, 5, 424, 14);
 		contentPane.add(LabelHeader);
@@ -109,7 +111,7 @@ public class UIDefault extends JFrame {
 		contentPane.add(LabelLoginMail);
 		
 		JLabel LabelLoginPw = new JLabel("Passwort");
-		LabelLoginPw.setBounds(5, 95, 48, 14);
+		LabelLoginPw.setBounds(5, 95, 67, 14);
 		contentPane.add(LabelLoginPw);
 		
 		JLabel LabelRegistration = new JLabel("Noch nicht angemeldet dann kannst du dich hier anmelden");
