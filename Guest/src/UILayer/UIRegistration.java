@@ -8,10 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -50,60 +47,49 @@ public class UIRegistration extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new FormLayout(new ColumnSpec[] {
-				ColumnSpec.decode("192px"),
-				ColumnSpec.decode("49px:grow"),},
-			new RowSpec[] {
-				FormSpecs.UNRELATED_GAP_ROWSPEC,
-				RowSpec.decode("14px"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
+		
 		
 		JLabel lblAnmelden = new JLabel("Anmelden");
-		contentPane.add(lblAnmelden, "2, 2, left, top");
+		lblAnmelden.setBounds(0, 0, 0, 0);
+		contentPane.add(lblAnmelden);
 		
 		JLabel LabelUserName = new JLabel("Benutzername");
-		contentPane.add(LabelUserName, "1, 4, right, default");
+		LabelUserName.setBounds(0, 0, 0, 0);
+		contentPane.add(LabelUserName);
 		
 		textFieldUserName = new JTextField();
-		contentPane.add(textFieldUserName, "2, 4, fill, default");
+		textFieldUserName.setBounds(0, 0, 0, 0);
+		contentPane.add(textFieldUserName);
 		textFieldUserName.setColumns(10);
 		
 		JLabel LabelUserMail = new JLabel("E-Mail Adresse");
-		contentPane.add(LabelUserMail, "1, 6, right, default");
+		LabelUserMail.setBounds(0, 0, 0, 0);
+		contentPane.add(LabelUserMail);
 		
 		textFieldUserMail = new JTextField();
-		contentPane.add(textFieldUserMail, "2, 6, fill, default");
+		textFieldUserMail.setBounds(0, 0, 0, 0);
+		contentPane.add(textFieldUserMail);
 		textFieldUserMail.setColumns(10);
 		
 		JLabel LabelUserPw = new JLabel("Passwort");
-		contentPane.add(LabelUserPw, "1, 8, right, default");
+		LabelUserPw.setBounds(0, 0, 0, 0);
+		contentPane.add(LabelUserPw);
 		
 		passwordFieldUserPw = new JPasswordField();
-		contentPane.add(passwordFieldUserPw, "2, 8, fill, default");
+		passwordFieldUserPw.setBounds(0, 0, 0, 0);
+		contentPane.add(passwordFieldUserPw);
 		
 		JLabel LabelUserPwRepeat = new JLabel("Passwort wiederholen");
-		contentPane.add(LabelUserPwRepeat, "1, 10, right, default");
+		LabelUserPwRepeat.setBounds(0, 0, 0, 0);
+		contentPane.add(LabelUserPwRepeat);
 		
 		passwordFieldUserPwRepeat = new JPasswordField();
-		contentPane.add(passwordFieldUserPwRepeat, "2, 10, fill, default");
+		passwordFieldUserPwRepeat.setBounds(0, 0, 0, 0);
+		contentPane.add(passwordFieldUserPwRepeat);
 		
 		JButton ButtonRegistration = new JButton("Anmelden");
-		contentPane.add(ButtonRegistration, "2, 18");
+		ButtonRegistration.setBounds(0, 0, 0, 0);
+		contentPane.add(ButtonRegistration);
 	}
 
 }
