@@ -14,7 +14,7 @@ public class Main implements TaskShowQuestion.Callback {
 
     private void start() {
         TimeHandler timeHandler = new TimeHandler();
-        System.out.println(timeHandler.getTimeStampFromDB().toLocalDateTime());
+        //System.out.println(timeHandler.getTimeStampFromDB().toLocalDateTime());
 
         timer = new Timer();
 
@@ -23,7 +23,7 @@ public class Main implements TaskShowQuestion.Callback {
         // TODO Diese beiden oberen Codezeilen müssen später ersetzt werden, da dann das vom User
         //  ausgewählte Spiel geladen wird und hier als statische Variable referenziert wird.
 
-        // Start in einer Sekunde dann Ablauf alle 30 Sekunden
+        //Start in einer Sekunde dann Ablauf alle 30 Sekunden
         TaskShowQuestion task = new TaskShowQuestion(selectedQuiz, this);
         timer.scheduleAtFixedRate(task, 100, 30000);
 
