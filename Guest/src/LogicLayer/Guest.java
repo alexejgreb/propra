@@ -1,3 +1,5 @@
+package LogicLayer;
+
 public class Guest {
 
     private int guestID;
@@ -11,6 +13,7 @@ public class Guest {
         this.userName = userName;
         this.email = email;
         this.password = password;
+        //this.points = points;
     }
     public int getGuestID() { return guestID; }
 

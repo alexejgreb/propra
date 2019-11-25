@@ -1,7 +1,10 @@
+package LogicLayer;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import DataLayer.DataBaseConnector;
 
 public class Login {
     public static Guest guest;
@@ -112,7 +115,7 @@ public class Login {
     /*ohne Konto/Account wird in Kunde_Spiel die Kundennummer auf 0 gesetzt*/
   /*  public static void setAnonymousInKunde_Spiel(int idNr){
 
-        Connection con = DataBaseConnector.dbConnector();
+        Connection con = DataLayer.DataBaseConnector.dbConnector();
         int guestID = 0;
         String update = "UPDATE Kunde_Spiel SET Kunden_Nr = '" + guestID + "'WHERE ID_Nummer = '" + idNr + "'";
 

@@ -1,4 +1,10 @@
+package LogicLayer;
+
+import DataLayer.DataBaseConnector;
+import DataLayer.TimeHandler;
+
 import java.util.Timer;
+import DataLayer.QuestionHandler;
 
 public class Main implements TaskShowQuestion.Callback {
     private Timer timer;
@@ -27,7 +33,7 @@ public class Main implements TaskShowQuestion.Callback {
         TaskShowQuestion task = new TaskShowQuestion(selectedQuiz, this);
         timer.scheduleAtFixedRate(task, 100, 30000);
 
-        System.out.println("Main finished");
+        System.out.println("LogicLayer.Main finished");
     }
 
     @Override

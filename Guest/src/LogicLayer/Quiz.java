@@ -1,3 +1,7 @@
+package LogicLayer;
+
+import LogicLayer.Question;
+
 import java.util.ArrayList;
 
 public class Quiz {
