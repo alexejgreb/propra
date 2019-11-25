@@ -16,6 +16,8 @@ import java.awt.Insets;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UIGame extends JFrame {
 
@@ -68,6 +70,10 @@ public class UIGame extends JFrame {
 		contentPane.add(lblQuestion, gbc_lblQuestion);
 		
 		JButton jButtonAnswer1 = new JButton("Antwort1");
+		jButtonAnswer1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		GridBagConstraints gbc_ButtonAnswer1 = new GridBagConstraints();
 		gbc_ButtonAnswer1.insets = new Insets(0, 0, 5, 5);
 		gbc_ButtonAnswer1.gridx = 0;
@@ -75,6 +81,10 @@ public class UIGame extends JFrame {
 		contentPane.add(jButtonAnswer1, gbc_ButtonAnswer1);
 		
 		JButton jButtonAnswer2 = new JButton("Antwort2");
+		jButtonAnswer2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		jButtonAnswer2.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_jButtonAnswer2 = new GridBagConstraints();
 		gbc_jButtonAnswer2.insets = new Insets(0, 0, 5, 0);
@@ -83,6 +93,10 @@ public class UIGame extends JFrame {
 		contentPane.add(jButtonAnswer2, gbc_jButtonAnswer2);
 		
 		JButton jButtonAnswer3 = new JButton("Antwort3");
+		jButtonAnswer3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		GridBagConstraints gbc_jButtonAnswer3 = new GridBagConstraints();
 		gbc_jButtonAnswer3.insets = new Insets(0, 0, 0, 5);
 		gbc_jButtonAnswer3.gridx = 0;
@@ -90,6 +104,10 @@ public class UIGame extends JFrame {
 		contentPane.add(jButtonAnswer3, gbc_jButtonAnswer3);
 		
 		JButton jButtonAnswer4 = new JButton("Antwort4");
+		jButtonAnswer4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		GridBagConstraints gbc_jButtonAnswer4 = new GridBagConstraints();
 		gbc_jButtonAnswer4.gridx = 2;
 		gbc_jButtonAnswer4.gridy = 5;
