@@ -15,6 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import java.awt.Button;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UIGuestStart extends JFrame {
 
@@ -89,5 +92,14 @@ public class UIGuestStart extends JFrame {
 		Button ButtonGuest = new Button("Weiter als Gast");
 		ButtonGuest.setBounds(338, 330, 110, 22);
 		contentPane.add(ButtonGuest);
+		
+		JButton ButtonUserLogin = new JButton("Login");
+		ButtonUserLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		ButtonUserLogin.setBounds(5, 149, 89, 23);
+		contentPane.add(ButtonUserLogin);
 	}
 }
