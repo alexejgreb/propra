@@ -75,12 +75,13 @@ public class UIDefault extends JFrame {
 				if (Login.checkIfRegistered(tempUserMail, userPWString)){
 					Login.saveGuestInfo(tempUserMail, userPWString);
 					UIUserDefault.main(null);
+					dispose();
 				} else {
 
 					System.out.println("Logindaten falsch, Konto nicht gefunden!");
 
 				}
-				dispose();
+				
 			}
 		});
 		
