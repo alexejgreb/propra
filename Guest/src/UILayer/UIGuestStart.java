@@ -73,7 +73,7 @@ public class UIGuestStart extends JFrame {
 		LabelLoginMail.setBounds(5, 64, 72, 14);
 		contentPane.add(LabelLoginMail);
 		
-		JLabel LabelLoginPw = new JLabel("New label");
+		JLabel LabelLoginPw = new JLabel("Passwort");
 		LabelLoginPw.setBounds(5, 95, 48, 14);
 		contentPane.add(LabelLoginPw);
 		
@@ -82,6 +82,10 @@ public class UIGuestStart extends JFrame {
 		contentPane.add(LabelRegistration);
 		
 		Button buttonRegistration = new Button("Anmelden");
+		buttonRegistration.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		buttonRegistration.setBounds(5, 330, 70, 22);
 		contentPane.add(buttonRegistration);
 		
@@ -90,6 +94,10 @@ public class UIGuestStart extends JFrame {
 		contentPane.add(LabelGuest);
 		
 		Button ButtonGuest = new Button("Weiter als Gast");
+		ButtonGuest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		ButtonGuest.setBounds(338, 330, 110, 22);
 		contentPane.add(ButtonGuest);
 		
