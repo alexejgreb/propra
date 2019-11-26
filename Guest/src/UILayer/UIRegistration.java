@@ -114,6 +114,7 @@ public class UIRegistration extends JFrame {
 					dispose();
 				} else {
 					System.out.println("Passwortfelder stimmen nicht überein!");
+					//TODO Textbox
 				}
 
 

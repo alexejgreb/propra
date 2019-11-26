@@ -7,7 +7,12 @@ import java.sql.SQLException;
 import DataLayer.DataBaseConnector;
 
 public class Login {
-    public static Guest guest;
+    //public static Guest guest = new Guest(0,"","","");
+    public static Guest guest = null;
+    //public static int userID;
+    //public static String userName;
+    //public static String userEmail;
+    //public static String userPW;
 
     public static void registerGuest(String userName, String email, String password) {
 
@@ -54,7 +59,7 @@ public class Login {
     public static boolean checkIdNumber(int idNr){
 
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer ='" + idNr + "'";
+        String query = "SELECT* FROM Kunde_Spiel2 WHERE ID_Nummer ='" + idNr + "'";
         boolean contains = false;
 
         try {
@@ -76,9 +81,9 @@ public class Login {
     public static int getGuestID(String email, String password){
 
         int guestID = 0;
-        String password_hash = hashString(password);
+        //String password_hash = hashString(password);
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT KundenNr FROM Kunden_Info2 WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
+        String query = "SELECT KundenNr FROM Kunden_Info2 WHERE Email = '" + email + "' AND Passwort = '" + password + "'";
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
@@ -100,7 +105,7 @@ public class Login {
 
         int guestID = getGuestID(email, password);
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String update = "UPDATE Kunde_Spiel SET KundenNr = '" + guestID + "'WHERE ID_Nummer = '" + idNr + "'";
+        String update = "UPDATE Kunde_Spiel2 SET Kunden_Nr = '" + guestID + "'WHERE ID_Nummer = '" + idNr + "'";
         //TODO
         try {
 
@@ -175,14 +180,24 @@ public class Login {
                email_tmp = res.getString(3);
                password_tmp = res.getString(4);
                //points_tmp = res.getInt(5);
-                guest = new Guest(guestID_tmp, userName_tmp, email_tmp, password_tmp);
+
+                //userID = guestID_tmp;
+               // userName = userName_tmp;
+               // userEmail = email_tmp;
+               // userPW = password_tmp;
+                guest = new Guest(guestID_tmp, userName_tmp,email_tmp,password_tmp);
+               /* guest.setGuestID(guestID_tmp);
+                guest.setUserName(userName_tmp);
+                guest.setEmail(email_tmp);
+                guest.setPassword(password_tmp);*/
             }
             res.close();
             pstmt.close();
-
+            //return guest;
         } catch(SQLException se) {
             se.printStackTrace();
         }
+        //return guest;
     }
     /*wandelt Password in einen Hashwert um*/
     public static String hashString(String s) {

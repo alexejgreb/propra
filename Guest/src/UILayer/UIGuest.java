@@ -2,6 +2,7 @@ package UILayer;
 
 
 
+import LogicLayer.Guest;
 import LogicLayer.Login;
 
 import javax.swing.*;
@@ -14,7 +15,11 @@ public class UIGuest extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldGameID;
-	private int tempIdNumber;
+	String id_num;
+	int tempIdNumber;
+	String tempEmail;
+	String tempUserPW;
+
 
 	/**
 	 * Launch the application.
@@ -63,24 +68,22 @@ public class UIGuest extends JFrame {
 		JButton ButtonLogin = new JButton("Weiter zum Spiel");
 		ButtonLogin.setBounds(0, 0, 0, 0);
 		contentPane.add(ButtonLogin);
-		ButtonLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//TODO
-				tempIdNumber = Integer.parseInt(textFieldGameID.getText());
-				String tempEmail = Login.guest.getEmail();
-				String tempUserPW = Login.guest.getPassword();
+		ButtonLogin.addActionListener(this::doStuff);
 
-				if (Login.checkIdNumber(tempIdNumber)){
-					Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW, tempIdNumber);
-					//TODO öffne Spiel-Fenster
-					System.out.println("hat funktioniert");
-					dispose();
-				} else {
-					System.out.println("Id-Nummer ist ungültig!");
-				}
+	}
+	private void doStuff(ActionEvent actionEvent) {
 
-			}
-		});
+		String id_num = textFieldGameID.getText();
+		tempIdNumber = Integer.parseInt(id_num);
+
+		if(Login.checkIdNumber(tempIdNumber)){
+
+				//TODO Fenster für Spiel öffnen
+			dispose();
+		} else {
+				//TODO TEXTBOX: Id_Nummer ungültig
+		}
+
 	}
 
 }

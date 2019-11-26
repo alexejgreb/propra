@@ -59,10 +59,9 @@ public class UIDefault extends JFrame {
 			
 			public void actionPerformed(ActionEvent arg0) {
 
-				
 				tempUserMail=textFieldUserLogin.getText();
 				tempUserPW=passwordFieldUserPw.getPassword();
-				String userPWString = Arrays.toString(tempUserPW);
+				String userPWString = String.valueOf(tempUserPW);
 
 				if (Login.checkIfRegistered(tempUserMail, userPWString)){
 					Login.saveGuestInfo(tempUserMail, userPWString);
@@ -106,12 +105,7 @@ public class UIDefault extends JFrame {
 				dispose();
 			}
 		});
-		
-		
-		
-		
 
-		
 		JLabel LabelHeader = new JLabel("Willkommen");
 		LabelHeader.setBounds(5, 5, 424, 14);
 		contentPane.add(LabelHeader);

@@ -34,6 +34,7 @@ public class DataBaseConnector {
     }
 
     ///	Connection con = null;
+    //TODO
     public static Connection dbConnectorMariaDB() {
         try {
         	Class.forName("com.mysql.cj.jdbc.Driver");
