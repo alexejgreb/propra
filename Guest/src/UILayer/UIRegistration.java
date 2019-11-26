@@ -88,6 +88,7 @@ public class UIRegistration extends JFrame {
 		passwordFieldUserPw = new JPasswordField();
 		passwordFieldUserPw.setBounds(0, 0, 0, 0);
 		contentPane.add(passwordFieldUserPw);
+		passwordFieldUserPw.setColumns(10);
 		
 		JLabel LabelUserPwRepeat = new JLabel("Passwort wiederholen");
 		LabelUserPwRepeat.setBounds(0, 0, 0, 0);
@@ -96,6 +97,7 @@ public class UIRegistration extends JFrame {
 		passwordFieldUserPwRepeat = new JPasswordField();
 		passwordFieldUserPwRepeat.setBounds(0, 0, 0, 0);
 		contentPane.add(passwordFieldUserPwRepeat);
+		passwordFieldUserPwRepeat.setColumns(10);
 		
 		JButton ButtonRegistration = new JButton("Anmelden");
 		ButtonRegistration.setBounds(0, 0, 0, 0);

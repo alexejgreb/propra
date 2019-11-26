@@ -115,8 +115,9 @@ public class UIDefault extends JFrame {
 		contentPane.add(LabelHeader);
 		
 		JLabel LabelUserLogin = new JLabel("Login");
-		LabelUserLogin.setBounds(103, 30, 26, 20);
+		LabelUserLogin.setBounds(103, 30, 260, 20);
 		contentPane.add(LabelUserLogin);
+
 		
 		textFieldUserLogin = new JTextField();
 		textFieldUserLogin.setBounds(82, 61, 96, 20);
@@ -135,7 +136,7 @@ public class UIDefault extends JFrame {
 		LabelLoginPw.setBounds(5, 95, 67, 14);
 		contentPane.add(LabelLoginPw);
 		
-		JLabel LabelRegistration = new JLabel("Noch nicht angemeldet dann kannst du dich hier anmelden");
+		JLabel LabelRegistration = new JLabel("Noch nicht angemeldet? Jetzt anmelden!");
 		LabelRegistration.setBounds(5, 248, 327, 20);
 		contentPane.add(LabelRegistration);
 		
