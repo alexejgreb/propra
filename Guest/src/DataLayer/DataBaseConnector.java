@@ -34,10 +34,11 @@ public class DataBaseConnector {
     }
 
     ///	Connection con = null;
+    //TODO
     public static Connection dbConnectorMariaDB() {
         try {
         	Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://alexej.synology.me:5796/propra","propra","Kneipenquiz1920!");
+            Connection con = DriverManager.getConnection("");
             System.out.println("DB CONNECTED");
             return con;
         } catch (Exception e) {

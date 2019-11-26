@@ -1,7 +1,11 @@
 package UILayer;
 
+import LogicLayer.Login;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +19,9 @@ public class UIUserDefault extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldGameID;
+	private int tempIdNumber;
+	private String tempEmail;
+	private String tempUserPW;
 
 	/**
 	 * Launch the application.
@@ -58,6 +65,26 @@ public class UIUserDefault extends JFrame {
 		JButton ButtonStartGame = new JButton("Weiter zum Spiel");
 		ButtonStartGame.setBounds(0, 0, 0, 0);
 		contentPane.add(ButtonStartGame);
+		ButtonStartGame.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				String id_num = textFieldGameID.getText();
+				tempIdNumber = Integer.parseInt(id_num);
+				tempEmail = Login.guest.getEmail();
+				tempUserPW = Login.guest.getPassword();
+				//tempEmail = Login.userEmail;
+				//tempUserPW = Login.userPW;
+
+				if(Login.checkIdNumber(tempIdNumber)){
+						Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW,tempIdNumber);
+						//Fenster für Spiel öffnen
+					dispose();
+				} else {
+					//Id_Nummer ungültig
+				}
+			}
+		});
 	}
 
 }

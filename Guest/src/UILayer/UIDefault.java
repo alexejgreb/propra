@@ -5,21 +5,11 @@ import LogicLayer.Login;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Label;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
 import java.awt.Button;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
@@ -69,10 +59,9 @@ public class UIDefault extends JFrame {
 			
 			public void actionPerformed(ActionEvent arg0) {
 
-				
 				tempUserMail=textFieldUserLogin.getText();
 				tempUserPW=passwordFieldUserPw.getPassword();
-				String userPWString = Arrays.toString(tempUserPW);
+				String userPWString = String.valueOf(tempUserPW);
 
 				if (Login.checkIfRegistered(tempUserMail, userPWString)){
 					Login.saveGuestInfo(tempUserMail, userPWString);
@@ -93,7 +82,6 @@ public class UIDefault extends JFrame {
 					System.out.println("Logindaten falsch, Konto nicht gefunden!");
 
 				}
-				
 			}
 		});
 		
@@ -117,12 +105,7 @@ public class UIDefault extends JFrame {
 				dispose();
 			}
 		});
-		
-		
-		
-		
 
-		
 		JLabel LabelHeader = new JLabel("Willkommen");
 		LabelHeader.setBounds(5, 5, 424, 14);
 		contentPane.add(LabelHeader);
