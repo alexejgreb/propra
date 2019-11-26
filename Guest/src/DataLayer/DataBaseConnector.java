@@ -38,7 +38,7 @@ public class DataBaseConnector {
     public static Connection dbConnectorMariaDB() {
         try {
         	Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("");
+            Connection con = DriverManager.getConnection(serverAddress, serverUsername, serverPassword);
             System.out.println("DB CONNECTED");
             return con;
         } catch (Exception e) {

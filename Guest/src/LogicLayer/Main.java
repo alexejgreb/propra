@@ -21,7 +21,7 @@ public class Main implements TaskShowQuestion.Callback {
     private void start() {
         TimeHandler timeHandler = new TimeHandler();
         System.out.println(timeHandler.getTimeStampFromDB().toLocalDateTime());
-        System.out.println(timeHandler.getMillisWaitingUntilStartQuiz());
+        System.out.println(timeHandler.getMillisWaitingUntilStartQuiz("906"));
 
         timer = new Timer();
 
