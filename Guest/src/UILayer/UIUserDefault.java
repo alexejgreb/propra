@@ -28,9 +28,9 @@ public class UIUserDefault extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		DataBaseConnector.setServerAddress(args[0]);
-		DataBaseConnector.setServerUsername(args[1]);
-		DataBaseConnector.setServerPassword(args[2]);
+        //		DataBaseConnector.setServerAddress(args[0]);
+//		DataBaseConnector.setServerUsername(args[1]);
+//		DataBaseConnector.setServerPassword(args[2]);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

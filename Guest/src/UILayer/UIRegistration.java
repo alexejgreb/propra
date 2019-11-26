@@ -3,13 +3,11 @@ package UILayer;
 import DataLayer.DataBaseConnector;
 import LogicLayer.Login;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
@@ -35,9 +33,9 @@ public class UIRegistration extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		DataBaseConnector.setServerAddress(args[0]);
-		DataBaseConnector.setServerUsername(args[1]);
-		DataBaseConnector.setServerPassword(args[2]);
+//		DataBaseConnector.setServerAddress(args[0]);
+//		DataBaseConnector.setServerUsername(args[1]);
+//		DataBaseConnector.setServerPassword(args[2]);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
