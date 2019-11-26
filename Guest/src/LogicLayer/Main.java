@@ -20,7 +20,8 @@ public class Main implements TaskShowQuestion.Callback {
 
     private void start() {
         TimeHandler timeHandler = new TimeHandler();
-        //System.out.println(timeHandler.getTimeStampFromDB().toLocalDateTime());
+        System.out.println(timeHandler.getTimeStampFromDB().toLocalDateTime());
+        System.out.println(timeHandler.getMillisWaitingUntilStartQuiz());
 
         timer = new Timer();
 
