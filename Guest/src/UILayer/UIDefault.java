@@ -73,16 +73,9 @@ public class UIDefault extends JFrame {
 					dispose();
 				} else {
 					JDialog JDialogWrongPW = new JDialog();
-					JDialogWrongPW.setTitle("Passwort oder Mail Adresse falsch");
-					JDialogWrongPW.add(new JLabel("Passwort oder Mail Adresse falsch"));
-					JDialogWrongPW.add(new JButton("Okay"));
-					/*JButton.addActionListener(new ActionListener){
-						public void actionPerformed2(ActionEvent arg0) {
-							dispose();
-						}
-					}*/
-					JDialogWrongPW.setSize(400,200);
-					JDialogWrongPW.setVisible(true);
+					String message = "\"Passwort oder Email falsch!\"\n";
+
+					JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 					System.out.println("Logindaten falsch, Konto nicht gefunden!");
 
 				}
