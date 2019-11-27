@@ -81,11 +81,20 @@ public class UIGuest extends JFrame {
 		tempIdNumber = Integer.parseInt(id_num);
 
 		if(Login.checkIdNumber(tempIdNumber)){
+			if(Login.checkIfIDNrValid(tempIdNumber)){
+				Login.setValid0InKundeSpiel(tempIdNumber);
 
-				//TODO Fenster für Spiel öffnen
-			dispose();
+				//TODO Spiel-Fenster öffnen
+
+				dispose();
+			} else {
+				//TODO TEXTBOX:
+				System.out.println("IdNummer wurde bereits verbraucht");
+			}
+
 		} else {
-				//TODO TEXTBOX: Id_Nummer ungültig
+				//TODO TEXTBOX:
+			System.out.println("Id Nummer ungültig");
 		}
 
 	}
