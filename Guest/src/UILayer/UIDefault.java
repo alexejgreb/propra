@@ -1,5 +1,6 @@
 package UILayer;
 
+import DataLayer.DataBaseConnector;
 import LogicLayer.Login;
 
 import java.awt.BorderLayout;
@@ -27,6 +28,9 @@ public class UIDefault extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		DataBaseConnector.setServerAddress(args[0]);
+		DataBaseConnector.setServerUsername(args[1]);
+		DataBaseConnector.setServerPassword(args[2]);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -111,8 +115,9 @@ public class UIDefault extends JFrame {
 		contentPane.add(LabelHeader);
 		
 		JLabel LabelUserLogin = new JLabel("Login");
-		LabelUserLogin.setBounds(103, 30, 26, 20);
+		LabelUserLogin.setBounds(103, 30, 260, 20);
 		contentPane.add(LabelUserLogin);
+
 		
 		textFieldUserLogin = new JTextField();
 		textFieldUserLogin.setBounds(82, 61, 96, 20);
@@ -131,12 +136,12 @@ public class UIDefault extends JFrame {
 		LabelLoginPw.setBounds(5, 95, 67, 14);
 		contentPane.add(LabelLoginPw);
 		
-		JLabel LabelRegistration = new JLabel("Noch nicht angemeldet dann kannst du dich hier anmelden");
+		JLabel LabelRegistration = new JLabel("Noch nicht angemeldet? Jetzt anmelden!");
 		LabelRegistration.setBounds(5, 248, 327, 20);
 		contentPane.add(LabelRegistration);
 		
 		
-		
+
 		Label LabelGuest = new Label("Oder Spiel als Gast");
 		LabelGuest.setBounds(338, 248, 215, 22);
 		contentPane.add(LabelGuest);

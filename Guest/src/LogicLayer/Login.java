@@ -135,14 +135,14 @@ public class Login {
         }
 
     }*/
-    /*überprüft ob die ID_Nummer noch gültig ist.*/
+    /*überprüft ob die ID_Nummer noch gültig ist. ID-Nummer ist gültig wenn sie auf 1 ist*/
     public static boolean checkIfIDNrValid(int idNr){
 
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer = '" + idNr + "'";
+        //String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer = '" + idNr + "'";
         boolean contains = false;
-       // String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer = '" + idNr + "'AND Gültigkeit = '" + 0 + "'";
-        //TODO einfügen von Attribut: Gültigkeit?
+        String query = "SELECT* FROM Kunde_Spiel2 WHERE ID_Nummer = '" + idNr + "'AND Vermerk = '" + 1 + "'";
+
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet res = pstmt.executeQuery();
@@ -157,6 +157,23 @@ public class Login {
             se.printStackTrace();
         }
         return contains;
+    }
+    /*setzt Vermerk 0. Das bedeutet, dass ID verbraucht wurde.*/
+    public static void setValid0InKundeSpiel(int idNr){
+
+        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        String update = "UPDATE Kunde_Spiel2 SET Vermerk = '" + 0 + "'WHERE ID_Nummer = '" + idNr + "'";
+
+        try {
+
+            PreparedStatement pstmt = con.prepareStatement(update);
+            pstmt.execute();
+            pstmt.close();
+
+        } catch (SQLException se){
+            se.printStackTrace();
+        }
+
     }
 /*speichert Kundeninformationen zwischen*/
     public static void saveGuestInfo(String email, String password) {

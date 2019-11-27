@@ -2,6 +2,7 @@ package UILayer;
 
 
 
+import DataLayer.DataBaseConnector;
 import LogicLayer.Guest;
 import LogicLayer.Login;
 
@@ -25,6 +26,9 @@ public class UIGuest extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+//		DataBaseConnector.setServerAddress(args[0]);
+//		DataBaseConnector.setServerUsername(args[1]);
+//		DataBaseConnector.setServerPassword(args[2]);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -77,11 +81,20 @@ public class UIGuest extends JFrame {
 		tempIdNumber = Integer.parseInt(id_num);
 
 		if(Login.checkIdNumber(tempIdNumber)){
+			if(Login.checkIfIDNrValid(tempIdNumber)){
+				Login.setValid0InKundeSpiel(tempIdNumber);
 
-				//TODO Fenster für Spiel öffnen
-			dispose();
+				//TODO Spiel-Fenster öffnen
+
+				dispose();
+			} else {
+				//TODO TEXTBOX:
+				System.out.println("IdNummer wurde bereits verbraucht");
+			}
+
 		} else {
-				//TODO TEXTBOX: Id_Nummer ungültig
+				//TODO TEXTBOX:
+			System.out.println("Id Nummer ungültig");
 		}
 
 	}
