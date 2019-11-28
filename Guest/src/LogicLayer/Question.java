@@ -1,5 +1,10 @@
 package LogicLayer;
 
+import java.util.ArrayList;
+
+import java.util.Collections;
+
+
 public class Question {
 
     public Question(String numberOfQuestion, String question, String answer1, String answer2, String answer3, String answer4, String correctAnswer) {
@@ -88,4 +93,21 @@ public class Question {
                 ", correctAnswer='" + correctAnswer + '\'' +
                 '}';
     }
+
+    boolean isAnswerCorrect(String AnswerToValidate) {
+        return AnswerToValidate.equals(answer1);
+    }
+
+    ArrayList<String> getRandomizedAnswers() {
+
+        ArrayList<String> listAnswer = new ArrayList<>();
+        listAnswer.add(answer1);
+        listAnswer.add(answer2);
+        listAnswer.add(answer3);
+        listAnswer.add(answer4);
+        Collections.shuffle(listAnswer);
+
+        return listAnswer;
+    }
+
 }

@@ -4,6 +4,7 @@ import DataLayer.DataBaseConnector;
 import DataLayer.QuestionHandler;
 import LogicLayer.Question;
 import LogicLayer.Quiz;
+import java.awt.EventQueue;
 
 import java.awt.*;
 import javax.swing.*;
@@ -41,7 +42,6 @@ public class UIGame extends JFrame {
 					UIGame frame = new UIGame();
 					frame.setVisible(true);
 					frame.initializeQuizAndTimer();
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -71,8 +71,6 @@ public class UIGame extends JFrame {
 		timer.setRepeats(true);
 		timer.start();
 	}
-
-
 
 
 	/**
@@ -117,9 +115,7 @@ public class UIGame extends JFrame {
 
 		contentPane.add(lblQuestion, gbc_lblQuestion);
 		
-		jButtonAnswer1 = new JButton("Antwort1");
-		jButtonAnswer1.setPreferredSize(new Dimension(150, 100));
-		jButtonAnswer1.setMinimumSize(new Dimension(150,80));
+		JButton jButtonAnswer1 = new JButton("Antwort1");
 		jButtonAnswer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
