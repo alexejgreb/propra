@@ -45,6 +45,7 @@ public class UIGame extends JFrame {
 					e.printStackTrace();
 				}
 			}
+
 		});
 	}
 
