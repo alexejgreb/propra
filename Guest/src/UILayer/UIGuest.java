@@ -82,7 +82,9 @@ public class UIGuest extends JFrame {
 
 		if(Login.checkIdNumber(tempIdNumber)){
 			if(Login.checkIfIDNrValid(tempIdNumber)){
+			    Login.saveGameAndIDNumber(tempIdNumber);
 				Login.setValid0InKundeSpiel(tempIdNumber);
+
 
 				//TODO Spiel-Fenster öffnen
 

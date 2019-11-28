@@ -6,13 +6,17 @@ public class Guest {
     private String userName;
     private String email;
     private String password;
+    private int gameNumber;
+    private int iDNumber;
     ///private int points;
 
-    public Guest(int guestID, String userName, String email, String password){
+    public Guest(int guestID, String userName, String email, String password, int gameNumber, int iDNumber){
         this.guestID = guestID;
         this.userName = userName;
         this.email = email;
         this.password = password;
+        this.gameNumber = gameNumber;
+        this.iDNumber = iDNumber;
         //this.points = points;
     }
     public int getGuestID() { return guestID; }
@@ -30,6 +34,14 @@ public class Guest {
     public String getPassword() { return password; }
 
     public void setPassword(String password) { this.password = password; }
+
+    public int getGameNumber() { return gameNumber; }
+
+    public void setGameNumber(int gameNumber) { this.gameNumber = gameNumber; }
+
+    public int getIDNumber() { return iDNumber; }
+
+    public void setIDNumber(int iDNumber) { this.iDNumber = iDNumber; }
 
    // public int getPoints() { return points; }
 

@@ -82,6 +82,7 @@ public class UIUserDefault extends JFrame {
 
 				if(Login.checkIdNumber(tempIdNumber)){
 					if(Login.checkIfIDNrValid(tempIdNumber)){
+					    Login.saveGameAndIDNumber(tempIdNumber);
 						Login.setValid0InKundeSpiel(tempIdNumber);
 						Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW,tempIdNumber);
 
@@ -89,9 +90,11 @@ public class UIUserDefault extends JFrame {
 
 						dispose();
 					} else
+					    //TODO Textbox
 						System.out.println("IdNummer wurde bereits verbraucht");
 
 				} else {
+				    //TODO Textbox
 					System.out.println("falsche IdNummer");
 				}
 			}

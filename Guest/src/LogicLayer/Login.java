@@ -7,12 +7,8 @@ import java.sql.SQLException;
 import DataLayer.DataBaseConnector;
 
 public class Login {
-    //public static Guest guest = new Guest(0,"","","");
-    public static Guest guest = null;
-    //public static int userID;
-    //public static String userName;
-    //public static String userEmail;
-    //public static String userPW;
+
+    public static Guest guest = new Guest(0, "","","",0,0);;
 
     public static void registerGuest(String userName, String email, String password) {
 
@@ -139,7 +135,7 @@ public class Login {
     public static boolean checkIfIDNrValid(int idNr){
 
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        //String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer = '" + idNr + "'";
+
         boolean contains = false;
         String query = "SELECT* FROM Kunde_Spiel2 WHERE ID_Nummer = '" + idNr + "'AND Vermerk = '" + 1 + "'";
 
@@ -182,7 +178,7 @@ public class Login {
         String userName_tmp;
         String email_tmp;
         String password_tmp;
-        //int points_tmp;
+
         String password_hash = hashString(password);
         Connection con = DataBaseConnector.dbConnectorMariaDB();
         String query = "SELECT* FROM Kunden_Info2 WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
@@ -198,23 +194,48 @@ public class Login {
                password_tmp = res.getString(4);
                //points_tmp = res.getInt(5);
 
-                //userID = guestID_tmp;
-               // userName = userName_tmp;
-               // userEmail = email_tmp;
-               // userPW = password_tmp;
-                guest = new Guest(guestID_tmp, userName_tmp,email_tmp,password_tmp);
-               /* guest.setGuestID(guestID_tmp);
+
+               // guest = new Guest(guestID_tmp, userName_tmp,email_tmp,password_tmp,0,0);
+                guest.setGuestID(guestID_tmp);
                 guest.setUserName(userName_tmp);
                 guest.setEmail(email_tmp);
-                guest.setPassword(password_tmp);*/
+                guest.setPassword(password_tmp);
             }
             res.close();
             pstmt.close();
-            //return guest;
+
         } catch(SQLException se) {
             se.printStackTrace();
         }
-        //return guest;
+
+    }
+    /*Speichert bei Eingabe der IDNummer, die IDNummer und SpielNr im static Objekt guest*/
+    public static void saveGameAndIDNumber(int idNr){
+
+        int tmpGameNumber;
+        int tmpIDNumber;
+
+        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        String query = "SELECT* FROM Kunde_Spiel2 WHERE ID_Nummer = '" + idNr + "'";
+
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet res = pstmt.executeQuery();
+
+            while(res.next()){
+
+                tmpGameNumber = res.getInt(2);
+                tmpIDNumber = res.getInt(3);
+
+               guest.setGameNumber(tmpGameNumber);
+               guest.setIDNumber(tmpIDNumber);
+            }
+            res.close();
+            pstmt.close();
+
+        } catch(SQLException se) {
+            se.printStackTrace();
+        }
     }
     /*wandelt Password in einen Hashwert um*/
     public static String hashString(String s) {
