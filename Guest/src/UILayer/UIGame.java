@@ -16,6 +16,7 @@ import static java.awt.GridBagConstraints.PAGE_START;
 
 public class UIGame extends JFrame {
 
+
 	JPanel contentPane;
 	Timer timer;
 	QuestionHandler questionHandler = new QuestionHandler();
