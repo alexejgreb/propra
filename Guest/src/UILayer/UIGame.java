@@ -4,6 +4,7 @@ import DataLayer.DataBaseConnector;
 import DataLayer.QuestionHandler;
 import LogicLayer.Question;
 import LogicLayer.Quiz;
+import java.awt.EventQueue;
 
 import java.awt.*;
 import javax.swing.*;

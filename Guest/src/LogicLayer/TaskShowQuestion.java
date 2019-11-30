@@ -17,8 +17,9 @@ public class TaskShowQuestion extends TimerTask {
     @Override
     public void run() {
         if(!selectedQuiz.isQuizFinished()) {
-
-            System.out.println(selectedQuiz.getNextQuestionOfQuiz());
+            Question questionActual = selectedQuiz.getNextQuestionOfQuiz();
+            System.out.println(questionActual);
+            String correctAnswer = questionActual.getAnswer1();
             try {
                 Thread.sleep(20000);
             } catch (InterruptedException e) {
@@ -26,7 +27,7 @@ public class TaskShowQuestion extends TimerTask {
             }
             // disable Answer-Buttons
             // getLastTime buttonclick
-            // correct Answer or false
+            // correct Answer or falseselectedQuiz.getNextQuestionOfQuiz()
             // berechne punktZahl für Antwort und speichere sie zwischen
 
             return;

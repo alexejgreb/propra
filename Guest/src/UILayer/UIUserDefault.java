@@ -1,6 +1,7 @@
 package UILayer;
 
 import DataLayer.DataBaseConnector;
+import javax.swing.*;
 import LogicLayer.Login;
 
 import java.awt.BorderLayout;
@@ -11,10 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.*;
 
 public class UIUserDefault extends JFrame {
 
@@ -25,7 +23,7 @@ public class UIUserDefault extends JFrame {
 	private String tempUserPW;
 
 	/**
-	 * Launch the application.
+	 * Launch the application."jdbc:mysql://alexej.synology.me:5796/propra" "propra" "Kneipenquiz1920!"
 	 */
 	public static void main(String[] args) {
         //		DataBaseConnector.setServerAddress(args[0]);
@@ -52,7 +50,7 @@ public class UIUserDefault extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-				
+
 		JLabel LabelHeader = new JLabel("Startseite");
 		LabelHeader.setBounds(0, 0, 0, 0);
 		contentPane.add(LabelHeader);
