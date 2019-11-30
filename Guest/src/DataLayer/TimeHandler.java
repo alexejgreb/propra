@@ -7,12 +7,12 @@ import java.sql.*;
 
 public class TimeHandler {
 
-    Connection con = DataBaseConnector.dbConnectorMariaDB();
-    Timestamp timeStampNow;
-    Timestamp timeStampStart;
+    private static Connection con = DataBaseConnector.dbConnectorMariaDB();
+    private static Timestamp timeStampNow;
+    private static Timestamp timeStampStart;
 
     // Hole Timestamp von Databank
-    public Timestamp getTimeStampFromDB() {
+    public static Timestamp getTimeStampFromDB() {
         String queryForTimeStamp = "SELECT NOW()";
         ResultSet resultSet;
         PreparedStatement preparedStatement;
@@ -30,7 +30,7 @@ public class TimeHandler {
         return timeStampNow;
     }
 
-    public Timestamp getStartTimeOfQuiz(String numberOfGame) {
+    public static Timestamp getStartTimeOfQuiz(String numberOfGame) {
         // TODO Start-Zeitpunkt des Spiels auslesen
 
         String queryForTimeStamp = "SELECT Uhr_Spiel, Min_Spiel, Tag_Spiel, Monat_Spiel, Jahr_Spiel FROM Spiel_Gnehmigt WHERE Spiel_Nummer =" + numberOfGame;

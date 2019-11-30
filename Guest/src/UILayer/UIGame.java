@@ -2,8 +2,11 @@ package UILayer;
 
 import DataLayer.DataBaseConnector;
 import DataLayer.QuestionHandler;
+import DataLayer.TimeHandler;
 import LogicLayer.Question;
 import LogicLayer.Quiz;
+import LogicLayer.ResultingAnswerPerQuestion;
+
 import java.awt.EventQueue;
 
 import java.awt.*;
@@ -12,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import static java.awt.GridBagConstraints.PAGE_START;
 
@@ -21,7 +25,6 @@ public class UIGame extends JFrame {
 
 	JPanel contentPane;
 	Timer timer;
-    Timer timerTosetProgressBar;
 	QuestionHandler questionHandler = new QuestionHandler();
 	Quiz selectedQuiz;
 	JTextArea lblQuestion;
@@ -30,6 +33,16 @@ public class UIGame extends JFrame {
 	JButton jButtonAnswer3;
 	JButton jButtonAnswer4;
     static JProgressBar progressBar;
+	private ResultingAnswerPerQuestion lastAnswerPerQuestion;
+	long timeStartShowQuestion;
+	Question actualQuestion;
+	int totalScoreQuiz;
+	Color defaultColorButton;
+
+	public void setLastClickedAnswerPerQuestion(String answer, JButton sourceButton, long timeButtonClicked) {
+		this.lastAnswerPerQuestion = new ResultingAnswerPerQuestion(answer, timeButtonClicked, sourceButton);
+	}
+
 
 
 	/**
@@ -50,7 +63,7 @@ public class UIGame extends JFrame {
 			public void run() {
 				try {
 					UIGame frame = new UIGame();
-                    frame.initializeQuizAndTimer();
+                    frame.initializeQuizAndTimer("906");
                     frame.pack();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -60,7 +73,7 @@ public class UIGame extends JFrame {
 
 		});
     }
-	class Seconds extends SwingWorker<Integer, Integer> {
+	class ClockSeconds extends SwingWorker<Integer, Integer> {
         @Override
         protected Integer doInBackground() throws Exception {
             long startNano = System.currentTimeMillis();
@@ -68,7 +81,6 @@ public class UIGame extends JFrame {
             do {
 
                 result = (int) ((System.currentTimeMillis() - startNano) / 1000) % 60;
-                System.out.println("result: " + result);
                 publish(result);
 
                 try {
@@ -89,7 +101,6 @@ public class UIGame extends JFrame {
                     progressBar.setValue(s);
                     int timeRemaining = TIME_PER_QUESTION_IN_SECONDS - s;
                     progressBar.setString("" + timeRemaining + "s");
-                    progressBar.paint(progressBar.getGraphics());
                 }
             }
         }
@@ -102,6 +113,7 @@ public class UIGame extends JFrame {
                 progressBar.setValue(i);
                 int timeRemaining = TIME_PER_QUESTION_IN_SECONDS - i;
                 progressBar.setString("" + timeRemaining + "s");
+                calculatePointsPerQuestion();
             }
             catch ( /* InterruptedException, ExecutionException */ Exception e ) {
                 e.printStackTrace();
@@ -110,26 +122,60 @@ public class UIGame extends JFrame {
     }
 
 
+	private void calculatePointsPerQuestion() {
+		jButtonAnswer1.setEnabled(false);
+		jButtonAnswer2.setEnabled(false);
+		jButtonAnswer3.setEnabled(false);
+		jButtonAnswer4.setEnabled(false);
+		if (lastAnswerPerQuestion != null) {
+			double remainingSeconds = ((timeStartShowQuestion - lastAnswerPerQuestion.getTimeButtonClicked())/1000);
+			boolean isCorrectAnswer = actualQuestion.isAnswerCorrect(lastAnswerPerQuestion.getAnswer());
+			if(isCorrectAnswer){
+			int tempPoints = (int)(remainingSeconds * 10);
+			tempPoints = (tempPoints + 10) % 201;
+			totalScoreQuiz = totalScoreQuiz + tempPoints;
+			System.out.println(totalScoreQuiz);
+			lastAnswerPerQuestion.getSourceButton().setBackground(Color.green);
+			} else {
+				lastAnswerPerQuestion.getSourceButton().setBackground(Color.red);
+				System.out.println("You earned 0 points");}
+		} else {
+			System.out.println("no Answer selected. You earned 0 Points");
+		}
+	}
+
+	private void resetButtons(){
+		jButtonAnswer1.setEnabled(true);
+		jButtonAnswer2.setEnabled(true);
+		jButtonAnswer3.setEnabled(true);
+		jButtonAnswer4.setEnabled(true);
+		jButtonAnswer1.setBackground(defaultColorButton);
+		jButtonAnswer2.setBackground(defaultColorButton);
+		jButtonAnswer3.setBackground(defaultColorButton);
+		jButtonAnswer4.setBackground(defaultColorButton);
+	}
 
 
-
-    private void initializeQuizAndTimer() {
-		selectedQuiz = questionHandler.getQuizFromDB("906");
+    private void initializeQuizAndTimer(String NumberGame) {
+		selectedQuiz = questionHandler.getQuizFromDB(NumberGame);
+		totalScoreQuiz = 0;
 
 		timer = new Timer(10, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				if (!selectedQuiz.isQuizFinished()) {
-					Question actualQuestion = selectedQuiz.getNextQuestionOfQuiz();
+					timeStartShowQuestion = TimeHandler.getTimeStampFromDB().getTime();
+					lastAnswerPerQuestion = null;
+					actualQuestion = selectedQuiz.getNextQuestionOfQuiz();
+					ArrayList<String> answersRandom = actualQuestion.getRandomizedAnswers();
 					lblQuestion.setText(actualQuestion.getQuestion());
-					jButtonAnswer1.setText(actualQuestion.getAnswer1());
-					jButtonAnswer2.setText(actualQuestion.getAnswer2());
-					jButtonAnswer3.setText(actualQuestion.getAnswer3());
-					jButtonAnswer4.setText(actualQuestion.getAnswer4());
-
-					new Seconds().execute();
-					progressBar.paint(progressBar.getGraphics());
+					jButtonAnswer1.setText(answersRandom.get(0));
+					jButtonAnswer2.setText(answersRandom.get(1));
+					jButtonAnswer3.setText(answersRandom.get(2));
+					jButtonAnswer4.setText(answersRandom.get(3));
+					resetButtons();
+					new ClockSeconds().execute();
 				}
 			}
 		});
@@ -138,10 +184,6 @@ public class UIGame extends JFrame {
 		timer.start();
 
 	}
-
-
-
-
 
 
 	/**
@@ -195,13 +237,15 @@ public class UIGame extends JFrame {
 		jButtonAnswer1.setPreferredSize(new Dimension(150, 100));
 		jButtonAnswer1.setMinimumSize(new Dimension(150,80));
 		jButtonAnswer1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				setLastClickedAnswerPerQuestion(jButtonAnswer1.getText(), jButtonAnswer1, e.getWhen());
 			}
 		});
 		GridBagConstraints gbc_ButtonAnswer1 = new GridBagConstraints();
 		gbc_ButtonAnswer1.insets = new Insets(0, 0, 5, 5);
 		gbc_ButtonAnswer1.gridx = 0;
 		gbc_ButtonAnswer1.gridy = 4;
+		defaultColorButton = jButtonAnswer1.getBackground();
 
 
 		contentPane.add(jButtonAnswer1, gbc_ButtonAnswer1);
@@ -211,6 +255,8 @@ public class UIGame extends JFrame {
 		jButtonAnswer2.setMinimumSize(new Dimension(150,80));
 		jButtonAnswer2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				setLastClickedAnswerPerQuestion(jButtonAnswer2.getText(), jButtonAnswer2, e.getWhen());
 			}
 		});
 		//jButtonAnswer2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -225,6 +271,7 @@ public class UIGame extends JFrame {
 		jButtonAnswer3.setMinimumSize(new Dimension(150,80));
 		jButtonAnswer3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setLastClickedAnswerPerQuestion(jButtonAnswer3.getText(), jButtonAnswer3, e.getWhen());
 			}
 		});
 		GridBagConstraints gbc_jButtonAnswer3 = new GridBagConstraints();
@@ -238,6 +285,7 @@ public class UIGame extends JFrame {
 		jButtonAnswer4.setMinimumSize(new Dimension(150,80));
 		jButtonAnswer4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setLastClickedAnswerPerQuestion(jButtonAnswer4.getText(), jButtonAnswer4, e.getWhen());
 			}
 		});
 		GridBagConstraints gbc_jButtonAnswer4 = new GridBagConstraints();
