@@ -8,7 +8,7 @@ public class Guest {
     private String password;
     private int gameNumber;
     private int iDNumber;
-    ///private int points;
+    private int points;
 
     public Guest(int guestID, String userName, String email, String password, int gameNumber, int iDNumber){
         this.guestID = guestID;
@@ -17,7 +17,7 @@ public class Guest {
         this.password = password;
         this.gameNumber = gameNumber;
         this.iDNumber = iDNumber;
-        //this.points = points;
+        this.points = 0;
     }
     public int getGuestID() { return guestID; }
 
@@ -45,6 +45,6 @@ public class Guest {
 
    // public int getPoints() { return points; }
 
-   // public void setPoints(int points) { this.points = points; }
+   public void setPoints(int points) { this.points = points; }
 
 }

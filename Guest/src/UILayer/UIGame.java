@@ -3,6 +3,7 @@ package UILayer;
 import DataLayer.DataBaseConnector;
 import DataLayer.QuestionHandler;
 import DataLayer.TimeHandler;
+import LogicLayer.Login;
 import LogicLayer.Question;
 import LogicLayer.Quiz;
 import LogicLayer.ResultingAnswerPerQuestion;
@@ -23,23 +24,24 @@ public class UIGame extends JFrame {
 
     private static final int TIME_PER_QUESTION_IN_SECONDS = 20;
 
-	JPanel contentPane;
-	Timer timer;
-	QuestionHandler questionHandler = new QuestionHandler();
-	Quiz selectedQuiz;
-	JTextArea lblQuestion;
-	JButton jButtonAnswer1;
-	JButton jButtonAnswer2;
-	JButton jButtonAnswer3;
-	JButton jButtonAnswer4;
-    static JProgressBar progressBar;
+	private JPanel contentPane;
+	private Timer timer;
+	private QuestionHandler questionHandler = new QuestionHandler();
+	private Quiz selectedQuiz;
+	private JTextArea lblQuestion;
+	private JButton jButtonAnswer1;
+	private JButton jButtonAnswer2;
+	private JButton jButtonAnswer3;
+	private JButton jButtonAnswer4;
+    private JProgressBar progressBar;
 	private ResultingAnswerPerQuestion lastAnswerPerQuestion;
-	long timeStartShowQuestion;
-	Question actualQuestion;
-	int totalScoreQuiz;
-	Color defaultColorButton;
+	private long timeStartShowQuestion;
+	private Question actualQuestion;
+	private int totalScoreQuiz;
+	private Color defaultColorButton;
+	private JTextField textFieldresultingPoints;
 
-	public void setLastClickedAnswerPerQuestion(String answer, JButton sourceButton, long timeButtonClicked) {
+	private void setLastClickedAnswerPerQuestion(String answer, JButton sourceButton, long timeButtonClicked) {
 		this.lastAnswerPerQuestion = new ResultingAnswerPerQuestion(answer, timeButtonClicked, sourceButton);
 	}
 
@@ -73,6 +75,10 @@ public class UIGame extends JFrame {
 
 		});
     }
+
+	/**
+	 * InnerClass to get seconds for launching progressbar.
+	 */
 	class ClockSeconds extends SwingWorker<Integer, Integer> {
         @Override
         protected Integer doInBackground() throws Exception {
@@ -134,14 +140,35 @@ public class UIGame extends JFrame {
 			int tempPoints = (int)(remainingSeconds * 10);
 			tempPoints = (tempPoints + 10) % 201;
 			totalScoreQuiz = totalScoreQuiz + tempPoints;
-			System.out.println(totalScoreQuiz);
 			lastAnswerPerQuestion.getSourceButton().setBackground(Color.green);
+			textFieldresultingPoints.setText("Great! You get " + tempPoints + " points.");
 			} else {
 				lastAnswerPerQuestion.getSourceButton().setBackground(Color.red);
-				System.out.println("You earned 0 points");}
+				getButtonWithRightAnswer().setBackground(Color.green);
+				textFieldresultingPoints.setText("Too bad! You get 0 points.");
+			}
+
 		} else {
-			System.out.println("no Answer selected. You earned 0 Points");
+			textFieldresultingPoints.setText("You select no answer. You get 0 Points");
 		}
+	}
+
+	private void onQuizFinished() {
+		// TODO totalScoreFished in Datenbank schreiben und dem Gast zuweisen
+		Login.guest.setPoints(totalScoreQuiz);
+	}
+
+	private JButton getButtonWithRightAnswer() {
+		String correctAnswer = actualQuestion.getCorrectAnswer();
+		JButton buttonWithCorrectAnswer = jButtonAnswer1;
+		if (jButtonAnswer2.getText().equals(correctAnswer)){
+			buttonWithCorrectAnswer = jButtonAnswer2;
+		}else if (jButtonAnswer3.getText().equals(correctAnswer)){
+			buttonWithCorrectAnswer = jButtonAnswer3;
+		}else if (jButtonAnswer4.getText().equals(correctAnswer)){
+			buttonWithCorrectAnswer = jButtonAnswer4;
+		}
+		return buttonWithCorrectAnswer;
 	}
 
 	private void resetButtons(){
@@ -168,6 +195,7 @@ public class UIGame extends JFrame {
 					timeStartShowQuestion = TimeHandler.getTimeStampFromDB().getTime();
 					lastAnswerPerQuestion = null;
 					actualQuestion = selectedQuiz.getNextQuestionOfQuiz();
+					textFieldresultingPoints.setText("Please select an answer.");
 					ArrayList<String> answersRandom = actualQuestion.getRandomizedAnswers();
 					lblQuestion.setText(actualQuestion.getQuestion());
 					jButtonAnswer1.setText(answersRandom.get(0));
@@ -213,6 +241,18 @@ public class UIGame extends JFrame {
 		gbc_progressBar.gridx = 0;
 		gbc_progressBar.gridy = 6;
 		contentPane.add(progressBar, gbc_progressBar);
+
+		textFieldresultingPoints = new JTextField("Please select an answer!");
+		GridBagConstraints gbc_textfield = new GridBagConstraints();
+		gbc_textfield.insets = new Insets(10, 0, 5, 0);
+		textFieldresultingPoints.setEditable(false);
+		gbc_textfield.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textfield.weightx = 0.0;
+		gbc_textfield.gridwidth = 3;
+		gbc_textfield.gridx = 0;
+		gbc_textfield.gridy = 7;
+		contentPane.add(textFieldresultingPoints, gbc_textfield);
+
 
 		lblQuestion = new JTextArea("");
 		lblQuestion.setEditable(false);

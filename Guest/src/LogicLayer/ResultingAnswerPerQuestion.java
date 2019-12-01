@@ -29,8 +29,6 @@ public class ResultingAnswerPerQuestion {
                 '}';
     }
 
-
-
     public ResultingAnswerPerQuestion(String answer, long timeButtonClicked, JButton sourcceButton) {
         this.answer = answer;
         this.timeButtonClicked = timeButtonClicked;

@@ -21,10 +21,6 @@ public class Question {
         return numberOfQuestion;
     }
 
-    public void setNumberOfQuestion(String numberOfQuestion) {
-        this.numberOfQuestion = numberOfQuestion;
-    }
-
     private String numberOfQuestion;
     private String question;
     private String answer1;
@@ -37,30 +33,7 @@ public class Question {
         return question;
     }
 
-
-    public String getAnswer1() {
-        return answer1;
-    }
-
-
-
-    public String getAnswer2() {
-        return answer2;
-    }
-
-
-
-    public String getAnswer3() {
-        return answer3;
-    }
-
-
-
-    public String getAnswer4() {
-        return answer4;
-    }
-
-
+    public String getCorrectAnswer() {return answer1;}
 
     @Override
     public String toString() {
