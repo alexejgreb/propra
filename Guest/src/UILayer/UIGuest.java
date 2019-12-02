@@ -16,8 +16,8 @@ public class UIGuest extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldGameID;
-	String id_num;
-	int tempIdNumber;
+	String id_num =null;
+	int tempIdNumber = -1;
 	String tempEmail;
 	String tempUserPW;
 
@@ -78,27 +78,37 @@ public class UIGuest extends JFrame {
 	private void doStuff(ActionEvent actionEvent) {
 
 		String id_num = textFieldGameID.getText();
-		tempIdNumber = Integer.parseInt(id_num);
 
-		if(Login.checkIdNumber(tempIdNumber)){
-			if(Login.checkIfIDNrValid(tempIdNumber)){
-			    Login.saveGameAndIDNumber(tempIdNumber);
-				Login.setValid0InKundeSpiel(tempIdNumber);
+		if  (id_num!=null){
+			tempIdNumber = Integer.parseInt(id_num);
+			if (Login.checkIdNumber(tempIdNumber)) {
+				if (Login.checkIfIDNrValid(tempIdNumber)) {
+					Login.saveGameAndIDNumber(tempIdNumber);
+					Login.setValid0InKundeSpiel(tempIdNumber);
 
 
-				//TODO Spiel-Fenster öffnen
+					//TODO Spiel-Fenster öffnen
 
-				dispose();
+					dispose();
+				} else {
+					//TODO TEXTBOX:
+					JDialog JDialogOLdIDNumber = new JDialog();
+					String message = "\"IDNummer wurde bereits benutzt!\"\n";
+					System.out.println("IdNummer wurde bereits verbraucht");
+				}
+
 			} else {
 				//TODO TEXTBOX:
-				System.out.println("IdNummer wurde bereits verbraucht");
+				JDialog JDialogWrongIDNumber = new JDialog();
+				String message = "\"IDNummer flasch!\"\n";
+				System.out.println("Id Nummer ungültig");
 			}
-
-		} else {
-				//TODO TEXTBOX:
+		}
+		else {
+			JDialog JDialogWrongIDNumber = new JDialog();
+			String message = "\"IDNummer flasch!\"\n";
 			System.out.println("Id Nummer ungültig");
 		}
-
 	}
 
 }
