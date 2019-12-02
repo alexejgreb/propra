@@ -79,8 +79,8 @@ public class UIGuest extends JFrame {
 	private void doStuff(ActionEvent actionEvent) {
 
 		String id_num = textFieldGameID.getText();
-		Validator.stringToInt(id_num);
-		if  (id_num!=null){
+		boolean isInt = Validator.stringToInt(id_num);
+		if  (isInt==true){
 			tempIdNumber = Integer.parseInt(id_num);
 			if (Login.checkIdNumber(tempIdNumber)) {
 				if (Login.checkIfIDNrValid(tempIdNumber)) {

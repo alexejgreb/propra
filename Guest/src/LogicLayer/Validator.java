@@ -1,7 +1,7 @@
 package LogicLayer;
 
 public class Validator {
-    private int tempInt;
+    private static int tempInt;
 
 
     public static boolean stringToInt(String tempString){
