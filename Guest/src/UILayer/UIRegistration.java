@@ -112,8 +112,9 @@ public class UIRegistration extends JFrame {
 				} else {
 					JDialog JDialogWrongPW = new JDialog();
 					String message = "\"Passwörter stimmen nicht überein!\"\n";
+					JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 					System.out.println("Passwortfelder stimmen nicht überein!");
-					//TODO Textbox
+
 				}
 
 

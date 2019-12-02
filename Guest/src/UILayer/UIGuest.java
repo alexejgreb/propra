@@ -87,28 +87,33 @@ public class UIGuest extends JFrame {
 					Login.saveGameAndIDNumber(tempIdNumber);
 					Login.setValid0InKundeSpiel(tempIdNumber);
 
+					UIGame.main(null);
 
-					//TODO Spiel-Fenster öffnen
 
 					dispose();
 				} else {
-					//TODO TEXTBOX:
+
 					JDialog JDialogOLdIDNumber = new JDialog();
 					String message = "\"IDNummer wurde bereits benutzt!\"\n";
+					JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 					System.out.println("IdNummer wurde bereits verbraucht");
 				}
 
 			} else {
-				//TODO TEXTBOX:
-				JDialog JDialogWrongIDNumber = new JDialog();
-				String message = "\"IDNummer flasch!\"\n";
+
+				JDialog JDialogIDNummerFormatError = new JDialog();
+				String message = "\"IDNummer ungültig!\"\n";
+				JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 				System.out.println("Id Nummer ungültig");
+
 			}
 		}
 		else {
 			JDialog JDialogWrongIDNumber = new JDialog();
 			String message = "\"IDNummer flasch!\"\n";
+			JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 			System.out.println("Id Nummer ungültig");
+
 		}
 	}
 

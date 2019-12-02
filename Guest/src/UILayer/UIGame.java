@@ -52,11 +52,11 @@ public class UIGame extends JFrame {
 	 */
 	public static void main(String[] args) {
 
-      //  try {
-        //    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        //} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-          //  e.printStackTrace();
-       // }
+      try {
+      	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+      	e.printStackTrace();
+       }
 
         DataBaseConnector.setServerAddress(args[0]);
 		DataBaseConnector.setServerUsername(args[1]);
