@@ -52,11 +52,11 @@ public class UIGame extends JFrame {
 	 */
 	public static void main(String[] args) {
 
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
+      //  try {
+        //    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        //} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+          //  e.printStackTrace();
+       // }
 
         DataBaseConnector.setServerAddress(args[0]);
 		DataBaseConnector.setServerUsername(args[1]);
@@ -134,7 +134,7 @@ public class UIGame extends JFrame {
 		jButtonAnswer3.setEnabled(false);
 		jButtonAnswer4.setEnabled(false);
 		if (lastAnswerPerQuestion != null) {
-			double remainingSeconds = ((timeStartShowQuestion - lastAnswerPerQuestion.getTimeButtonClicked())/1000);
+			double remainingSeconds = ((timeStartShowQuestion - lastAnswerPerQuestion.getTimeButtonClicked())/-1000);
 			boolean isCorrectAnswer = actualQuestion.isAnswerCorrect(lastAnswerPerQuestion.getAnswer());
 			if(isCorrectAnswer){
 			int tempPoints = (int)(remainingSeconds * 10);
