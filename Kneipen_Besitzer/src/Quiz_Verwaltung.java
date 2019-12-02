@@ -39,7 +39,8 @@ import java.sql.ResultSet;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import net.proteanit.sql.DbUtils;
+ import Old.Database;
+ import net.proteanit.sql.DbUtils;
  
  
  
@@ -153,7 +154,7 @@ public static  JTextArea ta;
 	public Quiz_Verwaltung() {
 		initialize();
 		
-		con=Database.dbConnector();
+		con= Database.dbConnector();
 	}
 
 	/**

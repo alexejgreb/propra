@@ -26,6 +26,7 @@ import java.util.GregorianCalendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
+import Old.Database;
 import net.proteanit.sql.DbUtils;
 
 import java.awt.Color;
@@ -205,7 +206,7 @@ private static JButton btnAuto;
 	public Spiel_Starten() {
 		initialize();
 		Clock();
-		con=Database.dbConnector();
+		con= Database.dbConnector();
 		frame.setResizable(false);
 		
 	}

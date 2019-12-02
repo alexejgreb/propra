@@ -1,3 +1,5 @@
+import Old.Database;
+
 import java.awt.EventQueue;
 
 import java.sql.Connection;
@@ -65,7 +67,7 @@ private static JLabel test;
 	private JTextField t5;
 	public Anfrage() {
 		initialize();
-		con=Database.dbConnector();
+		con= Database.dbConnector();
 	}
 
 	/**

@@ -20,8 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import javax.swing.JTextArea;
-
+import Old.Database;
 import net.proteanit.sql.DbUtils;
 
 
@@ -83,7 +82,7 @@ public class Kneipen_Besitzer {
 		initialize();
 		frame.setResizable(false);
 		
-		con=Database.dbConnector();
+		con= Database.dbConnector();
 	}
 
 	/**

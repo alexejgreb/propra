@@ -42,6 +42,7 @@ public class UIGameWaitingroom extends JFrame {
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
 
+
         /*JProgressBar progressBar = new JProgressBar(0, Math.toIntExact(TimeHandler.getMillisWaitingUntilStartQuiz(Login.guest.getGameNumber())));
         progressBar.addAncestorListener(new AncestorListener() {
             public void ancestorAdded(AncestorEvent arg0) {
@@ -56,6 +57,7 @@ public class UIGameWaitingroom extends JFrame {
         */
         JLabel lblGameClock = new JLabel("Das Spiel startet demnächst.");
         contentPane.add(lblGameClock, BorderLayout.SOUTH);
+
     }
 
 }

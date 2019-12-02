@@ -1,22 +1,20 @@
+package Old;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
-import net.proteanit.sql.DbUtils;
+import Old.Database;
 
 
 public class DB_Anfragen {
 
 	public static Connection con =null;
 	public DB_Anfragen(){
-		con=Database.dbConnector();
+		con= Database.dbConnector();
 	}
 	
 	

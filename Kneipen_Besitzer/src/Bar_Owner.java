@@ -14,21 +14,17 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JRadioButton;
 
 import java.awt.Color;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
-import net.proteanit.sql.DbUtils;
+import Old.DB_Anfragen;
 
 
 public class Bar_Owner {

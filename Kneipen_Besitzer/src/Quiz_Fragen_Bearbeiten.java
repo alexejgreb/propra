@@ -1,3 +1,5 @@
+import Old.Database;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -19,12 +21,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 
 import java.awt.Color;
-
-import javax.swing.ImageIcon;
 
 
 public class Quiz_Fragen_Bearbeiten {
@@ -140,7 +138,7 @@ public class Quiz_Fragen_Bearbeiten {
 		
 		initialize();
 		
-		con=Database.dbConnector();
+		con= Database.dbConnector();
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		
