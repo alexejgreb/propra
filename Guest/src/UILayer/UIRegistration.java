@@ -5,17 +5,10 @@ import LogicLayer.Login;
 
 import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JLabel;
-
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
 
 public class UIRegistration extends JFrame {
 
@@ -117,6 +110,8 @@ public class UIRegistration extends JFrame {
 					UIGuest.main(null);
 					dispose();
 				} else {
+					JDialog JDialogWrongPW = new JDialog();
+					String message = "\"Passwörter stimmen nicht überein!\"\n";
 					System.out.println("Passwortfelder stimmen nicht überein!");
 					//TODO Textbox
 				}

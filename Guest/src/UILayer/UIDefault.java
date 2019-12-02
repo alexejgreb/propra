@@ -36,6 +36,7 @@ public class UIDefault extends JFrame {
 				try {
 					UIDefault frame = new UIDefault();
 					frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,6 +48,7 @@ public class UIDefault extends JFrame {
 	 * Create the frame.
 	 */
 	public UIDefault() {
+
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 500);
@@ -54,8 +56,14 @@ public class UIDefault extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
+
+		/*JLabel background = new JLabel("");
+		background.setIcon(new ImageIcon("C:\\Users\\Maxiv\\Downloads\\KrombacherSee.jfif"));
+		background.setBounds(100, 100, 700, 500);
+		contentPane.add(background);
+		*/
+
+
 		JButton ButtonUserLogin = new JButton("Login");
 		ButtonUserLogin.setBounds(5, 149, 89, 23);
 		contentPane.add(ButtonUserLogin);

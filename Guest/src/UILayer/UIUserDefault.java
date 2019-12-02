@@ -83,16 +83,19 @@ public class UIUserDefault extends JFrame {
 					    Login.saveGameAndIDNumber(tempIdNumber);
 						Login.setValid0InKundeSpiel(tempIdNumber);
 						Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW,tempIdNumber);
-
-						//TODO Spiel-Fenster öffnen
+						UIGame.main(null);
 
 						dispose();
-					} else
-					    //TODO Textbox
-						System.out.println("IdNummer wurde bereits verbraucht");
+					} else {
 
+						JDialog JDialogWrongOldIDNumber = new JDialog();
+						String message = "\"IdNummer wurde bereits verbraucht\"\n";
+						System.out.println("IdNummer wurde bereits verbraucht");
+					}
 				} else {
-				    //TODO Textbox
+
+					JDialog JDialogWrongIDNumber = new JDialog();
+					String message = "\"Falsche IDNummer!\"\n";
 					System.out.println("falsche IdNummer");
 				}
 			}
