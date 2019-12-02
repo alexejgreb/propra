@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -40,7 +41,7 @@ import java.awt.Color;
 public class Admin {
 
 	private JFrame frame;
-	private static  JTable table;
+	private  static  JTable table;
 	private static JScrollPane scrollPane;
 Icon icon;
 	/**
@@ -66,17 +67,8 @@ Icon icon;
 					Admin window = new Admin();
 					window.frame.setVisible(true);
 
-					try {
-						String query="select DISTINCT Kneipe_Nr ,Adresse, Telefon_Nr, Besitzer, Email from Kneipe_Teilnehmer where Vermerk =1;";
-						PreparedStatement pst=con.prepareStatement(query);
-						ResultSet rs= pst.executeQuery();
-						table.setModel(DbUtils.resultSetToTableModel(rs));
-							
-
-					} catch (Exception e) {
-						e.printStackTrace();
-					}	
 					
+					DB_Anfragen.Table_Bar(table);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -97,6 +89,7 @@ Icon icon;
 		
 		initialize();
 		con=Database1.dbConnector();
+		
 	}
 	
 	
@@ -128,6 +121,12 @@ Icon icon;
 		frame.getContentPane().add(btAr);
 		
 		JButton btEx = new JButton("EXIT");
+		btEx.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				frame.dispose();
+			}
+		});
 		btEx.setBounds(25, 152, 163, 34);
 		frame.getContentPane().add(btEx);
 		

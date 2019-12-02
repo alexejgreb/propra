@@ -37,7 +37,7 @@ private static JLabel email,besitzer,tel,adresse;
 					Teilnahme_Verwaltung window = new Teilnahme_Verwaltung();
 					window.frame.setVisible(true);
 					
-					
+					/*
 					try {
 						String query="select DISTINCT Kneipe_Nr ,Adresse, Telefon_Nr, Besitzer, Email from Kneipe_Teilnehmer where Vermerk =1;";
 						PreparedStatement pst=con.prepareStatement(query);
@@ -49,9 +49,9 @@ private static JLabel email,besitzer,tel,adresse;
 						e1.printStackTrace();
 					}	
 					
-					
-					
-					
+					*/
+					DB_Anfragen.Table_Bar(table);
+					/*
 					try{
 						String query2="select DISTINCT Kneipe_Nr from Kneipe_Teilnehmer where Vermerk =1";
 						PreparedStatement pst1=con.prepareStatement(query2);
@@ -70,8 +70,8 @@ private static JLabel email,besitzer,tel,adresse;
 						e2.printStackTrace();
 					
 					}
-					
-					
+					*/
+					DB_Anfragen.Bar_Nr_1(nummer);
 					
 					
 					
@@ -121,7 +121,7 @@ private static JLabel email,besitzer,tel,adresse;
 		 	public void actionPerformed(ActionEvent e) {
 		 		
 		 		
-		 		
+		 		/*
 				try {
 					String query1="select Adresse, Telefon_Nr, Besitzer, Email from Kneipe_Teilnehmer where Kneipe_Nr='"+nummer.getSelectedItem().toString()+"'";
 					PreparedStatement pst11=con.prepareStatement(query1);
@@ -146,8 +146,8 @@ private static JLabel email,besitzer,tel,adresse;
 					e2.printStackTrace();
 				
 				}
-				
-		 		
+				*/
+		 		DB_Anfragen.Select_Bar_1(adresse, besitzer, tel, email, nummer);
 		 		
 		 		
 		 	}
