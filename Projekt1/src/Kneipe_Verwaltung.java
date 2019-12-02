@@ -66,6 +66,9 @@ private static JScrollPane scrollPane ;
 					text.setVisible(false);
 					test.setVisible(false);
 					Clock();
+					
+					
+					/*
 					try {
 						String query="select DISTINCT Kneipe_Nr ,Adresse, Telefon_Nr, Besitzer, Email from Kneipe_Teilnehmer where Vermerk =1;";
 						PreparedStatement pst=con.prepareStatement(query);
@@ -76,8 +79,11 @@ private static JScrollPane scrollPane ;
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}	
-					
+					*/
 				//	C1.removeAllItems();
+					
+					DB_Anfragen.Table_Bar(table);
+					/*
 					try{
 						String query2="select DISTINCT Kneipe_Nr from Kneipe_Teilnehmer where Vermerk =0";
 						PreparedStatement pst1=con.prepareStatement(query2);
@@ -96,7 +102,8 @@ private static JScrollPane scrollPane ;
 						e2.printStackTrace();
 					
 					}
-					
+					*/
+					DB_Anfragen.Bar_Nr(C1);
 					
 					
 					
@@ -178,6 +185,9 @@ private static JScrollPane scrollPane ;
 	            	JOptionPane.showMessageDialog(null,"Whälen sie eine offene Anfrage");
 	            }
 			if(i1!=0){
+				
+				/*
+			
 				try{
 					 
 					
@@ -186,6 +196,8 @@ private static JScrollPane scrollPane ;
 			PreparedStatement pst3=con.prepareStatement(sql22);
 			pst3.execute();
 			JOptionPane.showMessageDialog(null,"Erfolgreich Gespeert");
+			*/
+			DB_Anfragen.Update_Bar_Member(C1);
 			
 			
 			ta1.append("\t Teilnahme_Beenden: \n\n"+"Kneipe_Nr:\t"+C1.getSelectedItem().toString()+"\n======================================\n"+"Besitzer:\t"+txt3.getText()+"\n\n"+"Telefon_Nr:\t"
@@ -196,10 +208,12 @@ private static JScrollPane scrollPane ;
 			txt4.setText("");
 			txt5.setText("");
 			txt6.setText("");
+			
+			/*
 		}catch(Exception e3){
 			JOptionPane.showMessageDialog(null,e3);
 		}
-				
+			*/	
 			}}
 		});
 		btnSperren.setBounds(12, 189, 204, 46);
@@ -218,7 +232,7 @@ private static JScrollPane scrollPane ;
 		btnGenhemigen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-			
+			//////// MUSS NOCH ERGÄNZT WERDEN :: FEHLER!!!!!
 			Clock()	;
 			int i1 =Integer.parseInt(text.getText());
             
@@ -248,6 +262,8 @@ private static JScrollPane scrollPane ;
 					e3.printStackTrace();
 				}
 			
+			
+			//DB_Anfragen.Select_Lizenc(C1, test);
 			
 		int i11 =Integer.parseInt(test.getText());
 			
@@ -279,10 +295,12 @@ try {	 ///
 				
 				
 
+			
+		//	DB_Anfragen.Max_Lizenc_Nr(lb);
                   
                    
                    
-               	
+               
    				try{
    					 int i =Integer.parseInt(lb.getText());
                    int j = i+77;
@@ -299,9 +317,11 @@ try {	 ///
    					pst.execute();
    					JOptionPane.showMessageDialog(null,"Teilname Bestätigung");
 
+                   // DB_Anfragen.Insert_Lizenc_1(lb, txt1, Zeit);
    					ta1.append("\t Genehmigung_Spiel: \n======================================\n"+"Spiel_Nr:\t"+lb.getText()+"\n======================================\n"+"Kneipe_Nr:\t"+txt1.getText()+"\n======================================\n"+"Adresse:\t"+txt2.getText()+"\n======================================\n"+"Besitzer:\t"+txt3.getText()+"\n======================================\n"+"Telefon_Nr:\t"+txt4.getText()+"\n======================================\n"
    							+"Email:\t"+txt5.getText()+"\n======================================\n"+"\t"+"\n======================================\n"+" \t"+" \n======================================\n");	
-   				} catch (Exception e1) {
+   				
+		} catch (Exception e1) {
    					e1.printStackTrace();
    				}	
 				
@@ -315,7 +335,7 @@ try {	 ///
 					pst3.execute();
 					JOptionPane.showMessageDialog(null,"Erfolgreich Genehmigt");
 					
-					
+					//DB_Anfragen.Update_Bar_Member(C1);
 					ta1.append("\t Anfrage_Genehmigt: \n======================================\n"+
 					"\n======================================\n"+" \t\n======================================\n"+"ZugangsNummer:\t"+lb.getText()+" \n======================================\n"+"Datum:\t"+Zeit.getText()+"\n======================================\n");	
 					txt1.setText("");
@@ -325,10 +345,11 @@ try {	 ///
 					txt5.setText("");
 					txt6.setText("");
 					text.setText("0");
+					
 				}catch(Exception e3){
 					JOptionPane.showMessageDialog(null,e3);
 				}
-					
+				
 		}}
 			}
 		});
@@ -378,7 +399,7 @@ try {	 ///
 		
 		 lb = new JLabel("1");
 		 lb.setEnabled(false);
-		lb.setBounds(257, 16, 153, 16);
+		lb.setBounds(12, 16, 17, 16);
 		frame.getContentPane().add(lb);
 		
 		 Zeit = new JLabel("New label");
@@ -395,7 +416,7 @@ try {	 ///
 		text.setEnabled(false);
 		text.setEditable(false);
 		text.setText("0");
-		text.setBounds(46, 30, 196, 22);
+		text.setBounds(12, 36, 196, 22);
 		frame.getContentPane().add(text);
 		text.setColumns(10);
 		 
@@ -441,6 +462,8 @@ try {	 ///
 	            if(i1!=0){
 	        		/////
 	        			
+	            	
+	            	/*
 	        			try {	 /// 		
 	        			    String query="select * from Spiel_Licence where Vermerk ='"+C1.getSelectedItem().toString()+"'";
 	        			    
@@ -460,7 +483,12 @@ try {	 ///
 	        				} catch (Exception e3) {
 	        					e3.printStackTrace();
 	        				}
-	        			
+	        			*/
+	            	
+	            	//
+	            	DB_Anfragen.Select_Lizenc(C1, test);
+	            	//
+	            	
 	        			
 	        		int i11 =Integer.parseInt(test.getText());
 	        			
@@ -469,7 +497,7 @@ try {	 ///
 	        			}
 	        		if(i11==0)	{
                   lb.setText(C1.getSelectedItem().toString()+tk.getText());
-		 	 	
+		 	 	/*
    				try{
    					
    					// 
@@ -483,15 +511,22 @@ try {	 ///
    					
    					pst.execute();
    					JOptionPane.showMessageDialog(null,"Dauerhaft Lizenc erteilt");
-
+*/
+                  DB_Anfragen.Insert_Lizenc(lb, txt1, Zeit, C1);
    					ta1.append("\t Lizenc_Erteilt: \n===============================================================\n"+"	Lizenc_Nr:\t"+lb.getText()+"\n===============================================================\n"+"Kneipe_Nr:\t"+txt1.getText()+"\n===============================================================\n"+"Adresse:\t"+txt2.getText()+"\n===============================================================\n"+"Besitzer:\t"+txt3.getText()+"\n===============================================================\n"+"Telefon_Nr:\t"+txt4.getText()+"\n===============================================================\n"
    							+"Email:\t"+txt5.getText()+"\n===============================================================\n"+"\t"+"\n===============================================================\n"+" \t"+" \n===============================================================\n");	
+   					/*
    				} catch (Exception e1) {
    					e1.printStackTrace();
    				}	
-				
-				
-				try{
+				*/
+				///
+   				
+   				
+   				
+   				
+   				
+				/*try{
 					 
 						
 							String value115=C1.getSelectedItem().toString();
@@ -500,7 +535,9 @@ try {	 ///
 					pst3.execute();
 					JOptionPane.showMessageDialog(null,"Erfolgreich Genehmigt");
 					
-					
+					*/
+   				
+   				DB_Anfragen.Update_Lizenc(C1);
 					ta1.append("\t Lizenc_Bestätigt: \n===============================================================\n"+
 					"\n===============================================================\n"+" \t\n===============================================================\n"+"Registriert unter der Nummer:\t"+lb.getText()+" \n===============================================================\n"+"Datum:\t"+Zeit.getText()+"\n===============================================================\n"+"\n Wir haben das Recht dieser Genehmigung jeder Zeit ohne Angabe von Gründen zu Wiederrufen \n"+"\n===============================================================\n");	
 					txt1.setText("");
@@ -510,15 +547,23 @@ try {	 ///
 					txt5.setText("");
 					txt6.setText("");
 					text.setText("0");
+					
+					/*
 				}catch(Exception e3){
 					JOptionPane.showMessageDialog(null,e3);
-				}}}}
+				}
+				*/
+				
+				//
+				
+				
+				}}}
 	             });
 		 btnLizencerteilen.setBounds(12, 130, 204, 46);
 		 frame.getContentPane().add(btnLizencerteilen);
 		 
 		  test = new JLabel("0");
-		 test.setBounds(376, 33, 56, 16);
+		 test.setBounds(30, 16, 17, 16);
 		 frame.getContentPane().add(test);
 		 
 		  C1 = new JComboBox();
@@ -598,7 +643,7 @@ try {	 ///
 		  	public void actionPerformed(ActionEvent e) {
 		  		
 		  	text.setText(C1.getSelectedItem().toString());	
-		  		
+	/*	  		
 try {	 
 					
 				    String query="select Adresse,Telefon_Nr,Besitzer,Email,Vermerk from Kneipe_Teilnehmer where Kneipe_Nr= ? ";
@@ -624,8 +669,8 @@ try {
 					} catch (Exception e3) {
 						e3.printStackTrace();
 					}
-		  		
-		  		
+		  		*/
+		  		DB_Anfragen.Select_Bar(txt1, txt2, txt3, txt4, txt5, txt6, C1);
 		  		
 		  	}
 		  });

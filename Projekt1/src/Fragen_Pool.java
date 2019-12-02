@@ -36,10 +36,10 @@ import javax.swing.ImageIcon;
 public class Fragen_Pool {
 
 	private JFrame frame;
-	private static JTable table;
+	public  static JTable table;
 private static JLabel lb1,lb2 ;
 private JTextField a,w1,w2,w3,w4;
-private static JComboBox CB1;
+public static JComboBox CB1;
 private JTextArea ta,ff ;
 private static JScrollPane scrollPane;
 private static JButton Btp_zurueck;
@@ -56,45 +56,26 @@ private static JButton Btp_zurueck;
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				
 				try {
 					
 					Fragen_Pool window = new Fragen_Pool();
 					window.frame.setVisible(true);
-					try {
-						String query="select frage, ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl,ErsteWahl as RichtigeAntwort from Fragen_Pool where vermerk =0";
-						PreparedStatement pst=con.prepareStatement(query);
-						ResultSet rs= pst.executeQuery();
-						table.setModel(DbUtils.resultSetToTableModel(rs));
-							
-
-					} catch (Exception e) {
-						e.printStackTrace();
-					}	
 					
+				
+					
+					DB_Anfragen.Table_Question(table);
 					CB1.removeAllItems();
-					try{
-						String query2="select FrageNr from Fragen_Pool where Vermerk =0";
-						PreparedStatement pst1=con.prepareStatement(query2);
-						
-						ResultSet rs= pst1.executeQuery();
-						while (rs.next()){
-							String FrageNr = rs.getString("FrageNr");
-							CB1.addItem(FrageNr);
-							
-						}
-						
-						rs.close();
-						
-						}
-					catch(Exception e2){
-						e2.printStackTrace();
 					
-					}
+			
+					DB_Anfragen.Question_Nr(CB1);
+					
 					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}
 		});
 	}
@@ -130,59 +111,24 @@ private static JButton Btp_zurueck;
 				
 				int z;
 
-				try {	
-				    String query="select max(FrageNr) from Fragen_Pool where Vermerk=0";  ///
-					PreparedStatement pst1=con.prepareStatement(query);
-					
-					ResultSet rs= pst1.executeQuery();
-					
-					 if ((rs.next()))
-					 {
-						 lb1.setText(rs.getString("max(FrageNr)")) ; // 
-						
-					 }
-					
-						pst1.close();
-						
-
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}	
+				
+				DB_Anfragen.Max_Question_Nr(lb1);
 				z= Integer.parseInt(lb1.getText())+1	; /////
 				lb2.setText(String.valueOf(z));
 				
-				try{
-					
-					// Neue Frage Hinzufügen
-					
-					String sql = "INSERT INTO Fragen_Pool (FrageNr, Frage, ErsteWahl, ZweiteWahl,DritteWahl,VierteWahl,RichtigeAntwort,Vermerk)VALUES (?,?,?,?,?,?,?,?)" ;
-					PreparedStatement pst=con.prepareStatement(sql);
-					pst.setString(1, lb2.getText());
-					pst.setString(2, ff.getText());
-					pst.setString(3, a.getText());
-					pst.setString(4, w1.getText());
-					pst.setString(5, w2.getText());
-					pst.setString(6, w3.getText());
-					pst.setString(7, w4.getText());
-					
-					pst.setString(8, "0");
-					
-					pst.execute();
-					JOptionPane.showMessageDialog(null,"Save");
-
-					ta.append("\t Frage-Save: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
-							" \t"+" \n======================================\n");	
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}	
-				ff.setText("");
-				w1.setText("");
-				a.setText("");
-				w2.setText("");
-				w3.setText("");
-				w4.setText("");	
+			DB_Anfragen.Insert_Question(lb2,ff,w1,w2,w3,w4,a);
+			ta.append("\t Frage-Save: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
+					" \t"+" \n======================================\n");
+			ff.setText("");
+			w1.setText("");
+			a.setText("");
+			w2.setText("");
+			w3.setText("");
+			w4.setText("");
 			
 			}
+			
+			//
 			
 		});
 		Btp_Hinzufügen.setBounds(28, 34, 118, 45);
@@ -197,17 +143,9 @@ private static JButton Btp_zurueck;
 				int YesorNo = JOptionPane.showConfirmDialog(null, " Sind Sie sicher wollen sie dieses Frage mit dem FrageNr:  ,"+CB1.getSelectedItem().toString()+",   entfernen !!!!!","Frage Entfernen",JOptionPane.YES_NO_OPTION);
 				
 				if(YesorNo==0){
-				
-				
-				try{
+			
 					
-					
-					String Delete ="delete from Fragen_Pool where FrageNr ='"+CB1.getSelectedItem().toString()+"'";
-					
-					PreparedStatement pst3=con.prepareStatement(Delete);
-					pst3.execute();
-					pst3.close();
-					JOptionPane.showMessageDialog(null,"OK Sie haben es gelöscht");
+					DB_Anfragen.Delete_Question(CB1);
 					ta.append("\t Frage-Delete: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
 							" \t"+" \n======================================\n");		
 					
@@ -219,28 +157,6 @@ private static JButton Btp_zurueck;
 					w3.setText("");
 					w4.setText("");
 					
-					//CB1.removeAllItems();
-					try{
-						String query2=" select FrageNr from Fragen_Pool where Vermerk = 0";
-						PreparedStatement pst=con.prepareStatement(query2);
-						
-						ResultSet rs= pst.executeQuery();
-						while (rs.next()){
-							String FrageNr = rs.getString("FrageNr");
-							CB1.addItem(FrageNr);
-							
-						}
-						
-						rs.close();
-						
-						}
-					catch(Exception e2){
-						e2.printStackTrace();
-					
-					}
-				} catch(Exception e1){
-					e1.printStackTrace();
-				}
 				
 			}
 				else{
@@ -258,20 +174,10 @@ private static JButton Btp_zurueck;
 			public void actionPerformed(ActionEvent arg0) {
 				lb1.setVisible(false);
 				lb2.setVisible(false);
-				try{
-				 String value223=ff.getText();
-					String value33=w1.getText();
-					String value22= w2.getText();
-					String value222=w3.getText();
-					String value221= w4.getText();
-					String value2225=a.getText();
-						String value115=CB1.getSelectedItem().toString();
-				String sql22="update Fragen_Pool set Frage='"+value223+"',ErsteWahl='"+value33+"',ZweiteWahl='"+value22+"',DritteWahl='"+value222+"',VierteWahl='"+value221+"',RichtigeAntwort='"+value2225+"' where FrageNr='"+value115+"' ";
-				PreparedStatement pst3=con.prepareStatement(sql22);
-				pst3.execute();
-				JOptionPane.showMessageDialog(null,"Erfolgreich UPDATE");
 				
 				
+				
+				DB_Anfragen.Update_Question(ff, w1, w2, w3, w4, a, CB1);
 				ta.append("\t Frage-Update: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
 						" \t"+" \n======================================\n");	
 				ff.setText("");
@@ -280,9 +186,12 @@ private static JButton Btp_zurueck;
 				w2.setText("");
 				w3.setText("");
 				w4.setText("");
-			}catch(Exception e3){
-				JOptionPane.showMessageDialog(null,e3);
-			}}
+			}
+			
+			
+			
+			
+			
 		});
 		Btp_edit.setBounds(28, 150, 118, 45);
 		frame.getContentPane().add(Btp_edit);
@@ -346,7 +255,7 @@ private static JButton Btp_zurueck;
 		lb2.setBounds(171, 164, 56, 16);
 		frame.getContentPane().add(lb2);
 		
-		JButton btnNewButton_1 = new JButton("Zeigen");
+		JButton btnNewButton_1 = new JButton("Print");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -452,31 +361,9 @@ private static JButton Btp_zurueck;
 		   CB1.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
 		   		
-try {	 ///
-					
-				    String query="select  Frage ,ErsteWahl ,ZweiteWahl,DritteWahl,VierteWahl,RichtigeAntwort from Fragen_Pool WHERE FrageNr= ? ";
-				    
-					PreparedStatement pst1=con.prepareStatement(query);
-					pst1.setString(1, CB1.getSelectedItem().toString());
-					ResultSet rs= pst1.executeQuery();
-					
-					 if ((rs.next()))
-					 {
-						
-						ff.setText(rs.getString("Frage"));
-						a.setText(rs.getString("RichtigeAntwort"));
-						w1.setText(rs.getString("ErsteWahl"));
-					w2.setText(rs.getString("ZweiteWahl"));
-					w3.setText(rs.getString("DritteWahl"));
-					w4.setText(rs.getString("VierteWahl"));
-					 }
-					
-						pst1.close();
-						
 
-					} catch (Exception e3) {
-						e3.printStackTrace();
-					}
+
+DB_Anfragen.Select_Question(ff, a, w1, w2, w3, w4, CB1);
 		   	}
 		   	
 		   });
