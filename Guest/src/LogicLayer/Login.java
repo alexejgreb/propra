@@ -14,7 +14,7 @@ public class Login {
 
     String password_hash = hashString(password);
     Connection con = DataBaseConnector.dbConnectorMariaDB();
-    String insert = "INSERT INTO Kunden_Info2 (Benutzername, Email, Passwort) VALUES (?,?,?)";
+    String insert = "INSERT INTO Kunden_Info (Benutzername, Email, Passwort) VALUES (?,?,?)";
     ///TODO Tabelle umbennen
     try {
         PreparedStatement pstmt = con.prepareStatement(insert);
@@ -33,7 +33,7 @@ public class Login {
 
         String password_hash = hashString(password);
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT* FROM Kunden_Info2 WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
+        String query = "SELECT* FROM Kunden_Info WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
         boolean contains = false;
 
         try {
@@ -55,7 +55,7 @@ public class Login {
     public static boolean checkIdNumber(int idNr){
 
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT* FROM Kunde_Spiel2 WHERE ID_Nummer ='" + idNr + "'";
+        String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer ='" + idNr + "'";
         boolean contains = false;
 
         try {
@@ -79,7 +79,7 @@ public class Login {
         int guestID = 0;
         //String password_hash = hashString(password);
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT KundenNr FROM Kunden_Info2 WHERE Email = '" + email + "' AND Passwort = '" + password + "'";
+        String query = "SELECT KundenNr FROM Kunden_Info WHERE Email = '" + email + "' AND Passwort = '" + password + "'";
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
@@ -101,7 +101,7 @@ public class Login {
 
         int guestID = getGuestID(email, password);
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String update = "UPDATE Kunde_Spiel2 SET Kunden_Nr = '" + guestID + "'WHERE ID_Nummer = '" + idNr + "'";
+        String update = "UPDATE Kunde_Spiel SET Kunden_Nr = '" + guestID + "'WHERE ID_Nummer = '" + idNr + "'";
         //TODO
         try {
 
@@ -137,7 +137,7 @@ public class Login {
         Connection con = DataBaseConnector.dbConnectorMariaDB();
 
         boolean contains = false;
-        String query = "SELECT* FROM Kunde_Spiel2 WHERE ID_Nummer = '" + idNr + "'AND Vermerk = '" + 1 + "'";
+        String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer = '" + idNr + "'AND Vermerk = '" + 1 + "'";
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
@@ -158,7 +158,7 @@ public class Login {
     public static void setValid0InKundeSpiel(int idNr){
 
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String update = "UPDATE Kunde_Spiel2 SET Vermerk = '" + 0 + "'WHERE ID_Nummer = '" + idNr + "'";
+        String update = "UPDATE Kunde_Spiel SET Vermerk = '" + 0 + "'WHERE ID_Nummer = '" + idNr + "'";
 
         try {
 
@@ -181,7 +181,7 @@ public class Login {
 
         String password_hash = hashString(password);
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT* FROM Kunden_Info2 WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
+        String query = "SELECT* FROM Kunden_Info WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
@@ -216,7 +216,7 @@ public class Login {
         int tmpIDNumber;
 
         Connection con = DataBaseConnector.dbConnectorMariaDB();
-        String query = "SELECT* FROM Kunde_Spiel2 WHERE ID_Nummer = '" + idNr + "'";
+        String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer = '" + idNr + "'";
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
