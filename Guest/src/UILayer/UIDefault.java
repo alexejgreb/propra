@@ -134,7 +134,7 @@ public class UIDefault extends JFrame {
 		contentPane.add(LabelRegistration);
 		
 		
-		
+
 		Label LabelGuest = new Label("Oder Spiel als Gast");
 		LabelGuest.setBounds(338, 248, 215, 22);
 		contentPane.add(LabelGuest);
