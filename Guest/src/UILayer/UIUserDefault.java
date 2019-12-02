@@ -26,10 +26,10 @@ public class UIUserDefault extends JFrame {
 	 * Launch the application."jdbc:mysql://alexej.synology.me:5796/propra" "propra" "Kneipenquiz1920!"
 	 */
 	public static void main(String[] args) {
-        	DataBaseConnector.setServerAddress(args[0]);
+		/*DataBaseConnector.setServerAddress(args[0]);
 		DataBaseConnector.setServerUsername(args[1]);
  		DataBaseConnector.setServerPassword(args[2]);
-		EventQueue.invokeLater(new Runnable() {
+		*/EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					UIUserDefault frame = new UIUserDefault();
@@ -83,7 +83,7 @@ public class UIUserDefault extends JFrame {
 					    Login.saveGameAndIDNumber(tempIdNumber);
 						Login.setValid0InKundeSpiel(tempIdNumber);
 						Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW,tempIdNumber);
-						UIGame.main(null);
+						UIGameWaitingroom.main(null);
 
 						dispose();
 					} else {

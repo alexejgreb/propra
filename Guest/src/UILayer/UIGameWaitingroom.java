@@ -1,11 +1,13 @@
 package UILayer;
+import DataLayer.TimeHandler;
+import LogicLayer.Guest;
+import LogicLayer.Login;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JProgressBar;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 
@@ -40,7 +42,7 @@ public class UIGameWaitingroom extends JFrame {
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
 
-        JProgressBar progressBar = new JProgressBar();
+        /*JProgressBar progressBar = new JProgressBar(0, Math.toIntExact(TimeHandler.getMillisWaitingUntilStartQuiz(Login.guest.getGameNumber())));
         progressBar.addAncestorListener(new AncestorListener() {
             public void ancestorAdded(AncestorEvent arg0) {
             }
@@ -50,6 +52,10 @@ public class UIGameWaitingroom extends JFrame {
             }
         });
         contentPane.add(progressBar, BorderLayout.CENTER);
+
+        */
+        JLabel lblGameClock = new JLabel("Das Spiel startet demnächst.");
+        contentPane.add(lblGameClock, BorderLayout.SOUTH);
     }
 
 }

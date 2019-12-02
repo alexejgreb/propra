@@ -61,7 +61,7 @@ public class TimeHandler {
         return timeStampStart;
     }
 
-    public long getMillisWaitingUntilStartQuiz(String numberOfGame) {
+    public static long getMillisWaitingUntilStartQuiz(String numberOfGame) {
         //Abfragen, ob daten sich gleichen...
         // oder wie viel Zeit zwischen den zeitPunkten liegt
 
