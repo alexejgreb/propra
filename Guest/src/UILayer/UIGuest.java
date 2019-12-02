@@ -87,7 +87,7 @@ public class UIGuest extends JFrame {
 					Login.saveGameAndIDNumber(tempIdNumber);
 					Login.setValid0InKundeSpiel(tempIdNumber);
 
-					UIGame.main(null);
+					UIGameWaitingroom.main(null);
 
 
 					dispose();
