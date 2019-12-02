@@ -4,7 +4,7 @@ public class Validator {
     private int tempInt;
 
 
-    public boolean stringToInt(String tempString){
+    public static boolean stringToInt(String tempString){
         boolean isint = true;
         try {
             tempInt = Integer.parseInt(tempString);

@@ -5,6 +5,7 @@ package UILayer;
 import DataLayer.DataBaseConnector;
 import LogicLayer.Guest;
 import LogicLayer.Login;
+import LogicLayer.Validator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -78,7 +79,7 @@ public class UIGuest extends JFrame {
 	private void doStuff(ActionEvent actionEvent) {
 
 		String id_num = textFieldGameID.getText();
-
+		Validator.stringToInt(id_num);
 		if  (id_num!=null){
 			tempIdNumber = Integer.parseInt(id_num);
 			if (Login.checkIdNumber(tempIdNumber)) {
