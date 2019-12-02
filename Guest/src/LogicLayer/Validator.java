@@ -10,6 +10,7 @@ public class Validator {
         }
             catch (Exception e){
                 System.out.println("String kann nicht zum Interger umgewandelt werden!");
+
         }
         return tempInt;
     }
