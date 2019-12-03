@@ -58,9 +58,9 @@ public class UIGame extends JFrame {
       	e.printStackTrace();
        }
 
-       	// DataBaseConnector.setServerAddress(args[0]);
-		//DataBaseConnector.setServerUsername(args[1]);
-		//DataBaseConnector.setServerPassword(args[2]);
+       	DataBaseConnector.setServerAddress(args[0]);
+		DataBaseConnector.setServerUsername(args[1]);
+		DataBaseConnector.setServerPassword(args[2]);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
