@@ -149,5 +149,6 @@ public class Login {
         labelBackground.setIcon(new ImageIcon("Ressources\\imag\\index.jpg"));
         labelBackground.setBounds(0, 0, 581, 295);
         frame.getContentPane().add(labelBackground);
+
     }
 }
