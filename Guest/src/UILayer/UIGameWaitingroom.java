@@ -12,7 +12,7 @@ import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 
 public class UIGameWaitingroom extends JFrame {
-
+//k
     private JPanel contentPane;
 
     /**
