@@ -241,7 +241,7 @@ public class Kneipen_Besitzer {
 				
 				
 				
-				Quiz_Terminer QT= new Quiz_Terminer();
+				UIPlayerIDGenerator QT= new UIPlayerIDGenerator();
 				try {
 					QT.main(null);
 				} catch (ClassNotFoundException | InstantiationException
@@ -259,7 +259,7 @@ public class Kneipen_Besitzer {
 		frame.getContentPane().add(btnAnmeldung);
 		
 		JLabel labelBackground = new JLabel("");
-		labelBackground.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\krombacher-spot-mood-flaschen (1).jpg"));
+		labelBackground.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
 		labelBackground.setBounds(0, 0, 1263, 639);
 		frame.getContentPane().add(labelBackground);
 	}

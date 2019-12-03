@@ -102,18 +102,18 @@ public class Fragen_Verwaltung2 {
 		frame.getContentPane().add(txtD);
 		txtD.setColumns(10);
 		
-		JButton btnNeueFrageHinzufgen = new JButton("Neue Frage hinzufügen");
-		btnNeueFrageHinzufgen.addActionListener(new ActionListener() {
+		JButton buttonNewQuestion = new JButton("Neue Frage hinzufügen");
+		buttonNewQuestion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent actionEvent) {
 				//TODO
 			}
 		});
-		btnNeueFrageHinzufgen.setBounds(6, 218, 169, 29);
-		frame.getContentPane().add(btnNeueFrageHinzufgen);
+		buttonNewQuestion.setBounds(6, 218, 169, 29);
+		frame.getContentPane().add(buttonNewQuestion);
 		
-		JButton btnFrageBearbeiten = new JButton("Frage bearbeiten");
-		/*btnFrageBearbeiten.addActionListener(new ActionListener() {
+		JButton buttonEditQuestion = new JButton("Frage bearbeiten");
+		/*buttonEditQuestion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				//TODO
 				String numberOfQuestion =
@@ -121,11 +121,11 @@ public class Fragen_Verwaltung2 {
 				BarQuestionHandler.editQuestion(currentSelectedQuestion);
 			}
 		});*/
-		btnFrageBearbeiten.setBounds(6, 256, 169, 29);
-		frame.getContentPane().add(btnFrageBearbeiten);
+		buttonEditQuestion.setBounds(6, 256, 169, 29);
+		frame.getContentPane().add(buttonEditQuestion);
 		
-		JButton btnFrageLschen = new JButton("Frage löschen");
-		btnFrageLschen.addActionListener(new ActionListener() {
+		JButton buttonDelete = new JButton("Frage löschen");
+		buttonDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent actionEvent) {
 				BarQuestionHandler.deleteQuestion(currentSelectedQuestion);
@@ -133,8 +133,8 @@ public class Fragen_Verwaltung2 {
 			}
 		});
 
-		btnFrageLschen.setBounds(6, 294, 169, 29);
-		frame.getContentPane().add(btnFrageLschen);
+		buttonDelete.setBounds(6, 294, 169, 29);
+		frame.getContentPane().add(buttonDelete);
 
 		JButton buttonBack = new JButton("Zurück");
 		buttonBack.addActionListener(new ActionListener() {
@@ -157,9 +157,9 @@ public class Fragen_Verwaltung2 {
 		frame.getContentPane().add(buttonBack);
 
 
-		JLabel lblFrage = new JLabel("Frage:");
-		lblFrage.setBounds(227, 223, 61, 16);
-		frame.getContentPane().add(lblFrage);
+		JLabel labelQuestion = new JLabel("Frage:");
+		labelQuestion.setBounds(227, 223, 61, 16);
+		frame.getContentPane().add(labelQuestion);
 		
 		JLabel lblA = new JLabel("A:");
 		lblA.setBounds(227, 261, 61, 16);

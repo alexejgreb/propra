@@ -179,7 +179,7 @@ public static  JTextArea ta;
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				Quiz_Teilnehmer QB= new Quiz_Teilnehmer();
+				Anmeldung QB= new Anmeldung();
 				try {
 					QB.Screen4();
 				} catch (ClassNotFoundException | InstantiationException
@@ -220,7 +220,7 @@ public static  JTextArea ta;
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				Quiz_Terminer QT= new Quiz_Terminer();
+				UIPlayerIDGenerator QT= new UIPlayerIDGenerator();
 				try {
 					QT.main(null);
 				} catch (ClassNotFoundException | InstantiationException

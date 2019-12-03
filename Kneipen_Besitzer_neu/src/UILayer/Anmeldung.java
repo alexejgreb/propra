@@ -20,7 +20,7 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 
 
-public class Quiz_Teilnehmer {
+public class Anmeldung {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -43,7 +43,7 @@ public class Quiz_Teilnehmer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Quiz_Teilnehmer window = new Quiz_Teilnehmer();
+					Anmeldung window = new Anmeldung();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +55,7 @@ public class Quiz_Teilnehmer {
 	/**
 	 * Create the application.
 	 */
-	public Quiz_Teilnehmer() {
+	public Anmeldung() {
 		initialize();
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);

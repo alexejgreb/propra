@@ -27,7 +27,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-public class Quiz_Terminer {
+public class UIPlayerIDGenerator {
 
     private JFrame frame;
     private JTextField textField;
@@ -54,7 +54,7 @@ public class Quiz_Terminer {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Quiz_Terminer window = new Quiz_Terminer();
+                    UIPlayerIDGenerator window = new UIPlayerIDGenerator();
                     window.frame.setVisible(true);
 
 
@@ -127,7 +127,7 @@ public class Quiz_Terminer {
     static Connection con = null;
     private static JButton btnExit_2;
 
-    public Quiz_Terminer() {
+    public UIPlayerIDGenerator() {
         initialize();
 
         con = DataBaseConnector.dbConnector();
@@ -173,7 +173,7 @@ public class Quiz_Terminer {
         CB1.setBounds(149, 25, 149, 22);
         frame.getContentPane().add(CB1);
 
-        JLabel label_2 = new JLabel("KundenNr:");
+        JLabel label_2 = new JLabel("Kunden-Mail:");
         label_2.setForeground(Color.RED);
         label_2.setFont(new Font("Tahoma", Font.BOLD, 15));
         label_2.setBounds(12, 70, 93, 16);
@@ -186,7 +186,7 @@ public class Quiz_Terminer {
         frame.getContentPane().add(t1);
         t1.setColumns(10);
 
-        l1 = new JLabel("NameKunde");
+        /*l1 = new JLabel("NameKunde");
         l1.setFont(new Font("Tahoma", Font.BOLD, 13));
         l1.setBounds(12, 154, 93, 16);
         frame.getContentPane().add(l1);
@@ -215,7 +215,7 @@ public class Quiz_Terminer {
         l5.setFont(new Font("Tahoma", Font.BOLD, 13));
         l5.setBounds(12, 212, 125, 16);
         frame.getContentPane().add(l5);
-
+        */
         JButton button = new JButton("Suchen");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
@@ -265,7 +265,7 @@ public class Quiz_Terminer {
         button.setBounds(596, 81, 153, 31);
         frame.getContentPane().add(button);
 
-        JButton btnExit = new JButton("Anmelden");
+        JButton btnExit = new JButton("Erstellen");
         btnExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
