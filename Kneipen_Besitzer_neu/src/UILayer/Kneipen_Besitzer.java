@@ -103,13 +103,13 @@ public class Kneipen_Besitzer {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JButton btnNewButton = new JButton("Statistiken");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setForeground(new Color(255, 0, 0));
-		btnNewButton.setBounds(33, 230, 194, 51);
-		frame.getContentPane().add(btnNewButton);
+		JButton buttonStats = new JButton("Statistiken");
+		buttonStats.setFont(new Font("Tahoma", Font.BOLD, 16));
+		buttonStats.setForeground(new Color(255, 0, 0));
+		buttonStats.setBounds(33, 230, 194, 51);
+		frame.getContentPane().add(buttonStats);
 		
-		JButton btnAnfragesenden = new JButton("Anfrage_Senden");
+		/*JButton btnAnfragesenden = new JButton("Anfrage_Senden");
 		btnAnfragesenden.setForeground(new Color(255, 0, 0));
 		btnAnfragesenden.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnAnfragesenden.addActionListener(new ActionListener() {
@@ -135,7 +135,7 @@ public class Kneipen_Besitzer {
 		});
 		btnAnfragesenden.setBounds(33, 164, 194, 53);
 		frame.getContentPane().add(btnAnfragesenden);
-		
+		*/
 		JButton btnFragenverwalten = new JButton("Fragen_Verwalten");
 		btnFragenverwalten.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnFragenverwalten.setForeground(new Color(255, 0, 0));
@@ -160,10 +160,10 @@ public class Kneipen_Besitzer {
 		btnFragenverwalten.setBounds(33, 91, 194, 60);
 		frame.getContentPane().add(btnFragenverwalten);
 		
-		JButton btnQuizstarten = new JButton("Quiz_Starten");
-		btnQuizstarten.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnQuizstarten.setForeground(new Color(255, 0, 0));
-		btnQuizstarten.addActionListener(new ActionListener() {
+		JButton buttonStart = new JButton("Quiz_Starten");
+		buttonStart.setFont(new Font("Tahoma", Font.BOLD, 16));
+		buttonStart.setForeground(new Color(255, 0, 0));
+		buttonStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -179,8 +179,8 @@ public class Kneipen_Besitzer {
 				frame.dispose();
 			}
 		});
-		btnQuizstarten.setBounds(33, 27, 194, 51);
-		frame.getContentPane().add(btnQuizstarten);
+		buttonStart.setBounds(33, 27, 194, 51);
+		frame.getContentPane().add(buttonStart);
 		
 		JButton btnQuizverwaltung = new JButton("UILayer.Quiz_Verwaltung");
 		btnQuizverwaltung.addActionListener(new ActionListener() {
@@ -204,16 +204,16 @@ public class Kneipen_Besitzer {
 		btnQuizverwaltung.setBounds(33, 294, 194, 51);
 		frame.getContentPane().add(btnQuizverwaltung);
 		
-		JButton btnbersicht = new JButton("EXIT");
-		btnbersicht.addActionListener(new ActionListener() {
+		JButton buttonExit = new JButton("EXIT");
+		buttonExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
-		btnbersicht.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnbersicht.setForeground(new Color(255, 0, 0));
-		btnbersicht.setBounds(33, 422, 194, 55);
-		frame.getContentPane().add(btnbersicht);
+		buttonExit.setFont(new Font("Tahoma", Font.BOLD, 16));
+		buttonExit.setForeground(new Color(255, 0, 0));
+		buttonExit.setBounds(33, 422, 194, 55);
+		frame.getContentPane().add(buttonExit);
 		
 		JLabel lblKneipenummer = new JLabel("Kneipe_Nummer:");
 		lblKneipenummer.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
@@ -258,9 +258,9 @@ public class Kneipen_Besitzer {
 		btnAnmeldung.setBounds(33, 358, 194, 55);
 		frame.getContentPane().add(btnAnmeldung);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\krombacher-spot-mood-flaschen (1).jpg"));
-		lblNewLabel.setBounds(0, 0, 1263, 639);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel labelBackground = new JLabel("");
+		labelBackground.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\krombacher-spot-mood-flaschen (1).jpg"));
+		labelBackground.setBounds(0, 0, 1263, 639);
+		frame.getContentPane().add(labelBackground);
 	}
 }

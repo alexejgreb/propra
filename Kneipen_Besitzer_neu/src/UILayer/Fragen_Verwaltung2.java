@@ -132,9 +132,31 @@ public class Fragen_Verwaltung2 {
 				listOfQuestions.remove(listOfQuestions.getSelectedIndex());
 			}
 		});
+
 		btnFrageLschen.setBounds(6, 294, 169, 29);
 		frame.getContentPane().add(btnFrageLschen);
-		
+
+		JButton buttonBack = new JButton("Zurück");
+		buttonBack.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent actionEvent) {
+				Kneipen_Besitzer KB= new Kneipen_Besitzer();
+				try {
+					KB.NewScreen();
+				} catch (ClassNotFoundException | InstantiationException
+						| IllegalAccessException
+						| UnsupportedLookAndFeelException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				frame.dispose();
+
+			}
+		});
+		buttonBack.setBounds(6, 400, 169, 29);
+		frame.getContentPane().add(buttonBack);
+
+
 		JLabel lblFrage = new JLabel("Frage:");
 		lblFrage.setBounds(227, 223, 61, 16);
 		frame.getContentPane().add(lblFrage);

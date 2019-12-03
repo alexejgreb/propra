@@ -1,4 +1,6 @@
-package UILayer;
+package LogicLayer;
+
+import UILayer.Kneipen_Besitzer;
 
 import java.awt.EventQueue;
 
