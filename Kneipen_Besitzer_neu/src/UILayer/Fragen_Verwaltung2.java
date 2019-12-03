@@ -113,14 +113,14 @@ public class Fragen_Verwaltung2 {
 		frame.getContentPane().add(btnNeueFrageHinzufgen);
 		
 		JButton btnFrageBearbeiten = new JButton("Frage bearbeiten");
-		btnFrageBearbeiten.addActionListener(new ActionListener() {
+		/*btnFrageBearbeiten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				//TODO
 				String numberOfQuestion =
 				currentSelectedQuestion = new Question();
 				BarQuestionHandler.editQuestion(currentSelectedQuestion);
 			}
-		});
+		});*/
 		btnFrageBearbeiten.setBounds(6, 256, 169, 29);
 		frame.getContentPane().add(btnFrageBearbeiten);
 		

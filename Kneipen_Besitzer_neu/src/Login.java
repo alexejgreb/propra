@@ -22,7 +22,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 
-public class Login2 {
+public class Login {
 
     private JFrame frame;
     private JTextField login;
@@ -45,7 +45,7 @@ public class Login2 {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Login2 window = new Login2();
+                    Login window = new Login();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -57,7 +57,7 @@ public class Login2 {
     /**
      * Create the application.
      */
-    public Login2() {
+    public Login() {
         initialize();
         frame.setResizable(false);
     }
@@ -145,9 +145,10 @@ public class Login2 {
         btnNewButton_1.setBounds(283, 194, 137, 46);
         frame.getContentPane().add(btnNewButton_1);
 
-        JLabel lblNewLabel_2 = new JLabel("");
-        lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\krombacher-pils-prost.jpg"));
-        lblNewLabel_2.setBounds(0, 0, 581, 295);
-        frame.getContentPane().add(lblNewLabel_2);
+        JLabel labelBackground = new JLabel("");
+        labelBackground.setIcon(new ImageIcon("Ressources\\index.jpg"));
+        labelBackground.setBounds(0, 0, 581, 295);
+        frame.getContentPane().add(labelBackground);
+
     }
 }
