@@ -146,9 +146,8 @@ public class Login {
         frame.getContentPane().add(btnNewButton_1);
 
         JLabel labelBackground = new JLabel("");
-        labelBackground.setIcon(new ImageIcon("Ressources\\index.jpg"));
+        labelBackground.setIcon(new ImageIcon("Ressources\\imag\\index.jpg"));
         labelBackground.setBounds(0, 0, 581, 295);
         frame.getContentPane().add(labelBackground);
-
     }
 }
