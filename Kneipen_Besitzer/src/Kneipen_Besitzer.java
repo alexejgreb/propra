@@ -101,11 +101,17 @@ public class Kneipen_Besitzer {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JButton btnNewButton = new JButton("Statistiken");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setForeground(new Color(255, 0, 0));
-		btnNewButton.setBounds(33, 230, 194, 51);
-		frame.getContentPane().add(btnNewButton);
+		JButton buttonStats = new JButton("Statistiken");
+		buttonStats.setFont(new Font("Tahoma", Font.BOLD, 16));
+		buttonStats.setForeground(new Color(255, 0, 0));
+		buttonStats.setBounds(33, 230, 194, 51);
+		buttonStats.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UserScore.getUserScore();
+			}
+		});
+		frame.getContentPane().add(buttonStats);
 		
 		JButton btnAnfragesenden = new JButton("Anfrage_Senden");
 		btnAnfragesenden.setForeground(new Color(255, 0, 0));
