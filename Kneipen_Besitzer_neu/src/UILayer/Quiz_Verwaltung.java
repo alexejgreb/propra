@@ -1,3 +1,4 @@
+package UILayer;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -23,7 +24,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
  import DataLayer.DataBaseConnector;
- import net.proteanit.sql.DbUtils;
+import net.proteanit.sql.DbUtils;
  
  
  
@@ -173,7 +174,7 @@ public static  JTextArea ta;
 		btnInsert.setBounds(20, 41, 175, 45);
 		frame.getContentPane().add(btnInsert);
 		
-		JButton btnQuizteilnehmer = new JButton("Quiz_Teilnehmer");
+		JButton btnQuizteilnehmer = new JButton("UILayer.Quiz_Teilnehmer");
 		btnQuizteilnehmer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -194,7 +195,7 @@ public static  JTextArea ta;
 		btnQuizteilnehmer.setBounds(20, 99, 175, 45);
 		frame.getContentPane().add(btnQuizteilnehmer);
 		
-		JButton btnWinner = new JButton("Winner");
+		JButton btnWinner = new JButton("UILayer.Winner");
 		btnWinner.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -214,7 +215,7 @@ public static  JTextArea ta;
 		btnWinner.setBounds(20, 157, 175, 45);
 		frame.getContentPane().add(btnWinner);
 		
-		JButton btnQuizterminer = new JButton("Quiz_Terminer");
+		JButton btnQuizterminer = new JButton("UILayer.Quiz_Terminer");
 		btnQuizterminer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

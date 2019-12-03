@@ -1,3 +1,5 @@
+package UILayer;
+
 import DataLayer.DataBaseConnector;
 
 import java.awt.EventQueue;
@@ -353,7 +355,7 @@ Quiz_Verwaltung.ta.append("\t Frage_Hinzufügen: \n\n"+"Spiel_Nr:\t"+t.getText()
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//Quiz_Verwaltung QW= new Quiz_Verwaltung();
+				//UILayer.Quiz_Verwaltung QW= new UILayer.Quiz_Verwaltung();
 				//QW.Screen2();
 				frame.dispose();
 				

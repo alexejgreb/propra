@@ -1,3 +1,5 @@
+package UILayer;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -20,9 +22,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import DataLayer.BarQuestionHandler;
 import DataLayer.DataBaseConnector;
-import UILayer.Fragen_Verwaltung2;
 import net.proteanit.sql.DbUtils;
 
 
@@ -182,7 +182,7 @@ public class Kneipen_Besitzer {
 		btnQuizstarten.setBounds(33, 27, 194, 51);
 		frame.getContentPane().add(btnQuizstarten);
 		
-		JButton btnQuizverwaltung = new JButton("Quiz_Verwaltung");
+		JButton btnQuizverwaltung = new JButton("UILayer.Quiz_Verwaltung");
 		btnQuizverwaltung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

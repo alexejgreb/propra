@@ -1,3 +1,5 @@
+package UILayer;
+
 import DataLayer.BarOwner;
 import DataLayer.BarQuestionHandler;
 import DataLayer.DataBaseConnector;
@@ -71,17 +73,17 @@ public class Login {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Login:");
-        lblNewLabel.setForeground(Color.RED);
-        lblNewLabel.setFont(new Font("Sylfaen", Font.BOLD | Font.ITALIC, 33));
-        lblNewLabel.setBounds(43, 94, 153, 37);
-        frame.getContentPane().add(lblNewLabel);
+        JLabel labelName = new JLabel("UILayer.Login:");
+        labelName.setForeground(Color.RED);
+        labelName.setFont(new Font("Sylfaen", Font.BOLD | Font.ITALIC, 33));
+        labelName.setBounds(43, 94, 153, 37);
+        frame.getContentPane().add(labelName);
 
-        JLabel lblNewLabel_1 = new JLabel("Password:");
-        lblNewLabel_1.setForeground(Color.RED);
-        lblNewLabel_1.setFont(new Font("Sylfaen", Font.BOLD, 33));
-        lblNewLabel_1.setBounds(43, 156, 199, 25);
-        frame.getContentPane().add(lblNewLabel_1);
+        JLabel labelPw = new JLabel("Password:");
+        labelPw.setForeground(Color.RED);
+        labelPw.setFont(new Font("Sylfaen", Font.BOLD, 33));
+        labelPw.setBounds(43, 156, 199, 25);
+        frame.getContentPane().add(labelPw);
 
         login = new JTextField();
         login.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -92,16 +94,16 @@ public class Login {
         login.setColumns(10);
 
         pwd = new JPasswordField();
-        pwd.setEchoChar('?');
+        pwd.setEchoChar('*');
         pwd.setFont(new Font("Tahoma", Font.PLAIN, 17));
         pwd.setBounds(254, 144, 315, 37);
         frame.getContentPane().add(pwd);
 
-        JButton btnNewButton = new JButton("OK");
-        btnNewButton.setBackground(Color.ORANGE);
-        btnNewButton.setForeground(new Color(0, 0, 0));
-        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton buttonLogin = new JButton("OK");
+        buttonLogin.setBackground(Color.ORANGE);
+        buttonLogin.setForeground(new Color(0, 0, 0));
+        buttonLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
+        buttonLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
 
@@ -131,19 +133,19 @@ public class Login {
 
 
         });
-        btnNewButton.setBounds(432, 194, 137, 46);
-        frame.getContentPane().add(btnNewButton);
+        buttonLogin.setBounds(432, 194, 137, 46);
+        frame.getContentPane().add(buttonLogin);
 
-        JButton btnNewButton_1 = new JButton("Exit");
-        btnNewButton_1.addActionListener(new ActionListener() {
+        JButton buttonExit = new JButton("Exit");
+        buttonExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 frame.dispose();
             }
         });
-        btnNewButton_1.setBackground(Color.ORANGE);
-        btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-        btnNewButton_1.setBounds(283, 194, 137, 46);
-        frame.getContentPane().add(btnNewButton_1);
+        buttonExit.setBackground(Color.ORANGE);
+        buttonExit.setFont(new Font("Tahoma", Font.BOLD, 15));
+        buttonExit.setBounds(283, 194, 137, 46);
+        frame.getContentPane().add(buttonExit);
 
         JLabel labelBackground = new JLabel("");
         labelBackground.setIcon(new ImageIcon("Ressources\\imag\\index.jpg"));
