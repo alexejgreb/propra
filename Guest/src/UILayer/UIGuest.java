@@ -94,7 +94,7 @@ public class UIGuest extends JFrame {
 				} else {
 
 					JDialog JDialogOLdIDNumber = new JDialog();
-					String message = "\"IDNummer wurde bereits benutzt!\"\n";
+					String message = "\"ID-Nummer wurde bereits benutzt!\"\n";
 					JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 					System.out.println("IdNummer wurde bereits verbraucht");
 				}
@@ -102,7 +102,7 @@ public class UIGuest extends JFrame {
 			} else {
 
 				JDialog JDialogIDNummerFormatError = new JDialog();
-				String message = "\"IDNummer ungültig!\"\n";
+				String message = "\"ID-Nummer ungültig!\"\n";
 				JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 				System.out.println("Id Nummer ungültig");
 
@@ -110,7 +110,7 @@ public class UIGuest extends JFrame {
 		}
 		else {
 			JDialog JDialogWrongIDNumber = new JDialog();
-			String message = "\"IDNummer flasch!\"\n";
+			String message = "\"Geben Sie bitte etwas ein!\"\n";
 			JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 			System.out.println("Id Nummer ungültig");
 

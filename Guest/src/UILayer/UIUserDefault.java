@@ -3,6 +3,7 @@ package UILayer;
 import DataLayer.DataBaseConnector;
 import javax.swing.*;
 import LogicLayer.Login;
+import LogicLayer.Validator;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -72,32 +73,41 @@ public class UIUserDefault extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				String id_num = textFieldGameID.getText();
-				tempIdNumber = Integer.parseInt(id_num);
+				//tempIdNumber = Integer.parseInt(id_num);
 				tempEmail = Login.guest.getEmail();
 				tempUserPW = Login.guest.getPassword();
+				boolean isInt = Validator.stringToInt(id_num);
 				//tempEmail = Login.userEmail;
 				//tempUserPW = Login.userPW;
-
-				if(Login.checkIdNumber(tempIdNumber)){
-					if(Login.checkIfIDNrValid(tempIdNumber)){
-					    Login.saveGameAndIDNumber(tempIdNumber);
+			if(isInt) {
+				tempIdNumber = Integer.parseInt(id_num);
+				if (Login.checkIdNumber(tempIdNumber)) {
+					if (Login.checkIfIDNrValid(tempIdNumber)) {
+						Login.saveGameAndIDNumber(tempIdNumber);
 						Login.setValid0InKundeSpiel(tempIdNumber);
-						Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW,tempIdNumber);
+						Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW, tempIdNumber);
 						UIGameWaitingroom.main(null);
 
 						dispose();
 					} else {
 
 						JDialog JDialogWrongOldIDNumber = new JDialog();
-						String message = "\"IdNummer wurde bereits verbraucht\"\n";
+						String message = "\"ID-Nummer wurde bereits benutzt!\"\n";
+						JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 						System.out.println("IdNummer wurde bereits verbraucht");
 					}
 				} else {
 
 					JDialog JDialogWrongIDNumber = new JDialog();
-					String message = "\"Falsche IDNummer!\"\n";
+					String message = "\"Falsche ID-Nummer!\"\n";
+					JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 					System.out.println("falsche IdNummer");
 				}
+			}else {
+				String message = "\"Geben Sie bitte etwas ein!\"\n";
+				JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
+				System.out.println("Geben sie bitte die ID ein");
+			}
 			}
 		});
 	}
