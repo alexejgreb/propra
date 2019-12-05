@@ -7,6 +7,7 @@ import LogicLayer.Quiz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class QuizHandler {
@@ -74,10 +75,30 @@ public class QuizHandler {
     }
 
     public void deleteQuiz (int NumberGame) {
-        //TODO lösche alle Zeilen der Tabelle Quiz_Fragen mit der entsprechenden Spielnummer
+        // lösche alle Zeilen der Tabelle Quiz_Fragen mit der entsprechenden Spielnummer
+        String delete = "DELETE FROM Quiz_Fragen WHERE Spiel_Nummer = '" + NumberGame + "'";
+        try {
+
+            PreparedStatement pstmt = con.prepareStatement(delete);
+            pstmt.executeUpdate();
+            pstmt.close();
+
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
     }
 
     public void setQuizUsedUp (int NumberGame) {
-        // TODO setze bei Spiel mit Nummer NumberGame in Tabelle Spiel_Gnehmigt "Status auf 0"
+        // setze bei Spiel mit Nummer NumberGame in Tabelle Spiel_Gnehmigt "Status auf 0"
+        String update = "UPDATE Spiel_Gnehmigt SET Status ='" + 0 + "'WHERE Spiel_Nummer = '" + NumberGame + "'";
+        try {
+
+            PreparedStatement pstmt = con.prepareStatement(update);
+            pstmt.execute();
+            pstmt.close();
+
+        } catch (SQLException se){
+            se.printStackTrace();
+        }
     }
 }

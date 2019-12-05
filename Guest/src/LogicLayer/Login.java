@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import DataLayer.DataBaseConnector;
 
 public class Login {
-
+    public static Connection con = DataBaseConnector.dbConnectorMariaDB();
     public static Guest guest = new Guest(0, "","","",0,0);;
 
     public static void registerGuest(String userName, String email, String password) {
 
     String password_hash = hashString(password);
-    Connection con = DataBaseConnector.dbConnectorMariaDB();
+    //Connection con = DataBaseConnector.dbConnectorMariaDB();
     String insert = "INSERT INTO Kunden_Info (Benutzername, Email, Passwort) VALUES (?,?,?)";
     ///TODO Tabelle umbennen
     try {
@@ -32,7 +32,7 @@ public class Login {
     public static boolean checkIfRegistered(String email, String password ){
 
         String password_hash = hashString(password);
-        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        //Connection con = DataBaseConnector.dbConnectorMariaDB();
         String query = "SELECT* FROM Kunden_Info WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
         boolean contains = false;
 
@@ -54,7 +54,7 @@ public class Login {
     /*gibt true zurück wenn IdNummer übereinstimmen.*/
     public static boolean checkIdNumber(int idNr){
 
-        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        //Connection con = DataBaseConnector.dbConnectorMariaDB();
         String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer ='" + idNr + "'";
         boolean contains = false;
 
@@ -78,7 +78,7 @@ public class Login {
 
         int guestID = 0;
         //String password_hash = hashString(password);
-        Connection con = DataBaseConnector.dbConnectorMariaDB();
+       // Connection con = DataBaseConnector.dbConnectorMariaDB();
         String query = "SELECT KundenNr FROM Kunden_Info WHERE Email = '" + email + "' AND Passwort = '" + password + "'";
 
         try {
@@ -100,7 +100,7 @@ public class Login {
     public static void setGuestIDInKunde_Spiel(String email, String password, int idNr){
 
         int guestID = getGuestID(email, password);
-        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        //Connection con = DataBaseConnector.dbConnectorMariaDB();
         String update = "UPDATE Kunde_Spiel SET Kunden_Nr = '" + guestID + "'WHERE ID_Nummer = '" + idNr + "'";
         //TODO
         try {
@@ -134,7 +134,7 @@ public class Login {
     /*überprüft ob die ID_Nummer noch gültig ist. ID-Nummer ist gültig wenn sie auf 1 ist*/
     public static boolean checkIfIDNrValid(int idNr){
 
-        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        //Connection con = DataBaseConnector.dbConnectorMariaDB();
 
         boolean contains = false;
         String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer = '" + idNr + "'AND Vermerk = '" + 1 + "'";
@@ -157,7 +157,7 @@ public class Login {
     /*setzt Vermerk 0. Das bedeutet, dass ID verbraucht wurde.*/
     public static void setValid0InKundeSpiel(int idNr){
 
-        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        //Connection con = DataBaseConnector.dbConnectorMariaDB();
         String update = "UPDATE Kunde_Spiel SET Vermerk = '" + 0 + "'WHERE ID_Nummer = '" + idNr + "'";
 
         try {
@@ -180,7 +180,7 @@ public class Login {
         String password_tmp;
 
         String password_hash = hashString(password);
-        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        //Connection con = DataBaseConnector.dbConnectorMariaDB();
         String query = "SELECT* FROM Kunden_Info WHERE Email = '" + email + "' AND Passwort = '" + password_hash + "'";
 
         try {
@@ -215,7 +215,7 @@ public class Login {
         int tmpGameNumber;
         int tmpIDNumber;
 
-        Connection con = DataBaseConnector.dbConnectorMariaDB();
+        //Connection con = DataBaseConnector.dbConnectorMariaDB();
         String query = "SELECT* FROM Kunde_Spiel WHERE ID_Nummer = '" + idNr + "'";
 
         try {
