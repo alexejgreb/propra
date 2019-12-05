@@ -9,12 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-
-public class QuestionHandler {
+public class QuizHandler {
 
     Connection con = DataBaseConnector.dbConnectorMariaDB();
     Quiz quiz = new Quiz();
-
+    private PreparedStatement preparedStatement;
 
 
     public Quiz getQuizFromDB(String NumberGame) {
@@ -45,6 +44,7 @@ public class QuestionHandler {
                 quiz.getListQuestions().add(questionFull);
             }
             resultSet.close();
+            getAmountRoundsAndQuestion(NumberGame);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,4 +52,32 @@ public class QuestionHandler {
         return quiz;
     }
 
+    private void getAmountRoundsAndQuestion(String NumberGame) {
+        ResultSet resultSet;
+        PreparedStatement preparedStatement;
+
+        String queryForQuiz = "SELECT Anzahl_Runden, Anzahl_Fragen FROM Spiel_Gnehmigt WHERE Spiel_Nummer =" + NumberGame;
+        try {
+            preparedStatement = con.prepareStatement(queryForQuiz);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int rounds = resultSet.getInt("Anzahl_Runden");
+                int questionCount = resultSet.getInt("Anzahl_Fragen");
+
+                quiz.setQuestionAmountPerRound(questionCount);
+                quiz.setRoundAmount(rounds);
+            }
+            resultSet.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteQuiz (int NumberGame) {
+        //TODO lösche alle Zeilen der Tabelle Quiz_Fragen mit der entsprechenden Spielnummer
+    }
+
+    public void setQuizUsedUp (int NumberGame) {
+        // TODO setze bei Spiel mit Nummer NumberGame in Tabelle Spiel_Gnehmigt "Status auf 0"
+    }
 }

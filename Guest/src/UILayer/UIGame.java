@@ -1,7 +1,7 @@
 package UILayer;
 
 import DataLayer.DataBaseConnector;
-import DataLayer.QuestionHandler;
+import DataLayer.QuizHandler;
 import DataLayer.TimeHandler;
 import LogicLayer.Login;
 import LogicLayer.Question;
@@ -26,7 +26,7 @@ public class UIGame extends JFrame {
 
 	private JPanel contentPane;
 	private Timer timer;
-	private QuestionHandler questionHandler = new QuestionHandler();
+	private QuizHandler quizHandler = new QuizHandler();
 	private Quiz selectedQuiz;
 	private JTextArea lblQuestion;
 	private JButton jButtonAnswer1;
@@ -65,7 +65,7 @@ public class UIGame extends JFrame {
 			public void run() {
 				try {
 					UIGame frame = new UIGame();
-                    frame.initializeQuizAndTimer("906");
+                    frame.initializeQuizAndTimer("907");
                     frame.pack();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -184,7 +184,8 @@ public class UIGame extends JFrame {
 
 
     private void initializeQuizAndTimer(String NumberGame) {
-		selectedQuiz = questionHandler.getQuizFromDB(NumberGame);
+		selectedQuiz = quizHandler.getQuizFromDB(NumberGame);
+
 		totalScoreQuiz = 0;
 
 		timer = new Timer(10, new ActionListener() {
