@@ -16,7 +16,7 @@ public class QuizHandler {
     private PreparedStatement preparedStatement;
 
 
-    public Quiz getQuizFromDB(String NumberGame) {
+    public Quiz getQuizFromDB(int NumberGame) {
         String queryForQuiz = "SELECT DISTINCT FrageNr, Frage, ErsteWahl, ZweiteWahl, DritteWahl, VierteWahl, RichtigeAntwort FROM FragenPool, Quiz_Fragen WHERE Quiz_Fragen.Spiel_Nummer = '" + NumberGame + "' AND FragenPool.FrageNr = Quiz_Fragen.Frage_Nr";
         ResultSet resultSet;
         PreparedStatement preparedStatement;
@@ -52,7 +52,7 @@ public class QuizHandler {
         return quiz;
     }
 
-    private void getAmountRoundsAndQuestion(String NumberGame) {
+    private void getAmountRoundsAndQuestion(int NumberGame) {
         ResultSet resultSet;
         PreparedStatement preparedStatement;
 

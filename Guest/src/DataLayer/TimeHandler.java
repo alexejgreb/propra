@@ -1,7 +1,5 @@
 package DataLayer;
 
-
-
 import java.sql.*;
 
 
@@ -11,7 +9,6 @@ public class TimeHandler {
     private static Timestamp timeStampNow;
     private static Timestamp timeStampStart;
 
-    // Hole Timestamp von Databank
     public static Timestamp getTimeStampFromDB() {
         String queryForTimeStamp = "SELECT NOW()";
         ResultSet resultSet;
@@ -30,15 +27,14 @@ public class TimeHandler {
         return timeStampNow;
     }
 
-    public static Timestamp getStartTimeOfQuiz(String numberOfGame) {
-        // TODO Start-Zeitpunkt des Spiels auslesen
+    public static Timestamp getStartTimeOfQuiz(int numberOfGame) {
 
         String queryForTimeStamp = "SELECT Uhr_Spiel, Min_Spiel, Tag_Spiel, Monat_Spiel, Jahr_Spiel FROM Spiel_Gnehmigt WHERE Spiel_Nummer =" + numberOfGame;
         ResultSet resultSet;
         PreparedStatement preparedStatement;
         int hour;
         int minute;
-        int date;
+        int day;
         int month;
         int year;
         try {
@@ -47,11 +43,11 @@ public class TimeHandler {
             while (resultSet.next()) {
                 hour = resultSet.getInt(1);
                 minute = resultSet.getInt(2);
-                date = resultSet.getInt(3);
+                day = resultSet.getInt(3);
                 month = resultSet.getInt(4);
                 year = resultSet.getInt(5);
 
-                timeStampStart = new Timestamp(year, month, date, hour, minute, 0, 0);
+                timeStampStart = new Timestamp(year-1900, month-1, day, hour, minute, 0, 0);
             }
             resultSet.close();
         } catch (Exception e) {
@@ -61,16 +57,14 @@ public class TimeHandler {
         return timeStampStart;
     }
 
-    public static long getMillisWaitingUntilStartQuiz(String numberOfGame) {
-        //Abfragen, ob daten sich gleichen...
-        // oder wie viel Zeit zwischen den zeitPunkten liegt
+    public static long getMillisWaitingUntilStartQuiz(int numberOfGame) {
 
         timeStampNow = getTimeStampFromDB();
         timeStampStart = getStartTimeOfQuiz(numberOfGame);
         long diff = timeStampStart.getTime() - timeStampNow.getTime();
 
         if (diff <= 0) {
-            return 0;
+            return -1;
         }
         return diff;
     }

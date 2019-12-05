@@ -5,7 +5,7 @@ import javax.swing.*;
 import LogicLayer.Login;
 import LogicLayer.Validator;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+
 
 public class UIUserDefault extends JFrame {
 
@@ -27,10 +27,10 @@ public class UIUserDefault extends JFrame {
 	 * Launch the application."jdbc:mysql://alexej.synology.me:5796/propra" "propra" "Kneipenquiz1920!"
 	 */
 	public static void main(String[] args) {
-		/*DataBaseConnector.setServerAddress(args[0]);
+		DataBaseConnector.setServerAddress(args[0]);
 		DataBaseConnector.setServerUsername(args[1]);
  		DataBaseConnector.setServerPassword(args[2]);
-		*/EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					UIUserDefault frame = new UIUserDefault();
@@ -86,7 +86,8 @@ public class UIUserDefault extends JFrame {
 						Login.saveGameAndIDNumber(tempIdNumber);
 						Login.setValid0InKundeSpiel(tempIdNumber);
 						Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW, tempIdNumber);
-						UIGameWaitingroom.main(null);
+						// TODO später ersetzen durch : UIGameWaitingroom.showWaitingroom(Login.guest.getGameNumber());
+						UIGameWaitingroom.showWaitingroom(907);
 
 						dispose();
 					} else {

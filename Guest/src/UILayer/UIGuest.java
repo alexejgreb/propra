@@ -87,12 +87,9 @@ public class UIGuest extends JFrame {
 					Login.saveGameAndIDNumber(tempIdNumber);
 					Login.setValid0InKundeSpiel(tempIdNumber);
 
-					UIGameWaitingroom.main(null);
-
-
+					UIGameWaitingroom.showWaitingroom(Login.guest.getGameNumber());
 					dispose();
 				} else {
-
 					JDialog JDialogOLdIDNumber = new JDialog();
 					String message = "\"ID-Nummer wurde bereits benutzt!\"\n";
 					JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);

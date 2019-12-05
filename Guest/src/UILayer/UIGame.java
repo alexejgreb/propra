@@ -65,7 +65,7 @@ public class UIGame extends JFrame {
 			public void run() {
 				try {
 					UIGame frame = new UIGame();
-                    frame.initializeQuizAndTimer("907");
+                    frame.initializeQuizAndTimer(907);
                     frame.pack();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -183,7 +183,7 @@ public class UIGame extends JFrame {
 	}
 
 
-    private void initializeQuizAndTimer(String NumberGame) {
+    private void initializeQuizAndTimer(int NumberGame) {
 		selectedQuiz = quizHandler.getQuizFromDB(NumberGame);
 
 		totalScoreQuiz = 0;
