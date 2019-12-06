@@ -129,7 +129,7 @@ public class UIDefault extends JFrame {
 		passwordFieldUserPw.setBounds(82, 92, 96, 20);
 		contentPane.add(passwordFieldUserPw);
 		
-		JLabel LabelLoginMail = new JLabel("E-Mail Adresse");
+		JLabel LabelLoginMail = new JLabel("E-Mail");
 		LabelLoginMail.setBounds(5, 64, 72, 14);
 		contentPane.add(LabelLoginMail);
 		

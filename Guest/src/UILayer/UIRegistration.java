@@ -26,9 +26,9 @@ public class UIRegistration extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-//		DataBaseConnector.setServerAddress(args[0]);
-//		DataBaseConnector.setServerUsername(args[1]);
-//		DataBaseConnector.setServerPassword(args[2]);
+	//	DataBaseConnector.setServerAddress(args[0]);
+	//	DataBaseConnector.setServerUsername(args[1]);
+	//	DataBaseConnector.setServerPassword(args[2]);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -50,50 +50,55 @@ public class UIRegistration extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		
 		JLabel lblAnmelden = new JLabel("Anmelden");
-		lblAnmelden.setBounds(0, 0, 0, 0);
+		lblAnmelden.setBounds(5, 5, 424, 14);
 		contentPane.add(lblAnmelden);
 		
 		JLabel LabelUserName = new JLabel("Benutzername");
-		LabelUserName.setBounds(0, 0, 0, 0);
+		LabelUserName.setBounds(5, 64, 92, 14);
 		contentPane.add(LabelUserName);
 		
 		textFieldUserName = new JTextField();
-		textFieldUserName.setBounds(0, 0, 0, 0);
+		textFieldUserName.setBounds(100, 61, 126, 20);
 		contentPane.add(textFieldUserName);
 		textFieldUserName.setColumns(10);
 		
-		JLabel LabelUserMail = new JLabel("E-Mail Adresse");
-		LabelUserMail.setBounds(0, 0, 0, 0);
+		JLabel LabelUserMail = new JLabel("E-Mail");
+		LabelUserMail.setBounds(5, 95, 67, 14);
 		contentPane.add(LabelUserMail);
 		
 		textFieldUserMail = new JTextField();
-		textFieldUserMail.setBounds(0, 0, 0, 0);
+		textFieldUserMail.setBounds(100, 92, 126, 20);
 		contentPane.add(textFieldUserMail);
 		textFieldUserMail.setColumns(10);
 		
 		JLabel LabelUserPw = new JLabel("Passwort");
-		LabelUserPw.setBounds(0, 0, 0, 0);
+		LabelUserPw.setBounds(5, 126, 67, 14);
 		contentPane.add(LabelUserPw);
 		
 		passwordFieldUserPw = new JPasswordField();
-		passwordFieldUserPw.setBounds(0, 0, 0, 0);
+		passwordFieldUserPw.setBounds(100, 126, 126, 20);
 		contentPane.add(passwordFieldUserPw);
 		passwordFieldUserPw.setColumns(10);
 		
-		JLabel LabelUserPwRepeat = new JLabel("Passwort wiederholen");
-		LabelUserPwRepeat.setBounds(0, 0, 0, 0);
+		JLabel LabelUserPwRepeat = new JLabel("Passwort");
+		LabelUserPwRepeat.setBounds(5, 157, 67, 14);
 		contentPane.add(LabelUserPwRepeat);
+
+		JLabel LabelRepeat = new JLabel("wiederholen");
+		LabelRepeat.setBounds(5, 172, 97, 14);
+		contentPane.add(LabelRepeat);
 		
 		passwordFieldUserPwRepeat = new JPasswordField();
-		passwordFieldUserPwRepeat.setBounds(0, 0, 0, 0);
+		passwordFieldUserPwRepeat.setBounds(100, 160, 126, 20);
 		contentPane.add(passwordFieldUserPwRepeat);
 		passwordFieldUserPwRepeat.setColumns(10);
 		
 		JButton ButtonRegistration = new JButton("Anmelden");
-		ButtonRegistration.setBounds(0, 0, 0, 0);
+		ButtonRegistration.setBounds(65, 210, 96, 25);
 		contentPane.add(ButtonRegistration);
 		ButtonRegistration.addActionListener(new ActionListener() {
 
