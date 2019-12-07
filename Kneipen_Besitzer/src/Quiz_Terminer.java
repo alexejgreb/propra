@@ -1,6 +1,5 @@
-import Old.Database;
-
 import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,13 +31,11 @@ public class Quiz_Terminer {
     private JTextField textField_1;
     private JTextField t1;
     private static JComboBox CB1;
-    private JLabel l5, l6, l1, l2, l3, l4;
+    private JLabel l5,l6,l1,l2,l3,l4;
     private static JLabel lblNewLabel;
     private JTextArea ta;
-
     /**
      * Launch the application.
-     *
      * @throws UnsupportedLookAndFeelException
      * @throws IllegalAccessException
      * @throws InstantiationException
@@ -56,37 +53,41 @@ public class Quiz_Terminer {
                     window.frame.setVisible(true);
 
 
-                    try {
-                        String query2 = "select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1";
-                        PreparedStatement pst1 = con.prepareStatement(query2);
 
-                        ResultSet rs = pst1.executeQuery();
+
+
+                    try{
+                        String query2="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1";
+                        PreparedStatement pst1=con.prepareStatement(query2);
+
+                        ResultSet rs= pst1.executeQuery();
                         CB1.removeAllItems();
-                        while (rs.next()) {
+                        while (rs.next()){
                             String Spiel_Nummer = rs.getString("Spiel_Nummer");
                             CB1.addItem(Spiel_Nummer);
                         }
 
                         rs.close();
 
-                    } catch (Exception e2) {
+                    }
+                    catch(Exception e2){
                         e2.printStackTrace();
 
                     }
 
 
-                    try {
+                    try{
 
 
-                        String query2 = "select max (ID_Nummer )from Teilnehmer_Spiel ";
-                        PreparedStatement pst1 = con.prepareStatement(query2);
+                        String query2="select max(ID_Nummer )from Kunde_Spiel ";
+                        PreparedStatement pst1=con.prepareStatement(query2);
 
-                        ResultSet rs = pst1.executeQuery();
+                        ResultSet rs= pst1.executeQuery();
                         //c1.removeAllItems();
-                        while (rs.next()) {
+                        while (rs.next()){
 
 
-                            String ID_Nummer = rs.getString("max (ID_Nummer )");
+                            String ID_Nummer = rs.getString("max(ID_Nummer )");
                             lblNewLabel.setText(ID_Nummer);
 
                         }
@@ -94,9 +95,10 @@ public class Quiz_Terminer {
                         rs.close();
 
 
-                        int i2121 = Integer.parseInt(lblNewLabel.getText());
-                        int s = i2121 + 12;
+                        int i2121 =Integer.parseInt(lblNewLabel.getText());
+                        int s = i2121+12;
                         lblNewLabel.setText(String.valueOf(s));
+
 
 
                         JButton btnExit_1 = new JButton("EXIT");
@@ -106,13 +108,27 @@ public class Quiz_Terminer {
                         });
 
 
-                    } catch (Exception e2) {
+
+
+
+
+
+
+
+                    }
+                    catch(Exception e2){
                         e2.printStackTrace();
 
                     }
 
 
-                } catch (Exception e) {
+                }
+
+
+
+
+
+                catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -122,13 +138,14 @@ public class Quiz_Terminer {
     /**
      * Create the application.
      */
-    static Connection con = null;
+    static Connection con =null;
     private static JButton btnExit_2;
-
     public Quiz_Terminer() {
         initialize();
+        frame.setResizable(false);
 
-        con = Database.dbConnector();
+        con = DataBaseConnector.dbConnectorMariaDB();
+        //con=Database.dbConnector();
     }
 
     /**
@@ -220,29 +237,28 @@ public class Quiz_Terminer {
 
 
                 int i2 = Integer.parseInt(t1.getText());
-                if (i2 == 0) {
-                    JOptionPane.showMessageDialog(null, "Bitte KundenNummer eingeben");
-                } else {
+                if(i2==0){
+                    JOptionPane.showMessageDialog(null,"Bitte KundenNummer eingeben");
+                }else{
 
-                    try {     ///
+                    try {	 ///
 
-                        String query = "select name , Vorname,adresse,email,Tel_Nr,Geburts from Kunden_Info where kundenNr=?";
+                        String query="select Benutzername , Email from Kunden_Info where kundenNr=?";
 
-                        PreparedStatement pst1 = con.prepareStatement(query);
+                        PreparedStatement pst1=con.prepareStatement(query);
                         pst1.setString(1, t1.getText());
 
-                        ResultSet rs = pst1.executeQuery();
+                        ResultSet rs= pst1.executeQuery();
 
-                        if ((rs.next())) {
+                        if ((rs.next()))
+                        {
 
-                            l1.setText(rs.getString("name"));
-                            l2.setText(rs.getString("Vorname"));
-                            l4.setText(rs.getString("adresse"));
-                            l6.setText(rs.getString("email"));
-                            l5.setText(rs.getString("Tel_Nr"));
-                            l3.setText(rs.getString("Geburts"));
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Bitte gültige Nummer eingeben");
+                            l1.setText(rs.getString("Benutzername"));
+
+                            l6.setText(rs.getString("Email"));
+
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Bitte gültige Nummer eingeben");
                         }
 
                         pst1.close();
@@ -253,7 +269,16 @@ public class Quiz_Terminer {
                     }
 
 
+
+
+
+
                 }
+
+
+
+
+
 
 
             }
@@ -266,37 +291,36 @@ public class Quiz_Terminer {
         JButton btnExit = new JButton("Anmelden");
         btnExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+                con = DataBaseConnector.dbConnectorMariaDB();
+                //con=Database.dbConnector();
 
-                con = Database.dbConnector();
-
-                try {
-                    String sql = "insert into Teilnehmer_Spiel (Spiel_NR,ID_Nummer)values (?,?)";
-                    PreparedStatement pst1 = con.prepareStatement(sql);
-                    pst1.setString(1, CB1.getSelectedItem().toString());
-                    pst1.setString(2, lblNewLabel.getText());
+                try{
 
 
-                    pst1.execute();
-                    JOptionPane.showMessageDialog(null, "ist erfolgreich zum Spiel  hinzugefügt");
-
-                    String sql2 = "insert into Kunde_Spiel (Kunden_Nr,Spiel_Nr,ID_Nummer)values (?,?,?)";
-                    PreparedStatement pst = con.prepareStatement(sql2);
+                    String sql2 = "insert into Kunde_Spiel (Kunden_Nr,Spiel_Nr,ID_Nummer,Vermerk,Punkte)values (?,?,?,?,?)";
+                    PreparedStatement pst=con.prepareStatement(sql2);
                     pst.setString(1, t1.getText());
                     pst.setString(2, CB1.getSelectedItem().toString());
                     pst.setString(3, lblNewLabel.getText());
-
+                    pst.setString(4,"1");
+                    pst.setString(5,"0");
 
                     pst.execute();
-                    JOptionPane.showMessageDialog(null, "Für den Spiel '" + CB1.getSelectedItem().toString() + "' erfolgreich angemeldet ");
+                    JOptionPane.showMessageDialog(null,"Für den Spiel '"+CB1.getSelectedItem().toString()+"' erfolgreich angemeldet ");
 
 
-                    ta.append("\t Anmeldung_Spiel: \n\n" + "Spiel_Nr: " + CB1.getSelectedItem().toString() + "\n======================================\n" + "Kunden_Nummer:" + t1.getText() + "\n\n" + "Kunden_name:" + l1.getText() + "\n======================================\n" + "Kunden_Vorname:" + l2.getText() + "\n\n" + "Zugang_Daten :\t" + lblNewLabel.getText() + "\n\n" +
-                            " \t" + " \n======================================\n" + " \n======================================\n" + " \n Wichtig!! Die Zugangsnummer aufbewahren\n");
+
+                    ta.append("\t Anmeldung_Spiel: \n\n"+"Spiel_Nr: "+CB1.getSelectedItem().toString()+"\n======================================\n"+"Kunden_Nummer:"+t1.getText()+"\n\n"+"Kunden_name:"+l1.getText()+"\n======================================\n"+"Kunden_Vorname:"+l2.getText()+"\n\n"+"Zugang_Daten :\t"+lblNewLabel.getText()+"\n\n"+
+                            " \t"+" \n======================================\n"+" \n======================================\n"+" \n Wichtig!! Die Zugangsnummer aufbewahren\n");
 
 
-                } catch (Exception e11) {
+
+
+
+                }
+                catch(Exception e11){
                     //e11.printStackTrace();
-                    JOptionPane.showMessageDialog(null, e11);
+                    JOptionPane.showMessageDialog(null,e11);
                 }
 				/*
 				try{
@@ -305,27 +329,27 @@ public class Quiz_Terminer {
 					pst.setString(1, t1.getText());
 					pst.setString(2, CB1.getSelectedItem().toString());
 					pst.setString(3, lblNewLabel.getText());
-					
-					
-					
+
+
+
 					pst.execute();
 					JOptionPane.showMessageDialog(null,"Für den Spiel '"+CB1.getSelectedItem().toString()+"' erfolgreich angemeldet ");
-					
-					
-					
+
+
+
 					ta.append("\t Anmeldung_Spiel: \n\n"+"Spiel_Nr: "+CB1.getSelectedItem().toString()+"\n======================================\n"+"Kunden_Nummer:"+t1.getText()+"\n\n"+"Kunden_name:"+l1.getText()+"\n======================================\n"+"Kunden_Vorname:"+l2.getText()+"\n\n"+"Zugang_Daten :\t"+lblNewLabel.getText()+"\n\n"+
 							" \t"+" \n======================================\n"+" \n======================================\n"+" \n Wichtig!! Die Zugangsnummer aufbewahren\n");
-					
-					
-					
-					
+
+
+
+
 						}
 						catch(Exception e111){
 							//e111.printStackTrace();
 							JOptionPane.showMessageDialog(null,e111);
 						}
-				
-				
+
+
 				*/
             }
         });
@@ -356,6 +380,7 @@ public class Quiz_Terminer {
         frame.getContentPane().add(scrollPane);
 
         ta = new JTextArea();
+        ta.setEditable(false);
         scrollPane.setViewportView(ta);
 
         lblNewLabel = new JLabel("New label");
