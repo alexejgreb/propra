@@ -3,10 +3,7 @@ package UILayer;
 import DataLayer.DataBaseConnector;
 import DataLayer.QuizHandler;
 import DataLayer.TimeHandler;
-import LogicLayer.Login;
-import LogicLayer.Question;
-import LogicLayer.Quiz;
-import LogicLayer.ResultingAnswerPerQuestion;
+import LogicLayer.*;
 
 import java.awt.EventQueue;
 
@@ -16,6 +13,10 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static java.awt.GridBagConstraints.PAGE_START;
@@ -40,6 +41,7 @@ public class UIGame extends JFrame {
 	private int totalScoreQuiz;
 	private Color defaultColorButton;
 	private JTextField textFieldresultingPoints;
+	public Connection con = DataBaseConnector.dbConnectorMariaDB();
 
 	private void setLastClickedAnswerPerQuestion(String answer, JButton sourceButton, long timeButtonClicked) {
 		this.lastAnswerPerQuestion = new ResultingAnswerPerQuestion(answer, timeButtonClicked, sourceButton);
@@ -154,8 +156,49 @@ public class UIGame extends JFrame {
 	}
 
 	private void onQuizFinished() {
-		// TODO totalScoreFished in Datenbank schreiben und dem Gast zuweisen
+		/*  totalScoreQuiz wird in Kunde_Spiel geschrieben und dem Gast zuwiesen.
+			Platzierung des Spielers wird ermittelt.
+		*/
 		Login.guest.setPoints(totalScoreQuiz);
+
+		int tempPoints = totalScoreQuiz;
+		ArrayList<PlayerScore> score = new ArrayList<PlayerScore>();
+		int gameNumber = Login.guest.getGameNumber();
+		int iD_Number = Login.guest.getIDNumber();
+		int placing = 1;
+
+		String update = "UPDATE Kunde_Spiel SET Punkte = '" + totalScoreQuiz + "'WHERE ID_Nummer = '" + iD_Number + "'";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(update);
+			pstmt.execute();
+			pstmt.close();
+		} catch (SQLException se){
+			se.printStackTrace();
+		}
+
+		String query= "SELECT* FROM Kunde_Spiel WHERE Spiel_Nr = '" + gameNumber + "'";
+		try {
+			PreparedStatement pstmt2 = con.prepareStatement(query);
+			ResultSet res = pstmt2.executeQuery();
+
+			while(res.next()){
+				PlayerScore playerscore = new PlayerScore (res.getInt(3), res.getInt(5));
+				score.add(playerscore);
+			}
+			res.close();
+			pstmt2.close();
+
+		} catch(SQLException se){
+			se.printStackTrace();
+		}
+
+		for (PlayerScore p : score){
+			if(tempPoints < p.getPoints()){
+				placing++;
+			}
+		}
+		Login.guest.setPlacing(placing);
+		UIFinishedGame.main(null);
 	}
 
 	private JButton getButtonWithRightAnswer() {
