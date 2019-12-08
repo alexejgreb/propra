@@ -1,7 +1,9 @@
 package UILayer;
 
+import DataLayer.PointQuizHandler;
 import DataLayer.QuizHandler;
 import DataLayer.TimeHandler;
+import DataLayer.DataBaseConnector;
 import LogicLayer.*;
 
 import java.awt.EventQueue;
@@ -17,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import static java.awt.GridBagConstraints.PAGE_START;
 
@@ -41,6 +44,7 @@ public class UIGame extends JFrame {
 	private Color defaultColorButton;
 	private JTextField textFieldresultingPoints;
 	public Connection con = DataBaseConnector.dbConnectorMariaDB();
+	ClockSeconds clock;
 
 	private void setLastClickedAnswerPerQuestion(String answer, JButton sourceButton, long timeButtonClicked) {
 		this.lastAnswerPerQuestion = new ResultingAnswerPerQuestion(answer, timeButtonClicked, sourceButton);
@@ -152,22 +156,39 @@ public class UIGame extends JFrame {
 		jButtonAnswer3.setEnabled(false);
 		jButtonAnswer4.setEnabled(false);
 		if (lastAnswerPerQuestion != null) {
-			double remainingSeconds = ((timeStartShowQuestion - lastAnswerPerQuestion.getTimeButtonClicked())/-1000);
+			long remainingSeconds = 20-(((lastAnswerPerQuestion.getTimeButtonClicked()-timeStartShowQuestion)/1000)%60);
 			boolean isCorrectAnswer = actualQuestion.isAnswerCorrect(lastAnswerPerQuestion.getAnswer());
 			if(isCorrectAnswer){
-			int tempPoints = (int)(remainingSeconds * 10);
-			tempPoints = (tempPoints + 10) % 201;
-			totalScoreQuiz = totalScoreQuiz + tempPoints;
+			int points = 0;
+			if (remainingSeconds > 17) {
+				points = 100;
+			}
+			if (remainingSeconds <= 17 && remainingSeconds >= 15 ) {
+				points = 80;
+			}
+			if (remainingSeconds <= 14 && remainingSeconds >= 12 ) {
+				points = 65;
+			}
+			if (remainingSeconds <= 11 && remainingSeconds >= 9){
+				points = 50;
+			}
+			if (remainingSeconds <= 8 && remainingSeconds >= 6) {
+				points = 35;
+			}
+			if (remainingSeconds <= 5) {
+				points = 20;
+			}
+			totalScoreQuiz = totalScoreQuiz + points;
 			lastAnswerPerQuestion.getSourceButton().setBackground(Color.green);
-			textFieldresultingPoints.setText("Great! You get " + tempPoints + " points.");
+			textFieldresultingPoints.setText("Sehr gut! Du bekommst " + points + " Punkte.");
 			} else {
 				lastAnswerPerQuestion.getSourceButton().setBackground(Color.red);
 				getButtonWithRightAnswer().setBackground(Color.green);
-				textFieldresultingPoints.setText("Too bad! You get 0 points.");
+				textFieldresultingPoints.setText("Schade! Du bekommst leider 0 Punkte.");
 			}
 
 		} else {
-			textFieldresultingPoints.setText("You select no answer. You get 0 Points");
+			textFieldresultingPoints.setText("Du hast keine Anwort ausgewählt. Du bekommst 0 Punkte.");
 		}
 	}
 
@@ -180,16 +201,19 @@ public class UIGame extends JFrame {
 		int tempPoints = totalScoreQuiz;
 		ArrayList<PlayerScore> score = new ArrayList<PlayerScore>();
 		int gameNumber = Login.guest.getGameNumber();
-		int iD_Number = Login.guest.getIDNumber();
 		int placing = 1;
+		PointQuizHandler PointHandler = new PointQuizHandler();
+		// TODO ausommentierter Code auskommentieren
+		//quizHandler.deleteQuiz(gameNumber);
+		//quizHandler.setQuizUsedUp(gameNumber);
+		PointHandler.setPointsGuestForBarOwner(totalScoreQuiz);
+		PointHandler.setPointsForCustomer(totalScoreQuiz);
+		PointHandler.setTotalPointsforCustomer(totalScoreQuiz);
 
-		String update = "UPDATE Kunde_Spiel SET Punkte = '" + totalScoreQuiz + "'WHERE ID_Nummer = '" + iD_Number + "'";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(update);
-			pstmt.execute();
-			pstmt.close();
-		} catch (SQLException se){
-			se.printStackTrace();
+			Thread.sleep(1000); //warten um sicherzugehen, dass die Punkte aller Teilnehmer in der Datenbank zu finden sind.
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 
 		String query= "SELECT* FROM Kunde_Spiel WHERE Spiel_Nr = '" + gameNumber + "'";
@@ -215,6 +239,7 @@ public class UIGame extends JFrame {
 		}
 		Login.guest.setPlacing(placing);
 		UIFinishedGame.main(null);
+		dispose();
 	}
 
 	private JButton getButtonWithRightAnswer() {
@@ -247,7 +272,7 @@ public class UIGame extends JFrame {
 
 		totalScoreQuiz = 0;
 
-		timer = new Timer(10, new ActionListener() {
+		timer = new Timer(1, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -255,7 +280,7 @@ public class UIGame extends JFrame {
 					timeStartShowQuestion = TimeHandler.getTimeStampFromDB().getTime();
 					lastAnswerPerQuestion = null;
 					actualQuestion = selectedQuiz.getNextQuestionOfQuiz();
-					textFieldresultingPoints.setText("Please select an answer.");
+					textFieldresultingPoints.setText("Wähle bitte eine Antwort aus.");
 					ArrayList<String> answersRandom = actualQuestion.getRandomizedAnswers();
 					lblQuestion.setText(actualQuestion.getQuestion());
 					jButtonAnswer1.setText(answersRandom.get(0));
@@ -263,7 +288,12 @@ public class UIGame extends JFrame {
 					jButtonAnswer3.setText(answersRandom.get(2));
 					jButtonAnswer4.setText(answersRandom.get(3));
 					resetButtons();
-					new ClockSeconds().execute();
+					clock = new ClockSeconds();
+					clock.execute();
+
+				} else {
+					onQuizFinished();
+					timer.stop();
 				}
 			}
 		});
@@ -302,7 +332,7 @@ public class UIGame extends JFrame {
 		gbc_progressBar.gridy = 6;
 		contentPane.add(progressBar, gbc_progressBar);
 
-		textFieldresultingPoints = new JTextField("Please select an answer!");
+		textFieldresultingPoints = new JTextField("Bitte wähle eine Antwort aus!");
 		GridBagConstraints gbc_textfield = new GridBagConstraints();
 		gbc_textfield.insets = new Insets(10, 0, 5, 0);
 		textFieldresultingPoints.setEditable(false);
@@ -338,7 +368,8 @@ public class UIGame extends JFrame {
 		jButtonAnswer1.setMinimumSize(new Dimension(150,80));
 		jButtonAnswer1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setLastClickedAnswerPerQuestion(jButtonAnswer1.getText(), jButtonAnswer1, e.getWhen());
+				long time = TimeHandler.getTimeStampFromDB().getTime();
+				setLastClickedAnswerPerQuestion(jButtonAnswer1.getText(), jButtonAnswer1, time);
 			}
 		});
 		GridBagConstraints gbc_ButtonAnswer1 = new GridBagConstraints();
@@ -355,8 +386,9 @@ public class UIGame extends JFrame {
 		jButtonAnswer2.setMinimumSize(new Dimension(150,80));
 		jButtonAnswer2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				long time = TimeHandler.getTimeStampFromDB().getTime();
+				setLastClickedAnswerPerQuestion(jButtonAnswer2.getText(), jButtonAnswer2, time);
 
-				setLastClickedAnswerPerQuestion(jButtonAnswer2.getText(), jButtonAnswer2, e.getWhen());
 			}
 		});
 		//jButtonAnswer2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -371,7 +403,8 @@ public class UIGame extends JFrame {
 		jButtonAnswer3.setMinimumSize(new Dimension(150,80));
 		jButtonAnswer3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setLastClickedAnswerPerQuestion(jButtonAnswer3.getText(), jButtonAnswer3, e.getWhen());
+				long time = TimeHandler.getTimeStampFromDB().getTime();
+				setLastClickedAnswerPerQuestion(jButtonAnswer3.getText(), jButtonAnswer3, time);
 			}
 		});
 		GridBagConstraints gbc_jButtonAnswer3 = new GridBagConstraints();
@@ -385,7 +418,8 @@ public class UIGame extends JFrame {
 		jButtonAnswer4.setMinimumSize(new Dimension(150,80));
 		jButtonAnswer4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setLastClickedAnswerPerQuestion(jButtonAnswer4.getText(), jButtonAnswer4, e.getWhen());
+				long time = TimeHandler.getTimeStampFromDB().getTime();
+				setLastClickedAnswerPerQuestion(jButtonAnswer4.getText(), jButtonAnswer4, time);
 			}
 		});
 		GridBagConstraints gbc_jButtonAnswer4 = new GridBagConstraints();

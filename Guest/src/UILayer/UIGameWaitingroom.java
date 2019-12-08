@@ -18,6 +18,11 @@ public class UIGameWaitingroom extends JFrame {
      * Launch the application.
      */
     public static void showWaitingroom(int numberOfGame) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {

@@ -19,8 +19,13 @@ public class UIFinishedGame extends JFrame {
     public static void main(String[] args) {
 
         	//DataBaseConnector.setServerAddress(args[0]);
-        	//DataBaseConnector.setServerUsername(args[1]);
+             //DataBaseConnector.setServerUsername(args[1]);
         	//DataBaseConnector.setServerPassword(args[2]);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
 
         EventQueue.invokeLater(new Runnable() {
             public void run() {

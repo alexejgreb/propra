@@ -31,6 +31,11 @@ public class UIDefault extends JFrame {
 		DataBaseConnector.setServerAddress(args[0]);
 		DataBaseConnector.setServerUsername(args[1]);
 		DataBaseConnector.setServerPassword(args[2]);
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -147,15 +152,5 @@ public class UIDefault extends JFrame {
 		LabelGuest.setBounds(338, 248, 215, 22);
 		contentPane.add(LabelGuest);
 	}
-		
-		public String getUserMail() {
-			return tempUserMail;
-		}
-		
-		public char[] getUserPW() {
-			return tempUserPW;
-		}
-	
-	
 }
 

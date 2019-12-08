@@ -6,7 +6,7 @@ import LogicLayer.Login;
 import LogicLayer.Validator;
 
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,6 +27,11 @@ public class UIUserDefault extends JFrame {
 		DataBaseConnector.setServerAddress(args[0]);
 		DataBaseConnector.setServerUsername(args[1]);
  		DataBaseConnector.setServerPassword(args[2]);
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -49,12 +54,14 @@ public class UIUserDefault extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		JLabel LabelHeader = new JLabel("Startseite");
-		LabelHeader.setBounds(0, 0, 0, 0);
+
+		JLabel LabelHeader = new JLabel("Hole dir an der Theke einen Spiel-Code und gib sie ein.");
+		LabelHeader.setBounds(0, 0, 100, 0);
 		contentPane.add(LabelHeader);
+
 		
-		JLabel LabelGameId = new JLabel("Spiel-ID");
-		LabelGameId.setBounds(0, 0, 0, 0);
+		JLabel LabelGameId = new JLabel("Spiel-Code");
+		LabelGameId.setBounds(0, 2, 1000, 0);
 		contentPane.add(LabelGameId);
 		
 		textFieldGameID = new JTextField();
@@ -63,7 +70,7 @@ public class UIUserDefault extends JFrame {
 		textFieldGameID.setColumns(10);
 		
 		JButton ButtonStartGame = new JButton("Weiter zum Spiel");
-		ButtonStartGame.setBounds(0, 0, 0, 0);
+		ButtonStartGame.setBounds(338, 248, 215, 22);
 		contentPane.add(ButtonStartGame);
 		ButtonStartGame.addActionListener(new ActionListener() {
 			@Override
@@ -90,14 +97,14 @@ public class UIUserDefault extends JFrame {
 					} else {
 
 						JDialog JDialogWrongOldIDNumber = new JDialog();
-						String message = "\"ID-Nummer wurde bereits benutzt!\"\n";
+						String message = "\"Code wurde bereits benutzt!\"\n";
 						JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 						System.out.println("IdNummer wurde bereits verbraucht");
 					}
 				} else {
 
 					JDialog JDialogWrongIDNumber = new JDialog();
-					String message = "\"Falsche ID-Nummer!\"\n";
+					String message = "\"Falscher Code!\"\n";
 					JOptionPane.showMessageDialog(new JFrame(), message, "Fehler",JOptionPane.ERROR_MESSAGE);
 					System.out.println("falsche IdNummer");
 				}

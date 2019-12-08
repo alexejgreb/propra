@@ -33,15 +33,17 @@ public class PointQuizHandler {
         //zum Testen:
         //int guestID = 100000;
         int guestID = Login.guest.getGuestID();
-        String update = "UPDATE Kunden_Info SET AktuellePunkte = '" + pointsOfQuiz + "'WHERE KundenNr = '" + guestID + "'";
-        try {
+        if(guestID!=0) {
+            String update = "UPDATE Kunden_Info SET AktuellePunkte = '" + pointsOfQuiz + "'WHERE KundenNr = '" + guestID + "'";
+            try {
 
-            PreparedStatement pstmt = con.prepareStatement(update);
-            pstmt.execute();
-            pstmt.close();
+                PreparedStatement pstmt = con.prepareStatement(update);
+                pstmt.execute();
+                pstmt.close();
 
-        } catch (SQLException se){
-            se.printStackTrace();
+            } catch (SQLException se){
+                se.printStackTrace();
+            }
         }
     }
 
@@ -51,15 +53,17 @@ public class PointQuizHandler {
         //zum Testen:
         //int guestID = 100000;
         int guestID = Login.guest.getGuestID();
-        String update = "UPDATE Kunden_Info SET Punkte = Punkte +'" + pointsOfQuiz + "'WHERE KundenNr = '" + guestID + "'";
-        try {
+        if(guestID!=0) {
+            String update = "UPDATE Kunden_Info SET Punkte = Punkte +'" + pointsOfQuiz + "'WHERE KundenNr = '" + guestID + "'";
+            try {
 
-            PreparedStatement pstmt = con.prepareStatement(update);
-            pstmt.execute();
-            pstmt.close();
+                PreparedStatement pstmt = con.prepareStatement(update);
+                pstmt.execute();
+                pstmt.close();
 
-        } catch (SQLException se){
-            se.printStackTrace();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
         }
     }
 
