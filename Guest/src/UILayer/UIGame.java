@@ -1,6 +1,5 @@
 package UILayer;
 
-import DataLayer.DataBaseConnector;
 import DataLayer.QuizHandler;
 import DataLayer.TimeHandler;
 import LogicLayer.Login;
@@ -50,7 +49,7 @@ public class UIGame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 
       try {
       	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -58,9 +57,9 @@ public class UIGame extends JFrame {
       	e.printStackTrace();
        }
 
-       	DataBaseConnector.setServerAddress(args[0]);
-		DataBaseConnector.setServerUsername(args[1]);
-		DataBaseConnector.setServerPassword(args[2]);
+       //	DataBaseConnector.setServerAddress(args[0]);
+		//DataBaseConnector.setServerUsername(args[1]);
+		//DataBaseConnector.setServerPassword(args[2]);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -74,7 +73,24 @@ public class UIGame extends JFrame {
 			}
 
 		});
-    }
+    } */
+    public static void showGame() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UIGame frame = new UIGame();
+					//TODO ersetze die Zeile mit:
+					// frame.initializeQuizAndTimer(Login.guest.getGameNumber());
+					frame.initializeQuizAndTimer(907);
+					frame.pack();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+		});
+	}
 
 	/**
 	 * InnerClass to get seconds for launching progressbar.

@@ -1,11 +1,12 @@
 package UILayer;
+
 import DataLayer.TimeHandler;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 public class UIGameWaitingroom extends JFrame {
     private JPanel contentPane;
@@ -30,20 +31,29 @@ public class UIGameWaitingroom extends JFrame {
         });
     }
 
+
+
+
     private void startTimer() {
         new ClockSeconds().execute();
         LocalDateTime dateTime = TimeHandler.getStartTimeOfQuiz(numberOfGame).toLocalDateTime();
-
-        lblGameClock.setText( "Das Spiel startet am " + dateTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + " um "+ dateTime.format(DateTimeFormatter.ofPattern("HH:mm")));
+        lblGameClock.setText("Das Spiel startet am " + dateTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + " um " + dateTime.format(DateTimeFormatter.ofPattern("HH:mm")));
     }
+
     class ClockSeconds extends SwingWorker<Integer, Integer> {
+
         @Override
         protected Integer doInBackground() throws Exception {
-
+            if (TimeHandler.getMillisWaitingUntilStartQuiz(numberOfGame) < 0) {
+                lblGameClock.setText("Das Spiel hat schon angefangen. Sei beim nächsten Quiz dabei.");
+                return 0;
+            }
+            System.out.println("numberOfGame: " + numberOfGame);
             Integer result;
             do {
 
                 result = (int) (TimeHandler.getMillisWaitingUntilStartQuiz(numberOfGame) / 1000);
+                System.out.println("result: " + result);
                 publish(result);
 
                 try {
@@ -51,33 +61,34 @@ public class UIGameWaitingroom extends JFrame {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-            } while (result >= 0);
-
+            } while (result > 0);
             return 0;
         }
 
         @Override
         protected void process(java.util.List<Integer> chunks) {
-            if( chunks != null) {
-                for( Integer s : chunks ) {
+            if (chunks != null) {
+                for (Integer s : chunks) {
                     labelClock.setText(s.toString() + "s");
                 }
             }
         }
 
-        @Override protected void done()
-        {
-            try
-            {
+        @Override
+        protected void done() {
+            try {
                 int i = get();
                 labelClock.setText("" + i + "s");
-            }
-            catch ( /* InterruptedException, ExecutionException */ Exception e ) {
+                UIGame.showGame();
+                dispose();
+            } catch ( /* InterruptedException, ExecutionException */ Exception e) {
                 e.printStackTrace();
             }
         }
+
+
     }
+
 
     /**
      * Create the frame.

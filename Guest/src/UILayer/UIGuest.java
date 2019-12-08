@@ -86,7 +86,6 @@ public class UIGuest extends JFrame {
 				if (Login.checkIfIDNrValid(tempIdNumber)) {
 					Login.saveGameAndIDNumber(tempIdNumber);
 					Login.setValid0InKundeSpiel(tempIdNumber);
-
 					UIGameWaitingroom.showWaitingroom(Login.guest.getGameNumber());
 					dispose();
 				} else {

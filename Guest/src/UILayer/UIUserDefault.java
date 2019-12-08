@@ -23,9 +23,6 @@ public class UIUserDefault extends JFrame {
 	private String tempEmail;
 	private String tempUserPW;
 
-	/**
-	 * Launch the application."jdbc:mysql://alexej.synology.me:5796/propra" "propra" "Kneipenquiz1920!"
-	 */
 	public static void main(String[] args) {
 		DataBaseConnector.setServerAddress(args[0]);
 		DataBaseConnector.setServerUsername(args[1]);
