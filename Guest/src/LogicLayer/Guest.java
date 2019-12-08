@@ -9,6 +9,7 @@ public class Guest {
     private int gameNumber;
     private int iDNumber;
     private int points;
+    private int placing;
 
     public Guest(int guestID, String userName, String email, String password, int gameNumber, int iDNumber){
         this.guestID = guestID;
@@ -18,6 +19,7 @@ public class Guest {
         this.gameNumber = gameNumber;
         this.iDNumber = iDNumber;
         this.points = 0;
+        this.placing = 0;
     }
     public int getGuestID() { return guestID; }
 
@@ -43,8 +45,12 @@ public class Guest {
 
     public void setIDNumber(int iDNumber) { this.iDNumber = iDNumber; }
 
-   // public int getPoints() { return points; }
+    public int getPoints() { return points; }
 
    public void setPoints(int points) { this.points = points; }
+
+   public int getPlacing(){ return placing; }
+
+   public void setPlacing(int placing){ this.placing = placing; }
 
 }

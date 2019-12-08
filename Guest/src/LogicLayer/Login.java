@@ -8,7 +8,7 @@ import DataLayer.DataBaseConnector;
 
 public class Login {
     public static Connection con = DataBaseConnector.dbConnectorMariaDB();
-    public static Guest guest = new Guest(0, "","","",0,0);;
+    public static Guest guest = new Guest(0, "","","",0,0);
 
     public static void registerGuest(String userName, String email, String password) {
 
