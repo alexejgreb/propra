@@ -61,7 +61,7 @@ public class UIFinishedGame extends JFrame {
         contentPane.add(LabelUserName);
 
         //Spielnummer
-        JLabel LabelGameNr = new JLabel("Spiel Nr: "+ Login.guest.getGameNumber());
+        JLabel LabelGameNr = new JLabel("Spiel-Code: "+ Login.guest.getIDNumber());
         LabelGameNr.setBounds(5, 157, 97, 14);
         contentPane.add(LabelGameNr);
 
@@ -95,7 +95,7 @@ public class UIFinishedGame extends JFrame {
             }
         });
 
-        JButton buttonLogout = new JButton("Zurück");
+        JButton buttonLogout = new JButton("Logout");
         buttonLogout.setFont(new Font("Tahoma", Font.BOLD, 15));
         buttonLogout.setForeground(new Color(255, 0, 0));
         buttonLogout.setBounds(80, 250, 130, 25);
@@ -104,6 +104,16 @@ public class UIFinishedGame extends JFrame {
 
             public void actionPerformed(ActionEvent arg0) {
                 UIDefault.main(null);
+
+                Login.guest.setIDNumber(0);
+                Login.guest.setEmail("");
+                Login.guest.setPassword("");
+                Login.guest.setUserName("");
+                Login.guest.setGuestID(0);
+                Login.guest.setGameNumber(0);
+                Login.guest.setPlacing(1);
+                Login.guest.setPoints(0);
+
                 dispose();
 
             }

@@ -62,7 +62,7 @@ public class UIGuest extends JFrame {
 		LabelHeader.setBounds(0, 0, 0, 0);
 		contentPane.add(LabelHeader);
 		
-		JLabel lblNewLabel = new JLabel("Spiel-ID");
+		JLabel lblNewLabel = new JLabel("Spiel-Code");
 		lblNewLabel.setBounds(0, 0, 0, 0);
 		contentPane.add(lblNewLabel);
 		
