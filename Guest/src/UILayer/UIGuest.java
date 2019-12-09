@@ -71,6 +71,7 @@ public class UIGuest extends JFrame {
 		labelGameID.setFont(new Font("Tahoma",Font.BOLD,15));
 		labelGameID.setBounds(0, 0, 0, 0);
 		southPanel.add(labelGameID);
+
 		
 		textFieldGameID = new JTextField();
 		labelGameID.setFont(new Font("Tahoma",Font.BOLD,13));
