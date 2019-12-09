@@ -3,14 +3,11 @@ package UILayer;
 import DataLayer.DataBaseConnector;
 import LogicLayer.Login;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.Label;
-import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
@@ -62,17 +59,19 @@ public class UIDefault extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		/*JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon("C:\\Users\\Maxiv\\Downloads\\KrombacherSee.jfif"));
+		/*
+		JLabel background = new JLabel("");
+		background.setIcon(new ImageIcon("Ressources\\index.jpg"));
 		background.setBounds(100, 100, 700, 500);
 		contentPane.add(background);
 		*/
 
-
-		JButton ButtonUserLogin = new JButton("Login");
-		ButtonUserLogin.setBounds(5, 149, 89, 23);
-		contentPane.add(ButtonUserLogin);
-		ButtonUserLogin.addActionListener(new ActionListener() {
+		JButton buttonUserLogin = new JButton("Login");
+		buttonUserLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
+		buttonUserLogin.setForeground(new Color(255, 0, 0));
+		buttonUserLogin.setBounds(5, 149, 89, 23);
+		contentPane.add(buttonUserLogin);
+		buttonUserLogin.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -96,7 +95,9 @@ public class UIDefault extends JFrame {
 		});
 		
 		Button buttonRegistration = new Button("Anmelden");
-		buttonRegistration.setBounds(5, 330, 70, 22);
+		buttonRegistration.setFont(new Font("Tahoma", Font.BOLD, 15));
+		buttonRegistration.setForeground(new Color(255, 0, 0));
+		buttonRegistration.setBounds(5, 330, 80, 22);
 		contentPane.add(buttonRegistration);
 		buttonRegistration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -106,10 +107,12 @@ public class UIDefault extends JFrame {
 			}
 		});
 		
-		Button ButtonGuest = new Button("Weiter als Gast");
-		ButtonGuest.setBounds(338, 330, 110, 22);
-		contentPane.add(ButtonGuest);
-		ButtonGuest.addActionListener(new ActionListener() {
+		Button buttonGuest = new Button("Weiter als Gast");
+		buttonGuest.setFont(new Font("Tahoma", Font.BOLD, 15));
+		buttonGuest.setForeground(new Color(255, 0, 0));
+		buttonGuest.setBounds(338, 330, 130, 22);
+		contentPane.add(buttonGuest);
+		buttonGuest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UIGuest.main(null);
 				dispose();
@@ -117,6 +120,7 @@ public class UIDefault extends JFrame {
 		});
 
 		JLabel LabelHeader = new JLabel("Willkommen");
+		LabelHeader.setFont(new Font("Tahoma", Font.BOLD, 15));
 		LabelHeader.setBounds(5, 5, 424, 14);
 		contentPane.add(LabelHeader);
 		

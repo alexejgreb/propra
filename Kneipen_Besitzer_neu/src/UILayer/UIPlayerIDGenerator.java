@@ -223,7 +223,7 @@ public class UIPlayerIDGenerator {
 
                 int i2 = Integer.parseInt(t1.getText());
                 if (i2 == 0) {
-                    JOptionPane.showMessageDialog(null, "Bitte KundenNummer eingeben");
+                    JOptionPane.showMessageDialog(null, "Bitte Kunden-Mail eingeben");
                 } else {
 
                     try {     ///

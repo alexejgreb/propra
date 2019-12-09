@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 public class UIRegistration extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel southPanel;
+	private JPanel northPanel;
 	private JTextField textFieldUserName;
 	private JTextField textFieldUserMail;
 	private JPasswordField passwordFieldUserPw;
@@ -46,23 +48,31 @@ public class UIRegistration extends JFrame {
 	 */
 	public UIRegistration() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 600);
-		contentPane = new JPanel();
+		setBounds(100, 100, 600, 300);
+		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		
+		//contentPane.setLayout(null);
+
+
+		northPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		contentPane.add(northPanel,BorderLayout.NORTH);
+
+		southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		contentPane.add(southPanel,BorderLayout.SOUTH);
+
+
 		JLabel lblAnmelden = new JLabel("Anmelden");
+		lblAnmelden.setFont(new Font("Tahoma",Font.BOLD,15));
 		lblAnmelden.setBounds(5, 5, 424, 14);
-		contentPane.add(lblAnmelden);
+		northPanel.add(lblAnmelden);
 		
 		JLabel LabelUserName = new JLabel("Benutzername");
 		LabelUserName.setBounds(5, 64, 92, 14);
 		contentPane.add(LabelUserName);
 		
 		textFieldUserName = new JTextField();
-		textFieldUserName.setBounds(100, 61, 126, 20);
+		textFieldUserName.setBounds(120, 61, 160, 20);
 		contentPane.add(textFieldUserName);
 		textFieldUserName.setColumns(10);
 		
@@ -71,7 +81,7 @@ public class UIRegistration extends JFrame {
 		contentPane.add(LabelUserMail);
 		
 		textFieldUserMail = new JTextField();
-		textFieldUserMail.setBounds(100, 92, 126, 20);
+		textFieldUserMail.setBounds(120, 92, 160, 20);
 		contentPane.add(textFieldUserMail);
 		textFieldUserMail.setColumns(10);
 		
@@ -80,7 +90,7 @@ public class UIRegistration extends JFrame {
 		contentPane.add(LabelUserPw);
 		
 		passwordFieldUserPw = new JPasswordField();
-		passwordFieldUserPw.setBounds(100, 126, 126, 20);
+		passwordFieldUserPw.setBounds(120, 126, 160, 20);
 		contentPane.add(passwordFieldUserPw);
 		passwordFieldUserPw.setColumns(10);
 		
@@ -88,19 +98,33 @@ public class UIRegistration extends JFrame {
 		LabelUserPwRepeat.setBounds(5, 157, 67, 14);
 		contentPane.add(LabelUserPwRepeat);
 
-		JLabel LabelRepeat = new JLabel("wiederholen");
-		LabelRepeat.setBounds(5, 172, 97, 14);
-		contentPane.add(LabelRepeat);
-		
 		passwordFieldUserPwRepeat = new JPasswordField();
-		passwordFieldUserPwRepeat.setBounds(100, 160, 126, 20);
-		contentPane.add(passwordFieldUserPwRepeat);
+		passwordFieldUserPwRepeat.setBounds(120, 160, 160, 20);
 		passwordFieldUserPwRepeat.setColumns(10);
-		
-		JButton ButtonRegistration = new JButton("Anmelden");
-		ButtonRegistration.setBounds(65, 210, 96, 25);
-		contentPane.add(ButtonRegistration);
-		ButtonRegistration.addActionListener(new ActionListener() {
+		contentPane.add(passwordFieldUserPwRepeat);
+
+		JLabel LabelRepeat = new JLabel("wiederholen");
+		LabelRepeat.setBounds(5, 170, 97, 14);
+		contentPane.add(LabelRepeat);
+
+		JButton buttonback = new JButton("Zurück");
+		buttonback.setBounds(65, 210, 96, 25);
+		buttonback.setFont(new Font("Tahoma", Font.BOLD, 15));
+		buttonback.setForeground(new Color(255, 0, 0));
+		southPanel.add(buttonback);
+		buttonback.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg1) {
+				UIDefault.main(null);
+				dispose();
+			}
+		});
+
+		JButton buttonRegistration = new JButton("Anmelden");
+		buttonRegistration.setBounds(65, 210, 96, 25);
+		buttonRegistration.setFont(new Font("Tahoma", Font.BOLD, 15));
+		buttonRegistration.setForeground(new Color(255, 0, 0));
+		southPanel.add(buttonRegistration);
+		buttonRegistration.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
 				tempUserName = textFieldUserName.getText();
@@ -125,6 +149,11 @@ public class UIRegistration extends JFrame {
 
 			}
 		});
+
+		JLabel background = new JLabel("");
+		background.setIcon(new ImageIcon("Ressources\\index.jpg"));
+		background.setBounds(100, 100, 700, 500);
+		contentPane.add(background);
 	}
 
 }

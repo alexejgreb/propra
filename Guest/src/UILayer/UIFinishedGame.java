@@ -1,6 +1,5 @@
 package UILayer;
 
-import DataLayer.DataBaseConnector;
 import LogicLayer.Login;
 
 import java.awt.*;
@@ -51,9 +50,10 @@ public class UIFinishedGame extends JFrame {
         contentPane.setLayout(null);
 
 
-        JLabel lblErgebnis = new JLabel("Ergebnis");
-        lblErgebnis.setBounds(5, 5, 424, 14);
-        contentPane.add(lblErgebnis);
+        JLabel lblHeader = new JLabel("Ergebnis");
+        lblHeader.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblHeader.setBounds(5, 5, 424, 14);
+        contentPane.add(lblHeader);
 
         //Benutzername, bleibt leer wenn als Gast gespielt wird
         JLabel LabelUserName = new JLabel(""+ Login.guest.getUserName());
@@ -75,10 +75,12 @@ public class UIFinishedGame extends JFrame {
         LabelUserPlacing.setBounds(5, 95, 97, 14);
         contentPane.add(LabelUserPlacing);
 
-        JButton ButtonNewGame = new JButton("Neues Spiel");
-        ButtonNewGame.setBounds(80, 210, 115, 25);
-        contentPane.add(ButtonNewGame);
-        ButtonNewGame.addActionListener(new ActionListener() {
+        JButton buttonNewGame = new JButton("Neues Spiel");
+        buttonNewGame.setFont(new Font("Tahoma", Font.BOLD, 15));
+        buttonNewGame.setForeground(new Color(255, 0, 0));
+        buttonNewGame.setBounds(80, 210, 130, 25);
+        contentPane.add(buttonNewGame);
+        buttonNewGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
 				if(Login.guest.getGuestID()==0) {
@@ -93,10 +95,12 @@ public class UIFinishedGame extends JFrame {
             }
         });
 
-        JButton ButtonLogout = new JButton("Zurück");
-        ButtonLogout.setBounds(80, 250, 115, 25);
-        contentPane.add(ButtonLogout);
-        ButtonLogout.addActionListener(new ActionListener() {
+        JButton buttonLogout = new JButton("Zurück");
+        buttonLogout.setFont(new Font("Tahoma", Font.BOLD, 15));
+        buttonLogout.setForeground(new Color(255, 0, 0));
+        buttonLogout.setBounds(80, 250, 130, 25);
+        contentPane.add(buttonLogout);
+        buttonLogout.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent arg0) {
                 UIDefault.main(null);

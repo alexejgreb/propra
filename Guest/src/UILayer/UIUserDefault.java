@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 public class UIUserDefault extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel southPanel;
 	private JTextField textFieldGameID;
 	private int tempIdNumber;
 	private String tempEmail;
@@ -49,30 +50,40 @@ public class UIUserDefault extends JFrame {
 	 */
 	public UIUserDefault() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		setBounds(100, 100, 900, 600);
+		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		//Container South
+		southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		contentPane.add(southPanel,BorderLayout.SOUTH);
+		southPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 
-		JLabel LabelHeader = new JLabel("Hole dir an der Theke einen Spiel-Code und gib sie ein.");
-		LabelHeader.setBounds(0, 0, 100, 0);
-		contentPane.add(LabelHeader);
+
+		JLabel labelheader = new JLabel("Hole dir an der Theke einen Spiel-Code und gib sie ein.");
+		labelheader.setFont(new Font("Tahoma", Font.BOLD, 15));
+		labelheader.setBounds(0, 0, 100, 0);
+		contentPane.add(labelheader,BorderLayout.NORTH);
 
 		
-		JLabel LabelGameId = new JLabel("Spiel-Code");
-		LabelGameId.setBounds(0, 2, 1000, 0);
-		contentPane.add(LabelGameId);
+		JLabel labelGameId = new JLabel("Spiel-Code: ");
+		labelGameId.setFont(new Font("Tahoma", Font.BOLD, 15));
+		labelGameId.setBounds(0, 0, 1000, 0);
+		southPanel.add(labelGameId);
 		
 		textFieldGameID = new JTextField();
+		textFieldGameID.setFont(new Font("Tahoma", Font.BOLD, 15));
 		textFieldGameID.setBounds(0, 0, 0, 0);
-		contentPane.add(textFieldGameID);
-		textFieldGameID.setColumns(10);
+		southPanel.add(textFieldGameID);
+		textFieldGameID.setColumns(20);
 		
-		JButton ButtonStartGame = new JButton("Weiter zum Spiel");
-		ButtonStartGame.setBounds(338, 248, 215, 22);
-		contentPane.add(ButtonStartGame);
-		ButtonStartGame.addActionListener(new ActionListener() {
+		JButton buttonStartGame = new JButton("Weiter zum Spiel");
+		buttonStartGame.setFont(new Font("Tahoma", Font.BOLD, 15));
+		buttonStartGame.setForeground(new Color(255, 0, 0));
+		buttonStartGame.setBounds(338, 248, 215, 22);
+		southPanel.add(buttonStartGame);
+		buttonStartGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
