@@ -81,6 +81,12 @@ public class UIFinishedGame extends JFrame {
         labelPoints.setBounds(5, 126, 120, 14);
         contentPane.add(labelPoints);
 
+        //Hintergrund
+        JLabel background = new JLabel("");
+        background.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
+        background.setBounds(100, 100, 700, 500);
+        contentPane.add(background);
+
         //Platzierung
         JLabel labelUserPlacing = new JLabel("Platz: "+ Login.guest.getPlacing());
         labelUserPlacing.setFont(new Font("Tahoma", Font.BOLD, 15));
