@@ -49,6 +49,18 @@ public class Anfrage {
 					Anfrage window = new Anfrage();
 					window.frame.setVisible(true);
 					test.setVisible(false);
+					t1.setText(Kneipen_Besitzer.ff.getText());
+
+					post.setVisible(false);
+					name.setVisible(false);
+					vorname.setVisible(false);
+					stadt.setVisible(false);
+					street.setVisible(false);
+					DB_Anfragen.Select_Bar_Info(t1,name,vorname,street,post,stadt,t3,t5);
+
+					t2.setText(street.getText()+"  "+post.getText()+"  "+stadt.getText());
+					t4.setText(vorname.getText()+" "+name.getText());
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -60,11 +72,17 @@ public class Anfrage {
 	 * Create the application.
 	 */
 	Connection con =null;
-	private JTextField t1;
-	private JTextField t2;
-	private JTextField t3;
-	private JTextField t4;
-	private JTextField t5;
+	private static JTextField t1;
+	private static JTextField t2;
+	private static JTextField t3;
+	private static JTextField t4;
+	private static JTextField t5;
+	private static  JTextField post;
+	private static  JTextField name;
+	private static JTextField vorname;
+	private static  JTextField street;
+	private static  JTextField stadt;
+	private JScrollPane scrollPane;
 	public Anfrage() {
 		initialize();
 		//con=Database.dbConnector();
@@ -83,65 +101,71 @@ public class Anfrage {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel_5 = new JLabel("Kneipe_Nr:");
+		JLabel lblNewLabel_5 = new JLabel("Kneipennummer:");
 		lblNewLabel_5.setForeground(new Color(0, 0, 255));
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 20));
-		lblNewLabel_5.setBounds(55, 126, 170, 50);
+		lblNewLabel_5.setBounds(25, 124, 170, 50);
 		frame.getContentPane().add(lblNewLabel_5);
 
 		JLabel lblAdresse = new JLabel("Adresse:");
 		lblAdresse.setForeground(new Color(0, 0, 255));
 		lblAdresse.setFont(new Font("Arial", Font.BOLD, 20));
-		lblAdresse.setBounds(55, 173, 164, 50);
+		lblAdresse.setBounds(25, 171, 164, 50);
 		frame.getContentPane().add(lblAdresse);
 
-		JLabel lblTelephonnr = new JLabel("Telephon_Nr:");
+		JLabel lblTelephonnr = new JLabel("Telefon:");
 		lblTelephonnr.setForeground(new Color(0, 0, 255));
 		lblTelephonnr.setFont(new Font("Arial", Font.BOLD, 20));
-		lblTelephonnr.setBounds(55, 229, 164, 50);
+		lblTelephonnr.setBounds(25, 227, 164, 50);
 		frame.getContentPane().add(lblTelephonnr);
 
-		JLabel lblBesitzer = new JLabel("Besitzer:");
+		JLabel lblBesitzer = new JLabel("Wirt:");
 		lblBesitzer.setForeground(new Color(0, 0, 255));
 		lblBesitzer.setFont(new Font("Arial", Font.BOLD, 20));
-		lblBesitzer.setBounds(55, 285, 164, 50);
+		lblBesitzer.setBounds(25, 273, 164, 50);
 		frame.getContentPane().add(lblBesitzer);
 
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setForeground(new Color(0, 0, 255));
 		lblEmail.setFont(new Font("Arial", Font.BOLD, 20));
-		lblEmail.setBounds(55, 335, 121, 42);
+		lblEmail.setBounds(25, 333, 121, 42);
 		frame.getContentPane().add(lblEmail);
 
 		t1 = new JTextField();
+		t1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		t1.setEditable(false);
 		t1.setText("310514");
-		t1.setBounds(246, 136, 112, 30);
+		t1.setBounds(182, 136, 112, 30);
 		frame.getContentPane().add(t1);
 		t1.setColumns(10);
 
 		t2 = new JTextField();
+		t2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t2.setText("Adresse PLZ StraßeXXXXX");
 		t2.setColumns(10);
-		t2.setBounds(246, 183, 254, 30);
+		t2.setBounds(182, 183, 391, 30);
 		frame.getContentPane().add(t2);
 
 		t3 = new JTextField();
+		t3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t3.setText("0176/111111111");
 		t3.setColumns(10);
-		t3.setBounds(246, 239, 254, 30);
+		t3.setBounds(182, 239, 391, 30);
 		frame.getContentPane().add(t3);
 
 		t4 = new JTextField();
+		t4.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t4.setEditable(false);
 		t4.setText("BesitzerXXXXX");
 		t4.setColumns(10);
-		t4.setBounds(246, 285, 254, 30);
+		t4.setBounds(182, 285, 391, 30);
 		frame.getContentPane().add(t4);
 
 		t5 = new JTextField();
+		t5.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t5.setText("XXXX@XXXXX");
 		t5.setColumns(10);
-		t5.setBounds(246, 341, 254, 30);
+		t5.setBounds(182, 341, 391, 30);
 		frame.getContentPane().add(t5);
 
 		JButton btnNewButton = new JButton("Senden");
@@ -176,7 +200,7 @@ public class Anfrage {
 				int i11 =Integer.parseInt(test.getText());
 
 				if(i11==1){
-					JOptionPane.showMessageDialog(null,"Sie haben eine unbefristete Lizenc bekommen ");
+					JOptionPane.showMessageDialog(null,"Die Kneipe wurde bereits validiert.");
 				}else{
 
 
@@ -201,9 +225,9 @@ public class Anfrage {
 						pst.setString(6, "0");
 
 						pst.execute();
-						JOptionPane.showMessageDialog(null,"Versendet!!!");
+						JOptionPane.showMessageDialog(null,"Versendet!");
 
-						ta.append("\tAnfrage_Versendet: \n\n"+"Kneipe_Nr:\t"+t1.getText()+"\n======================================\n"+"Besitzer:\t"+t4.getText()+"\n\n"+"Telefon_Nr:\t"+t3.getText()+"\n\n"+
+						ta.append("\tDie Anfrage wurde versendet: \n\n"+"Kneipe_Nr:\t"+t1.getText()+"\n======================================\n"+"Besitzer:\t"+t4.getText()+"\n\n"+"Telefon_Nr:\t"+t3.getText()+"\n\n"+
 								" \t"+" \n======================================\n");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -217,16 +241,8 @@ public class Anfrage {
 
 				}}
 		});
-		btnNewButton.setBounds(388, 384, 112, 36);
+		btnNewButton.setBounds(461, 384, 112, 36);
 		frame.getContentPane().add(btnNewButton);
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(530, 68, 283, 377);
-		frame.getContentPane().add(scrollPane);
-
-		ta = new JTextArea();
-		ta.setEditable(false);
-		scrollPane.setViewportView(ta);
 
 		JButton btnNewButton_1 = new JButton("Exit");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -236,7 +252,7 @@ public class Anfrage {
 				frame.dispose();
 			}
 		});
-		btnNewButton_1.setBounds(388, 482, 112, 36);
+		btnNewButton_1.setBounds(461, 482, 112, 36);
 		frame.getContentPane().add(btnNewButton_1);
 
 		JButton btnZurck = new JButton("Zurück");
@@ -258,17 +274,49 @@ public class Anfrage {
 
 			}
 		});
-		btnZurck.setBounds(388, 433, 112, 36);
+		btnZurck.setBounds(461, 433, 112, 36);
 		frame.getContentPane().add(btnZurck);
-
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\IdeaProjects\\propra\\Ressources\\Jahres-Pk-der-Krombacher-Gruppe.jpg"));
-		lblNewLabel.setBounds(0, 0, 882, 530);
-		frame.getContentPane().add(lblNewLabel);
 
 		test = new JLabel("0");
 		test.setBounds(82, 45, 56, 16);
 		frame.getContentPane().add(test);
+
+		post = new JTextField();
+		post.setBounds(242, 384, 116, 22);
+		frame.getContentPane().add(post);
+		post.setColumns(10);
+
+		name = new JTextField();
+		name.setBounds(242, 423, 116, 22);
+		frame.getContentPane().add(name);
+		name.setColumns(10);
+
+		vorname = new JTextField();
+		vorname.setBounds(242, 458, 116, 22);
+		frame.getContentPane().add(vorname);
+		vorname.setColumns(10);
+
+		street = new JTextField();
+		street.setBounds(242, 490, 116, 22);
+		frame.getContentPane().add(street);
+		street.setColumns(10);
+
+		stadt = new JTextField();
+		stadt.setBounds(370, 142, 116, 22);
+		frame.getContentPane().add(stadt);
+		stadt.setColumns(10);
+
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(601, 107, 281, 405);
+		frame.getContentPane().add(scrollPane);
+
+		ta = new JTextArea();
+		scrollPane.setViewportView(ta);
+		ta.setEditable(false);
+
+		JLabel lblNewLabel = new JLabel("New label");//TODO
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
+		lblNewLabel.setBounds(0, 3, 894, 539);
+		frame.getContentPane().add(lblNewLabel);
 	}
 }
-

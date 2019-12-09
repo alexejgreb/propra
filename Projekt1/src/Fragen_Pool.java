@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 
+
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -41,9 +42,10 @@ public class Fragen_Pool {
 	private static JLabel lb1,lb2 ;
 	private JTextField a,w1,w2,w3,w4;
 	public static JComboBox CB1;
-	private JTextArea ta,ff ;
+	private JTextArea ta ;
 	private static JScrollPane scrollPane;
 	private static JButton Btp_zurueck;
+	private static JTextArea ff ;
 	/**
 	 * Launch the application.
 	 * @throws UnsupportedLookAndFeelException
@@ -102,11 +104,13 @@ public class Fragen_Pool {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBackground(new Color(240, 240, 240));
-		frame.setBounds(100, 100, 1124, 674);
+		frame.setBounds(100, 100, 1751, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton Btp_Hinzufügen = new JButton("Insert");
+		JButton Btp_Hinzufügen = new JButton("Einfügen");
+		Btp_Hinzufügen.setForeground(Color.RED);
+		Btp_Hinzufügen.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Hinzufügen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -138,7 +142,9 @@ public class Fragen_Pool {
 		Btp_Hinzufügen.setBounds(28, 34, 118, 45);
 		frame.getContentPane().add(Btp_Hinzufügen);
 
-		JButton Btp_Delet = new JButton("Delete");
+		JButton Btp_Delet = new JButton("Löschen");
+		Btp_Delet.setForeground(Color.RED);
+		Btp_Delet.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Delet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lb1.setVisible(false);
@@ -173,7 +179,9 @@ public class Fragen_Pool {
 		Btp_Delet.setBounds(28, 92, 118, 45);
 		frame.getContentPane().add(Btp_Delet);
 
-		JButton Btp_edit = new JButton("Update");
+		JButton Btp_edit = new JButton("Anpassen");
+		Btp_edit.setForeground(Color.RED);
+		Btp_edit.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_edit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lb1.setVisible(false);
@@ -200,16 +208,20 @@ public class Fragen_Pool {
 		Btp_edit.setBounds(28, 150, 118, 45);
 		frame.getContentPane().add(Btp_edit);
 
-		JButton Btp_Exit = new JButton("Exit");
+		JButton Btp_Exit = new JButton("Schließen");
+		Btp_Exit.setForeground(Color.RED);
+		Btp_Exit.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
-		Btp_Exit.setBounds(28, 208, 118, 45);
+		Btp_Exit.setBounds(28, 400, 118, 45);
 		frame.getContentPane().add(Btp_Exit);
 
 		Btp_zurueck = new JButton("Zurück");
+		Btp_zurueck.setForeground(Color.RED);
+		Btp_zurueck.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_zurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -228,7 +240,9 @@ public class Fragen_Pool {
 		Btp_zurueck.setBounds(28, 266, 118, 45);
 		frame.getContentPane().add(Btp_zurueck);
 
-		JButton Btp_Aktualisieren = new JButton("Aktualisieren");
+		JButton Btp_Aktualisieren = new JButton("Felder leeren");
+		Btp_Aktualisieren.setForeground(Color.RED);
+		Btp_Aktualisieren.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Aktualisieren.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lb1.setVisible(false);
@@ -245,7 +259,7 @@ public class Fragen_Pool {
 		frame.getContentPane().add(Btp_Aktualisieren);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 458, 1106, 174);
+		scrollPane.setBounds(0, 492, 1721, 216);
 		frame.getContentPane().add(scrollPane);
 
 		table = new JTable();
@@ -259,109 +273,123 @@ public class Fragen_Pool {
 		lb2.setBounds(171, 164, 56, 16);
 		frame.getContentPane().add(lb2);
 
-		JButton btnNewButton_1 = new JButton("Print");
+		JButton btnNewButton_1 = new JButton("Drucken");
+		btnNewButton_1.setForeground(Color.RED);
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 
 			}
 		});
-		btnNewButton_1.setBounds(28, 382, 118, 45);
+		btnNewButton_1.setBounds(28, 203, 118, 45);
 		frame.getContentPane().add(btnNewButton_1);
 
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(716, 44, 381, 355);
-		frame.getContentPane().add(scrollPane_2);
-
-		ta = new JTextArea();
-		scrollPane_2.setViewportView(ta);
-
-		JButton btnNewButton = new JButton("Print");
-		btnNewButton.setBounds(1000, 409, 97, 36);
+		JButton btnNewButton = new JButton("Drucken");
+		btnNewButton.setForeground(Color.RED);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnNewButton.setBounds(1624, 432, 97, 30);
 		frame.getContentPane().add(btnNewButton);
 
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(315, 119, 349, 82);
-		frame.getContentPane().add(scrollPane_1);
-
-		ff = new JTextArea();
-		scrollPane_1.setViewportView(ff);
-
 		a = new JTextField();
-		a.setBounds(320, 212, 344, 36);
+		a.setFont(new Font("Tahoma", Font.BOLD, 13));
+		a.setBounds(320, 212, 820, 36);
 		frame.getContentPane().add(a);
 		a.setColumns(10);
 
 		w1 = new JTextField();
-		w1.setBounds(320, 270, 344, 36);
+		w1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		w1.setBounds(320, 270, 820, 36);
 		frame.getContentPane().add(w1);
 		w1.setColumns(10);
 
 		w2 = new JTextField();
-		w2.setBounds(320, 311, 344, 36);
+		w2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		w2.setBounds(320, 311, 820, 36);
 		frame.getContentPane().add(w2);
 		w2.setColumns(10);
 
 		w3 = new JTextField();
-		w3.setBounds(320, 360, 344, 36);
+		w3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		w3.setBounds(320, 360, 820, 36);
 		frame.getContentPane().add(w3);
 		w3.setColumns(10);
 
 		w4 = new JTextField();
-		w4.setBounds(320, 409, 344, 36);
+		w4.setFont(new Font("Tahoma", Font.BOLD, 13));
+		w4.setBounds(320, 409, 820, 36);
 		frame.getContentPane().add(w4);
 		w4.setColumns(10);
 
 		CB1 = new JComboBox();
-		CB1.setBounds(403, 66, 141, 22);
+		CB1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		CB1.setBounds(320, 66, 70, 22);
 		frame.getContentPane().add(CB1);
 
-		JLabel lblNewLabel_2 = new JLabel("Frage_Nr:");
-		lblNewLabel_2.setForeground(Color.ORANGE);
+		JLabel lblNewLabel_2 = new JLabel("Frage Nr:");
+		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_2.setBounds(265, 60, 106, 30);
+		lblNewLabel_2.setBounds(182, 60, 85, 30);
 		frame.getContentPane().add(lblNewLabel_2);
 
 		JLabel lblFrage = new JLabel("Frage:");
-		lblFrage.setForeground(Color.ORANGE);
+		lblFrage.setForeground(Color.RED);
 		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblFrage.setBounds(182, 110, 106, 36);
+		lblFrage.setBounds(206, 121, 70, 36);
 		frame.getContentPane().add(lblFrage);
 
 		JLabel lblNewLabel = new JLabel("Antwort:");
-		lblNewLabel.setForeground(Color.ORANGE);
+		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel.setBounds(171, 212, 117, 36);
+		lblNewLabel.setBounds(191, 210, 97, 36);
 		frame.getContentPane().add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Möglichkeit1:");
+		JLabel lblNewLabel_1 = new JLabel("A:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1.setForeground(Color.ORANGE);
-		lblNewLabel_1.setBounds(171, 270, 137, 36);
+		lblNewLabel_1.setForeground(Color.RED);
+		lblNewLabel_1.setBounds(254, 268, 34, 36);
 		frame.getContentPane().add(lblNewLabel_1);
 
-		JLabel lblMglichkeit = new JLabel("Möglichkeit2:");
-		lblMglichkeit.setForeground(Color.ORANGE);
+		JLabel lblMglichkeit = new JLabel("B:");
+		lblMglichkeit.setForeground(Color.RED);
 		lblMglichkeit.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblMglichkeit.setBounds(171, 311, 121, 36);
+		lblMglichkeit.setBounds(254, 309, 34, 36);
 		frame.getContentPane().add(lblMglichkeit);
 
-		JLabel lblMglichkeit_1 = new JLabel("Möglichkeit3:");
+		JLabel lblMglichkeit_1 = new JLabel("C:");
 		lblMglichkeit_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblMglichkeit_1.setForeground(Color.ORANGE);
-		lblMglichkeit_1.setBounds(171, 360, 121, 36);
+		lblMglichkeit_1.setForeground(Color.RED);
+		lblMglichkeit_1.setBounds(254, 358, 34, 36);
 		frame.getContentPane().add(lblMglichkeit_1);
 
-		JLabel lblMglichkeit_2 = new JLabel("Möglichkeit4:");
-		lblMglichkeit_2.setForeground(Color.ORANGE);
+		JLabel lblMglichkeit_2 = new JLabel("D:");
+		lblMglichkeit_2.setForeground(Color.RED);
 		lblMglichkeit_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblMglichkeit_2.setBounds(171, 402, 121, 43);
+		lblMglichkeit_2.setBounds(254, 404, 34, 43);
 		frame.getContentPane().add(lblMglichkeit_2);
 
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\image_content_828136805_20180122145147.jpg"));
-		label.setBounds(0, 0, 1106, 632);
-		frame.getContentPane().add(label);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(1193, 66, 528, 353);
+		frame.getContentPane().add(scrollPane_1);
+
+		ta = new JTextArea();
+		scrollPane_1.setViewportView(ta);
+
+		ff = new JTextArea();
+		ff.setFont(new Font("Tahoma", Font.BOLD, 13));
+		ff.setBounds(320, 131, 820, 68);
+		frame.getContentPane().add(ff);
+
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
+		comboBox.setBounds(402, 66, 738, 22);
+		frame.getContentPane().add(comboBox);
+
+		JLabel lblNewLabel_3 = new JLabel("");
+		//TODO
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image_content_828136805_20180122145147.jpg"));
+		lblNewLabel_3.setBounds(0, 0, 1733, 721);
+		frame.getContentPane().add(lblNewLabel_3);
 		CB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -376,7 +404,7 @@ public class Fragen_Pool {
 				try {
 					ta.print();
 				} catch (PrinterException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 

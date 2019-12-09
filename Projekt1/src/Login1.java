@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -58,27 +59,27 @@ import javax.swing.SwingConstants;public class Login1 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 482, 291);
+		frame.setBounds(100, 100, 1751, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Login:");
+		JLabel lblNewLabel = new JLabel("Benutzername:");
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(12, 96, 92, 32);
+		lblNewLabel.setBounds(605, 267, 186, 32);
 		frame.getContentPane().add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Password:");
+		JLabel lblNewLabel_1 = new JLabel("Passwort:");
 		lblNewLabel_1.setForeground(Color.RED);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(12, 131, 136, 32);
+		lblNewLabel_1.setBounds(601, 335, 153, 32);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		txtAdmin = new JTextField();
 		txtAdmin.setEditable(false);
 		txtAdmin.setText("Admin");
 		txtAdmin.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtAdmin.setBounds(226, 101, 226, 22);
+		txtAdmin.setBounds(803, 264, 296, 40);
 		frame.getContentPane().add(txtAdmin);
 		txtAdmin.setColumns(10);
 
@@ -99,37 +100,42 @@ import javax.swing.SwingConstants;public class Login1 {
 					} catch (ClassNotFoundException | InstantiationException
 							| IllegalAccessException
 							| UnsupportedLookAndFeelException e) {
-						// TODO Auto-generated catch block
+
 						e.printStackTrace();
 					}
 					frame.dispose();
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"Ungültige Zugangsdaten !!!!!");
+					JOptionPane.showMessageDialog(null,"Ungültige Zugangsdaten!");
 				}
 
 			}
 		});
-		btnNewButton.setBounds(365, 196, 87, 25);
+		btnNewButton.setBounds(1012, 397, 87, 40);
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnNewButton_1 = new JButton("EXIT");
+		JButton btnNewButton_1 = new JButton("Schließen");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+			}
+		});
 		btnNewButton_1.setBackground(Color.ORANGE);
 		btnNewButton_1.setForeground(Color.RED);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton_1.setBounds(266, 196, 87, 25);
+		btnNewButton_1.setBounds(913, 397, 87, 40);
 		frame.getContentPane().add(btnNewButton_1);
 
 		pwd1 = new JPasswordField();
 		pwd1.setToolTipText("");
 		pwd1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		pwd1.setBounds(228, 136, 224, 22);
+		pwd1.setBounds(805, 332, 294, 40);
 		frame.getContentPane().add(pwd1);
 
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\16089.jpg"));
-		lblNewLabel_3.setBounds(0, 0, 487, 256);
-		frame.getContentPane().add(lblNewLabel_3);
+		JLabel lblNewLabel_2 = new JLabel("");
+		//TODO
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\2015-10-26_Krombacher Marke des Jahres (1).jpg"));
+		lblNewLabel_2.setBounds(0, 0, 1745, 733);
+		frame.getContentPane().add(lblNewLabel_2);
 	}
 }

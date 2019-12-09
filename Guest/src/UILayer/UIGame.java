@@ -1,6 +1,10 @@
 package UILayer;
 
+
 import DataLayer.PointQuizHandler;
+
+import DataLayer.DataBaseConnector;
+
 import DataLayer.QuizHandler;
 import DataLayer.TimeHandler;
 import DataLayer.DataBaseConnector;

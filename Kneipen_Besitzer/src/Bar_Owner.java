@@ -1,36 +1,9 @@
-import java.awt.EventQueue;
-
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import java.awt.Font;
-
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JRadioButton;
-
-import java.awt.Color;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-
-import net.proteanit.sql.DbUtils;
-import javax.swing.ImageIcon;
 
 
 public class Bar_Owner {
@@ -102,6 +75,7 @@ public class Bar_Owner {
 		DataBaseConnector.setServerAddress(args[0]);
 		DataBaseConnector.setServerUsername(args[1]);
 		DataBaseConnector.setServerPassword(args[2]);
+
 		try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 		} catch (ClassNotFoundException | InstantiationException
@@ -122,7 +96,7 @@ public class Bar_Owner {
 
 					scrollPane_1.setVisible(false);
 					ta.setVisible(false);
-					Benutzer.setText("Benutzer_Name:");
+					Benutzer.setText("Benutzername:");
 
 
 					b1.setVisible(true);
@@ -210,18 +184,17 @@ public class Bar_Owner {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		//frame.setBounds(100, 100, 1751, 768);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setBounds(100, 100, 1751, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		Benutzer = new JLabel("Benutzer_Name:");
+		Benutzer = new JLabel("Benutzerame:");
 		Benutzer.setForeground(Color.RED);
 		Benutzer.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
 		Benutzer.setBounds(554, 265, 176, 29);
 		frame.getContentPane().add(Benutzer);
 
-		pwd = new JLabel("Password:");
+		pwd = new JLabel("Passwort:");
 		pwd.setForeground(Color.RED);
 		pwd.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
 		pwd.setBounds(554, 335, 176, 29);
@@ -232,12 +205,12 @@ public class Bar_Owner {
 		Name.setBounds(765, 259, 379, 38);
 		frame.getContentPane().add(Name);
 		Name.setColumns(10);
-		t1 = new JLabel("Bitte fühlen sie  dieses Anmelderformular aus\r\nVielen DANK :)");
+		t1 = new JLabel("Bitte füllen Sie  dieses Anmelderformular aus\r\n");
 		t1.setForeground(Color.RED);
 		t1.setFont(new Font("Arial Black", Font.BOLD, 16));
 		t1.setBounds(12, 80, 684, 29);
 
-		t2 = new JLabel("Kneipen_Nr:");
+		t2 = new JLabel("Kneipennummer:");
 		t2.setForeground(Color.BLUE);
 		t2.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
 		t2.setBounds(12, 141, 97, 29);
@@ -277,13 +250,13 @@ public class Bar_Owner {
 
 
 
-		pwd01 = new JButton("Password Vergessen??");
+		pwd01 = new JButton("Password vergessen?");
 		pwd01.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 
 
-				int YesorNo = JOptionPane.showConfirmDialog(null, "Haben sie Ihren Password vergessen !!!!!","PWD Ändern",JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, "Passwort vergessen?","Passwort ändern",JOptionPane.YES_NO_OPTION);
 
 				if(YesorNo==0){
 
@@ -295,7 +268,7 @@ public class Bar_Owner {
 
 					if(tz1==0){
 
-						JOptionPane.showMessageDialog(null,"Benutzer Name ist ungültig");
+						JOptionPane.showMessageDialog(null,"Benutzername ist ungültig");
 
 
 
@@ -303,10 +276,10 @@ public class Bar_Owner {
 
 
 						BarNR.setText(tz.getText()) ;
-						t1.setText("Password Vergessen !!!! Dann bitte dieses Formular ausfüllen :");
+						t1.setText("Um ein neues Passwort zu erhalten, füllen Sie bitte dieses Formular aus.");
 						Var=66;
-						pwd.setText("Password:");
-						Benutzer.setText("Benutzer_Name:");
+						pwd.setText("Passwort:");
+						Benutzer.setText("Benutzername:");
 						ja.setSelected(false);
 						Account.setVisible(false);
 						ja.setVisible(false);
@@ -358,9 +331,9 @@ public class Bar_Owner {
 						Name.setText("");
 						pass.setText("");
 
-						btnRegi.setText("Neue Password");
+						btnRegi.setText("Neues Passwort");
 
-						msg.setText("Ich habe mein Password vergessen ");
+						msg.setText("Ich habe mein Passwort vergessen.");
 						msg.setEditable(false);
 						///
 						///
@@ -382,7 +355,7 @@ public class Bar_Owner {
 		pwd01.setBounds(966, 441, 178, 44);
 		frame.getContentPane().add(pwd01);
 
-		t001 = new JLabel("Kneipen_Nr:");
+		t001 = new JLabel("Kneipennummer:");
 		t001.setForeground(Color.RED);
 		t001.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
 		t001.setBounds(554, 137, 176, 35);
@@ -393,7 +366,7 @@ public class Bar_Owner {
 		name.setColumns(10);
 		name.setBounds(155, 187, 303, 37);
 		frame.getContentPane().add(name);
-		t01 = new JLabel("Ehemalige_Password:");
+		t01 = new JLabel("Altes Passwort:");
 		t01.setForeground(Color.RED);
 		t01.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
 		t01.setBounds(554, 202, 189, 29);
@@ -406,7 +379,7 @@ public class Bar_Owner {
 		t4.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
 		t4.setBounds(12, 241, 135, 29);
 		frame.getContentPane().add(t4);
-		aktu = new JButton("Aktualisieren");
+		aktu = new JButton("Felder leeren");
 		aktu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -432,14 +405,14 @@ public class Bar_Owner {
 
 
 
-				int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie das AnmeldeFormular verlassen!!!!!","Anmelden",JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen Sie das Anmeldeformular verlassen?","Anmelden",JOptionPane.YES_NO_OPTION);
 
 				if(YesorNo==0){
 					Var=0;
 					btnRegi.setText("Registrieren");
 					msg.setText("");
 					msg.setEditable(true);
-					t1.setText("Bitte fühlen sie Sorgfälltig dieses Anmelderformular Vielen DANK :)");
+					t1.setText("Bitte fülen Sie Sorgfälltig dieses Anmelderformular Vielen DANK :)");
 					t01.setVisible(false);
 					epwd.setVisible(false);
 					t1.setVisible(false);
@@ -541,7 +514,7 @@ public class Bar_Owner {
 						btnRegi.setText("Registrieren");
 						msg.setText("");
 						msg.setEditable(true);
-						t1.setText("Bitte füllen sie dieses Anmelderformular aus. Vielen Dank.");
+						t1.setText("Bitte fühlen sie Sorgfälltig dieses Anmelderformular Vielen DANK :)");
 						t01.setVisible(false);
 						epwd.setVisible(false);
 						t1.setVisible(false);

@@ -2,28 +2,12 @@
 import java.awt.EventQueue;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.print.PrinterException;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -43,6 +27,8 @@ import javax.swing.JTextField;
 
 import net.proteanit.sql.DbUtils;
 
+import javax.swing.ImageIcon;
+
 
 
 
@@ -59,6 +45,7 @@ public class Quiz_Verwaltung {
 	private JTextField t4;
 	private JTextField t5;
 	private JTextField t6;
+	private static JComboBox comboBox;
 	public static  JTextArea ta;
 	/**
 	 * Launch the application.
@@ -82,12 +69,13 @@ public class Quiz_Verwaltung {
 					window.frame.setVisible(true);
 
 
-
+					tname.setText(Kneipen_Besitzer.txtkneipexxxy.getText());
+					tnummer.setText(Kneipen_Besitzer.ff.getText());
 
 					try{
 
 
-						String query2="select Spiel_Nummer from Spiel_Gnehmigt where Status=1 ";
+						String query2="select Spiel_Nummer from Spiel_Gnehmigt where Status=1 and Bar_Nr='"+tnummer.getText()+"' ";
 						PreparedStatement pst1=con.prepareStatement(query2);
 
 						ResultSet rs= pst1.executeQuery();
@@ -119,7 +107,7 @@ public class Quiz_Verwaltung {
 
 
 					try {
-						String query="select Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen from (Spiel_Gnehmigt)";
+						String query="select Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen from (Spiel_Gnehmigt) where Bar_Nr='"+tnummer.getText()+"'";
 						PreparedStatement pst=con.prepareStatement(query);
 						ResultSet rs= pst.executeQuery();
 						table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -150,8 +138,8 @@ public class Quiz_Verwaltung {
 	 * Create the application.
 	 */
 	static Connection con =null;
-	private JTextField textField;
-	private JTextField textField_1;
+	public static JTextField tnummer;
+	public static JTextField tname;
 	public Quiz_Verwaltung() {
 		initialize();
 		frame.setResizable(false);
@@ -171,7 +159,9 @@ public class Quiz_Verwaltung {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton btnInsert = new JButton("Bearbeiten");
+		JButton btnInsert = new JButton("Quiz_Bearbeiten");
+		btnInsert.setForeground(Color.RED);
+		btnInsert.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -193,6 +183,8 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(btnInsert);
 
 		JButton btnQuizteilnehmer = new JButton("Quiz_Teilnehmer");
+		btnQuizteilnehmer.setForeground(Color.RED);
+		btnQuizteilnehmer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnQuizteilnehmer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -214,6 +206,8 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(btnQuizteilnehmer);
 
 		JButton btnWinner = new JButton("Winner");
+		btnWinner.setForeground(Color.RED);
+		btnWinner.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnWinner.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -233,7 +227,9 @@ public class Quiz_Verwaltung {
 		btnWinner.setBounds(20, 157, 175, 45);
 		frame.getContentPane().add(btnWinner);
 
-		JButton btnQuizterminer = new JButton("Quiz_Terminer");
+		JButton btnQuizterminer = new JButton("Spiel_Anmeldung");
+		btnQuizterminer.setForeground(Color.RED);
+		btnQuizterminer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnQuizterminer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -254,6 +250,8 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(btnQuizterminer);
 
 		JButton button_4 = new JButton("Zurück");
+		button_4.setForeground(Color.RED);
+		button_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -275,18 +273,27 @@ public class Quiz_Verwaltung {
 		button_4.setBounds(20, 273, 175, 45);
 		frame.getContentPane().add(button_4);
 
-		JButton button_5 = new JButton("Aktualisieren");
-		button_5.setBounds(20, 331, 175, 45);
-		frame.getContentPane().add(button_5);
+		JButton btnLeeren = new JButton("Leeren");
+		btnLeeren.setForeground(Color.RED);
+		btnLeeren.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnLeeren.setBounds(20, 331, 175, 45);
+		frame.getContentPane().add(btnLeeren);
 
-		JButton btnExit = new JButton("EXIT");
+		JButton btnExit = new JButton("Print");
+		btnExit.setForeground(Color.RED);
+		btnExit.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 
 
 
-
+				try {
+					ta.print();
+				} catch (PrinterException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 
 
@@ -305,6 +312,7 @@ public class Quiz_Verwaltung {
 		scrollPane.setViewportView(table);
 
 		cb1 = new JComboBox();
+		cb1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		cb1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -312,7 +320,7 @@ public class Quiz_Verwaltung {
 				//	cb2.removeAllItems();
 
 				try{
-					String query2="select FrageNr from (FragenPool , Quiz_Fragen) where Quiz_Fragen.Frage_Nr = FragenPool.FrageNr and Quiz_Fragen.Spiel_Nummer ='"+cb1.getSelectedItem().toString()+"'";
+					String query2="select FrageNr from (FragenPool , Quiz_Fragen) where Quiz_Fragen.Frage_Nr = FragenPool.FrageNr and Quiz_Fragen.Spiel_Nummer ='"+cb1.getSelectedItem().toString()+"' and Quiz_Fragen.Bar_Nr ='"+tnummer.getText()+"'";
 					PreparedStatement pst1=con.prepareStatement(query2);
 
 					ResultSet rs= pst1.executeQuery();
@@ -331,81 +339,117 @@ public class Quiz_Verwaltung {
 					e2.printStackTrace();
 
 				}
+
+
+
+
+				try{
+					String query2="select Frage from (FragenPool , Quiz_Fragen) where Quiz_Fragen.Frage_Nr = FragenPool.FrageNr and Quiz_Fragen.Spiel_Nummer ='"+cb1.getSelectedItem().toString()+"' and Quiz_Fragen.Bar_Nr ='"+tnummer.getText()+"'";
+					PreparedStatement pst1=con.prepareStatement(query2);
+
+					ResultSet rs= pst1.executeQuery();
+
+					while (rs.next()){
+						String Frage = rs.getString("Frage");
+
+						comboBox.addItem(Frage);
+
+					}
+
+					rs.close();
+
+				}
+				catch(Exception e2){
+					e2.printStackTrace();
+
+				}
+
+
+
+
+
 			}
 		});
-		cb1.setBounds(405, 19, 85, 22);
+		cb1.setBounds(334, 19, 85, 22);
 		frame.getContentPane().add(cb1);
 
 		JLabel lblSpielnr = new JLabel("Spiel_Nr:");
-		lblSpielnr.setForeground(Color.ORANGE);
+		lblSpielnr.setForeground(Color.RED);
 		lblSpielnr.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblSpielnr.setBounds(306, 13, 85, 30);
+		lblSpielnr.setBounds(237, 13, 85, 30);
 		frame.getContentPane().add(lblSpielnr);
 
 		JTextArea t1 = new JTextArea();
-		t1.setBounds(382, 110, 754, 80);
+		t1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		t1.setForeground(new Color(0, 0, 0));
+		t1.setBounds(316, 111, 820, 70);
 		frame.getContentPane().add(t1);
 
 		JLabel label_1 = new JLabel("Frage:");
-		label_1.setForeground(Color.ORANGE);
+		label_1.setForeground(Color.RED);
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_1.setBounds(306, 101, 64, 36);
+		label_1.setBounds(237, 101, 64, 36);
 		frame.getContentPane().add(label_1);
 
 		t2 = new JTextField();
+		t2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t2.setColumns(10);
-		t2.setBounds(382, 194, 754, 36);
+		t2.setBounds(316, 194, 820, 36);
 		frame.getContentPane().add(t2);
 
 		JLabel label_2 = new JLabel("Antwort:");
-		label_2.setForeground(Color.ORANGE);
+		label_2.setForeground(Color.RED);
 		label_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_2.setBounds(253, 192, 117, 36);
+		label_2.setBounds(226, 192, 97, 36);
 		frame.getContentPane().add(label_2);
 
 		t3 = new JTextField();
+		t3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t3.setColumns(10);
-		t3.setBounds(382, 243, 754, 36);
+		t3.setBounds(316, 243, 820, 36);
 		frame.getContentPane().add(t3);
 
-		JLabel label_3 = new JLabel("Möglichkeit1:");
-		label_3.setForeground(Color.ORANGE);
-		label_3.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_3.setBounds(233, 241, 137, 36);
-		frame.getContentPane().add(label_3);
+		JLabel lblA = new JLabel("A:");
+		lblA.setForeground(Color.RED);
+		lblA.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblA.setBounds(281, 241, 35, 36);
+		frame.getContentPane().add(lblA);
 
 		t4 = new JTextField();
+		t4.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t4.setColumns(10);
-		t4.setBounds(382, 292, 754, 36);
+		t4.setBounds(316, 292, 820, 36);
 		frame.getContentPane().add(t4);
 
-		JLabel label_4 = new JLabel("Möglichkeit2:");
-		label_4.setForeground(Color.ORANGE);
-		label_4.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_4.setBounds(243, 290, 121, 36);
-		frame.getContentPane().add(label_4);
+		JLabel lblB = new JLabel("B:");
+		lblB.setForeground(Color.RED);
+		lblB.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblB.setBounds(281, 290, 35, 36);
+		frame.getContentPane().add(lblB);
 
 		t5 = new JTextField();
+		t5.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t5.setColumns(10);
-		t5.setBounds(382, 340, 754, 36);
+		t5.setBounds(316, 335, 820, 36);
 		frame.getContentPane().add(t5);
 
-		JLabel label_5 = new JLabel("Möglichkeit3:");
-		label_5.setForeground(Color.ORANGE);
-		label_5.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_5.setBounds(249, 340, 121, 36);
-		frame.getContentPane().add(label_5);
+		JLabel lblC = new JLabel("C:");
+		lblC.setForeground(Color.RED);
+		lblC.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblC.setBounds(281, 333, 35, 36);
+		frame.getContentPane().add(lblC);
 
 		t6 = new JTextField();
+		t6.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t6.setColumns(10);
-		t6.setBounds(382, 393, 754, 36);
+		t6.setBounds(316, 384, 820, 36);
 		frame.getContentPane().add(t6);
 
-		JLabel label_6 = new JLabel("Möglichkeit4:");
-		label_6.setForeground(Color.ORANGE);
-		label_6.setFont(new Font("Tahoma", Font.BOLD, 17));
-		label_6.setBounds(249, 388, 121, 43);
-		frame.getContentPane().add(label_6);
+		JLabel lblD = new JLabel("D:");
+		lblD.setForeground(Color.RED);
+		lblD.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblD.setBounds(281, 379, 35, 43);
+		frame.getContentPane().add(lblD);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(1191, 88, 530, 318);
@@ -416,16 +460,29 @@ public class Quiz_Verwaltung {
 		ta.setEditable(false);
 
 		JButton button_7 = new JButton("Print");
+		button_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					ta.print();
+				} catch (PrinterException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		button_7.setForeground(Color.RED);
+		button_7.setFont(new Font("Tahoma", Font.BOLD, 13));
 		button_7.setBounds(1624, 412, 97, 22);
 		frame.getContentPane().add(button_7);
 
 		JLabel lblFragenr = new JLabel("Frage_Nr:");
-		lblFragenr.setForeground(Color.ORANGE);
+		lblFragenr.setForeground(Color.RED);
 		lblFragenr.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblFragenr.setBounds(306, 56, 85, 30);
+		lblFragenr.setBounds(237, 56, 85, 30);
 		frame.getContentPane().add(lblFragenr);
 
 		cb2 = new JComboBox();
+		cb2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		cb2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -433,11 +490,10 @@ public class Quiz_Verwaltung {
 
 				try {	 ///CODE Verbessern !!!!!
 
-					String query="select Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl from (FragenPool , Quiz_Fragen) where Quiz_Fragen.Frage_Nr = FragenPool.FrageNr and Quiz_Fragen.Spiel_Nummer =? and Quiz_Fragen.Frage_Nr=?";
+					String query="select Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl from (FragenPool , Quiz_Fragen) where Quiz_Fragen.Frage_Nr = FragenPool.FrageNr and Quiz_Fragen.Spiel_Nummer ='"+cb1.getSelectedItem().toString()+"' and Quiz_Fragen.Frage_Nr='"+cb2.getSelectedItem().toString()+"'and Quiz_Fragen.Bar_Nr='"+tnummer.getText()+"'";
 
 					PreparedStatement pst1=con.prepareStatement(query);
-					pst1.setString(1, cb1.getSelectedItem().toString());
-					pst1.setString(2, cb2.getSelectedItem().toString());
+
 					ResultSet rs= pst1.executeQuery();
 
 					if ((rs.next()))
@@ -466,7 +522,7 @@ public class Quiz_Verwaltung {
 
 			}
 		});
-		cb2.setBounds(405, 64, 85, 22);
+		cb2.setBounds(334, 64, 85, 22);
 		frame.getContentPane().add(cb2);
 
 		JLabel label = new JLabel("Kneipe_Nummer:");
@@ -475,29 +531,75 @@ public class Quiz_Verwaltung {
 		label.setBounds(1553, 13, 168, 16);
 		frame.getContentPane().add(label);
 
-		textField = new JTextField();
-		textField.setText("310514");
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBounds(1638, 38, 68, 22);
-		frame.getContentPane().add(textField);
+		tnummer = new JTextField();
+		tnummer.setFont(new Font("Tahoma", Font.BOLD, 13));
+		tnummer.setText("310514");
+		tnummer.setEditable(false);
+		tnummer.setColumns(10);
+		tnummer.setBounds(1638, 38, 68, 22);
+		frame.getContentPane().add(tnummer);
 
-		textField_1 = new JTextField();
-		textField_1.setText("#KneipeXXXY");
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(1532, 38, 93, 22);
-		frame.getContentPane().add(textField_1);
+		tname = new JTextField();
+		tname.setFont(new Font("Tahoma", Font.BOLD, 13));
+		tname.setText("#KneipeXXXY");
+		tname.setEditable(false);
+		tname.setColumns(10);
+		tname.setBounds(1532, 38, 93, 22);
+		frame.getContentPane().add(tname);
 
 		JLabel lblFrage = new JLabel("Frage:");
-		lblFrage.setForeground(Color.ORANGE);
+		lblFrage.setForeground(Color.RED);
 		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblFrage.setBounds(517, 56, 85, 30);
+		lblFrage.setBounds(431, 56, 64, 30);
 		frame.getContentPane().add(lblFrage);
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(585, 64, 551, 22);
+		comboBox = new JComboBox();
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+
+				try {	 ///CODE Verbessern !!!!!
+
+					String query="select Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl from FragenPool where Frage='"+comboBox.getSelectedItem().toString()+"'";
+
+					PreparedStatement pst1=con.prepareStatement(query);
+
+					ResultSet rs= pst1.executeQuery();
+
+					if ((rs.next()))
+					{
+
+						t1.setText(rs.getString("Frage"));
+						t2.setText(rs.getString("ErsteWahl"));
+						t3.setText(rs.getString("ErsteWahl"));
+						t4.setText(rs.getString("ZweiteWahl"));
+						t5.setText(rs.getString("DritteWahl"));
+						t6.setText(rs.getString("VierteWahl"));
+					}
+
+					pst1.close();
+
+
+				} catch (Exception e3) {
+					e3.printStackTrace();
+				}
+
+
+
+
+
+
+
+			}
+		});
+		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
+		comboBox.setBounds(493, 64, 643, 22);
 		frame.getContentPane().add(comboBox);
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image.jpg"));
+		lblNewLabel.setBounds(0, 0, 1745, 733);
+		frame.getContentPane().add(lblNewLabel);
 
 
 

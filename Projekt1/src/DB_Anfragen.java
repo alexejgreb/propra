@@ -1,4 +1,5 @@
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -75,7 +76,7 @@ public class DB_Anfragen {
 		//con=Database1.dbConnector();
 
 		try {
-			String query="select DISTINCT Kneipe_Nr ,Adresse, Telefon_Nr, Besitzer, Email from Kneipe_Teilnehmer where Vermerk =1;";
+			String query="select DISTINCT Kneipe_Nr ,Adresse, Telefon_Nr, Besitzer, Email from Kneipe_Teilnehmer where Vermerk =1";
 			PreparedStatement pst=con.prepareStatement(query);
 			ResultSet rs= pst.executeQuery();
 			t.setModel(DbUtils.resultSetToTableModel(rs));
@@ -514,9 +515,139 @@ public class DB_Anfragen {
 
 
 
+	public static void Update_Lizenc1(JComboBox CB){ ////
+		//con=Database1.dbConnector();
+		con = DataBaseConnector.dbConnectorMariaDB();
+
+
+		try{
+
+			String value115=CB.getSelectedItem().toString();
+			String sql22="update Spiel_Licence set Vermerk=0 ,Licence_Nr='S' where Kneipe_Nr='"+value115+"' ";
+			PreparedStatement pst3=con.prepareStatement(sql22);
+			pst3.execute();
+
+
+			JOptionPane.showMessageDialog(null,"Gespeert");
+
+
+		}catch(Exception e3){
+			JOptionPane.showMessageDialog(null,"Ungültiges Eintrag");
+		}
+
+
+	}
 
 
 
+	public static void Update_Lizenc2(JComboBox CB){ ////
+		//con=Database1.dbConnector();
+		con = DataBaseConnector.dbConnectorMariaDB();
+
+
+		try{
+
+			String value115=CB.getSelectedItem().toString();
+			String sql22="update Kneipe_Teilnehmer set Vermerk=2  where Kneipe_Nr='"+value115+"' ";
+			PreparedStatement pst3=con.prepareStatement(sql22);
+			pst3.execute();
+
+
+			JOptionPane.showMessageDialog(null,"Die Kneipe NR : '"+value115+"' wurde erfolgreich gespeert");
+
+
+		}catch(Exception e3){
+			JOptionPane.showMessageDialog(null,"Prüfen sie ihre Daten");
+		}
+
+
+	}
+
+	public static void Table_Bar_Reg(JTable t) {
+
+		con = DataBaseConnector.dbConnectorMariaDB();
+		//con=Database1.dbConnector();
+
+		try {
+			String query="select Bar_Nr as Kneipe_Nummer,Surname as Vorname,First_Name as Nachname,Street as Strasse,City as Stadt,Post as PLZ,Mobil as TalefonNummer,Mail as Email_Adresse,Nickname as Kneipe_Name from Bar where Note=1 or Note =0";
+			PreparedStatement pst=con.prepareStatement(query);
+			ResultSet rs= pst.executeQuery();
+			t.setModel(DbUtils.resultSetToTableModel(rs));
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
+	public static void Bar_Nr_2(JComboBox C){ //// Combo_Box Fragen_Nr
+		con = DataBaseConnector.dbConnectorMariaDB();
+		//con=Database1.dbConnector();
+		try{
+			String query2="select  Bar_Nr from Bar where Note=1 or Note=0";
+			PreparedStatement pst1=con.prepareStatement(query2);
+
+			ResultSet rs= pst1.executeQuery();
+			while (rs.next()){
+				String Kneipe_Nr = rs.getString("Bar_Nr");
+				C.addItem(Kneipe_Nr);
+
+			}
+
+			rs.close();
+
+		}
+		catch(Exception e2){
+			e2.printStackTrace();
+
+		}
+
+	}
+
+
+	public static void Select_Bar_Info( JTextField name1,JTextField vorname1,JTextField strasse1,JTextField stadt1,JTextField plz1,JTextField tel1,JTextField email1,JTextField bar1,JTextArea msg1,JComboBox CB){ //// Combo_Box Fragen_Nr
+		//con=Database1.dbConnector();
+
+		con = DataBaseConnector.dbConnectorMariaDB();
+
+		try {
+			String query1="select Surname,First_Name,Street,City,Post,Mobil,Mail,Nickname,Message from Bar where Bar_Nr='"+CB.getSelectedItem().toString()+"'";
+			PreparedStatement pst11=con.prepareStatement(query1);
+
+			ResultSet rs1= pst11.executeQuery();
+			while (rs1.next()){
+				String name = rs1.getString("Surname");
+				name1.setText(name);
+				String vorname = rs1.getString("First_Name");
+				vorname1.setText(vorname);
+				String strasse = rs1.getString("Street");
+				strasse1.setText(strasse);
+				String stadt = rs1.getString("City");
+				stadt1.setText(stadt);
+				String plz = rs1.getString("post");
+				plz1.setText(plz);
+				String tel = rs1.getString("Mobil");
+				tel1.setText(tel);
+				String email = rs1.getString("Mail");
+				email1.setText(email);
+				String bar = rs1.getString("Nickname");
+				bar1.setText(bar);
+				String msg = rs1.getString("Message");
+				msg1.setText(msg);
+
+			}
+
+			rs1.close();
+
+		}
+		catch(Exception e2){
+			e2.printStackTrace();
+
+		}
+
+	}
 
 
 
