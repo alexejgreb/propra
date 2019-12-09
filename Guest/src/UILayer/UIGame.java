@@ -90,8 +90,8 @@ public class UIGame extends JFrame {
 				try {
 					UIGame frame = new UIGame();
 					//TODO ersetze die Zeile mit:
-					// frame.initializeQuizAndTimer(Login.guest.getGameNumber());
-					frame.initializeQuizAndTimer(907);
+					frame.initializeQuizAndTimer(Login.guest.getGameNumber());
+					//frame.initializeQuizAndTimer(907);
 					frame.pack();
 					frame.setVisible(true);
 				} catch (Exception e) {

@@ -124,7 +124,7 @@ public class Fragen_Verwaltung {
 		delete.setFont(new Font("Tahoma", Font.BOLD, 16));
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int YesorNo = JOptionPane.showConfirmDialog(null, "Sind Sie sicher wollen sie die Frage Nummer : '"+cbb.getSelectedItem().toString()+"' enfernen !","Frage Entfernen",JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, "Sind Sie sicher, dass Sie die FrageNr: '"+cbb.getSelectedItem().toString()+"' entfernen wollen?","Frage entfernen",JOptionPane.YES_NO_OPTION);
 				if(YesorNo==0){
 					DB_Anfragen.Delete_Frage(Integer.parseInt(cbb.getSelectedItem().toString()), Integer.parseInt(tnummer.getText()), ta, Zeit);
 				}
@@ -140,7 +140,7 @@ public class Fragen_Verwaltung {
 		update.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				int YesorNo = JOptionPane.showConfirmDialog(null, "Sind sie sicher wollen sie die Farge nummer '"+cbb.getSelectedItem().toString()+"' ändern!!!!!","Frage Ändern",JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, "Sind sie sicher, dass Sie die FrageNr '"+cbb.getSelectedItem().toString()+"' ändern wollen?","Frage ändern",JOptionPane.YES_NO_OPTION);
 
 
 				if(YesorNo==0){
@@ -153,7 +153,7 @@ public class Fragen_Verwaltung {
 		update.setBounds(20, 157, 118, 45);
 		frame.getContentPane().add(update);
 
-		JButton print = new JButton("Print");
+		JButton print = new JButton("Drucken");
 		print.setForeground(Color.RED);
 		print.setFont(new Font("Tahoma", Font.BOLD, 16));
 		print.addActionListener(new ActionListener() {
@@ -162,7 +162,7 @@ public class Fragen_Verwaltung {
 				try {
 					ta.print();
 				} catch (PrinterException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 
@@ -195,7 +195,7 @@ public class Fragen_Verwaltung {
 		zurueck.setBounds(20, 273, 118, 45);
 		frame.getContentPane().add(zurueck);
 
-		JButton leeren = new JButton("Leeren");
+		JButton leeren = new JButton("Felder leeren");
 		leeren.setForeground(Color.RED);
 		leeren.setFont(new Font("Tahoma", Font.BOLD, 16));
 		leeren.addActionListener(new ActionListener() {
@@ -218,7 +218,7 @@ public class Fragen_Verwaltung {
 		table = new JTable();
 		scrollPane_1.setViewportView(table);
 
-		JLabel label = new JLabel("Frage_Nr:");
+		JLabel label = new JLabel("FragenNr:");
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Tahoma", Font.BOLD, 19));
 		label.setBounds(188, 46, 106, 30);
@@ -285,7 +285,7 @@ public class Fragen_Verwaltung {
 		scrollPane.setViewportView(ta);
 		ta.setEditable(false);
 
-		JButton button_7 = new JButton("Print");
+		JButton button_7 = new JButton("Drucken");
 		button_7.setForeground(Color.RED);
 		button_7.setFont(new Font("Tahoma", Font.BOLD, 16));
 		button_7.addActionListener(new ActionListener() {
@@ -293,7 +293,7 @@ public class Fragen_Verwaltung {
 				try {
 					ta.print();
 				} catch (PrinterException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 			}
@@ -301,7 +301,7 @@ public class Fragen_Verwaltung {
 		button_7.setBounds(1636, 438, 97, 30);
 		frame.getContentPane().add(button_7);
 
-		JButton exit = new JButton("EXIT");
+		JButton exit = new JButton("Schließen");
 		exit.setForeground(Color.RED);
 		exit.setFont(new Font("Tahoma", Font.BOLD, 16));
 		exit.addActionListener(new ActionListener() {
@@ -312,7 +312,7 @@ public class Fragen_Verwaltung {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 				frame.dispose();
