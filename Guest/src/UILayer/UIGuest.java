@@ -2,8 +2,6 @@ package UILayer;
 
 
 
-import DataLayer.DataBaseConnector;
-import LogicLayer.Guest;
 import LogicLayer.Login;
 import LogicLayer.Validator;
 
@@ -11,11 +9,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class UIGuest extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel northPanel;
+	private JPanel southPanel;
 	private JTextField textFieldGameID;
 	String id_num =null;
 	int tempIdNumber = -1;
@@ -52,33 +51,44 @@ public class UIGuest extends JFrame {
 	 */
 	public UIGuest() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		setBounds(100, 100, 600, 500);
+		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
+		northPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		contentPane.add(northPanel, BorderLayout.NORTH);
+
+		southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		contentPane.add(southPanel,BorderLayout.SOUTH);
+
+		JLabel labelHeader = new JLabel("Gastlogin");
+		labelHeader.setFont(new Font("Tahoma",Font.BOLD,18));
+		labelHeader.setBounds(0, 0, 0, 0);
+		northPanel.add(labelHeader);
 		
-		JLabel LabelHeader = new JLabel("Gastlogin");
-		LabelHeader.setBounds(0, 0, 0, 0);
-		contentPane.add(LabelHeader);
-		
-		JLabel lblNewLabel = new JLabel("Spiel-ID");
-		lblNewLabel.setBounds(0, 0, 0, 0);
-		contentPane.add(lblNewLabel);
+		JLabel labelGameID = new JLabel("Spiel-ID: ");
+		labelGameID.setFont(new Font("Tahoma",Font.BOLD,15));
+		labelGameID.setBounds(0, 0, 0, 0);
+		southPanel.add(labelGameID);
 		
 		textFieldGameID = new JTextField();
+		labelGameID.setFont(new Font("Tahoma",Font.BOLD,13));
 		textFieldGameID.setBounds(0, 0, 0, 0);
-		contentPane.add(textFieldGameID);
-		textFieldGameID.setColumns(10);
+		southPanel.add(textFieldGameID);
+		textFieldGameID.setColumns(20);
 		
-		JLabel label = new JLabel("");
-		label.setBounds(0, 0, 0, 0);
-		contentPane.add(label);
+		JLabel background = new JLabel("");
+		background.setBounds(0, 0, 0, 0);
+		background.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
+		contentPane.add(background);
 		
-		JButton ButtonLogin = new JButton("Weiter zum Spiel");
-		ButtonLogin.setBounds(0, 0, 0, 0);
-		contentPane.add(ButtonLogin);
-		ButtonLogin.addActionListener(this::doStuff);
+		JButton buttonLogin = new JButton("Weiter zum Spiel");
+		buttonLogin.setFont(new Font("Tahoma",Font.BOLD,15));
+		buttonLogin.setForeground(new Color(255, 0, 0));
+		buttonLogin.setBounds(0, 0, 0, 0);
+		southPanel.add(buttonLogin);
+		buttonLogin.addActionListener(this::doStuff);
 
 	}
 	private void doStuff(ActionEvent actionEvent) {
