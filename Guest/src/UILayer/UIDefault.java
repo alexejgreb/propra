@@ -62,7 +62,7 @@ public class UIDefault extends JFrame {
 
 		/*
 		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon("Ressources\\index.jpg"));
+		background.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
 		background.setBounds(100, 100, 700, 500);
 		contentPane.add(background);
 		*/

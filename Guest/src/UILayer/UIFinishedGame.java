@@ -72,19 +72,19 @@ public class UIFinishedGame extends JFrame {
         //Spielnummer
         JLabel labelGameNr = new JLabel("Spiel Nr: "+ Login.guest.getGameNumber());
         labelGameNr.setFont(new Font("Tahoma", Font.BOLD, 15));
-        labelGameNr.setBounds(5, 157, 97, 14);
+        labelGameNr.setBounds(5, 157, 120, 14);
         contentPane.add(labelGameNr);
 
         //Punkte
         JLabel labelPoints = new JLabel("Punkte: "+ Login.guest.getPoints());
         labelPoints.setFont(new Font("Tahoma", Font.BOLD, 15));
-        labelPoints.setBounds(5, 126, 97, 14);
+        labelPoints.setBounds(5, 126, 120, 14);
         contentPane.add(labelPoints);
 
         //Platzierung
         JLabel labelUserPlacing = new JLabel("Platz: "+ Login.guest.getPlacing());
         labelUserPlacing.setFont(new Font("Tahoma", Font.BOLD, 15));
-        labelUserPlacing.setBounds(5, 95, 97, 14);
+        labelUserPlacing.setBounds(5, 95, 120, 14);
         contentPane.add(labelUserPlacing);
 
 
