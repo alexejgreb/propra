@@ -277,7 +277,7 @@ public class Quiz_Fragen_Bearbeiten {
 			public void actionPerformed(ActionEvent e) {
 
 
-				int YesorNo = JOptionPane.showConfirmDialog(null, " Wollen sie die Frage Nr:'"+t1.getText()+"' von den Spiel Nr :'"+t.getText()+"' entfernen !!!!","Frage_Delete", JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, " Wollen sie die Frage Nr:'"+t1.getText()+"' vom Spiel Nr :'"+t.getText()+"' entfernen?","Frage löschen", JOptionPane.YES_NO_OPTION);
 
 				if(YesorNo==0){
 					try{
@@ -288,18 +288,18 @@ public class Quiz_Fragen_Bearbeiten {
 						PreparedStatement pst3=con.prepareStatement(Delete);
 						pst3.execute();
 						pst3.close();
-						JOptionPane.showMessageDialog(null,"die Frage '"+t1.getText()+"' ist erfolgreich vom Spiel '"+t.getText()+"' entfernt worden!!!");
+						JOptionPane.showMessageDialog(null,"Die Frage '"+t1.getText()+"' ist erfolgreich vom Spiel '"+t.getText()+"' entfernt worden.");
 
 					} catch(Exception e1){
 						e1.printStackTrace();
 					}
 
-					Quiz_Verwaltung.ta.append("\t Frage_Entfernt: \n\n"+"Spiel_Nr:\t"+t.getText()+"\n======================================\n"+"FrageNr:\t"+t1.getText()+"\n\n"+"Die Frage:\t"+l3.getText()+"\n======================================\n"+"\"\n\n"+":\t\n\n"+
+					Quiz_Verwaltung.ta.append("\t Frage entfernt: \n\n"+"Spiel Nr:\t"+t.getText()+"\n======================================\n"+"FrageNr:\t"+t1.getText()+"\n\n"+"Die Frage:\t"+l3.getText()+"\n======================================\n"+"\"\n\n"+":\t\n\n"+
 							" \t"+" \n======================================\n");
 
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"Es ist nichts passiert!!!!");
+					JOptionPane.showMessageDialog(null,"Es ist nichts passiert.");
 				}
 
 			}
@@ -360,7 +360,7 @@ public class Quiz_Fragen_Bearbeiten {
 		cb1.setBounds(289, 78, 103, 22);
 		frame.getContentPane().add(cb1);
 
-		JButton btnExit = new JButton("EXIT");
+		JButton btnExit = new JButton("Schließen");
 		btnExit.setForeground(Color.RED);
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnExit.addActionListener(new ActionListener() {
@@ -384,7 +384,7 @@ public class Quiz_Fragen_Bearbeiten {
 		l3.setForeground(Color.BLUE);
 		l3.setFont(new Font("Arial Black", Font.BOLD, 11));
 
-		JLabel label = new JLabel("Kneipe_Nummer:");
+		JLabel label = new JLabel("Kneipennummer:");
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		label.setBounds(593, 13, 168, 16);
@@ -405,6 +405,7 @@ public class Quiz_Fragen_Bearbeiten {
 		frame.getContentPane().add(tnummer);
 
 		JLabel lblNewLabel_2 = new JLabel("New label");
+		//TODO
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
 		lblNewLabel_2.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel_2);

@@ -182,13 +182,13 @@ public class Quiz_Terminer {
         tnummer.setBounds(681, 39, 68, 22);
         frame.getContentPane().add(tnummer);
 
-        JLabel label = new JLabel("Kneipe_Nummer:");
+        JLabel label = new JLabel("Kneipennummer:");
         label.setForeground(Color.RED);
         label.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
         label.setBounds(581, 10, 168, 16);
         frame.getContentPane().add(label);
 
-        JLabel lblLocalespielnr = new JLabel("Locale_SpielNR:");
+        JLabel lblLocalespielnr = new JLabel("Lokale SpielNr:");
         lblLocalespielnr.setForeground(Color.RED);
         lblLocalespielnr.setFont(new Font("Tahoma", Font.BOLD, 15));
         lblLocalespielnr.setBounds(12, 27, 125, 16);

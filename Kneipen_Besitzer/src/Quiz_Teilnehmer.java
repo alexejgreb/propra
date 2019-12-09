@@ -80,7 +80,7 @@ public class Quiz_Teilnehmer {
 		frame.setAlwaysOnTop(true);
 		frame.getContentPane().setLayout(null);
 
-		JLabel label = new JLabel("Spiel_Nummer:");
+		JLabel label = new JLabel("Spielnummer:");
 		label.setFont(new Font("Tahoma", Font.BOLD, 15));
 		label.setForeground(Color.RED);
 		label.setBounds(12, 13, 176, 16);
@@ -109,7 +109,7 @@ public class Quiz_Teilnehmer {
 		btnSuchen.setBounds(602, 87, 153, 50);
 		frame.getContentPane().add(btnSuchen);
 
-		JButton btnExit = new JButton("EXIT");
+		JButton btnExit = new JButton("Schließen");
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnExit.setForeground(Color.ORANGE);
 		btnExit.addActionListener(new ActionListener() {
@@ -126,13 +126,13 @@ public class Quiz_Teilnehmer {
 		lblNewLabel.setBounds(12, 73, 53, 16);
 		frame.getContentPane().add(lblNewLabel);
 
-		JButton btnPrint = new JButton("Print");
+		JButton btnPrint = new JButton("Drucken");
 		btnPrint.setForeground(Color.ORANGE);
 		btnPrint.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnPrint.setBounds(602, 213, 153, 39);
 		frame.getContentPane().add(btnPrint);
 
-		JLabel label_1 = new JLabel("Kneipe_Nummer:");
+		JLabel label_1 = new JLabel("Kneipennummer:");
 		label_1.setForeground(Color.RED);
 		label_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		label_1.setBounds(587, 14, 168, 16);
@@ -231,6 +231,7 @@ public class Quiz_Teilnehmer {
 		tt.setColumns(10);
 
 		lblNewLabel_1 = new JLabel("");
+		//TODO
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel_1.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel_1);
