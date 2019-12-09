@@ -106,7 +106,7 @@ public class Fragen_Verwaltung {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton insert = new JButton("Insert");
+		JButton insert = new JButton("Einfügen");
 		insert.setForeground(Color.RED);
 		insert.setFont(new Font("Tahoma", Font.BOLD, 16));
 		insert.addActionListener(new ActionListener() {
@@ -119,12 +119,12 @@ public class Fragen_Verwaltung {
 		insert.setBounds(20, 41, 118, 45);
 		frame.getContentPane().add(insert);
 
-		JButton delete = new JButton("Delete");
+		JButton delete = new JButton("Löschen");
 		delete.setForeground(Color.RED);
 		delete.setFont(new Font("Tahoma", Font.BOLD, 16));
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int YesorNo = JOptionPane.showConfirmDialog(null, "Sind sie sicher wollen sie die Farge Nummer : '"+cbb.getSelectedItem().toString()+"' enfernen !","Frage Entfernen",JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, "Sind Sie sicher wollen sie die Frage Nummer : '"+cbb.getSelectedItem().toString()+"' enfernen !","Frage Entfernen",JOptionPane.YES_NO_OPTION);
 				if(YesorNo==0){
 					DB_Anfragen.Delete_Frage(Integer.parseInt(cbb.getSelectedItem().toString()), Integer.parseInt(tnummer.getText()), ta, Zeit);
 				}

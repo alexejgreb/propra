@@ -138,7 +138,7 @@ public class UIRegistration extends JFrame {
 
 				if(userPWString.equals(userPWStringRepeat)){
 					Login.registerGuest(tempUserName, tempEmail, userPWString);
-					UIGuest.main(null);
+					UIDefault.main(null);
 					dispose();
 				} else {
 					JDialog JDialogWrongPW = new JDialog();
