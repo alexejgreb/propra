@@ -1,37 +1,9 @@
-import java.awt.EventQueue;
-
-
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import java.awt.Font;
-
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JRadioButton;
-
-import java.awt.Color;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-
-import net.proteanit.sql.DbUtils;
-import javax.swing.ImageIcon;
 
 
 public class Bar_Owner {
@@ -100,6 +72,9 @@ public class Bar_Owner {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		DataBaseConnector.setServerAddress(args[0]);
+		DataBaseConnector.setServerUsername(args[1]);
+		DataBaseConnector.setServerPassword(args[2]);
 
 		try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
