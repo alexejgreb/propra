@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -34,7 +35,8 @@ public class Kneipen_Besitzer {
 	public static JTextField txtkneipexxxy;
 	private static JScrollPane scrollPane;
 	static Connection con =null;
-
+	private static JTextArea info;
+	private static JTextField neu;
 	/**
 	 * Launch the application.
 	 * @throws UnsupportedLookAndFeelException
@@ -56,15 +58,14 @@ public class Kneipen_Besitzer {
 					window.frame.setVisible(true);
 
 					//ff.setText(t);
-
+					neu.setVisible(false);
 					ff.setText(Bar_Owner.bar.getText());
 
 					txtkneipexxxy.setText(Bar_Owner.pub.getText());
 
 
-
 					try {
-						String query="select Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen from (Spiel_Gnehmigt) where status =1";
+						String query="select Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen from (Spiel_Gnehmigt) where status =1 and Bar_Nr='"+ff.getText()+"'";
 						PreparedStatement pst=con.prepareStatement(query);
 						ResultSet rs= pst.executeQuery();
 						table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -80,6 +81,18 @@ public class Kneipen_Besitzer {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+
+
+				DB_Anfragen.Neu_Anmeldung(ff.getText(), neu);
+
+				int i = Integer.parseInt(neu.getText());
+				if(i==1){
+					info.setVisible(true);
+				}else{
+					info.setVisible(false);
+				}
+
+
 			}
 		});
 	}
@@ -132,7 +145,7 @@ public class Kneipen_Besitzer {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				frame.dispose();
+
 
 
 
@@ -149,7 +162,7 @@ public class Kneipen_Besitzer {
 		btnFragenverwalten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
+				info.setVisible(false);
 				Fragen_Verwaltung FV= new Fragen_Verwaltung();
 				try {
 					FV.Screen();
@@ -173,7 +186,7 @@ public class Kneipen_Besitzer {
 		btnQuizstarten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
+				info.setVisible(false);
 				Spiel_Starten ST= new Spiel_Starten();
 				try {
 					ST.Screen2();
@@ -184,6 +197,7 @@ public class Kneipen_Besitzer {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+
 				frame.dispose();
 			}
 		});
@@ -194,7 +208,7 @@ public class Kneipen_Besitzer {
 		btnQuizverwaltung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
+				info.setVisible(false);
 				Quiz_Verwaltung QV= new Quiz_Verwaltung();
 				try {
 					QV.Screen2();
@@ -271,9 +285,22 @@ public class Kneipen_Besitzer {
 		btnAnmeldung.setBounds(33, 358, 194, 55);
 		frame.getContentPane().add(btnAnmeldung);
 
+		info = new JTextArea();
+		info.setBackground(Color.RED);
+		info.setFont(new Font("Monospaced", Font.BOLD, 18));
+		info.setText("Hallo und Herzlichen WILKOMMEN !!!!!!\r\n\r\n\r\nmit dieser APP kannst du in deiner Kneipe unvergesliche Quizabende in deiner Kneipe veranstalten .\r\nBEVOR du einen QUIZ_Abend durchführen kannst , sende zunächst eine ANFRAGE (--> ANFRAGE SENDEN).\r\nSobald deine Kneipe geprüft wurde, bekommst du eine E-Mail mit der Bestätigung.\r\n\r\n----> Diese Meldung wird Ihnen gezeigt auch , weil sie ihren Password nicht geändert haben.\r\nÄndern sie zu ihre Sicherheit ihren Password :)\r\ndann kannst du QUIZ erstellen.\r\nViel Spaß !!!!!!\r\n:D ");
+		info.setBounds(431, 132, 1117, 230);
+		frame.getContentPane().add(info);
+
+		neu = new JTextField();
+		neu.setText("0");
+		neu.setBounds(1526, 42, 22, 22);
+		frame.getContentPane().add(neu);
+		neu.setColumns(10);
+
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\Krombacher-kuendigt-Preiserhoehung-an_big_teaser_article.jpg"));
-		lblNewLabel.setBounds(0, 0, 1745, 733);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\18006_krombacher_alkoholfrei_450x450 (1).jpg"));
+		lblNewLabel.setBounds(0, 0, 1757, 733);
 		frame.getContentPane().add(lblNewLabel);
 	}
 }

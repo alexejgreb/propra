@@ -26,10 +26,17 @@ public class Quiz_Teilnehmer {
 	private JFrame frame;
 	private JTextField textField;
 	private JTable table;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private static JTextField tname;
+	private static JTextField tnummer;
 	private JTextField txtDdmmjjjjj;
-
+	private static JComboBox comboBox;
+	private JTextField uhr;
+	private JTextField textField_2;
+	private JTextField min;
+	private JTextField ar;
+	private static JTextField t;
+	private static JTextField tt;
+	private JLabel lblNewLabel_1;
 	/**
 	 * Launch the application.
 	 * @throws UnsupportedLookAndFeelException
@@ -46,6 +53,17 @@ public class Quiz_Teilnehmer {
 				try {
 					Quiz_Teilnehmer window = new Quiz_Teilnehmer();
 					window.frame.setVisible(true);
+
+
+					tname.setText(Quiz_Verwaltung.tname.getText());
+					tnummer.setText(Quiz_Verwaltung.tnummer.getText());
+					t.setVisible(false);
+					tt.setVisible(false);
+					DB_Anfragen.Select_SpielNR(Integer.parseInt(tnummer.getText()), comboBox);
+
+
+
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -120,34 +138,102 @@ public class Quiz_Teilnehmer {
 		label_1.setBounds(587, 14, 168, 16);
 		frame.getContentPane().add(label_1);
 
-		textField_1 = new JTextField();
-		textField_1.setText("#KneipeXXXY");
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(561, 43, 93, 22);
-		frame.getContentPane().add(textField_1);
+		tname = new JTextField();
+		tname.setText("#KneipeXXXY");
+		tname.setEditable(false);
+		tname.setColumns(10);
+		tname.setBounds(561, 43, 93, 22);
+		frame.getContentPane().add(tname);
 
-		textField_2 = new JTextField();
-		textField_2.setText("310514");
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBounds(666, 43, 68, 22);
-		frame.getContentPane().add(textField_2);
+		tnummer = new JTextField();
+		tnummer.setText("310514");
+		tnummer.setEditable(false);
+		tnummer.setColumns(10);
+		tnummer.setBounds(666, 43, 68, 22);
+		frame.getContentPane().add(tnummer);
 
 		txtDdmmjjjjj = new JTextField();
+		txtDdmmjjjjj.setEditable(false);
 		txtDdmmjjjjj.setFont(new Font("Tahoma", Font.BOLD, 15));
 		txtDdmmjjjjj.setText("dd/mm/jjjjj");
-		txtDdmmjjjjj.setBounds(77, 71, 176, 22);
+		txtDdmmjjjjj.setBounds(77, 71, 106, 22);
 		frame.getContentPane().add(txtDdmmjjjjj);
 		txtDdmmjjjjj.setColumns(10);
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(330, 11, 153, 22);
+		comboBox = new JComboBox();
+		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				textField.setText(comboBox.getSelectedItem().toString());
+
+				DB_Anfragen.Select_Quiz_Teilnehmer_Info(textField, txtDdmmjjjjj, uhr, min, t, tt);
+
+				DB_Anfragen.Quiz_Teilnehmer(table,textField);
+				ar.setText(t.getText()+"/"+tt.getText());
+			}
+		});
+		comboBox.setBounds(330, 11, 134, 22);
 		frame.getContentPane().add(comboBox);
 
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(270, 71, 153, 22);
-		frame.getContentPane().add(comboBox_1);
+		JLabel lblZeit = new JLabel("Zeit:");
+		lblZeit.setForeground(Color.RED);
+		lblZeit.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblZeit.setBounds(195, 73, 53, 16);
+		frame.getContentPane().add(lblZeit);
+
+		uhr = new JTextField();
+		uhr.setFont(new Font("Tahoma", Font.BOLD, 13));
+		uhr.setText("00");
+		uhr.setEditable(false);
+		uhr.setBounds(244, 71, 33, 22);
+		frame.getContentPane().add(uhr);
+		uhr.setColumns(10);
+
+		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		textField_2.setText(":");
+		textField_2.setColumns(10);
+		textField_2.setBounds(278, 71, 13, 22);
+		frame.getContentPane().add(textField_2);
+
+		min = new JTextField();
+		min.setFont(new Font("Tahoma", Font.BOLD, 13));
+		min.setText("00");
+		min.setEditable(false);
+		min.setColumns(10);
+		min.setBounds(289, 71, 33, 22);
+		frame.getContentPane().add(min);
+
+		JLabel lblFragenrunden = new JLabel("Fragen/Runden:");
+		lblFragenrunden.setForeground(Color.RED);
+		lblFragenrunden.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblFragenrunden.setBounds(12, 106, 134, 16);
+		frame.getContentPane().add(lblFragenrunden);
+
+		ar = new JTextField();
+		ar.setText("10/1");
+		ar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		ar.setEditable(false);
+		ar.setBounds(148, 100, 58, 22);
+		frame.getContentPane().add(ar);
+		ar.setColumns(10);
+
+		t = new JTextField();
+		t.setBounds(244, 100, 116, 22);
+		frame.getContentPane().add(t);
+		t.setColumns(10);
+
+		tt = new JTextField();
+		tt.setBounds(372, 103, 116, 22);
+		frame.getContentPane().add(tt);
+		tt.setColumns(10);
+
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
+		lblNewLabel_1.setBounds(0, 0, 773, 265);
+		frame.getContentPane().add(lblNewLabel_1);
 	}
 
 	/**
@@ -158,5 +244,4 @@ public class Quiz_Teilnehmer {
 		frame.setBounds(100, 100, 779, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
 }

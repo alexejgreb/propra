@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -99,9 +100,7 @@ public class Bar_Owner {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		DataBaseConnector.setServerAddress(args[0]);
-		DataBaseConnector.setServerUsername(args[1]);
-		DataBaseConnector.setServerPassword(args[2]);
+
 		try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 		} catch (ClassNotFoundException | InstantiationException
@@ -210,8 +209,7 @@ public class Bar_Owner {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		//frame.setBounds(100, 100, 1751, 768);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setBounds(100, 100, 1751, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -541,7 +539,7 @@ public class Bar_Owner {
 						btnRegi.setText("Registrieren");
 						msg.setText("");
 						msg.setEditable(true);
-						t1.setText("Bitte füllen sie dieses Anmelderformular aus. Vielen Dank.");
+						t1.setText("Bitte fühlen sie Sorgfälltig dieses Anmelderformular Vielen DANK :)");
 						t01.setVisible(false);
 						epwd.setVisible(false);
 						t1.setVisible(false);

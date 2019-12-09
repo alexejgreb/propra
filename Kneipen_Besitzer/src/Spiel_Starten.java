@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -39,7 +40,7 @@ public class Spiel_Starten {
 
 	private JFrame frame;
 	private static JTable table;
-	private JTextField licence;
+	public static  JTextField licence;
 	private JTextField t3;
 	private JTextField t4;
 	private JTextField t5;
@@ -51,7 +52,7 @@ public class Spiel_Starten {
 	private static JLabel l3;
 	private static JLabel l4;
 	private static JLabel lbl,l11;
-	private JTextArea ta;
+	public static JTextArea ta;
 	public static  JComboBox cb,cc;
 	private static JComboBox c1;
 	private JButton btnNewButton_1;
@@ -67,22 +68,23 @@ public class Spiel_Starten {
 	public static JTextField tvt;
 	private static JLabel l;
 	private JLabel lblStart;
-	private JComboBox comboBox;
-	private JComboBox comboBox_1;
+	public static JComboBox comboBox;
+	public static JComboBox comboBox_1;
 	private JLabel lblDatum;
-	private JComboBox comboBox_2;
-	private JComboBox comboBox_3;
-	private JComboBox comboBox_4;
-	private JLabel Zeit;
+	public static JComboBox comboBox_2,fragen;
+	public static JComboBox comboBox_3;
+	public static JComboBox comboBox_4;
+	public static JLabel Zeit;
 	private static JLabel s;
 	private JLabel lblNewLabel_3;
 	private static JLabel tz, s2;
 	private static JLabel lic,ss;
-	private JTextField textField;
-	private JTextField aar;
-	private JTextField aar2;
+	private static JTextField textField;
+	public static JTextField aar;
+	public static JTextField aar2;
 	private static JLabel n;
 	private static JTextField t2;
+	private JLabel lblNewLabel_2;
 
 	/**
 	 * Launch the application.
@@ -107,7 +109,7 @@ public class Spiel_Starten {
 
 
 
-
+					textField.setVisible(false);
 					lbl.setVisible(false);
 					tf.setVisible(false);
 					tr.setVisible(false);
@@ -132,7 +134,7 @@ public class Spiel_Starten {
 					try{
 
 
-						String query2="select FrageNr from FragenPool ";
+						String query2="select FrageNr from FragenPool where Besitzer=1 or Besitzer =0 or Besitzer='"+ff.getText()+"' ";
 						PreparedStatement pst1=con.prepareStatement(query2);
 
 						ResultSet rs= pst1.executeQuery();
@@ -153,8 +155,35 @@ public class Spiel_Starten {
 
 					}
 
+
 					try{
-						String query2="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1";
+
+
+						String query2="select Frage from FragenPool where Besitzer=1 or Besitzer =0 or Besitzer='"+ff.getText()+"' ";
+						PreparedStatement pst1=con.prepareStatement(query2);
+
+						ResultSet rs= pst1.executeQuery();
+						//c1.removeAllItems();
+						while (rs.next()){
+
+
+							String Frage = rs.getString("Frage");
+							fragen.addItem(Frage);
+
+						}
+
+						rs.close();
+
+					}
+					catch(Exception e2){
+						e2.printStackTrace();
+
+					}
+
+
+
+					try{
+						String query2="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1 and Bar_Nr='"+ff.getText()+"'";
 						PreparedStatement pst1=con.prepareStatement(query2);
 
 						ResultSet rs= pst1.executeQuery();
@@ -174,7 +203,7 @@ public class Spiel_Starten {
 					}
 
 					try {
-						String query="select Spiel_Nummer,Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl,ErsteWahl as Richtige_Antwort from (FragenPool  , Quiz_Fragen) where Quiz_Fragen.Frage_Nr=FragenPool.FrageNr ORDER by Spiel_Nummer";
+						String query="select Spiel_Nummer,Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl,ErsteWahl as Richtige_Antwort from (FragenPool  , Quiz_Fragen) where Quiz_Fragen.Frage_Nr=FragenPool.FrageNr and Quiz_Fragen.Bar_Nr='"+ff.getText()+"' ORDER by Spiel_Nummer";
 						PreparedStatement pst=con.prepareStatement(query);
 						ResultSet rs= pst.executeQuery();
 						table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -240,7 +269,7 @@ public class Spiel_Starten {
 				aar.setVisible(false);
 				aar2.setVisible(false);
 				try{
-					String query2="select Licence_Nr from Spiel_Licence where vermerk =1 and Licence_Nr='"+licence.getText()+"' limit 1";
+					String query2="select Licence_Nr from Spiel_Licence where vermerk =1 and Licence_Nr='"+licence.getText()+"' and Kneipe_Nr='"+ff.getText()+"' limit 1";
 					PreparedStatement pst1=con.prepareStatement(query2);
 
 					ResultSet rs= pst1.executeQuery();
@@ -291,7 +320,7 @@ public class Spiel_Starten {
 					btnAuto.setEnabled(true);
 					JOptionPane.showMessageDialog(null,"Diese Lizenc '"+licence.getText()+"' gültig n ur für ein einzigen Spiel");
 					try {	 ///
-						String query="select max (Spiel_Nummer) from Spiel_Gnehmigt";
+						String query="select max (Spiel_Nummer) from Spiel_Gnehmigt ";
 
 						PreparedStatement pst1=con.prepareStatement(query);
 
@@ -318,7 +347,7 @@ public class Spiel_Starten {
 					t1.setText(String.valueOf(k1));
 
 					try{
-						String query2="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1";
+						String query2="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1 and Bar_Nr='"+ff.getText()+"'";
 						PreparedStatement pst2=con.prepareStatement(query2);
 
 						ResultSet rs2= pst2.executeQuery();
@@ -337,7 +366,7 @@ public class Spiel_Starten {
 						JOptionPane.showMessageDialog(null,e0);
 					}
 					try{
-						String query4="select FrageNr from FragenPool";
+						String query4="select FrageNr from FragenPool where Besitzer = 0 or Besitzer=1 or Besitzer='"+ff.getText()+"'";
 						PreparedStatement pst4=con.prepareStatement(query4);
 
 						ResultSet rs4= pst4.executeQuery();
@@ -358,9 +387,9 @@ public class Spiel_Starten {
 				}
 				if(i==0){
 					//lbl.setText(ff.getText()+tvt.getText());
-					lbl.setText("310514#KneipeXXXY");
+					lbl.setText(ff.getText()+"#QUIZLIZENC"+ff.getText());
 					try{
-						String query2="select Licence_Nr from Spiel_Licence where vermerk =310514 and Licence_Nr='"+lbl.getText()+"' limit 1";
+						String query2="select Licence_Nr from Spiel_Licence where vermerk ='"+ff.getText()+"' and Licence_Nr='"+lbl.getText()+"' limit 1";
 						PreparedStatement pst1=con.prepareStatement(query2);
 
 						ResultSet rs= pst1.executeQuery();
@@ -395,7 +424,7 @@ public class Spiel_Starten {
 							btnBenden.setEnabled(true);
 							//
 							try {	 ///
-								String query0="select max(Spiel_Gnehmigt.Spiel_Nummer)from Spiel_Gnehmigt";
+								String query0="select max(Spiel_Gnehmigt.Spiel_Nummer)from Spiel_Gnehmigt ";
 
 								PreparedStatement pst10=con.prepareStatement(query0);
 
@@ -421,7 +450,7 @@ public class Spiel_Starten {
 							t1.setText(String.valueOf(k1));
 
 							try{
-								String query22="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1";
+								String query22="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1 and Bar_Nr='"+ff.getText()+"'";
 								PreparedStatement pst11=con.prepareStatement(query22);
 
 								ResultSet rs1= pst11.executeQuery();
@@ -441,7 +470,7 @@ public class Spiel_Starten {
 
 							}
 							try{
-								String query23="select FrageNr from FragenPool";
+								String query23="select FrageNr from FragenPool where Besitzer =0 or Besitzer=1 or Besitzer='"+ff.getText()+"'";
 								PreparedStatement pst13=con.prepareStatement(query23);
 
 								ResultSet rs3= pst13.executeQuery();
@@ -491,6 +520,7 @@ public class Spiel_Starten {
 		frame.getContentPane().add(btnNewButton);
 
 		licence = new JTextField();
+		licence.setFont(new Font("Tahoma", Font.BOLD, 13));
 		licence.setText("000000");
 		licence.setBounds(536, 27, 191, 22);
 		frame.getContentPane().add(licence);
@@ -499,10 +529,11 @@ public class Spiel_Starten {
 		JLabel lblNewLabel = new JLabel("Frage_Nr:");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblNewLabel.setBounds(238, 99, 140, 24);
+		lblNewLabel.setBounds(182, 104, 118, 29);
 		frame.getContentPane().add(lblNewLabel);
 
 		c1 = new JComboBox();
+		c1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		c1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -543,78 +574,78 @@ public class Spiel_Starten {
 
 			}
 		});
-		c1.setBounds(412, 96, 41, 22);
+		c1.setBounds(308, 108, 72, 25);
 		frame.getContentPane().add(c1);
 
 		JLabel lblFrage = new JLabel("Frage:");
 		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblFrage.setForeground(Color.BLACK);
-		lblFrage.setBounds(238, 139, 159, 25);
+		lblFrage.setBounds(202, 156, 85, 25);
 		frame.getContentPane().add(lblFrage);
 
 		JLabel lblNewLabel_1 = new JLabel("A:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblNewLabel_1.setForeground(Color.BLACK);
-		lblNewLabel_1.setBounds(345, 273, 41, 28);
+		lblNewLabel_1.setBounds(255, 273, 41, 28);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		JLabel lblZweitewahl = new JLabel("B:");
 		lblZweitewahl.setForeground(Color.BLACK);
 		lblZweitewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblZweitewahl.setBounds(345, 331, 41, 25);
+		lblZweitewahl.setBounds(255, 331, 41, 25);
 		frame.getContentPane().add(lblZweitewahl);
 
 		JLabel lblDrittewahl = new JLabel("C:");
 		lblDrittewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblDrittewahl.setForeground(Color.BLACK);
-		lblDrittewahl.setBounds(345, 387, 41, 24);
+		lblDrittewahl.setBounds(255, 387, 41, 24);
 		frame.getContentPane().add(lblDrittewahl);
 
 		JLabel lblViertewahl = new JLabel("D:");
 		lblViertewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblViertewahl.setForeground(Color.BLACK);
-		lblViertewahl.setBounds(345, 437, 41, 29);
+		lblViertewahl.setBounds(255, 445, 41, 29);
 		frame.getContentPane().add(lblViertewahl);
 
-		JLabel lblRichtigeantwort = new JLabel("Richtige_Antwort:");
+		JLabel lblRichtigeantwort = new JLabel("Antwort:");
 		lblRichtigeantwort.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblRichtigeantwort.setForeground(Color.BLACK);
-		lblRichtigeantwort.setBounds(182, 213, 227, 33);
+		lblRichtigeantwort.setBounds(182, 213, 118, 33);
 		frame.getContentPane().add(lblRichtigeantwort);
 
 		t3 = new JTextField();
 		t3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t3.setEditable(false);
 		t3.setColumns(10);
-		t3.setBounds(412, 204, 792, 42);
+		t3.setBounds(308, 212, 906, 42);
 		frame.getContentPane().add(t3);
 
 		t4 = new JTextField();
 		t4.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t4.setEditable(false);
 		t4.setColumns(10);
-		t4.setBounds(412, 259, 792, 42);
+		t4.setBounds(308, 270, 906, 42);
 		frame.getContentPane().add(t4);
 
 		t5 = new JTextField();
 		t5.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t5.setEditable(false);
 		t5.setColumns(10);
-		t5.setBounds(412, 314, 792, 42);
+		t5.setBounds(308, 326, 906, 42);
 		frame.getContentPane().add(t5);
 
 		t6 = new JTextField();
 		t6.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t6.setEditable(false);
 		t6.setColumns(10);
-		t6.setBounds(412, 369, 792, 42);
+		t6.setBounds(308, 382, 906, 42);
 		frame.getContentPane().add(t6);
 
 		t7 = new JTextField();
 		t7.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t7.setEditable(false);
 		t7.setColumns(10);
-		t7.setBounds(412, 424, 792, 42);
+		t7.setBounds(308, 442, 906, 42);
 		frame.getContentPane().add(t7);
 
 		btnNewButton_1 = new JButton("Manuell");
@@ -648,11 +679,11 @@ public class Spiel_Starten {
 
 						// Quiz_Fragen_Hinzufügen
 
-						String sql = "insert into Quiz_Fragen(Spiel_Nummer,Frage_Nr) VALUES(?,?)";
+						String sql = "insert into Quiz_Fragen(Spiel_Nummer,Frage_Nr,Bar_Nr) VALUES(?,?,?)";
 						PreparedStatement pst=con.prepareStatement(sql);
 						pst.setString(1, t1.getText());
 						pst.setString(2, c1.getSelectedItem().toString());
-
+						pst.setString(3,ff.getText());
 
 
 
@@ -699,20 +730,22 @@ public class Spiel_Starten {
 
 
 
-							String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Kneipe_Nummer,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel)values (?,?,?,?,?,?,?,?,?,?)";
+							String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
 							PreparedStatement pst=con.prepareStatement(sql);
 							pst.setString(1, t1.getText());
 							pst.setString(2, Zeit.getText());
 							pst.setString(3, licence.getText());
-							pst.setString(4, ff.getText());
-							pst.setString(5, "1");
-							pst.setString(6, comboBox.getSelectedItem().toString());
-							pst.setString(7, comboBox_1.getSelectedItem().toString());
-							pst.setString(8, comboBox_2.getSelectedItem().toString());
-							pst.setString(9, comboBox_3.getSelectedItem().toString());
-							pst.setString(10, comboBox_4.getSelectedItem().toString());
 
-
+							pst.setString(4, "1");
+							pst.setString(5, comboBox.getSelectedItem().toString());
+							pst.setString(6, comboBox_1.getSelectedItem().toString());
+							pst.setString(7, comboBox_2.getSelectedItem().toString());
+							pst.setString(8, comboBox_3.getSelectedItem().toString());
+							pst.setString(9, comboBox_4.getSelectedItem().toString());
+							pst.setString(10, cc.getSelectedItem().toString());
+							pst.setString(11, cb.getSelectedItem().toString());
+							pst.setString(12,ff.getText());
+							/////////////////////////////////////////////////////////////////////////////////////
 							pst.execute();
 							JOptionPane.showMessageDialog(null,"Gespeichert");
 
@@ -753,7 +786,7 @@ public class Spiel_Starten {
 
 				*/
 
-							String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen)values (?,?,?,?,?,?,?,?,?,?,?)";
+							String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
 							PreparedStatement pst=con.prepareStatement(sql);
 							pst.setString(1, t1.getText());
 							pst.setString(2, Zeit.getText());
@@ -767,7 +800,7 @@ public class Spiel_Starten {
 							pst.setString(9, comboBox_4.getSelectedItem().toString());
 							pst.setString(10, cc.getSelectedItem().toString());
 							pst.setString(11, cb.getSelectedItem().toString());
-
+							pst.setString(12,ff.getText());
 							pst.execute();
 							JOptionPane.showMessageDialog(null,"Gespeichert");
 
@@ -822,7 +855,7 @@ public class Spiel_Starten {
 		scrollPane_1.setViewportView(ta);
 		ta.setEditable(false);
 
-		btnBenden = new JButton("Beenden");
+		btnBenden = new JButton("Annulieren");
 		btnBenden.setEnabled(false);
 		btnBenden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -839,10 +872,10 @@ public class Spiel_Starten {
 
 					if(YesorNo==0){
 
-						lic.setText(ff.getText()+tvt.getText());
+						lic.setText(ff.getText()+"#QUIZLIZENC"+ff.getText());
 						///
 						try{
-							String query2="select * from Spiel_Licence where Licence_Nr='"+lic.getText()+"' and Vermerk != 0";
+							String query2="select * from Spiel_Licence where Licence_Nr='"+lic.getText()+"' and Vermerk = '"+ff.getText()+"' and Kneipe_Nr='"+ff.getText()+"'";
 							PreparedStatement pst1=con.prepareStatement(query2);
 
 							ResultSet rs= pst1.executeQuery();
@@ -871,7 +904,7 @@ public class Spiel_Starten {
 							String value1155=CB1.getSelectedItem().toString();
 							try {
 
-								String sql22="update Spiel_Gnehmigt set status =0 where Spiel_Nummer ='"+value1155+"' ";
+								String sql22="update Spiel_Gnehmigt set status =0 where Spiel_Nummer ='"+value1155+"' and Bar_Nr='"+ff.getText()+"'";
 								PreparedStatement pst3;
 
 								pst3 = con.prepareStatement(sql22);
@@ -896,7 +929,7 @@ public class Spiel_Starten {
 							try{
 
 
-								String query2="select Licence_Nr from Spiel_Licence, Spiel_Gnehmigt where Spiel_Gnehmigt.Lizenc = Spiel_Licence.Licence_Nr and Spiel_Gnehmigt.Spiel_Nummer='"+value1155+"' ";
+								String query2="select Licence_Nr from Spiel_Licence, Spiel_Gnehmigt where Spiel_Gnehmigt.Lizenc = Spiel_Licence.Licence_Nr and Spiel_Gnehmigt.Spiel_Nummer='"+value1155+"' and Spiel_Gnehmigt.Bar_Nr='"+ff.getText()+"' and Spiel_Licence.Kneipe_Nr='"+ff.getText()+"' ";
 								PreparedStatement pst1=con.prepareStatement(query2);
 
 								ResultSet rs= pst1.executeQuery();
@@ -922,7 +955,7 @@ public class Spiel_Starten {
 							String value11555=s2.getText();
 							try {
 
-								String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value11555+"' ";
+								String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value11555+"' and Kneipe_Nr='"+ff.getText()+"' ";
 								PreparedStatement pst3;
 
 								pst3 = con.prepareStatement(sql22);
@@ -945,7 +978,7 @@ public class Spiel_Starten {
 							String value1155=CB1.getSelectedItem().toString();
 							try {
 
-								String sql22="update Spiel_Gnehmigt set status =0 where Spiel_Nummer ='"+value1155+"' ";
+								String sql22="update Spiel_Gnehmigt set status =0 where Spiel_Nummer ='"+value1155+"' and Bar_Nr='"+ff.getText()+"' ";
 								PreparedStatement pst3;
 
 								pst3 = con.prepareStatement(sql22);
@@ -986,19 +1019,20 @@ public class Spiel_Starten {
 		btnBenden.setBounds(12, 320, 129, 53);
 		frame.getContentPane().add(btnBenden);
 
-		JLabel lblZeit = new JLabel("Spiel_Nummer");
+		JLabel lblZeit = new JLabel("Spiel_Nummer:");
 		lblZeit.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblZeit.setForeground(new Color(255, 0, 0));
-		lblZeit.setBounds(12, 66, 153, 16);
+		lblZeit.setBounds(12, 7, 129, 29);
 		frame.getContentPane().add(lblZeit);
 
 		t1 = new JTextField();
+		t1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		t1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		t1.setEditable(false);
-		t1.setBounds(169, 64, 85, 22);
+		t1.setBounds(142, 11, 85, 22);
 		frame.getContentPane().add(t1);
 		t1.setColumns(10);
 
@@ -1025,7 +1059,7 @@ public class Spiel_Starten {
 		btnZurck.setBounds(12, 390, 129, 53);
 		frame.getContentPane().add(btnZurck);
 
-		JButton btnbersicht = new JButton("Übersicht");
+		JButton btnbersicht = new JButton("Print");
 		btnbersicht.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -1115,16 +1149,17 @@ public class Spiel_Starten {
 		JLabel lblFragenrunde = new JLabel("Fragen/Runde");
 		lblFragenrunde.setForeground(Color.RED);
 		lblFragenrunde.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblFragenrunde.setBounds(705, 104, 137, 16);
+		lblFragenrunde.setBounds(894, 53, 137, 21);
 		frame.getContentPane().add(lblFragenrunde);
 
 		JLabel lblAnzahlRunden = new JLabel("Anzahl Runden");
 		lblAnzahlRunden.setForeground(Color.RED);
 		lblAnzahlRunden.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAnzahlRunden.setBounds(695, 65, 137, 19);
+		lblAnzahlRunden.setBounds(894, 18, 137, 29);
 		frame.getContentPane().add(lblAnzahlRunden);
 
 		cb = new JComboBox();
+		cb.setFont(new Font("Tahoma", Font.BOLD, 13));
 		cb.setEnabled(false);
 		cb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -1132,10 +1167,11 @@ public class Spiel_Starten {
 			}
 		});
 		cb.setModel(new DefaultComboBoxModel(new String[] {"10", "15", "20"}));
-		cb.setBounds(834, 96, 56, 22);
+		cb.setBounds(1043, 53, 56, 22);
 		frame.getContentPane().add(cb);
 
 		cc = new JComboBox();
+		cc.setFont(new Font("Tahoma", Font.BOLD, 13));
 		cc.setEnabled(false);
 		cc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1145,28 +1181,28 @@ public class Spiel_Starten {
 			}
 		});
 		cc.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
-		cc.setBounds(834, 64, 56, 22);
+		cc.setBounds(1043, 18, 56, 22);
 		frame.getContentPane().add(cc);
 
 		lb = new JLabel("0");
 		lb.setEnabled(false);
-		lb.setBounds(158, 30, 17, 16);
+		lb.setBounds(505, 503, 17, 16);
 		frame.getContentPane().add(lb);
 
 		lb2 = new JLabel("0");
 		lb2.setEnabled(false);
-		lb2.setBounds(187, 30, 17, 16);
+		lb2.setBounds(467, 503, 17, 16);
 		frame.getContentPane().add(lb2);
 
 		l3 = new JLabel("0");
 		l3.setEnabled(false);
-		l3.setBounds(129, 30, 17, 16);
+		l3.setBounds(392, 503, 17, 16);
 		frame.getContentPane().add(l3);
 
 		tf = new JTextField();
 		tf.setText("10");
 		tf.setEditable(false);
-		tf.setBounds(454, 61, 30, 22);
+		tf.setBounds(182, 64, 30, 22);
 		frame.getContentPane().add(tf);
 		tf.setColumns(10);
 
@@ -1174,12 +1210,12 @@ public class Spiel_Starten {
 		tr.setText("1");
 		tr.setEditable(false);
 		tr.setColumns(10);
-		tr.setBounds(412, 64, 30, 22);
+		tr.setBounds(182, 41, 30, 22);
 		frame.getContentPane().add(tr);
 
 		l4 = new JLabel("0");
 		l4.setEnabled(false);
-		l4.setBounds(216, 30, 17, 16);
+		l4.setBounds(440, 503, 17, 16);
 		frame.getContentPane().add(l4);
 
 		l11 = new JLabel("1");
@@ -1189,7 +1225,7 @@ public class Spiel_Starten {
 
 		l8 = new JLabel("0");
 		l8.setEnabled(false);
-		l8.setBounds(319, 147, 17, 16);
+		l8.setBounds(316, 30, 17, 16);
 		frame.getContentPane().add(l8);
 
 		CB1 = new JComboBox();
@@ -1206,7 +1242,7 @@ public class Spiel_Starten {
 				ss.setText("1");
 				btnBenden.setEnabled(true);
 				try {
-					String query="select Spiel_Nummer,Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl,ErsteWahl as Richtige_Antwort from (FragenPool  , Quiz_Fragen) where Quiz_Fragen.Frage_Nr=FragenPool.FrageNr and Spiel_Nummer =? ORDER by Spiel_Nummer ";
+					String query="select Spiel_Nummer,Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl,ErsteWahl as Richtige_Antwort from (FragenPool  , Quiz_Fragen) where Quiz_Fragen.Frage_Nr=FragenPool.FrageNr and Spiel_Nummer =? and Quiz_Fragen.Bar_Nr='"+ff.getText()+"' ORDER by Spiel_Nummer ";
 					PreparedStatement pst=con.prepareStatement(query);
 					pst.setString(1, tz.getText());
 					ResultSet rs= pst.executeQuery();
@@ -1226,78 +1262,85 @@ public class Spiel_Starten {
 		label = new JLabel("Kneipe_Nummer:");
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Tahoma", Font.BOLD, 16));
-		label.setBounds(1373, 18, 147, 38);
+		label.setBounds(1397, 7, 147, 42);
 		frame.getContentPane().add(label);
 
 		ff = new JTextField();
+		ff.setFont(new Font("Tahoma", Font.BOLD, 13));
 		ff.setText("310514");
 		ff.setEditable(false);
 		ff.setColumns(10);
-		ff.setBounds(1532, 27, 68, 22);
+		ff.setBounds(1665, 18, 68, 22);
 		frame.getContentPane().add(ff);
 
 		tvt = new JTextField();
+		tvt.setFont(new Font("Tahoma", Font.BOLD, 13));
 		tvt.setText("#KneipeXXXY");
 		tvt.setEditable(false);
 		tvt.setColumns(10);
-		tvt.setBounds(1623, 27, 93, 22);
+		tvt.setBounds(1560, 18, 93, 22);
 		frame.getContentPane().add(tvt);
 
 		JLabel lblZulassungsnummer = new JLabel("ZulassungsNummer:");
 		lblZulassungsnummer.setForeground(Color.RED);
 		lblZulassungsnummer.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblZulassungsnummer.setBounds(345, 34, 177, 16);
+		lblZulassungsnummer.setBounds(345, 25, 177, 25);
 		frame.getContentPane().add(lblZulassungsnummer);
 
 		l = new JLabel("0");
-		l.setBounds(446, 13, 56, 16);
+		l.setBounds(420, 503, 22, 16);
 		frame.getContentPane().add(l);
 
 		lblStart = new JLabel("Start:");
 		lblStart.setForeground(new Color(255, 0, 0));
 		lblStart.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblStart.setBounds(919, 67, 73, 16);
+		lblStart.setBounds(1218, 50, 56, 26);
 		frame.getContentPane().add(lblStart);
 
 		comboBox = new JComboBox();
+		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
-		comboBox.setBounds(1004, 64, 46, 22);
+		comboBox.setBounds(1281, 53, 46, 22);
 		frame.getContentPane().add(comboBox);
 
 		comboBox_1 = new JComboBox();
+		comboBox_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60"}));
-		comboBox_1.setBounds(1062, 64, 46, 22);
+		comboBox_1.setBounds(1339, 53, 46, 22);
 		frame.getContentPane().add(comboBox_1);
 
 		lblDatum = new JLabel("Datum:");
 		lblDatum.setForeground(Color.RED);
 		lblDatum.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDatum.setBounds(919, 29, 73, 16);
+		lblDatum.setBounds(1111, 9, 73, 38);
 		frame.getContentPane().add(lblDatum);
 
 		comboBox_2 = new JComboBox();
+		comboBox_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		comboBox_2.setBounds(1004, 27, 46, 22);
+		comboBox_2.setBounds(1196, 18, 46, 22);
 		frame.getContentPane().add(comboBox_2);
 
 		comboBox_3 = new JComboBox();
+		comboBox_3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-		comboBox_3.setBounds(1062, 27, 46, 22);
+		comboBox_3.setBounds(1254, 18, 46, 22);
 		frame.getContentPane().add(comboBox_3);
 
 		comboBox_4 = new JComboBox();
+		comboBox_4.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"2019", "2020"}));
-		comboBox_4.setBounds(1120, 27, 73, 22);
+		comboBox_4.setBounds(1312, 18, 73, 22);
 		frame.getContentPane().add(comboBox_4);
 
 		Zeit = new JLabel("New label");
 		Zeit.setForeground(Color.RED);
 		Zeit.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Zeit.setBounds(919, 100, 118, 16);
+		Zeit.setBounds(1615, 63, 118, 23);
 		frame.getContentPane().add(Zeit);
 
 		s = new JLabel("00000");
-		s.setBounds(23, 30, 41, 16);
+		s.setBounds(312, 503, 41, 16);
 		frame.getContentPane().add(s);
 
 		lblNewLabel_3 = new JLabel("Offene_Quiz:");
@@ -1307,7 +1350,7 @@ public class Spiel_Starten {
 		frame.getContentPane().add(lblNewLabel_3);
 
 		s2 = new JLabel("0000");
-		s2.setBounds(76, 30, 41, 16);
+		s2.setBounds(356, 503, 41, 16);
 		frame.getContentPane().add(s2);
 
 		ss = new JLabel("0");
@@ -1319,7 +1362,7 @@ public class Spiel_Starten {
 		frame.getContentPane().add(tz);
 
 		textField = new JTextField();
-		textField.setBounds(465, 96, 41, 22);
+		textField.setBounds(412, 64, 72, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 
@@ -1347,9 +1390,9 @@ public class Spiel_Starten {
 		frame.getContentPane().add(btnAuto);
 
 		aar = new JTextField();
-		aar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		aar.setEditable(false);
-		aar.setBounds(518, 64, 144, 22);
+		aar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		aar.setBounds(23, 41, 144, 22);
 		frame.getContentPane().add(aar);
 		aar.setColumns(10);
 
@@ -1357,7 +1400,7 @@ public class Spiel_Starten {
 		aar2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		aar2.setEditable(false);
 		aar2.setColumns(10);
-		aar2.setBounds(518, 99, 144, 22);
+		aar2.setBounds(23, 64, 144, 22);
 		frame.getContentPane().add(aar2);
 
 		lbl = new JLabel("*");
@@ -1375,12 +1418,52 @@ public class Spiel_Starten {
 		t2 = new JTextField();
 		t2.setEditable(false);
 		t2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		t2.setBounds(412, 131, 792, 53);
+		t2.setBounds(308, 146, 906, 53);
 		frame.getContentPane().add(t2);
 		t2.setColumns(10);
 
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\IdeaProjects\\propra\\Ressources\\1.jpg"));
+		fragen = new JComboBox();
+		fragen.setFont(new Font("Tahoma", Font.BOLD, 13));
+		fragen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				try{
+					String query="select  Frage ,ErsteWahl ,ZweiteWahl,DritteWahl,VierteWahl,RichtigeAntwort from FragenPool WHERE Frage= ? ";
+
+					PreparedStatement pst1=con.prepareStatement(query);
+					pst1.setString(1, fragen.getSelectedItem().toString());
+					ResultSet rs= pst1.executeQuery();
+
+					if ((rs.next()))
+					{
+
+						t2.setText(rs.getString("Frage"));
+						t3.setText(rs.getString("RichtigeAntwort"));
+						t4.setText(rs.getString("ErsteWahl"));
+						t5.setText(rs.getString("ZweiteWahl"));
+						t6.setText(rs.getString("DritteWahl"));
+						t7.setText(rs.getString("VierteWahl"));
+					}
+
+					pst1.close();
+
+
+				} catch (Exception e3) {
+					e3.printStackTrace();
+				}
+
+
+
+
+
+
+			}
+		});
+		fragen.setBounds(392, 106, 822, 28);
+		frame.getContentPane().add(fragen);
+
+		lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\18006_krombacher_alkoholfrei_450x450.jpg"));
 		lblNewLabel_2.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel_2);
 	}

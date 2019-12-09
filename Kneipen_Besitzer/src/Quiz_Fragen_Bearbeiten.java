@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -58,7 +59,8 @@ public class Quiz_Fragen_Bearbeiten {
 
 					Quiz_Fragen_Bearbeiten window = new Quiz_Fragen_Bearbeiten();
 					window.frame.setVisible(true);
-
+					tname.setText(Quiz_Verwaltung.tname.getText());
+					tnummer.setText(Quiz_Verwaltung.tnummer.getText());
 					t.setText(Quiz_Verwaltung.cb1.getSelectedItem().toString());
 					t1.setText(Quiz_Verwaltung.cb2.getSelectedItem().toString());
 
@@ -96,7 +98,7 @@ public class Quiz_Fragen_Bearbeiten {
 					try{
 
 
-						String query2="select FrageNr from FragenPool ";
+						String query2="select FrageNr from FragenPool where Besitzer=0 or Besitzer =1 or Besitzer ='"+tnummer.getText()+"' ";
 						PreparedStatement pst1=con.prepareStatement(query2);
 
 						ResultSet rs= pst1.executeQuery();
@@ -134,8 +136,8 @@ public class Quiz_Fragen_Bearbeiten {
 	 * Create the application.
 	 */
 	static Connection con =null;
-	private JTextField textField;
-	private JTextField textField_1;
+	private static JTextField tname;
+	private static JTextField tnummer;
 	public Quiz_Fragen_Bearbeiten() {
 
 
@@ -181,6 +183,8 @@ public class Quiz_Fragen_Bearbeiten {
 		frame.getContentPane().add(t1);
 
 		JButton btnNewButton = new JButton("Ändern");
+		btnNewButton.setForeground(Color.RED);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -194,7 +198,7 @@ public class Quiz_Fragen_Bearbeiten {
 
 
 						//	String value115=licence.getText();
-						String sql22="update Quiz_Fragen set Frage_Nr='"+t2.getText()+"'where Spiel_Nummer='"+t.getText()+"' and Frage_Nr='"+t1.getText()+"' ";
+						String sql22="update Quiz_Fragen set Frage_Nr='"+t2.getText()+"'where Spiel_Nummer='"+t.getText()+"' and Frage_Nr='"+t1.getText()+"' and Bar_Nr='"+tnummer.getText()+"'";
 						PreparedStatement pst3=con.prepareStatement(sql22);
 						pst3.execute();
 						JOptionPane.showMessageDialog(null,"Erfolgreich geändert ");
@@ -217,6 +221,8 @@ public class Quiz_Fragen_Bearbeiten {
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnHinzufgen = new JButton("Hinzufügen");
+		btnHinzufgen.setForeground(Color.RED);
+		btnHinzufgen.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnHinzufgen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -227,11 +233,11 @@ public class Quiz_Fragen_Bearbeiten {
 
 
 					try{
-						String sql = "insert into Quiz_Fragen (Spiel_Nummer,Frage_Nr)values (?,?)";
+						String sql = "insert into Quiz_Fragen (Spiel_Nummer,Frage_Nr,Bar_Nr)values (?,?,?)";
 						PreparedStatement pst=con.prepareStatement(sql);
 						pst.setString(1, t.getText());
 						pst.setString(2, t2.getText());
-
+						pst.setString(3, tnummer.getText());
 
 
 						pst.execute();
@@ -265,6 +271,8 @@ public class Quiz_Fragen_Bearbeiten {
 		frame.getContentPane().add(btnHinzufgen);
 
 		JButton btnEntfernen = new JButton("Entfernen");
+		btnEntfernen.setForeground(Color.RED);
+		btnEntfernen.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnEntfernen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -275,7 +283,7 @@ public class Quiz_Fragen_Bearbeiten {
 					try{
 
 
-						String Delete =" delete from Quiz_Fragen where Spiel_Nummer = '"+t.getText()+"' And Frage_Nr = '"+t1.getText()+"'";
+						String Delete =" delete from Quiz_Fragen where Spiel_Nummer = '"+t.getText()+"' And Frage_Nr = '"+t1.getText()+"' and Bar_Nr='"+tnummer.getText()+"'";
 
 						PreparedStatement pst3=con.prepareStatement(Delete);
 						pst3.execute();
@@ -353,6 +361,8 @@ public class Quiz_Fragen_Bearbeiten {
 		frame.getContentPane().add(cb1);
 
 		JButton btnExit = new JButton("EXIT");
+		btnExit.setForeground(Color.RED);
+		btnExit.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -380,18 +390,23 @@ public class Quiz_Fragen_Bearbeiten {
 		label.setBounds(593, 13, 168, 16);
 		frame.getContentPane().add(label);
 
-		textField = new JTextField();
-		textField.setText("#KneipeXXXY");
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBounds(575, 39, 93, 22);
-		frame.getContentPane().add(textField);
+		tname = new JTextField();
+		tname.setText("#KneipeXXXY");
+		tname.setEditable(false);
+		tname.setColumns(10);
+		tname.setBounds(575, 39, 93, 22);
+		frame.getContentPane().add(tname);
 
-		textField_1 = new JTextField();
-		textField_1.setText("310514");
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(693, 39, 68, 22);
-		frame.getContentPane().add(textField_1);
+		tnummer = new JTextField();
+		tnummer.setText("310514");
+		tnummer.setEditable(false);
+		tnummer.setColumns(10);
+		tnummer.setBounds(693, 39, 68, 22);
+		frame.getContentPane().add(tnummer);
+
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
+		lblNewLabel_2.setBounds(0, 0, 773, 265);
+		frame.getContentPane().add(lblNewLabel_2);
 	}
 }

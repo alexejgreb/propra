@@ -4,12 +4,18 @@ import java.awt.EventQueue;
 
 
 
+
+
+
+
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Font;
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
@@ -18,9 +24,11 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.print.PrinterException;
 import java.sql.Connection;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 
 public class Auto_Fragen {
@@ -39,6 +47,10 @@ public class Auto_Fragen {
 	private static JTextField f1;
 	static Connection con =null;
 	private static JLabel l1,l2;
+	private static JTextField t1;
+	private static JTextField t2;
+	private static JTextField t3;
+	private JLabel lblNewLabel;
 	/**
 	 * Launch the application.
 	 */
@@ -49,7 +61,9 @@ public class Auto_Fragen {
 					Auto_Fragen window = new Auto_Fragen();
 					window.frame.setVisible(true);
 
-
+					t1.setVisible(false);
+					t2.setVisible(false);
+					t3.setVisible(false);
 					tt.setText(Spiel_Starten.tvt.getText());
 					s1.setText(Spiel_Starten.t1.getText());
 					ff.setText(Spiel_Starten.ff.getText());
@@ -107,22 +121,26 @@ public class Auto_Fragen {
 		frame.getContentPane().add(ff);
 
 		JComboBox comboBox = new JComboBox();
+		comboBox.setEditable(true);
 		comboBox.setEnabled(false);
-		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Default", "POP_Quiz"}));
+		comboBox.setFont(new Font("Tahoma", Font.BOLD, 14));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Default", "POP_Quiz", "Lokal"}));
 		comboBox.setBounds(12, 77, 153, 22);
 		frame.getContentPane().add(comboBox);
 
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setEnabled(false);
-		comboBox_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"POP_Quiz", "Defaul"}));
+		comboBox_1.setEditable(true);
+		comboBox_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"POP_Quiz", "Defaul", "Lokal"}));
 		comboBox_1.setBounds(196, 77, 153, 22);
 		frame.getContentPane().add(comboBox_1);
 
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox_2.setEnabled(false);
+		comboBox_2.setEditable(true);
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Lokal", "Default", "POP_Quiz"}));
+		comboBox_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		comboBox_2.setBounds(375, 77, 153, 22);
 		frame.getContentPane().add(comboBox_2);
 
@@ -143,7 +161,6 @@ public class Auto_Fragen {
 		txt3 = new JTextField();
 		txt3.setFont(new Font("Tahoma", Font.BOLD, 16));
 		txt3.setText("0");
-		txt3.setEditable(false);
 		txt3.setColumns(10);
 		txt3.setBounds(375, 42, 99, 22);
 		frame.getContentPane().add(txt3);
@@ -156,9 +173,22 @@ public class Auto_Fragen {
 		scrollPane.setViewportView(table);
 
 		JButton btnPrint = new JButton("Print");
-		btnPrint.setForeground(Color.ORANGE);
-		btnPrint.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnPrint.setBounds(596, 193, 153, 36);
+		btnPrint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				try {
+					Spiel_Starten.ta.print();
+				} catch (PrinterException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+
+			}
+		});
+		btnPrint.setForeground(Color.RED);
+		btnPrint.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnPrint.setBounds(596, 131, 153, 42);
 		frame.getContentPane().add(btnPrint);
 
 		JButton btnHinzufgen = new JButton("Hinzufügen");
@@ -167,7 +197,111 @@ public class Auto_Fragen {
 
 
 
+				try{
 
+
+
+					DB_Anfragen.Select_Count_FragenPool0(0, t1);
+
+					DB_Anfragen.Select_Count_FragenPool0(1, t2);
+					DB_Anfragen.Select_Count_FragenPool0(Integer.parseInt(ff.getText()), t3);
+
+					try{
+
+
+						int Default = Integer.parseInt(txt1.getText());
+						int pop = Integer.parseInt(txt2.getText());
+						int Lokal = Integer.parseInt(txt3.getText());
+						int Summe = Default + pop + Lokal ;
+						int AnzahleF = Integer.parseInt(Spiel_Starten.cc.getSelectedItem().toString())* Integer.parseInt(Spiel_Starten.cb.getSelectedItem().toString());
+
+						if(Summe== AnzahleF){
+
+							try{
+
+								int Default1 = Integer.parseInt(t1.getText());
+								int pop1 = Integer.parseInt(t2.getText());
+								int Lokal1 = Integer.parseInt(t3.getText());
+
+
+								if (Default> Default1){
+
+
+									JOptionPane.showMessageDialog(null,"So Viele Fragen von der Categorie Default sind nicht Vohanden , Anzahl der maximale Fragen ist '"+Default1+"'  !!!");
+
+
+								}else if (pop>pop1){
+
+
+									JOptionPane.showMessageDialog(null,"So Viele Fragen von der Categorie POP_QUIZ sind nicht Vohanden , Anzahl der maximale Fragen ist '"+pop1+"'  !!!");
+
+
+								}else if(Lokal>Lokal1){
+									JOptionPane.showMessageDialog(null,"So Viele Fragen von der Categorie LOkal sind nicht Vohanden , Anzahl der maximale Fragen ist '"+Lokal1+"'  !!!");
+								}else{
+
+
+									//JOptionPane.showMessageDialog(null,"JETZT FRAGEN AUSWHÄLEN ");
+
+									if(Default>0){
+
+										DB_Anfragen.Select_FrageNR_FragenPool(0,Default,s1,ff);
+										JOptionPane.showMessageDialog(null," die '"+Default+"'  Fragen aus der Kategorier Default wurden erfolgreich für den Spiel NR: '"+s1.getText()+"' hinzugefügt");
+									}
+
+									if(pop>0){
+										DB_Anfragen.Select_FrageNR_FragenPool(1,pop,s1,ff);
+
+										JOptionPane.showMessageDialog(null," die '"+pop+"'  Fragen aus der Kategorier POP_QUIZ wurden erfolgreich für den Spiel NR: '"+s1.getText()+"' hinzugefügt");
+
+
+
+
+									}
+
+									if(Lokal>0){
+										DB_Anfragen.Select_FrageNR_FragenPool(Integer.parseInt(ff.getText()),Lokal,s1,ff);
+
+
+										JOptionPane.showMessageDialog(null," die '"+Lokal+"'  Fragen aus der Kategorier Lokal wurden erfolgreich für den Spiel NR: '"+s1.getText()+"' hinzugefügt");
+
+
+
+									}
+
+
+									DB_Anfragen.Insert_Spiel_Fragen(s1,Spiel_Starten.Zeit,Spiel_Starten.licence,Spiel_Starten.comboBox,Spiel_Starten.comboBox_1,Spiel_Starten.comboBox_2,Spiel_Starten.comboBox_3,Spiel_Starten.comboBox_4,Spiel_Starten.cc,Spiel_Starten.cb,ff);
+
+									DB_Anfragen.Table_Fragen_Quiz(table,ff);
+								}
+
+
+
+							}catch(Exception e2){
+
+
+
+
+							}
+						}
+						else{
+
+
+							JOptionPane.showMessageDialog(null,"Sie müssen in der Summe '"+AnzahleF+"' fragen auswhälen");
+
+
+						}
+
+					}catch(Exception e1){
+						JOptionPane.showMessageDialog(null,"Prüfen sie die Angegebene Daten Bitte !!!");
+					}
+
+
+				}catch (Exception e){
+
+
+
+				}
 
 
 
@@ -195,34 +329,23 @@ public class Auto_Fragen {
 
 			}
 		});
-		btnHinzufgen.setForeground(Color.ORANGE);
-		btnHinzufgen.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnHinzufgen.setBounds(596, 67, 153, 50);
+		btnHinzufgen.setForeground(Color.RED);
+		btnHinzufgen.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnHinzufgen.setBounds(596, 67, 153, 42);
 		frame.getContentPane().add(btnHinzufgen);
 
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				Spiel_Starten.aar.setText("");
+				Spiel_Starten.aar2.setText("");
 				frame.dispose();
 			}
 		});
-		btnExit.setForeground(Color.ORANGE);
-		btnExit.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnExit.setBounds(596, 130, 153, 50);
+		btnExit.setForeground(Color.RED);
+		btnExit.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnExit.setBounds(596, 198, 153, 42);
 		frame.getContentPane().add(btnExit);
-
-		JComboBox DefaultF = new JComboBox();
-		DefaultF.setBounds(97, 112, 68, 22);
-		frame.getContentPane().add(DefaultF);
-
-		JComboBox POPF = new JComboBox();
-		POPF.setBounds(281, 112, 68, 22);
-		frame.getContentPane().add(POPF);
-
-		JComboBox comboBox_5 = new JComboBox();
-		comboBox_5.setBounds(460, 112, 68, 22);
-		frame.getContentPane().add(comboBox_5);
 
 		JLabel lblSpielnummer = new JLabel("Spiel_Nummer:");
 		lblSpielnummer.setForeground(Color.RED);
@@ -257,5 +380,25 @@ public class Auto_Fragen {
 		l2 = new JLabel("");
 		l2.setBounds(503, 48, 22, 16);
 		frame.getContentPane().add(l2);
+
+		t1 = new JTextField();
+		t1.setBounds(22, 108, 116, 22);
+		frame.getContentPane().add(t1);
+		t1.setColumns(10);
+
+		t2 = new JTextField();
+		t2.setColumns(10);
+		t2.setBounds(196, 112, 116, 22);
+		frame.getContentPane().add(t2);
+
+		t3 = new JTextField();
+		t3.setColumns(10);
+		t3.setBounds(375, 112, 116, 22);
+		frame.getContentPane().add(t3);
+
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
+		lblNewLabel.setBounds(0, 0, 773, 265);
+		frame.getContentPane().add(lblNewLabel);
 	}
 }
