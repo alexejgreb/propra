@@ -128,7 +128,7 @@ import javax.swing.SwingConstants;public class Login1 {
 
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\16089.jpg"));
+		lblNewLabel_3.setIcon(new ImageIcon("Ressources\\imag\\index.jpg"));
 		lblNewLabel_3.setBounds(0, 0, 487, 256);
 		frame.getContentPane().add(lblNewLabel_3);
 	}
