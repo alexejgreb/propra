@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -192,15 +193,8 @@ public class Teilnahme_Verwaltung {
 		btnLizencbeenden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
-
-				/// Update Spiel_Licence set Licence_Nr = 0 where Vermerk = Kneipe_Nr
-				// Update Spiel_Licence set Vermerk = 0 where Licence_Nr =0
-				// Update Kneiep_Teilnehmer  set Vermerk =1  where Kneipe_Nr = ****
-				//
-
-
-
+				DB_Anfragen.Update_Lizenc1(nummer);
+				DB_Anfragen.Update_Lizenc2(nummer);
 			}
 		});
 		btnLizencbeenden.setForeground(Color.ORANGE);
