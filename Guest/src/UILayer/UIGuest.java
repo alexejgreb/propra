@@ -17,7 +17,7 @@ public class UIGuest extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldGameID;
-	String id_num =null;
+	String id_num = null;
 	int tempIdNumber = -1;
 	String tempEmail;
 	String tempUserPW;

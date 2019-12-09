@@ -101,7 +101,7 @@ public class Anfrage {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel_5 = new JLabel("Kneipe_Nr:");
+		JLabel lblNewLabel_5 = new JLabel("Kneipennummer:");
 		lblNewLabel_5.setForeground(new Color(0, 0, 255));
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 20));
 		lblNewLabel_5.setBounds(25, 124, 170, 50);
@@ -113,13 +113,13 @@ public class Anfrage {
 		lblAdresse.setBounds(25, 171, 164, 50);
 		frame.getContentPane().add(lblAdresse);
 
-		JLabel lblTelephonnr = new JLabel("Telephon_Nr:");
+		JLabel lblTelephonnr = new JLabel("Telefon:");
 		lblTelephonnr.setForeground(new Color(0, 0, 255));
 		lblTelephonnr.setFont(new Font("Arial", Font.BOLD, 20));
 		lblTelephonnr.setBounds(25, 227, 164, 50);
 		frame.getContentPane().add(lblTelephonnr);
 
-		JLabel lblBesitzer = new JLabel("Besitzer:");
+		JLabel lblBesitzer = new JLabel("Wirt:");
 		lblBesitzer.setForeground(new Color(0, 0, 255));
 		lblBesitzer.setFont(new Font("Arial", Font.BOLD, 20));
 		lblBesitzer.setBounds(25, 273, 164, 50);
@@ -200,7 +200,7 @@ public class Anfrage {
 				int i11 =Integer.parseInt(test.getText());
 
 				if(i11==1){
-					JOptionPane.showMessageDialog(null,"Sie haben eine unbefristete Lizenc bekommen ");
+					JOptionPane.showMessageDialog(null,"Die Kneipe wurde bereits validiert.");
 				}else{
 
 
@@ -225,9 +225,9 @@ public class Anfrage {
 						pst.setString(6, "0");
 
 						pst.execute();
-						JOptionPane.showMessageDialog(null,"Versendet!!!");
+						JOptionPane.showMessageDialog(null,"Versendet!");
 
-						ta.append("\tAnfrage_Versendet: \n\n"+"Kneipe_Nr:\t"+t1.getText()+"\n======================================\n"+"Besitzer:\t"+t4.getText()+"\n\n"+"Telefon_Nr:\t"+t3.getText()+"\n\n"+
+						ta.append("\tDie Anfrage wurde versendet: \n\n"+"Kneipe_Nr:\t"+t1.getText()+"\n======================================\n"+"Besitzer:\t"+t4.getText()+"\n\n"+"Telefon_Nr:\t"+t3.getText()+"\n\n"+
 								" \t"+" \n======================================\n");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -314,7 +314,7 @@ public class Anfrage {
 		scrollPane.setViewportView(ta);
 		ta.setEditable(false);
 
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("New label");//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel.setBounds(0, 3, 894, 539);
 		frame.getContentPane().add(lblNewLabel);

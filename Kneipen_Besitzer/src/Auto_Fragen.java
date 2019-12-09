@@ -98,7 +98,7 @@ public class Auto_Fragen {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel label = new JLabel("Kneipe_Nummer:");
+		JLabel label = new JLabel("Kneipennummer:");
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		label.setBounds(581, 0, 168, 29);
@@ -179,7 +179,6 @@ public class Auto_Fragen {
 				try {
 					Spiel_Starten.ta.print();
 				} catch (PrinterException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -198,8 +197,6 @@ public class Auto_Fragen {
 
 
 				try{
-
-
 
 					DB_Anfragen.Select_Count_FragenPool0(0, t1);
 
@@ -227,32 +224,30 @@ public class Auto_Fragen {
 								if (Default> Default1){
 
 
-									JOptionPane.showMessageDialog(null,"So Viele Fragen von der Categorie Default sind nicht Vohanden , Anzahl der maximale Fragen ist '"+Default1+"'  !!!");
+									JOptionPane.showMessageDialog(null,"Die maximale Anzahl der Fragen der Kategorie Default ist '"+Default1+"'  !");
 
 
 								}else if (pop>pop1){
 
 
-									JOptionPane.showMessageDialog(null,"So Viele Fragen von der Categorie POP_QUIZ sind nicht Vohanden , Anzahl der maximale Fragen ist '"+pop1+"'  !!!");
+									JOptionPane.showMessageDialog(null," Die maximale Anzahl der Fragen der Kategorie POP_QUIZ ist '"+pop1+"'  !");
 
 
 								}else if(Lokal>Lokal1){
-									JOptionPane.showMessageDialog(null,"So Viele Fragen von der Categorie LOkal sind nicht Vohanden , Anzahl der maximale Fragen ist '"+Lokal1+"'  !!!");
+									JOptionPane.showMessageDialog(null,"Die maximale Anzahl der Fragen der Kategorie Lokal ist '"+Lokal1+"'  !");
 								}else{
 
-
-									//JOptionPane.showMessageDialog(null,"JETZT FRAGEN AUSWHÄLEN ");
 
 									if(Default>0){
 
 										DB_Anfragen.Select_FrageNR_FragenPool(0,Default,s1,ff);
-										JOptionPane.showMessageDialog(null," die '"+Default+"'  Fragen aus der Kategorier Default wurden erfolgreich für den Spiel NR: '"+s1.getText()+"' hinzugefügt");
+										JOptionPane.showMessageDialog(null," Die '"+Default+"'  Fragen aus der Kategorie Default wurden erfolgreich dem Quiz '"+s1.getText()+"' hinzugefügt.");
 									}
 
 									if(pop>0){
 										DB_Anfragen.Select_FrageNR_FragenPool(1,pop,s1,ff);
 
-										JOptionPane.showMessageDialog(null," die '"+pop+"'  Fragen aus der Kategorier POP_QUIZ wurden erfolgreich für den Spiel NR: '"+s1.getText()+"' hinzugefügt");
+										JOptionPane.showMessageDialog(null,"Die '"+pop+"'  Fragen aus der Kategorie POP_QUIZ wurden erfolgreich für den Spiel '"+s1.getText()+"' hinzugefügt.");
 
 
 
@@ -263,7 +258,7 @@ public class Auto_Fragen {
 										DB_Anfragen.Select_FrageNR_FragenPool(Integer.parseInt(ff.getText()),Lokal,s1,ff);
 
 
-										JOptionPane.showMessageDialog(null," die '"+Lokal+"'  Fragen aus der Kategorier Lokal wurden erfolgreich für den Spiel NR: '"+s1.getText()+"' hinzugefügt");
+										JOptionPane.showMessageDialog(null," Die '"+Lokal+"'  Fragen aus der Kategorie Lokal wurden erfolgreich für das Spiel'"+s1.getText()+"' hinzugefügt.");
 
 
 
@@ -287,19 +282,19 @@ public class Auto_Fragen {
 						else{
 
 
-							JOptionPane.showMessageDialog(null,"Sie müssen in der Summe '"+AnzahleF+"' fragen auswhälen");
+							JOptionPane.showMessageDialog(null,"Sie müssen in der Summe '"+AnzahleF+"' Fragen auswählen.");
 
 
 						}
 
 					}catch(Exception e1){
-						JOptionPane.showMessageDialog(null,"Prüfen sie die Angegebene Daten Bitte !!!");
+						JOptionPane.showMessageDialog(null,"Prüfen Sie die angegebenen Daten!");
 					}
 
 
-				}catch (Exception e){
+				} catch (Exception e){
 
-
+System.out.println(e);
 
 				}
 
@@ -334,7 +329,7 @@ public class Auto_Fragen {
 		btnHinzufgen.setBounds(596, 67, 153, 42);
 		frame.getContentPane().add(btnHinzufgen);
 
-		JButton btnExit = new JButton("Exit");
+		JButton btnExit = new JButton("Schließen");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Spiel_Starten.aar.setText("");
@@ -347,7 +342,7 @@ public class Auto_Fragen {
 		btnExit.setBounds(596, 198, 153, 42);
 		frame.getContentPane().add(btnExit);
 
-		JLabel lblSpielnummer = new JLabel("Spiel_Nummer:");
+		JLabel lblSpielnummer = new JLabel("Spielnummer:");
 		lblSpielnummer.setForeground(Color.RED);
 		lblSpielnummer.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		lblSpielnummer.setBounds(12, 10, 153, 22);
@@ -396,7 +391,7 @@ public class Auto_Fragen {
 		t3.setBounds(375, 112, 116, 22);
 		frame.getContentPane().add(t3);
 
-		lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("");//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel);
