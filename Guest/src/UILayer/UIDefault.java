@@ -14,6 +14,7 @@ import java.util.Arrays;
 
 public class UIDefault extends JFrame {
 
+	private JFrame frame;
 	private JPanel contentPane;
 	private JTextField textFieldUserLogin;
 	private JPasswordField passwordFieldUserPw;
@@ -36,6 +37,7 @@ public class UIDefault extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+
 					UIDefault frame = new UIDefault();
 					frame.setVisible(true);
 
@@ -52,20 +54,23 @@ public class UIDefault extends JFrame {
 	 */
 	public UIDefault() {
 
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 500);
+		setBounds(100, 100, 900, 600);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		/*
-		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
-		background.setBounds(100, 100, 700, 500);
-		contentPane.add(background);
-		*/
+		//ImageIcon img = new ImageIcon("Ressources\\Imag\\index.png");
+
+		//JLabel background = new JLabel(img);
+		//background.setBounds(0,0,700,500);
+		//contentPane.add(background);
+
 
 		JButton buttonUserLogin = new JButton("Login");
 		buttonUserLogin.setFont(new Font("Tahoma", Font.BOLD, 15));

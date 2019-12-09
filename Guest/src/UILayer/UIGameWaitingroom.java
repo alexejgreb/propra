@@ -58,7 +58,7 @@ public class UIGameWaitingroom extends JFrame {
             do {
 
                 result = (int) (TimeHandler.getMillisWaitingUntilStartQuiz(numberOfGame) / 1000);
-                System.out.println("result: " + result);
+               // System.out.println("result: " + result);
                 publish(result);
 
                 try {
