@@ -46,6 +46,7 @@ public class UIDefault extends JFrame {
 		});
 	}
 
+
 	/**
 	 * Create the frame.
 	 */

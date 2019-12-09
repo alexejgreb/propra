@@ -25,9 +25,10 @@ public class UIUserDefault extends JFrame {
 	private String tempUserPW;
 
 	public static void main(String[] args) {
-		DataBaseConnector.setServerAddress(args[0]);
-		DataBaseConnector.setServerUsername(args[1]);
- 		DataBaseConnector.setServerPassword(args[2]);
+
+		//DataBaseConnector.setServerAddress(args[0]);
+		//DataBaseConnector.setServerUsername(args[1]);
+ 		//DataBaseConnector.setServerPassword(args[2]);
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {

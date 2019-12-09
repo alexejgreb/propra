@@ -35,5 +35,24 @@ public class DataBaseConnector {
         }
 
     }
+    public static String[] getArgs(){
+        String[] args= new String[3];
+        args[0]=serverAddress;
+        args[1]=serverUsername;
+        args[2]=serverPassword;
+        return args;
+    }
+
+    public static String getServerAddress() {
+        return serverAddress;
+    }
+
+    public static String getServerPassword() {
+        return serverPassword;
+    }
+
+    public static String getServerUsername() {
+        return serverUsername;
+    }
 }
 

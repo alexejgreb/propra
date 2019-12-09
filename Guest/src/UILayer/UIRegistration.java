@@ -107,15 +107,17 @@ public class UIRegistration extends JFrame {
 		LabelRepeat.setBounds(5, 170, 97, 14);
 		contentPane.add(LabelRepeat);
 
+		//ToDo zurück Button funktioniert nicht! args fehlen!
 		JButton buttonback = new JButton("Zurück");
 		buttonback.setBounds(65, 210, 96, 25);
 		buttonback.setFont(new Font("Tahoma", Font.BOLD, 15));
 		buttonback.setForeground(new Color(255, 0, 0));
 		southPanel.add(buttonback);
 		buttonback.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg1) {
-				UIDefault.main(null);
+			public void actionPerformed(ActionEvent e) {
+				UIDefault.main(DataBaseConnector.getArgs());
 				dispose();
+
 			}
 		});
 
