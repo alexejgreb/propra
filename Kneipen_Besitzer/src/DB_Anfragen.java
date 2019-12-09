@@ -557,24 +557,15 @@ public class DB_Anfragen {
                 txt5.setText(rs.getString("DritteWahl"));
                 txt6.setText(rs.getString("VierteWahl"));
             }
-
             pst1.close();
-
-
         } catch (Exception e3) {
             e3.printStackTrace();
         }
-
-
     }
-
-
-
 
     public static void Update_Question(JTextArea Question,JTextField A,JTextField B,JTextField C,JTextField D,JTextField Answer,JComboBox CB,JLabel Zeit,JTextArea ta){ //// Combo_Box Fragen_Nr
         //con=Database1.dbConnector();
         con = DataBaseConnector.dbConnectorMariaDB();
-
 
         try{
             String value223=Question.getText();
@@ -590,16 +581,10 @@ public class DB_Anfragen {
             JOptionPane.showMessageDialog(null,"Erfolgreich UPDATE");
             ta.append("\t Frage Update: \n\n"+"Frage:\t"+Question.getText()+"\n============================================================================\n"+"A:\t"+A.getText()+"\n============================================================================\n"+"B:\t"+B.getText()+"\n============================================================================\n"+"C:\t"+C.getText()+"\n============================================================================\n"+"D:\t"+D.getText()+""+
                     " \t"+"Antwort:\t"+Answer.getText()+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
-
-
         }catch(Exception e3){
             JOptionPane.showMessageDialog(null,"Prüfen sie die Angegebene Daten Bitte !!!");
         }
-
-
     }
-
-
 
     public static void Table_Fragen(JTable t,int b) {
 
@@ -611,40 +596,30 @@ public class DB_Anfragen {
             PreparedStatement pst=con.prepareStatement(query);
             ResultSet rs= pst.executeQuery();
             t.setModel(DbUtils.resultSetToTableModel(rs));
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     public static void Select_Count_FragenPool0(int N ,JTextField x){ ////
 
         con = DataBaseConnector.dbConnectorMariaDB();
-
         //con=Database.dbConnector();
+
         try {	 ///
             String query="select count(*) from FragenPool f where Besitzer = '"+N+"'";
-
             PreparedStatement pst=con.prepareStatement(query);
-
             ResultSet rs= pst.executeQuery();
 
             while (rs.next()){
                 //String count = rs.getString("count(*)");
                 x.setText(rs.getString("count(*)"));
-
             }
             pst.close();
-
-
         } catch (Exception e3) {
             e3.printStackTrace();
         }
     }
-
 
     public static void Select_FrageNR_FragenPool(int BarNr ,int x,JTextField Spiel,JTextField BarNur){ ////
 
@@ -652,18 +627,14 @@ public class DB_Anfragen {
 
         //con=Database.dbConnector();
         for(int i=1;i<=x;i++){
-
-
             try {	 ///
                 String query="select FrageNr from FragenPool where Besitzer ='"+BarNr+"' and FrageNr not in ( Select Frage_Nr from Quiz_Fragen where Spiel_Nummer='"+Spiel.getText()+"')";
-
                 PreparedStatement pst=con.prepareStatement(query);
-
                 ResultSet rs= pst.executeQuery();
+
                 if(rs.next()){
 
                     String FrageNr = rs.getString("FrageNr");
-
 
                     String sql = "insert into Quiz_Fragen(Spiel_Nummer,Frage_Nr,Bar_Nr) VALUES(?,?,?)";
                     PreparedStatement pst2=con.prepareStatement(sql);
@@ -672,18 +643,13 @@ public class DB_Anfragen {
                     pst2.setString(3,BarNur.getText());
 
                     pst2.execute();
-
-
                 }
                 pst.close();
-
-
             } catch (Exception e3) {
                 e3.printStackTrace();
-            }}
+            }
+        }
     }
-
-
     public static void Insert_Spiel_Fragen(JTextField t1 ,JLabel Zeit,JTextField licence,JComboBox Uhr,JComboBox Min,JComboBox Tag,JComboBox Monat,JComboBox Jahr,JComboBox AR,JComboBox AF,JTextField Bar){ ////
 
         con = DataBaseConnector.dbConnectorMariaDB();
@@ -709,19 +675,11 @@ public class DB_Anfragen {
             /////////////////////////////////////////////////////////////////////////////////////
             pst.execute();
             JOptionPane.showMessageDialog(null,"Gespeichert");
-
-
-
-
-
-
         }
         catch(Exception e11){
             e11.printStackTrace();
         }
-
     }
-
 
     public static void Table_Fragen_Quiz(JTable t,JTextField ff) {
 
@@ -732,16 +690,10 @@ public class DB_Anfragen {
             PreparedStatement pst=con.prepareStatement(query);
             ResultSet rs= pst.executeQuery();
             t.setModel(DbUtils.resultSetToTableModel(rs));
-
-
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-
-
     }
-
-
     public static void Select_SpielNR(int BarNr ,JComboBox c){ ////
 
         con = DataBaseConnector.dbConnectorMariaDB();
@@ -749,28 +701,18 @@ public class DB_Anfragen {
         //con=Database.dbConnector();
         try {	 ///
             String query="select Spiel_Nummer from Spiel_Gnehmigt where Bar_Nr ='"+BarNr+"'";
-
             PreparedStatement pst=con.prepareStatement(query);
-
             ResultSet rs= pst.executeQuery();
 
             while (rs.next()){
                 String Spiel = rs.getString("Spiel_Nummer");
                 c.addItem(Spiel);
-
             }
             pst.close();
-
-
         } catch (Exception e3) {
             e3.printStackTrace();
         }
     }
-
-
-
-
-
 
     public static void Quiz_Teilnehmer(JTable t,JTextField ff) {
 
@@ -781,16 +723,10 @@ public class DB_Anfragen {
             PreparedStatement pst=con.prepareStatement(query);
             ResultSet rs= pst.executeQuery();
             t.setModel(DbUtils.resultSetToTableModel(rs));
-
-
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-
-
     }
-
-
 
     public static void Select_Quiz_Teilnehmer_Info(JTextField txt1, JTextField txt2,JTextField txt3,JTextField txt4,JTextField txt5,JTextField txt6){ ////
 
@@ -798,50 +734,35 @@ public class DB_Anfragen {
 
         //con=Database.dbConnector();
         try {	 ///
-
             String query="select  Datum,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen from Spiel_Gnehmigt where Spiel_Nummer ='"+txt1.getText()+"'";
-
             PreparedStatement pst1=con.prepareStatement(query);
-
             ResultSet rs= pst1.executeQuery();
 
             if ((rs.next()))
             {
-
                 txt2.setText(rs.getString("Datum"));
                 txt3.setText(rs.getString("Uhr_Spiel"));
                 txt4.setText(rs.getString("Min_Spiel"));
                 txt5.setText(rs.getString("Anzahl_Runden"));
                 txt6.setText(rs.getString("Anzahl_Fragen"));
-
             }
-
             pst1.close();
-
-
         } catch (Exception e3) {
             e3.printStackTrace();
         }
-
-
     }
 
     public static void Select_Bar_Info(JTextField txt1, JTextField txt2,JTextField txt3,JTextField txt4,JTextField txt5,JTextField txt6,JTextField txt7,JTextField txt8){ ////
-
         con = DataBaseConnector.dbConnectorMariaDB();
-
         //con=Database.dbConnector();
         try {	 ///
 
             String query="select  First_Name,Surname,Street,City,Post,Mobil,Mail from Bar where Bar_Nr ='"+txt1.getText()+"'";
-
             PreparedStatement pst1=con.prepareStatement(query);
-
             ResultSet rs= pst1.executeQuery();
 
             if ((rs.next()))
             {
-
                 txt2.setText(rs.getString("First_Name"));
                 txt3.setText(rs.getString("Surname"));
                 txt4.setText(rs.getString("Street"));
@@ -849,20 +770,12 @@ public class DB_Anfragen {
                 txt6.setText(rs.getString("City"));
                 txt7.setText(rs.getString("Mobil"));
                 txt8.setText(rs.getString("Mail"));
-
             }
-
             pst1.close();
-
-
         } catch (Exception e3) {
             e3.printStackTrace();
         }
-
-
     }
-
-
     public static void Select_Datum_Spiel(int NR ,JLabel txt1){ ////
 
         con = DataBaseConnector.dbConnectorMariaDB();
@@ -878,29 +791,21 @@ public class DB_Anfragen {
 
             if ((rs.next()))
             {
-
-
                 txt1.setText(rs.getString("Tag_Spiel")+"/"+rs.getString("Monat_Spiel")+"/"+rs.getString("Jahr_Spiel")+"UM:"+rs.getString("Uhr_Spiel")+":"+rs.getString("Min_Spiel"));
-
 
             }else{
                 JOptionPane.showMessageDialog(null,"Prüfen sie das Spiel_Nummer");
             }
 
             pst1.close();
-
-
         } catch (Exception e3) {
             e3.printStackTrace();
         }
-
-
     }
 
     public static void Select_Info_Kunde_Spiel(int NR ,int NR2,JLabel txt1,JLabel txt2){ ////
 
         con = DataBaseConnector.dbConnectorMariaDB();
-
         //con=Database.dbConnector();
         try {	 ///
 
@@ -912,25 +817,17 @@ public class DB_Anfragen {
 
             if ((rs.next()))
             {
-
-
                 txt1.setText("KundenNr:"+rs.getString("Kunden_Nr"));
                 txt2.setText(rs.getString("Punkte"));
 
             }else{
                 JOptionPane.showMessageDialog(null,"Prüfen sie das Spiel_Nummer ggf auch das ID_Nummer");
             }
-
             pst1.close();
-
-
         } catch (Exception e3) {
             e3.printStackTrace();
         }
-
-
     }
-
 
     public static void Winner_Punkte(int NR,JLabel t){ ////
 
@@ -939,27 +836,15 @@ public class DB_Anfragen {
         //con=Database.dbConnector();
         try {	 ///
             String query="select max(Punkte) from Kunde_Spiel where Spiel_Nr = '"+NR+"'";
-
             PreparedStatement pst111=con.prepareStatement(query);
-
             ResultSet rs= pst111.executeQuery();
-
             if ((rs.next()))
             {
-
                 String max = rs.getString("max(Punkte)");
-
-
-
-
-
                 t.setText(max);
                 //pp=20;
-
             }
             pst111.close();
-
-
         } catch (Exception e3) {
             e3.printStackTrace();
         }
@@ -974,14 +859,8 @@ public class DB_Anfragen {
             PreparedStatement pst=con.prepareStatement(query);
             ResultSet rs= pst.executeQuery();
             t.setModel(DbUtils.resultSetToTableModel(rs));
-
-
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-
-
     }
-
-
 }

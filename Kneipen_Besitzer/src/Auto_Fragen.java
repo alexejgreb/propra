@@ -32,10 +32,6 @@ import javax.swing.ImageIcon;
 
 
 public class Auto_Fragen {
-
-
-
-
 	private JFrame frame;
 	private static  JTextField tt;
 	private static JTextField ff;
@@ -175,14 +171,11 @@ public class Auto_Fragen {
 		JButton btnPrint = new JButton("Drucken");
 		btnPrint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
 				try {
 					Spiel_Starten.ta.print();
 				} catch (PrinterException e) {
 					e.printStackTrace();
 				}
-
-
 			}
 		});
 		btnPrint.setForeground(Color.RED);
@@ -193,9 +186,6 @@ public class Auto_Fragen {
 		JButton btnHinzufgen = new JButton("Hinzufügen");
 		btnHinzufgen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-
-
 				try{
 
 					DB_Anfragen.Select_Count_FragenPool0(0, t1);
@@ -204,124 +194,52 @@ public class Auto_Fragen {
 					DB_Anfragen.Select_Count_FragenPool0(Integer.parseInt(ff.getText()), t3);
 
 					try{
-
-
 						int Default = Integer.parseInt(txt1.getText());
 						int pop = Integer.parseInt(txt2.getText());
 						int Lokal = Integer.parseInt(txt3.getText());
 						int Summe = Default + pop + Lokal ;
 						int AnzahleF = Integer.parseInt(Spiel_Starten.cc.getSelectedItem().toString())* Integer.parseInt(Spiel_Starten.cb.getSelectedItem().toString());
-
 						if(Summe== AnzahleF){
-
 							try{
-
 								int Default1 = Integer.parseInt(t1.getText());
 								int pop1 = Integer.parseInt(t2.getText());
 								int Lokal1 = Integer.parseInt(t3.getText());
 
-
 								if (Default> Default1){
-
-
 									JOptionPane.showMessageDialog(null,"Die maximale Anzahl der Fragen der Kategorie Default ist '"+Default1+"'  !");
-
-
 								}else if (pop>pop1){
-
-
 									JOptionPane.showMessageDialog(null," Die maximale Anzahl der Fragen der Kategorie POP_QUIZ ist '"+pop1+"'  !");
-
-
 								}else if(Lokal>Lokal1){
 									JOptionPane.showMessageDialog(null,"Die maximale Anzahl der Fragen der Kategorie Lokal ist '"+Lokal1+"'  !");
 								}else{
-
-
 									if(Default>0){
-
 										DB_Anfragen.Select_FrageNR_FragenPool(0,Default,s1,ff);
 										JOptionPane.showMessageDialog(null," Die '"+Default+"'  Fragen aus der Kategorie Default wurden erfolgreich dem Quiz '"+s1.getText()+"' hinzugefügt.");
 									}
-
 									if(pop>0){
 										DB_Anfragen.Select_FrageNR_FragenPool(1,pop,s1,ff);
-
 										JOptionPane.showMessageDialog(null,"Die '"+pop+"'  Fragen aus der Kategorie POP_QUIZ wurden erfolgreich für den Spiel '"+s1.getText()+"' hinzugefügt.");
-
-
-
-
 									}
-
 									if(Lokal>0){
 										DB_Anfragen.Select_FrageNR_FragenPool(Integer.parseInt(ff.getText()),Lokal,s1,ff);
-
-
 										JOptionPane.showMessageDialog(null," Die '"+Lokal+"'  Fragen aus der Kategorie Lokal wurden erfolgreich für das Spiel'"+s1.getText()+"' hinzugefügt.");
-
-
-
 									}
-
-
 									DB_Anfragen.Insert_Spiel_Fragen(s1,Spiel_Starten.Zeit,Spiel_Starten.licence,Spiel_Starten.comboBox,Spiel_Starten.comboBox_1,Spiel_Starten.comboBox_2,Spiel_Starten.comboBox_3,Spiel_Starten.comboBox_4,Spiel_Starten.cc,Spiel_Starten.cb,ff);
-
 									DB_Anfragen.Table_Fragen_Quiz(table,s1);
 								}
-
-
-
-							}catch(Exception e2){
-
-
-
-
+							}
+							catch(Exception e2){
 							}
 						}
 						else{
-
-
 							JOptionPane.showMessageDialog(null,"Sie müssen in der Summe '"+AnzahleF+"' Fragen auswählen.");
-
-
 						}
-
 					}catch(Exception e1){
 						JOptionPane.showMessageDialog(null,"Prüfen Sie die angegebenen Daten!");
 					}
-
-
 				} catch (Exception e){
-
 					System.out.println(e);
-
 				}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			}
 		});
 		btnHinzufgen.setForeground(Color.RED);
