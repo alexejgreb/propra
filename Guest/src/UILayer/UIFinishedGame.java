@@ -94,7 +94,7 @@ public class UIFinishedGame extends JFrame {
         contentPane.add(labelUserPlacing);
 
 
-        JButton buttonLogout = new JButton("Zurück");
+        JButton buttonLogout = new JButton("Logout");
         buttonLogout.setFont(new Font("Tahoma", Font.BOLD, 15));
         buttonLogout.setForeground(new Color(255, 0, 0));
         buttonLogout.setBounds(80, 250, 130, 25);
@@ -102,6 +102,16 @@ public class UIFinishedGame extends JFrame {
         buttonLogout.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent arg0) {
+
+                Login.guest.setPoints(0);
+                Login.guest.setPlacing(1);
+                Login.guest.setGameNumber(0);
+                Login.guest.setGuestID(0);
+                Login.guest.setUserName("");
+                Login.guest.setPassword("");
+                Login.guest.setEmail("");
+                Login.guest.setIDNumber(0);
+
                 UIDefault.main(DataBaseConnector.getArgs());
                 dispose();
 

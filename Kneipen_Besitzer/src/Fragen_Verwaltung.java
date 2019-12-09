@@ -334,7 +334,7 @@ public class Fragen_Verwaltung {
 		Tfrage.setBounds(397, 52, 666, 22);
 		frame.getContentPane().add(Tfrage);
 
-		JLabel label_7 = new JLabel("Kneipe_Nummer:");
+		JLabel label_7 = new JLabel("Kneipennummer:");
 		label_7.setForeground(Color.RED);
 		label_7.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		label_7.setBounds(1565, 13, 168, 16);
@@ -391,6 +391,7 @@ public class Fragen_Verwaltung {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
+		//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image.jpg"));
 		lblNewLabel.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel);

@@ -158,13 +158,13 @@ public class Quiz_Fragen_Bearbeiten {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Spiel_Nummer:");
+		JLabel lblNewLabel = new JLabel("Spielnummer:");
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel.setBounds(12, 28, 153, 16);
 		frame.getContentPane().add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Frage_Nr:");
+		JLabel lblNewLabel_1 = new JLabel("Fragenummer:");
 		lblNewLabel_1.setForeground(Color.RED);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(12, 81, 85, 16);
@@ -190,7 +190,7 @@ public class Quiz_Fragen_Bearbeiten {
 
 
 
-				int YesorNo = JOptionPane.showConfirmDialog(null, " Wollen sie die Frage Nr:'"+t1.getText()+"' mit der Frage Nr  '"+t2.getText()+"',   für den Spiel Nr :'"+t.getText()+"' ändern !!!!","Frage_Ändern", JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, " Wollen Sie die Frage Nr:'"+t1.getText()+"' mit der Frage Nr  '"+t2.getText()+"',   für das Spiel Nr :'"+t.getText()+"' ändern?","Frage ändern", JOptionPane.YES_NO_OPTION);
 
 				if(YesorNo==0){
 
