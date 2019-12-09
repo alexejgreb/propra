@@ -267,7 +267,7 @@ public class Auto_Fragen {
 
 									DB_Anfragen.Insert_Spiel_Fragen(s1,Spiel_Starten.Zeit,Spiel_Starten.licence,Spiel_Starten.comboBox,Spiel_Starten.comboBox_1,Spiel_Starten.comboBox_2,Spiel_Starten.comboBox_3,Spiel_Starten.comboBox_4,Spiel_Starten.cc,Spiel_Starten.cb,ff);
 
-									DB_Anfragen.Table_Fragen_Quiz(table,ff);
+									DB_Anfragen.Table_Fragen_Quiz(table,s1);
 								}
 
 

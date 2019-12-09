@@ -728,7 +728,7 @@ public class DB_Anfragen {
         con = DataBaseConnector.dbConnectorMariaDB();
         //con=Database1.dbConnector();
         try {
-            String query="select Spiel_Nummer,Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl,ErsteWahl as Richtige_Antwort from (FragenPool  , Quiz_Fragen) where Quiz_Fragen.Frage_Nr=FragenPool.FrageNr and Quiz_Fragen.Bar_Nr='"+ff.getText()+"' ORDER by Spiel_Nummer";
+            String query="select Spiel_Nummer,Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl,ErsteWahl as Richtige_Antwort from (FragenPool  , Quiz_Fragen) where Quiz_Fragen.Frage_Nr=FragenPool.FrageNr and Quiz_Fragen.Spiel_Nummer='"+ff.getText()+"' ORDER by Spiel_Nummer";
             PreparedStatement pst=con.prepareStatement(query);
             ResultSet rs= pst.executeQuery();
             t.setModel(DbUtils.resultSetToTableModel(rs));
