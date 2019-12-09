@@ -109,7 +109,7 @@ public class UIGameWaitingroom extends JFrame {
         setContentPane(contentPane);
 
         labelClock = new JLabel();
-        labelClock.setFont(new Font("Tahoma", Font.BOLD, 15));
+        //labelClock.setFont(new Font("Tahoma", Font.BOLD, 15));
         Font font = labelClock.getFont().deriveFont(70f);
         labelClock.setFont(font);
         labelClock.setHorizontalAlignment(JLabel.CENTER);
@@ -118,7 +118,7 @@ public class UIGameWaitingroom extends JFrame {
 
 
         lblGameClock = new JLabel("Das Spiel startet demnächst.");
-        lblGameClock.setFont(new Font("Tahoma", Font.BOLD, 15));
+       // lblGameClock.setFont(new Font("Tahoma", Font.BOLD, 15));
         contentPane.add(lblGameClock, BorderLayout.SOUTH);
 
     }
