@@ -63,13 +63,13 @@ import javax.swing.SwingConstants;public class Login1 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("BenutzerName:");
+		JLabel lblNewLabel = new JLabel("Benutzername:");
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel.setBounds(605, 267, 186, 32);
 		frame.getContentPane().add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Password:");
+		JLabel lblNewLabel_1 = new JLabel("Passwort:");
 		lblNewLabel_1.setForeground(Color.RED);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_1.setBounds(601, 335, 153, 32);
@@ -100,13 +100,13 @@ import javax.swing.SwingConstants;public class Login1 {
 					} catch (ClassNotFoundException | InstantiationException
 							| IllegalAccessException
 							| UnsupportedLookAndFeelException e) {
-						// TODO Auto-generated catch block
+
 						e.printStackTrace();
 					}
 					frame.dispose();
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"Ungültige Zugangsdaten !!!!!");
+					JOptionPane.showMessageDialog(null,"Ungültige Zugangsdaten!");
 				}
 
 			}
@@ -114,7 +114,7 @@ import javax.swing.SwingConstants;public class Login1 {
 		btnNewButton.setBounds(1012, 397, 87, 40);
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnNewButton_1 = new JButton("EXIT");
+		JButton btnNewButton_1 = new JButton("Schließen");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
@@ -133,6 +133,7 @@ import javax.swing.SwingConstants;public class Login1 {
 		frame.getContentPane().add(pwd1);
 
 		JLabel lblNewLabel_2 = new JLabel("");
+		//TODO
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\2015-10-26_Krombacher Marke des Jahres (1).jpg"));
 		lblNewLabel_2.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel_2);

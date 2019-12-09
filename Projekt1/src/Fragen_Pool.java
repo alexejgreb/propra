@@ -108,7 +108,7 @@ public class Fragen_Pool {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton Btp_Hinzufügen = new JButton("Insert");
+		JButton Btp_Hinzufügen = new JButton("Einfügen");
 		Btp_Hinzufügen.setForeground(Color.RED);
 		Btp_Hinzufügen.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Hinzufügen.addActionListener(new ActionListener() {
@@ -142,7 +142,7 @@ public class Fragen_Pool {
 		Btp_Hinzufügen.setBounds(28, 34, 118, 45);
 		frame.getContentPane().add(Btp_Hinzufügen);
 
-		JButton Btp_Delet = new JButton("Delete");
+		JButton Btp_Delet = new JButton("Löschen");
 		Btp_Delet.setForeground(Color.RED);
 		Btp_Delet.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Delet.addActionListener(new ActionListener() {
@@ -179,7 +179,7 @@ public class Fragen_Pool {
 		Btp_Delet.setBounds(28, 92, 118, 45);
 		frame.getContentPane().add(Btp_Delet);
 
-		JButton Btp_edit = new JButton("Update");
+		JButton Btp_edit = new JButton("Anpassen");
 		Btp_edit.setForeground(Color.RED);
 		Btp_edit.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_edit.addActionListener(new ActionListener() {
@@ -208,7 +208,7 @@ public class Fragen_Pool {
 		Btp_edit.setBounds(28, 150, 118, 45);
 		frame.getContentPane().add(Btp_edit);
 
-		JButton Btp_Exit = new JButton("Exit");
+		JButton Btp_Exit = new JButton("Schließen");
 		Btp_Exit.setForeground(Color.RED);
 		Btp_Exit.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Exit.addActionListener(new ActionListener() {
@@ -240,7 +240,7 @@ public class Fragen_Pool {
 		Btp_zurueck.setBounds(28, 266, 118, 45);
 		frame.getContentPane().add(Btp_zurueck);
 
-		JButton Btp_Aktualisieren = new JButton("Leeren");
+		JButton Btp_Aktualisieren = new JButton("Felder leeren");
 		Btp_Aktualisieren.setForeground(Color.RED);
 		Btp_Aktualisieren.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Aktualisieren.addActionListener(new ActionListener() {
@@ -273,7 +273,7 @@ public class Fragen_Pool {
 		lb2.setBounds(171, 164, 56, 16);
 		frame.getContentPane().add(lb2);
 
-		JButton btnNewButton_1 = new JButton("Print");
+		JButton btnNewButton_1 = new JButton("Drucken");
 		btnNewButton_1.setForeground(Color.RED);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -285,7 +285,7 @@ public class Fragen_Pool {
 		btnNewButton_1.setBounds(28, 203, 118, 45);
 		frame.getContentPane().add(btnNewButton_1);
 
-		JButton btnNewButton = new JButton("Print");
+		JButton btnNewButton = new JButton("Drucken");
 		btnNewButton.setForeground(Color.RED);
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton.setBounds(1624, 432, 97, 30);
@@ -326,7 +326,7 @@ public class Fragen_Pool {
 		CB1.setBounds(320, 66, 70, 22);
 		frame.getContentPane().add(CB1);
 
-		JLabel lblNewLabel_2 = new JLabel("Frage_Nr:");
+		JLabel lblNewLabel_2 = new JLabel("Frage Nr:");
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel_2.setBounds(182, 60, 85, 30);
@@ -386,6 +386,7 @@ public class Fragen_Pool {
 		frame.getContentPane().add(comboBox);
 
 		JLabel lblNewLabel_3 = new JLabel("");
+		//TODO
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image_content_828136805_20180122145147.jpg"));
 		lblNewLabel_3.setBounds(0, 0, 1733, 721);
 		frame.getContentPane().add(lblNewLabel_3);
@@ -403,7 +404,7 @@ public class Fragen_Pool {
 				try {
 					ta.print();
 				} catch (PrinterException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 

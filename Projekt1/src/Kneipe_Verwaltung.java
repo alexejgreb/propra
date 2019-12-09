@@ -174,7 +174,7 @@ public class Kneipe_Verwaltung {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 				frame.dispose();
@@ -192,7 +192,7 @@ public class Kneipe_Verwaltung {
 				int i1 =Integer.parseInt(text.getText());
 
 				if(i1==0)	{
-					JOptionPane.showMessageDialog(null,"Whälen sie eine offene Anfrage");
+					JOptionPane.showMessageDialog(null,"Wählen Sie eine offene Anfrage");
 				}
 				if(i1!=0){
 				
@@ -229,7 +229,7 @@ public class Kneipe_Verwaltung {
 		btnSperren.setBounds(12, 189, 240, 46);
 		frame.getContentPane().add(btnSperren);
 
-		JButton btnExit = new JButton("Exit");
+		JButton btnExit = new JButton("Schließen");
 		btnExit.setForeground(Color.RED);
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnExit.addActionListener(new ActionListener() {
@@ -251,7 +251,7 @@ public class Kneipe_Verwaltung {
 				int i1 =Integer.parseInt(text.getText());
 
 				if(i1==0)	{
-					JOptionPane.showMessageDialog(null,"Whälen sie eine offene Anfrage");
+					JOptionPane.showMessageDialog(null,"Wählen Sie eine offene Anfrage");
 				}
 				if(i1!=0){
 					/////
@@ -282,7 +282,7 @@ public class Kneipe_Verwaltung {
 					int i11 =Integer.parseInt(test.getText());
 
 					if(i11==1){
-						JOptionPane.showMessageDialog(null,"Sie haben eine unbefristete Lizenc bekommen ");
+						JOptionPane.showMessageDialog(null,"Sie haben eine dauerhafte Lizenz bekommen ");
 					}
 					if(i11==0)	{
 						//////
@@ -329,7 +329,7 @@ public class Kneipe_Verwaltung {
 							pst.setString(4, "1");
 
 							pst.execute();
-							JOptionPane.showMessageDialog(null,"Teilname Bestätigung");
+							JOptionPane.showMessageDialog(null,"Teilnahme Bestätigung");
 
 							// DB_Anfragen.Insert_Lizenc_1(lb, txt1, Zeit);
 							ta1.append("\t Genehmigung_Spiel: \n======================================\n"+"Spiel_Nr:\t"+lb.getText()+"\n======================================\n"+"Kneipe_Nr:\t"+C1.getSelectedItem().toString()+"\n======================================\n"+"Adresse:\t"+txt2.getText()+"\n======================================\n"+"Besitzer:\t"+txt3.getText()+"\n======================================\n"+"Telefon_Nr:\t"+txt4.getText()+"\n======================================\n"
@@ -347,7 +347,7 @@ public class Kneipe_Verwaltung {
 							String sql22="update Kneipe_Teilnehmer set Vermerk=1 where Kneipe_Nr='"+value115+"' ";
 							PreparedStatement pst3=con.prepareStatement(sql22);
 							pst3.execute();
-							JOptionPane.showMessageDialog(null,"Erfolgreich Genehmigt");
+							JOptionPane.showMessageDialog(null,"Erfolgreich genehmigt");
 
 							//DB_Anfragen.Update_Bar_Member(C1);
 							ta1.append("\t Anfrage_Genehmigt: \n======================================\n"+
@@ -389,7 +389,7 @@ public class Kneipe_Verwaltung {
 		btnAktualisieren.setBounds(12, 307, 240, 46);
 		frame.getContentPane().add(btnAktualisieren);
 
-		JButton btnNewButton_1 = new JButton("Print");
+		JButton btnNewButton_1 = new JButton("Drucken");
 		btnNewButton_1.setForeground(Color.RED);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -399,7 +399,7 @@ public class Kneipe_Verwaltung {
 				try {
 					ta1.print();
 				} catch (PrinterException e11) {
-					// TODO Auto-generated catch block
+
 					e11.printStackTrace();
 				}
 
@@ -438,7 +438,7 @@ public class Kneipe_Verwaltung {
 		frame.getContentPane().add(text);
 		text.setColumns(10);
 
-		JButton btnPrint = new JButton("Teilnahme_Verwaltung");
+		JButton btnPrint = new JButton("Teilnahme Verwaltung");
 		btnPrint.setForeground(Color.RED);
 		btnPrint.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnPrint.addActionListener(new ActionListener() {
@@ -464,7 +464,7 @@ public class Kneipe_Verwaltung {
 				int i1 =Integer.parseInt(text.getText());
 
 				if(i1==0)	{
-					JOptionPane.showMessageDialog(null,"Whälen sie eine offene Anfrage");
+					JOptionPane.showMessageDialog(null,"Wählen Sie eine offene Anfrage");
 				}
 
 				if(i1!=0){
@@ -501,7 +501,7 @@ public class Kneipe_Verwaltung {
 					int i11 =Integer.parseInt(test.getText());
 
 					if(i11==1){
-						JOptionPane.showMessageDialog(null,"Sie haben eine unbefristete Lizenc bekommen ");
+						JOptionPane.showMessageDialog(null,"Sie haben eine dauerhafte Lizenz bekommen ");
 					}
 					if(i11==0)	{
 						lb.setText(C1.getSelectedItem().toString()+tk.getText()+C1.getSelectedItem().toString());
@@ -644,7 +644,7 @@ public class Kneipe_Verwaltung {
 		frame.getContentPane().add(txt1);
 		txt1.setColumns(10);
 
-		JLabel lblNewLabel = new JLabel("Name_Kneipe:");
+		JLabel lblNewLabel = new JLabel("Kneipenname:");
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setBounds(300, 94, 158, 40);
@@ -671,6 +671,7 @@ public class Kneipe_Verwaltung {
 		tk.setColumns(10);
 
 		JLabel lblNewLabel_3 = new JLabel("");
+		//TODO
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\2015-10-26_Krombacher Marke des Jahres (1).jpg"));
 		lblNewLabel_3.setBounds(0, 0, 1721, 731);
 		frame.getContentPane().add(lblNewLabel_3);

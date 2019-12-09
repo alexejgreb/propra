@@ -106,7 +106,7 @@ public class Kneipen {
         btnSperren.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie die Kneipe Nr: '"+nr.getSelectedItem().toString()+"' entfernen!!!!!","Bar_Delete",JOptionPane.YES_NO_OPTION);
+                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie die Kneipe Nr: '"+nr.getSelectedItem().toString()+"' entfernen?","Bar_Delete",JOptionPane.YES_NO_OPTION);
 
                 if(YesorNo==0){}
 
@@ -116,7 +116,7 @@ public class Kneipen {
         btnSperren.setBounds(12, 52, 204, 46);
         frame.getContentPane().add(btnSperren);
 
-        lblKneipenr = new JLabel("Kneipe_Nr:");
+        lblKneipenr = new JLabel("KneipenNr:");
         lblKneipenr.setForeground(Color.RED);
         lblKneipenr.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblKneipenr.setBounds(278, 58, 106, 30);
@@ -134,7 +134,7 @@ public class Kneipen {
         lblAdresse.setBounds(278, 161, 122, 30);
         frame.getContentPane().add(lblAdresse);
 
-        lblTelefon = new JLabel("Telefon:");
+        lblTelefon = new JLabel("TelefonNr:");
         lblTelefon.setForeground(Color.RED);
         lblTelefon.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblTelefon.setBounds(278, 210, 122, 30);
@@ -146,7 +146,7 @@ public class Kneipen {
         lblEmail.setBounds(278, 259, 122, 30);
         frame.getContentPane().add(lblEmail);
 
-        lblKneipename = new JLabel("Kneipe_Name:");
+        lblKneipename = new JLabel("Kneipenname:");
         lblKneipename.setForeground(Color.RED);
         lblKneipename.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblKneipename.setBounds(278, 302, 142, 30);
@@ -213,19 +213,19 @@ public class Kneipen {
         ta = new JTextArea();
         scrollPane.setViewportView(ta);
 
-        JButton button = new JButton("Print");
+        JButton button = new JButton("Drucken");
         button.setForeground(Color.RED);
         button.setFont(new Font("Tahoma", Font.BOLD, 15));
         button.setBounds(1624, 433, 97, 30);
         frame.getContentPane().add(button);
 
-        JButton btnNachrichtsenden = new JButton("Nachricht_Senden");
+        JButton btnNachrichtsenden = new JButton("Nachricht senden");
         btnNachrichtsenden.setForeground(Color.RED);
         btnNachrichtsenden.setFont(new Font("Tahoma", Font.BOLD, 17));
         btnNachrichtsenden.setBounds(12, 111, 204, 46);
         frame.getContentPane().add(btnNachrichtsenden);
 
-        JButton btnLeeren = new JButton("Leeren");
+        JButton btnLeeren = new JButton("Felder leeren");
         btnLeeren.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 besitzer.setText("");
@@ -261,13 +261,13 @@ public class Kneipen {
         btnZurck.setBounds(12, 252, 204, 46);
         frame.getContentPane().add(btnZurck);
 
-        JButton btnPrint = new JButton("Print");
+        JButton btnPrint = new JButton("Drucken");
         btnPrint.setForeground(Color.RED);
         btnPrint.setFont(new Font("Tahoma", Font.BOLD, 17));
         btnPrint.setBounds(12, 324, 204, 46);
         frame.getContentPane().add(btnPrint);
 
-        JButton btnExit = new JButton("Exit");
+        JButton btnExit = new JButton("Schließen");
         btnExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -304,6 +304,7 @@ public class Kneipen {
         frame.getContentPane().add(post);
 
         lblNewLabel = new JLabel("");
+        //TODO
         lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\2015-10-26_Krombacher Marke des Jahres (1).jpg"));
         lblNewLabel.setBounds(0, 0, 1733, 721);
         frame.getContentPane().add(lblNewLabel);

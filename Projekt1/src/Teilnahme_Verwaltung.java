@@ -159,37 +159,37 @@ public class Teilnahme_Verwaltung {
 		nummer.setBounds(14, 43, 130, 22);
 		frame.getContentPane().add(nummer);
 
-		JLabel lblKneipenummer = new JLabel("Kneipe_Nummer:");
+		JLabel lblKneipenummer = new JLabel("Kneipennummer:");
 		lblKneipenummer.setForeground(Color.RED);
 		lblKneipenummer.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblKneipenummer.setBounds(12, 14, 143, 16);
 		frame.getContentPane().add(lblKneipenummer);
 
-		adresse = new JLabel("Adresse_Von der Kneipe Straße und Hausnummer");
+		adresse = new JLabel("Adresse von der Kneipe, Straße und Hausnummer");
 		adresse.setForeground(Color.RED);
 		adresse.setFont(new Font("Tahoma", Font.BOLD, 15));
 		adresse.setBounds(178, 45, 376, 16);
 		frame.getContentPane().add(adresse);
 
-		tel = new JLabel("Tel_Nr_der_Kneipe");
+		tel = new JLabel("Tel Nr der Kneipe");
 		tel.setForeground(Color.RED);
 		tel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		tel.setBounds(178, 74, 228, 16);
 		frame.getContentPane().add(tel);
 
-		besitzer = new JLabel("Besitzer_der_Kneipe");
+		besitzer = new JLabel("Besitzer der Kneipe");
 		besitzer.setForeground(Color.RED);
 		besitzer.setFont(new Font("Tahoma", Font.BOLD, 15));
 		besitzer.setBounds(178, 14, 228, 16);
 		frame.getContentPane().add(besitzer);
 
-		email = new JLabel("Email_@_der_Kneipen_Besitzer");
+		email = new JLabel("Email der Kneipenbesitzer");
 		email.setForeground(Color.RED);
 		email.setFont(new Font("Tahoma", Font.BOLD, 15));
 		email.setBounds(178, 103, 376, 16);
 		frame.getContentPane().add(email);
 
-		JButton btnLizencbeenden = new JButton("Lizenc_beenden");
+		JButton btnLizencbeenden = new JButton("Lizenz beenden");
 		btnLizencbeenden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -202,13 +202,13 @@ public class Teilnahme_Verwaltung {
 		btnLizencbeenden.setBounds(563, 11, 186, 31);
 		frame.getContentPane().add(btnLizencbeenden);
 
-		JButton btnExit = new JButton("Print");
+		JButton btnExit = new JButton("Drucken");
 		btnExit.setForeground(Color.ORANGE);
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnExit.setBounds(566, 55, 183, 31);
 		frame.getContentPane().add(btnExit);
 
-		JButton button = new JButton("Exit");
+		JButton button = new JButton("Schließen");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -221,6 +221,7 @@ public class Teilnahme_Verwaltung {
 		frame.getContentPane().add(button);
 
 		lblNewLabel = new JLabel("");
+		//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\krombacher-spot-mood-flaschen (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 761, 253);
 		frame.getContentPane().add(lblNewLabel);

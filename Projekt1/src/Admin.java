@@ -106,6 +106,7 @@ public class Admin {
 		frame.setBackground(new Color(244, 164, 96));
 		frame.getContentPane().setForeground(new Color(244, 164, 96));
 		frame.setForeground(new Color(0, 0, 0));
+		//TODO
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Haith\\Desktop\\Projekt1\\2015-10-26_Krombacher Marke des Jahres.jpg"));
 		frame.setFont(null);
 		frame.setBounds(100, 100, 1751, 768);
@@ -119,7 +120,7 @@ public class Admin {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 
-		JButton btAr = new JButton("Kneipen_Verwaltung");
+		JButton btAr = new JButton("Kneipen verwalten");
 		btAr.setForeground(Color.RED);
 		btAr.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btAr.addActionListener(new ActionListener() {
@@ -133,7 +134,7 @@ public class Admin {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 				frame.dispose();
@@ -144,7 +145,7 @@ public class Admin {
 		btAr.setBounds(25, 207, 291, 51);
 		frame.getContentPane().add(btAr);
 
-		JButton btEx = new JButton("EXIT");
+		JButton btEx = new JButton("Schließen");
 		btEx.setForeground(Color.RED);
 		btEx.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btEx.addActionListener(new ActionListener() {
@@ -156,7 +157,7 @@ public class Admin {
 		btEx.setBounds(25, 286, 291, 51);
 		frame.getContentPane().add(btEx);
 
-		JButton btKW = new JButton("Kneipen_Quiz_Verwaltung");
+		JButton btKW = new JButton("Anfragen verwalten");
 		btKW.setForeground(Color.RED);
 		btKW.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btKW.addActionListener(new ActionListener() {
@@ -168,7 +169,7 @@ public class Admin {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 				frame.dispose();
@@ -178,7 +179,7 @@ public class Admin {
 		btKW.setBounds(25, 127, 291, 51);
 		frame.getContentPane().add(btKW);
 
-		JButton btFr = new JButton("Fragen_Pool");
+		JButton btFr = new JButton("Fragen verwalten");
 		btFr.setForeground(Color.RED);
 		btFr.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btFr.addActionListener(new ActionListener() {
@@ -199,7 +200,7 @@ public class Admin {
 		btFr.setBounds(25, 50, 291, 51);
 		frame.getContentPane().add(btFr);
 
-		JButton btnNewButton = new JButton("Print");
+		JButton btnNewButton = new JButton("Drucken");
 		btnNewButton.setForeground(Color.RED);
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -213,6 +214,7 @@ public class Admin {
 		frame.getContentPane().add(btnNewButton);
 
 		JLabel lblNewLabel = new JLabel("");
+		//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\18006_krombacher_alkoholfrei_450x450 (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 1733, 721);
 		frame.getContentPane().add(lblNewLabel);
