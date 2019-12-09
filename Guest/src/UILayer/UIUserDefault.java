@@ -102,8 +102,8 @@ public class UIUserDefault extends JFrame {
 						Login.saveGameAndIDNumber(tempIdNumber);
 						Login.setValid0InKundeSpiel(tempIdNumber);
 						Login.setGuestIDInKunde_Spiel(tempEmail, tempUserPW, tempIdNumber);
-						// TODO später ersetzen durch : UIGameWaitingroom.showWaitingroom(Login.guest.getGameNumber());
-						UIGameWaitingroom.showWaitingroom(907);
+						UIGameWaitingroom.showWaitingroom(Login.guest.getGameNumber());
+						//UIGameWaitingroom.showWaitingroom(907);
 
 						dispose();
 					} else {
