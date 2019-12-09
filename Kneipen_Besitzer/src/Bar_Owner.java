@@ -188,7 +188,7 @@ public class Bar_Owner {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		Benutzer = new JLabel("Benutzerame:");
+		Benutzer = new JLabel("Benutzername:");
 		Benutzer.setForeground(Color.RED);
 		Benutzer.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
 		Benutzer.setBounds(554, 265, 176, 29);
@@ -205,7 +205,7 @@ public class Bar_Owner {
 		Name.setBounds(765, 259, 379, 38);
 		frame.getContentPane().add(Name);
 		Name.setColumns(10);
-		t1 = new JLabel("Bitte füllen Sie  dieses Anmelderformular aus\r\n");
+		t1 = new JLabel("Bitte füllen Sie das Anmeldeformular aus\r\n");
 		t1.setForeground(Color.RED);
 		t1.setFont(new Font("Arial Black", Font.BOLD, 16));
 		t1.setBounds(12, 80, 684, 29);
@@ -250,7 +250,7 @@ public class Bar_Owner {
 
 
 
-		pwd01 = new JButton("Password vergessen?");
+		pwd01 = new JButton("Passwort vergessen?");
 		pwd01.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -399,7 +399,7 @@ public class Bar_Owner {
 		aktu.setBounds(308, 633, 151, 29);
 		frame.getContentPane().add(aktu);
 
-		quit = new JButton("Exit");
+		quit = new JButton("Schließen");
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -412,7 +412,7 @@ public class Bar_Owner {
 					btnRegi.setText("Registrieren");
 					msg.setText("");
 					msg.setEditable(true);
-					t1.setText("Bitte fülen Sie Sorgfälltig dieses Anmelderformular Vielen DANK :)");
+					t1.setText("Bitte füllen Sie dieses Anmelderformular aus");
 					t01.setVisible(false);
 					epwd.setVisible(false);
 					t1.setVisible(false);
@@ -441,8 +441,8 @@ public class Bar_Owner {
 					bname.setVisible(false);
 					BarNR.setVisible(false);
 					scrollPane.setVisible(false);
-					pwd.setText("Password:");
-					Benutzer.setText("Benutzer_Name:");
+					pwd.setText("Passwort:");
+					Benutzer.setText("Benutzername:");
 					nein.setSelected(false);
 					login.setText("Anmelden");
 					Benutzer.setVisible(false);

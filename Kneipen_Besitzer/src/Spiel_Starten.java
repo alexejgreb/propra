@@ -419,7 +419,7 @@ public class Spiel_Starten {
 						int i2 =Integer.parseInt(l.getText());
 						if(i2==2){
 							cb.setEnabled(true);
-							cc.setEnabled(true);
+							cc.setEnabled(false);
 							btnNewButton_1.setEnabled(true);
 							btnBenden.setEnabled(true);
 							//

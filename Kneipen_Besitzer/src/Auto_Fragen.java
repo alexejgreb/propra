@@ -172,7 +172,7 @@ public class Auto_Fragen {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 
-		JButton btnPrint = new JButton("Print");
+		JButton btnPrint = new JButton("Drucken");
 		btnPrint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -391,7 +391,8 @@ System.out.println(e);
 		t3.setBounds(375, 112, 116, 22);
 		frame.getContentPane().add(t3);
 
-		lblNewLabel = new JLabel("");//TODO
+		lblNewLabel = new JLabel("");
+		//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel);
