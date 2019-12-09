@@ -208,8 +208,8 @@ public class UIGame extends JFrame {
 		int placing = 1;
 		PointQuizHandler PointHandler = new PointQuizHandler();
 		// TODO ausommentierter Code auskommentieren
-		//quizHandler.deleteQuiz(gameNumber);
-		//quizHandler.setQuizUsedUp(gameNumber);
+		quizHandler.deleteQuiz(gameNumber);
+		quizHandler.setQuizUsedUp(gameNumber);
 		PointHandler.setPointsGuestForBarOwner(totalScoreQuiz);
 		PointHandler.setPointsForCustomer(totalScoreQuiz);
 		PointHandler.setTotalPointsforCustomer(totalScoreQuiz);
