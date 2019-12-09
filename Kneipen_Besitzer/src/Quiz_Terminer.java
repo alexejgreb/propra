@@ -32,7 +32,6 @@ public class Quiz_Terminer {
     private static JTextField tnummer;
     private JTextField t1;
     private static JComboBox CB1;
-    private JLabel l5,l6,l1,l2,l3,l4;
     private static JLabel lblNewLabel;
     private JTextArea ta;
     /**
@@ -107,7 +106,7 @@ public class Quiz_Terminer {
 
 
 
-                        JButton btnExit_1 = new JButton("EXIT");
+                        JButton btnExit_1 = new JButton("Schließen");
                         btnExit_1.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent arg0) {
                             }
@@ -146,17 +145,13 @@ public class Quiz_Terminer {
      */
     static Connection con =null;
     private static JButton btnExit_2;
-    private static JLabel lblOffenespielnr;
-    private static JComboBox CB2;
-    private static JLabel lblQuiznr;
-    private static JTextField textField;
     private static JLabel lblNewLabel_1;
     public Quiz_Terminer() {
         initialize();
         frame.setResizable(false);
 
         con = DataBaseConnector.dbConnectorMariaDB();
-        //con=Database.dbConnector();
+
     }
 
     /**
@@ -246,34 +241,6 @@ public class Quiz_Terminer {
                     //e11.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Anmeldung Unmöglich !!!");
                 }
-/*
-				try{
-					String sql2 = "insert into Kunde_Spiel (Kunden_Nr,Spiel_Nr,ID_Nummer)values (?,?,?)";
-					PreparedStatement pst=con.prepareStatement(sql2);
-					pst.setString(1, t1.getText());
-					pst.setString(2, CB1.getSelectedItem().toString());
-					pst.setString(3, lblNewLabel.getText());
-
-
-
-					pst.execute();
-					JOptionPane.showMessageDialog(null,"Für den Spiel '"+CB1.getSelectedItem().toString()+"' erfolgreich angemeldet ");
-
-
-
-					ta.append("\t Anmeldung_Spiel: \n\n"+"Spiel_Nr: "+CB1.getSelectedItem().toString()+"\n======================================\n"+"Kunden_Nummer:"+t1.getText()+"\n\n"+"Kunden_name:"+l1.getText()+"\n======================================\n"+"Kunden_Vorname:"+l2.getText()+"\n\n"+"Zugang_Daten :\t"+lblNewLabel.getText()+"\n\n"+
-							" \t"+" \n======================================\n"+" \n======================================\n"+" \n Wichtig!! Die Zugangsnummer aufbewahren\n");
-
-
-
-
-						}
-						catch(Exception e111){
-							//e111.printStackTrace();
-							JOptionPane.showMessageDialog(null,e111);
-						}
-
-*/
 
             }
         });
@@ -282,14 +249,13 @@ public class Quiz_Terminer {
         btnExit.setBounds(596, 125, 153, 31);
         frame.getContentPane().add(btnExit);
 
-        JButton btnPrint = new JButton("Print");
+        JButton btnPrint = new JButton("Drucken");
         btnPrint.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
                 try {
                     ta.print();
                 } catch (PrinterException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -323,7 +289,7 @@ public class Quiz_Terminer {
         btnExit_2.setFont(new Font("Tahoma", Font.BOLD, 18));
         btnExit_2.setBounds(596, 168, 153, 31);
         frame.getContentPane().add(btnExit_2);
-        lblNewLabel_1 = new JLabel("");
+        lblNewLabel_1 = new JLabel("");//TODO
         lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
         lblNewLabel_1.setBounds(0, 0, 773, 265);
         frame.getContentPane().add(lblNewLabel_1);
