@@ -100,10 +100,10 @@ public class UIDefault extends JFrame {
 			}
 		});
 		
-		Button buttonRegistration = new Button("Anmelden");
+		JButton buttonRegistration = new JButton("Anmelden");
 		buttonRegistration.setFont(new Font("Tahoma", Font.BOLD, 15));
 		buttonRegistration.setForeground(new Color(255, 0, 0));
-		buttonRegistration.setBounds(5, 330, 80, 22);
+		buttonRegistration.setBounds(5, 330, 110, 22);
 		contentPane.add(buttonRegistration);
 		buttonRegistration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -113,10 +113,10 @@ public class UIDefault extends JFrame {
 			}
 		});
 		
-		Button buttonGuest = new Button("Weiter als Gast");
+		JButton buttonGuest = new JButton("Weiter als Gast");
 		buttonGuest.setFont(new Font("Tahoma", Font.BOLD, 15));
 		buttonGuest.setForeground(new Color(255, 0, 0));
-		buttonGuest.setBounds(338, 330, 130, 22);
+		buttonGuest.setBounds(338, 330, 150, 22);
 		contentPane.add(buttonGuest);
 		buttonGuest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,10 +131,10 @@ public class UIDefault extends JFrame {
 		contentPane.add(LabelHeader);
 		
 		JLabel LabelUserLogin = new JLabel("Login");
+		LabelUserLogin.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		LabelUserLogin.setBounds(103, 30, 260, 20);
 		contentPane.add(LabelUserLogin);
 
-		
 		textFieldUserLogin = new JTextField();
 		textFieldUserLogin.setBounds(82, 61, 96, 20);
 		contentPane.add(textFieldUserLogin);
@@ -145,20 +145,22 @@ public class UIDefault extends JFrame {
 		contentPane.add(passwordFieldUserPw);
 		
 		JLabel LabelLoginMail = new JLabel("E-Mail");
+		LabelLoginMail.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		LabelLoginMail.setBounds(5, 64, 72, 14);
 		contentPane.add(LabelLoginMail);
 		
 		JLabel LabelLoginPw = new JLabel("Passwort");
+		LabelLoginPw.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		LabelLoginPw.setBounds(5, 95, 67, 14);
 		contentPane.add(LabelLoginPw);
 		
 		JLabel LabelRegistration = new JLabel("Noch nicht angemeldet? Jetzt anmelden!");
+		LabelRegistration.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		LabelRegistration.setBounds(5, 248, 327, 20);
 		contentPane.add(LabelRegistration);
-		
-		
 
-		Label LabelGuest = new Label("Oder Spiel als Gast");
+		JLabel LabelGuest = new JLabel("Oder Spiel als Gast");
+		LabelGuest.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		LabelGuest.setBounds(338, 248, 215, 22);
 		contentPane.add(LabelGuest);
 	}
