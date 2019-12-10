@@ -86,7 +86,6 @@ public class Bar_Owner {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-
                     Bar_Owner window = new Bar_Owner();
                     window.frame.setVisible(true);
 

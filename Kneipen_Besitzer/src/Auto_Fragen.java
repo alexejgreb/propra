@@ -101,7 +101,7 @@ public class Auto_Fragen {
 
 		ff = new JTextField();
 		ff.setFont(new Font("Tahoma", Font.BOLD, 13));
-		ff.setText("310514");
+		ff.setText("100010");
 		ff.setEditable(false);
 		ff.setColumns(10);
 		ff.setBounds(681, 31, 68, 22);
@@ -147,7 +147,7 @@ public class Auto_Fragen {
 
 		txt3 = new JTextField();
 		txt3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		txt3.setText("0");
+		txt3.setText("wir suchen dich");
 		txt3.setColumns(10);
 		txt3.setBounds(375, 42, 99, 22);
 		frame.getContentPane().add(txt3);
@@ -212,7 +212,9 @@ public class Auto_Fragen {
 										JOptionPane.showMessageDialog(null,"Die '"+pop+"'  Fragen aus der Kategorie POP_QUIZ wurden erfolgreich für den Spiel '"+s1.getText()+"' hinzugefügt.");
 									}
 									if(Lokal>0){
+										System.out.println("lokal"+Integer.parseInt(ff.getText())+" "+Lokal);
 										DB_Anfragen.Select_FrageNR_FragenPool(Integer.parseInt(ff.getText()),Lokal,s1,ff);
+										System.out.println("bin fertig");
 										JOptionPane.showMessageDialog(null," Die '"+Lokal+"'  Fragen aus der Kategorie Lokal wurden erfolgreich für das Spiel'"+s1.getText()+"' hinzugefügt.");
 									}
 									DB_Anfragen.Insert_Spiel_Fragen(s1,Spiel_Starten.Zeit,Spiel_Starten.licence,Spiel_Starten.comboBox,Spiel_Starten.comboBox_1,Spiel_Starten.comboBox_2,Spiel_Starten.comboBox_3,Spiel_Starten.comboBox_4,Spiel_Starten.cc,Spiel_Starten.cb,ff);
@@ -220,16 +222,22 @@ public class Auto_Fragen {
 								}
 							}
 							catch(Exception e2){
+								System.out.println(e2);
+								e2.printStackTrace();
 							}
 						}
 						else{
 							JOptionPane.showMessageDialog(null,"Sie müssen in der Summe '"+AnzahleF+"' Fragen auswählen.");
 						}
 					}catch(Exception e1){
+						System.out.println(e1);
+						e1.printStackTrace();
 						JOptionPane.showMessageDialog(null,"Prüfen Sie die angegebenen Daten!");
 					}
 				} catch (Exception e){
 					System.out.println(e);
+					e.printStackTrace();
+
 				}
 			}
 		});

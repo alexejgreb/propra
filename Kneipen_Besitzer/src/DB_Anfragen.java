@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -456,31 +458,40 @@ public class DB_Anfragen {
             e3.printStackTrace();
         }
     }
-
-    public static void Select_FrageNR_FragenPool(int BarNr ,int x,JTextField Spiel,JTextField BarNur){ ////
-
+                                                //besitzer(Vermerk), x=howmany
+    public static void Select_FrageNR_FragenPool(int BarNr ,int x,JTextField Spiel,JTextField BarNur) throws SQLException {
         con = DataBaseConnector.dbConnectorMariaDB();
-
+// Array aus zufälligen Fragen holen
         //con=Database.dbConnector();
-        for(int i=1;i<=x;i++){
+        int questionIndexNumber;
+        ArrayList<Integer> questions= new ArrayList<>();
+        Logic temp = new Logic();
+        questions=temp.randomQuestion(BarNr,x);
+
+        // über Array iterieren, Fragen aus der Daten Bank kolen und inserten
+        for(int i=0;i<questions.size();i++){
+
+            questionIndexNumber=questions.get(i);
+
+
             try {	 ///
-                String query="select FrageNr from FragenPool where Besitzer ='"+BarNr+"' and FrageNr not in ( Select Frage_Nr from Quiz_Fragen where Spiel_Nummer='"+Spiel.getText()+"')";
-                PreparedStatement pst=con.prepareStatement(query);
+              /*  String query="select FrageNr from FragenPool where Besitzer ='"+BarNr+"' and FrageNr='"+questionIndexNumber+"'";
+                 // PreparedStatement pst=con.prepareStatement(query);
                 ResultSet rs= pst.executeQuery();
+                */
 
-                if(rs.next()){
 
-                    String FrageNr = rs.getString("FrageNr");
+                    //String FrageNr = rs.getString("FrageNr");
 
                     String sql = "insert into Quiz_Fragen(Spiel_Nummer,Frage_Nr,Bar_Nr) VALUES(?,?,?)";
                     PreparedStatement pst2=con.prepareStatement(sql);
                     pst2.setString(1, Spiel.getText());
-                    pst2.setString(2, FrageNr);
+                    pst2.setString(2, String.valueOf(questionIndexNumber));
                     pst2.setString(3,BarNur.getText());
 
                     pst2.execute();
-                }
-                pst.close();
+
+               // pst.close();
             } catch (Exception e3) {
                 e3.printStackTrace();
             }
