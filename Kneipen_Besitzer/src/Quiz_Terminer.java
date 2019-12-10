@@ -239,7 +239,7 @@ public class Quiz_Terminer {
                 }
                 catch(Exception e11){
                     //e11.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Anmeldung Unmöglich !!!");
+                    JOptionPane.showMessageDialog(null, "Anmeldung unmöglich!");
                 }
 
             }

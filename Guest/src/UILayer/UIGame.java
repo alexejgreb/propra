@@ -59,7 +59,8 @@ public class UIGame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	/*
+	public static void main(String[] args) {
 
       try {
       	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -67,9 +68,9 @@ public class UIGame extends JFrame {
       	e.printStackTrace();
        }
 
-       //	DataBaseConnector.setServerAddress(args[0]);
-		//DataBaseConnector.setServerUsername(args[1]);
-		//DataBaseConnector.setServerPassword(args[2]);
+       	DataBaseConnector.setServerAddress(args[0]);
+      	DataBaseConnector.setServerUsername(args[1]);
+		DataBaseConnector.setServerPassword(args[2]);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -83,7 +84,9 @@ public class UIGame extends JFrame {
 			}
 
 		});
-    } */
+    }
+
+	 */
     public static void showGame() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -192,7 +195,7 @@ public class UIGame extends JFrame {
 			}
 
 		} else {
-			textFieldresultingPoints.setText("Du hast keine Anwort ausgewählt. Du bekommst 0 Punkte.");
+			textFieldresultingPoints.setText("Keine Anwort ausgewählt. Du bekommst 0 Punkte.");
 		}
 	}
 
@@ -270,6 +273,33 @@ public class UIGame extends JFrame {
 		jButtonAnswer4.setBackground(defaultColorButton);
 	}
 
+	private String getClippedAnswer(String toClip) {
+
+		String result = toClip;
+		ArrayList<String> fragments = new ArrayList<>();
+		if(toClip.length() >= 10) {
+			result = "";
+			for (int i = 0; i < toClip.split(" ").length; i++) {
+				fragments.add(toClip.split(" ")[i]);
+			}
+			result = result.concat("<html>");
+
+			for (String fragment : fragments) {
+
+				if (fragment.length() >= 9) {
+
+					result = result.concat(" " + fragment + "<br>");
+				} else {
+					result =result.concat(" " + fragment);
+				}
+
+			}
+			result = result.concat("</html>");
+		}
+		System.out.println(result);
+		return result;
+	}
+
 
     private void initializeQuizAndTimer(int NumberGame) {
 		selectedQuiz = quizHandler.getQuizFromDB(NumberGame);
@@ -287,10 +317,10 @@ public class UIGame extends JFrame {
 					textFieldresultingPoints.setText("Wähle bitte eine Antwort aus.");
 					ArrayList<String> answersRandom = actualQuestion.getRandomizedAnswers();
 					lblQuestion.setText(actualQuestion.getQuestion());
-					jButtonAnswer1.setText(answersRandom.get(0));
-					jButtonAnswer2.setText(answersRandom.get(1));
-					jButtonAnswer3.setText(answersRandom.get(2));
-					jButtonAnswer4.setText(answersRandom.get(3));
+					jButtonAnswer1.setText(getClippedAnswer(answersRandom.get(0)));
+					jButtonAnswer2.setText(getClippedAnswer(answersRandom.get(1)));
+					jButtonAnswer3.setText(getClippedAnswer(answersRandom.get(2)));
+					jButtonAnswer4.setText(getClippedAnswer(answersRandom.get(3)));
 					resetButtons();
 					clock = new ClockSeconds();
 					clock.execute();

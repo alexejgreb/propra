@@ -46,7 +46,6 @@ public class TimeHandler {
                 day = resultSet.getInt(3);
                 month = resultSet.getInt(4);
                 year = resultSet.getInt(5);
-
                 timeStampStart = new Timestamp(year-1900, month-1, day, hour, minute, 0, 0);
             }
             resultSet.close();
