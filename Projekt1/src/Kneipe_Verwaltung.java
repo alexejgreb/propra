@@ -672,7 +672,7 @@ public class Kneipe_Verwaltung {
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		//TODO
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\2015-10-26_Krombacher Marke des Jahres (1).jpg"));
+		lblNewLabel_3.setIcon(new ImageIcon("Ressources/2015-10-26_Krombacher Marke des Jahres (1).jpg"));
 		lblNewLabel_3.setBounds(0, 0, 1721, 731);
 		frame.getContentPane().add(lblNewLabel_3);
 		C1.addActionListener(new ActionListener() {

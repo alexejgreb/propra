@@ -30,6 +30,10 @@ import javax.swing.SwingConstants;public class Login1 {
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 
+		DataBaseConnector.setServerAddress(args[0]);
+		DataBaseConnector.setServerUsername(args[1]);
+		DataBaseConnector.setServerPassword(args[2]);
+
 		UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 
 		EventQueue.invokeLater(new Runnable() {
@@ -134,7 +138,7 @@ import javax.swing.SwingConstants;public class Login1 {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		//TODO
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\2015-10-26_Krombacher Marke des Jahres (1).jpg"));
+		lblNewLabel_2.setIcon(new ImageIcon("Ressources/2015-10-26_Krombacher Marke des Jahres (1).jpg"));
 		lblNewLabel_2.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel_2);
 	}
