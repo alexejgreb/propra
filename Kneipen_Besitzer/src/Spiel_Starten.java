@@ -318,7 +318,7 @@ public class Spiel_Starten {
 					btnNewButton_1.setEnabled(true);
 					btnBenden.setEnabled(true);
 					btnAuto.setEnabled(true);
-					JOptionPane.showMessageDialog(null,"Diese Lizenc '"+licence.getText()+"' gültig n ur für ein einzigen Spiel");
+					JOptionPane.showMessageDialog(null,"Diese Lizenz '"+licence.getText()+"' ist gültig für ein Spiel");
 					try {	 ///
 						String query="select max (Spiel_Nummer) from Spiel_Gnehmigt ";
 
@@ -405,7 +405,7 @@ public class Spiel_Starten {
 							licence.setText(Licence_Nr);
 							l.setText("2");
 							rs.close();
-							JOptionPane.showMessageDialog(null,"Sie dürfen Beliebig oft Spiele Starten , Die Krombacher behält das Recht ihre Lizenc jeder Zeit zu Kündigen sofern nicht anders vereinbart :)");
+							JOptionPane.showMessageDialog(null,"Sie dürfen beliebig oft Spiele starten. Die Krombacher behält das Recht ihre Lizenz jeder Zeit zu kündigen.");
 						}
 
 						/////
@@ -526,7 +526,7 @@ public class Spiel_Starten {
 		frame.getContentPane().add(licence);
 		licence.setColumns(10);
 
-		JLabel lblNewLabel = new JLabel("Frage_Nr:");
+		JLabel lblNewLabel = new JLabel("FragenNr:");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblNewLabel.setBounds(182, 104, 118, 29);
@@ -688,7 +688,7 @@ public class Spiel_Starten {
 
 
 						pst.execute();
-						JOptionPane.showMessageDialog(null,"Save");
+						JOptionPane.showMessageDialog(null,"Die Frage wurde dem Quiz hinzugefügt.");
 						if(i11!=i21){
 
 							ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
@@ -715,7 +715,7 @@ public class Spiel_Starten {
 					l4.setText(String.valueOf(s));
 				}
 				if(s==0){
-					JOptionPane.showMessageDialog(null,"Reicht");
+					JOptionPane.showMessageDialog(null,"Maximale Anzahl der Fragen wurde erreicht.");
 
 					int i9 =Integer.parseInt(l.getText());
 
@@ -747,7 +747,8 @@ public class Spiel_Starten {
 							pst.setString(12,ff.getText());
 							/////////////////////////////////////////////////////////////////////////////////////
 							pst.execute();
-							JOptionPane.showMessageDialog(null,"Gespeichert");
+							//TODO
+							JOptionPane.showMessageDialog(null,"Gespeichert.");
 
 
 
@@ -855,7 +856,7 @@ public class Spiel_Starten {
 		scrollPane_1.setViewportView(ta);
 		ta.setEditable(false);
 
-		btnBenden = new JButton("Annulieren");
+		btnBenden = new JButton("Quiz löschen");
 		btnBenden.setEnabled(false);
 		btnBenden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -868,7 +869,7 @@ public class Spiel_Starten {
 
 				if(i==1){
 
-					int YesorNo = JOptionPane.showConfirmDialog(null, " Sind sie sicher wollen sie dieses Spiel mit der SpielNr:  ,"+s.getText()+",   Beenden!!!!!","Spiel Beenden",JOptionPane.YES_NO_OPTION);
+					int YesorNo = JOptionPane.showConfirmDialog(null, " Sind Sie sicher, dass Sie das Spiel mit der SpielNr:  ,"+s.getText()+",   beenden wollen?","Spiel beenden",JOptionPane.YES_NO_OPTION);
 
 					if(YesorNo==0){
 
@@ -914,11 +915,11 @@ public class Spiel_Starten {
 										" \t"+" \n======================================\n");
 
 
-								JOptionPane.showMessageDialog(null,"Erfolgreich Beendet und nicht statt gefunden");
+								JOptionPane.showMessageDialog(null,"Erfolgreich beendet.");
 
 								btnNewButton_1.setEnabled(false);
 							} catch (SQLException e1) {
-								// TODO uto-generated catch block
+
 								e1.printStackTrace();
 							}
 
@@ -965,7 +966,7 @@ public class Spiel_Starten {
 
 								btnNewButton_1.setEnabled(false);
 							} catch (SQLException e1) {
-								// TODO uto-generated catch block
+
 								e1.printStackTrace();
 							}
 
@@ -988,11 +989,10 @@ public class Spiel_Starten {
 										" \t"+" \n======================================\n");
 
 
-								JOptionPane.showMessageDialog(null,"Erfolgreich Beendet und nicht statt gefunden");
+								JOptionPane.showMessageDialog(null,"Erfolgreich beendet.");
 
 								btnNewButton_1.setEnabled(false);
 							} catch (SQLException e1) {
-								// TODO uto-generated catch block
 								e1.printStackTrace();
 							}
 
@@ -1004,13 +1004,13 @@ public class Spiel_Starten {
 
 					}
 					else{
-						JOptionPane.showMessageDialog(null,"Es ist nichts passiert!!!!");
+						JOptionPane.showMessageDialog(null,"Es ist nichts passiert.");
 					}
 
 				}
-
+				//TODO wann kommt das? :)
 				if(i==0){
-					JOptionPane.showMessageDialog(null,"Gültiges Antrag eingeben");
+					JOptionPane.showMessageDialog(null,"Gültigen Antrag eingeben");
 				}
 			}
 		});
@@ -1019,7 +1019,7 @@ public class Spiel_Starten {
 		btnBenden.setBounds(12, 320, 129, 53);
 		frame.getContentPane().add(btnBenden);
 
-		JLabel lblZeit = new JLabel("Spiel_Nummer:");
+		JLabel lblZeit = new JLabel("Spiel Nummer:");
 		lblZeit.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblZeit.setForeground(new Color(255, 0, 0));
 		lblZeit.setBounds(12, 7, 129, 29);
@@ -1047,7 +1047,7 @@ public class Spiel_Starten {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 				frame.dispose();
@@ -1059,7 +1059,7 @@ public class Spiel_Starten {
 		btnZurck.setBounds(12, 390, 129, 53);
 		frame.getContentPane().add(btnZurck);
 
-		JButton btnbersicht = new JButton("Print");
+		JButton btnbersicht = new JButton("Drucken");
 		btnbersicht.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -1130,13 +1130,13 @@ public class Spiel_Starten {
 		btnbersicht.setBounds(12, 243, 129, 58);
 		frame.getContentPane().add(btnbersicht);
 
-		JButton btnNewButton_3 = new JButton("Print");
+		JButton btnNewButton_3 = new JButton("Drucken");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ta.print();
 				} catch (PrinterException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 			}
@@ -1259,7 +1259,7 @@ public class Spiel_Starten {
 		CB1.setBounds(23, 497, 118, 22);
 		frame.getContentPane().add(CB1);
 
-		label = new JLabel("Kneipe_Nummer:");
+		label = new JLabel("Kneipennummer:");
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Tahoma", Font.BOLD, 16));
 		label.setBounds(1397, 7, 147, 42);
@@ -1281,7 +1281,7 @@ public class Spiel_Starten {
 		tvt.setBounds(1560, 18, 93, 22);
 		frame.getContentPane().add(tvt);
 
-		JLabel lblZulassungsnummer = new JLabel("ZulassungsNummer:");
+		JLabel lblZulassungsnummer = new JLabel("Zulassungsnummer:");
 		lblZulassungsnummer.setForeground(Color.RED);
 		lblZulassungsnummer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblZulassungsnummer.setBounds(345, 25, 177, 25);
@@ -1343,7 +1343,7 @@ public class Spiel_Starten {
 		s.setBounds(312, 503, 41, 16);
 		frame.getContentPane().add(s);
 
-		lblNewLabel_3 = new JLabel("Offene_Quiz:");
+		lblNewLabel_3 = new JLabel("Offene Quiz:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3.setForeground(Color.RED);
 		lblNewLabel_3.setBounds(23, 456, 119, 28);
@@ -1463,6 +1463,7 @@ public class Spiel_Starten {
 		frame.getContentPane().add(fragen);
 
 		lblNewLabel_2 = new JLabel("New label");
+		//TODO
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\18006_krombacher_alkoholfrei_450x450.jpg"));
 		lblNewLabel_2.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel_2);

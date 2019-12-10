@@ -129,7 +129,7 @@ public class Kneipen_Besitzer {
 		btnNewButton.setBounds(33, 230, 194, 51);
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnAnfragesenden = new JButton("Anfrage_Senden");
+		JButton btnAnfragesenden = new JButton("Anfrage senden");
 		btnAnfragesenden.setForeground(new Color(255, 0, 0));
 		btnAnfragesenden.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnAnfragesenden.addActionListener(new ActionListener() {
@@ -142,7 +142,7 @@ public class Kneipen_Besitzer {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 
@@ -156,7 +156,7 @@ public class Kneipen_Besitzer {
 		btnAnfragesenden.setBounds(33, 164, 194, 53);
 		frame.getContentPane().add(btnAnfragesenden);
 
-		JButton btnFragenverwalten = new JButton("Fragen_Verwalten");
+		JButton btnFragenverwalten = new JButton("Fragen verwalten");
 		btnFragenverwalten.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnFragenverwalten.setForeground(new Color(255, 0, 0));
 		btnFragenverwalten.addActionListener(new ActionListener() {
@@ -169,7 +169,7 @@ public class Kneipen_Besitzer {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 				frame.dispose();
@@ -180,7 +180,7 @@ public class Kneipen_Besitzer {
 		btnFragenverwalten.setBounds(33, 91, 194, 60);
 		frame.getContentPane().add(btnFragenverwalten);
 
-		JButton btnQuizstarten = new JButton("Quiz_Starten");
+		JButton btnQuizstarten = new JButton("Quiz starten");
 		btnQuizstarten.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnQuizstarten.setForeground(new Color(255, 0, 0));
 		btnQuizstarten.addActionListener(new ActionListener() {
@@ -194,7 +194,7 @@ public class Kneipen_Besitzer {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 
@@ -204,7 +204,7 @@ public class Kneipen_Besitzer {
 		btnQuizstarten.setBounds(33, 27, 194, 51);
 		frame.getContentPane().add(btnQuizstarten);
 
-		JButton btnQuizverwaltung = new JButton("Quiz_Verwaltung");
+		JButton btnQuizverwaltung = new JButton("Quiz verwalten");
 		btnQuizverwaltung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -215,7 +215,7 @@ public class Kneipen_Besitzer {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 				frame.dispose();
@@ -226,7 +226,7 @@ public class Kneipen_Besitzer {
 		btnQuizverwaltung.setBounds(33, 294, 194, 51);
 		frame.getContentPane().add(btnQuizverwaltung);
 
-		JButton btnbersicht = new JButton("EXIT");
+		JButton btnbersicht = new JButton("Schließen");
 		btnbersicht.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Bar_Owner BO= new Bar_Owner();
@@ -242,7 +242,7 @@ public class Kneipen_Besitzer {
 		btnbersicht.setBounds(33, 422, 194, 55);
 		frame.getContentPane().add(btnbersicht);
 
-		JLabel lblKneipenummer = new JLabel("Kneipe_Nummer:");
+		JLabel lblKneipenummer = new JLabel("Kneipennummer:");
 		lblKneipenummer.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		lblKneipenummer.setForeground(new Color(255, 0, 0));
 		lblKneipenummer.setBounds(1560, 13, 168, 16);
@@ -274,7 +274,7 @@ public class Kneipen_Besitzer {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 
@@ -288,7 +288,8 @@ public class Kneipen_Besitzer {
 		info = new JTextArea();
 		info.setBackground(Color.RED);
 		info.setFont(new Font("Monospaced", Font.BOLD, 18));
-		info.setText("Hallo und Herzlichen WILKOMMEN !!!!!!\r\n\r\n\r\nmit dieser APP kannst du in deiner Kneipe unvergesliche Quizabende in deiner Kneipe veranstalten .\r\nBEVOR du einen QUIZ_Abend durchführen kannst , sende zunächst eine ANFRAGE (--> ANFRAGE SENDEN).\r\nSobald deine Kneipe geprüft wurde, bekommst du eine E-Mail mit der Bestätigung.\r\n\r\n----> Diese Meldung wird Ihnen gezeigt auch , weil sie ihren Password nicht geändert haben.\r\nÄndern sie zu ihre Sicherheit ihren Password :)\r\ndann kannst du QUIZ erstellen.\r\nViel Spaß !!!!!!\r\n:D ");
+		//TODO
+		info.setText("Hallo und Herzlichen Willkommen!\r\n\r\n\r\nmit dieser Anwendung kannst du in deiner Kneipe Quizabende veranstalten. .\r\nBevor du einen Quizabend durchführen kannst, senden Sie zunächst eine Anfrage (--> ANFRAGE SENDEN).\r\nSobald deine Kneipe geprüft wurde, bekommst du eine E-Mail mit der Bestätigung.\r\n\r\n----> Diese Meldung wird Ihnen auch gezeigt, weil sie ihr Passwort nicht geändert haben.\r\nÄndern Sie bitte ihr Passwort\r\n\r\n\r\n");
 		info.setBounds(431, 132, 1117, 230);
 		frame.getContentPane().add(info);
 
@@ -299,6 +300,7 @@ public class Kneipen_Besitzer {
 		neu.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("");
+		//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\18006_krombacher_alkoholfrei_450x450 (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 1757, 733);
 		frame.getContentPane().add(lblNewLabel);

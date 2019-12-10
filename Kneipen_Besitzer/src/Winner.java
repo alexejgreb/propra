@@ -90,7 +90,7 @@ public class Winner {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel label = new JLabel("Spiel_Nummer:");
+		JLabel label = new JLabel("Spielnummer:");
 		label.setForeground(Color.BLUE);
 		label.setFont(new Font("Tahoma", Font.BOLD, 15));
 		label.setBounds(12, 26, 129, 16);
@@ -103,7 +103,7 @@ public class Winner {
 		nummers.setBounds(150, 24, 195, 22);
 		frame.getContentPane().add(nummers);
 
-		JLabel lblKundennr = new JLabel("ID_Nummer:");
+		JLabel lblKundennr = new JLabel("ID Nummer:");
 		lblKundennr.setForeground(new Color(0, 0, 255));
 		lblKundennr.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblKundennr.setBounds(12, 74, 129, 16);
@@ -144,7 +144,7 @@ public class Winner {
 				try {
 					ta.print();
 				} catch (PrinterException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 			}
@@ -154,13 +154,13 @@ public class Winner {
 		button.setBounds(598, 131, 153, 31);
 		frame.getContentPane().add(button);
 
-		JButton btnPrint = new JButton("Print");
+		JButton btnPrint = new JButton("Drucken");
 		btnPrint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ta.print();
 				} catch (PrinterException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 			}
@@ -170,7 +170,7 @@ public class Winner {
 		btnPrint.setBounds(598, 177, 153, 31);
 		frame.getContentPane().add(btnPrint);
 
-		JButton btnExit = new JButton("EXIT");
+		JButton btnExit = new JButton("Schließen");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -187,7 +187,7 @@ public class Winner {
 		ta.setBounds(509, 11, 61, 141);
 		frame.getContentPane().add(ta);
 
-		JLabel label_1 = new JLabel("Kneipe_Nummer:");
+		JLabel label_1 = new JLabel("Kneipennummer:");
 		label_1.setForeground(Color.RED);
 		label_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		label_1.setBounds(583, 13, 168, 16);
@@ -221,7 +221,7 @@ public class Winner {
 		frame.getContentPane().add(lblPunkte);
 
 
-		lblIdnummer = new JLabel("ID_Nummer");
+		lblIdnummer = new JLabel("ID Nummer");
 		lblIdnummer.setForeground(Color.RED);
 		lblIdnummer.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblIdnummer.setBounds(12, 103, 129, 16);
@@ -239,7 +239,7 @@ public class Winner {
 		lblRang.setBounds(357, 64, 404, 37);
 		frame.getContentPane().add(lblRang);
 
-		kundenr = new JLabel("Kunden_Nummer");
+		kundenr = new JLabel("Kundennummer");
 		kundenr.setForeground(Color.RED);
 		kundenr.setFont(new Font("Tahoma", Font.BOLD, 15));
 		kundenr.setBounds(287, 103, 129, 16);
@@ -247,7 +247,8 @@ public class Winner {
 		test = new JLabel("0");
 		test.setBounds(369, 42, 56, 16);
 		frame.getContentPane().add(test);
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("");
+		//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel);

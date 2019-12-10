@@ -159,7 +159,7 @@ public class Quiz_Verwaltung {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton btnInsert = new JButton("Quiz_Bearbeiten");
+		JButton btnInsert = new JButton("Quiz bearbeiten");
 		btnInsert.setForeground(Color.RED);
 		btnInsert.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnInsert.addActionListener(new ActionListener() {
@@ -171,7 +171,7 @@ public class Quiz_Verwaltung {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 
@@ -182,7 +182,7 @@ public class Quiz_Verwaltung {
 		btnInsert.setBounds(20, 41, 175, 45);
 		frame.getContentPane().add(btnInsert);
 
-		JButton btnQuizteilnehmer = new JButton("Quiz_Teilnehmer");
+		JButton btnQuizteilnehmer = new JButton("Teilnehmer");
 		btnQuizteilnehmer.setForeground(Color.RED);
 		btnQuizteilnehmer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnQuizteilnehmer.addActionListener(new ActionListener() {
@@ -205,7 +205,7 @@ public class Quiz_Verwaltung {
 		btnQuizteilnehmer.setBounds(20, 99, 175, 45);
 		frame.getContentPane().add(btnQuizteilnehmer);
 
-		JButton btnWinner = new JButton("Winner");
+		JButton btnWinner = new JButton("Gewinner prüfen");
 		btnWinner.setForeground(Color.RED);
 		btnWinner.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnWinner.addActionListener(new ActionListener() {
@@ -217,7 +217,7 @@ public class Quiz_Verwaltung {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 
@@ -227,7 +227,7 @@ public class Quiz_Verwaltung {
 		btnWinner.setBounds(20, 157, 175, 45);
 		frame.getContentPane().add(btnWinner);
 
-		JButton btnQuizterminer = new JButton("Spiel_Anmeldung");
+		JButton btnQuizterminer = new JButton("Spiel anmelden");
 		btnQuizterminer.setForeground(Color.RED);
 		btnQuizterminer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnQuizterminer.addActionListener(new ActionListener() {
@@ -240,7 +240,7 @@ public class Quiz_Verwaltung {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 
@@ -273,13 +273,13 @@ public class Quiz_Verwaltung {
 		button_4.setBounds(20, 273, 175, 45);
 		frame.getContentPane().add(button_4);
 
-		JButton btnLeeren = new JButton("Leeren");
+		JButton btnLeeren = new JButton("Clear");
 		btnLeeren.setForeground(Color.RED);
 		btnLeeren.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnLeeren.setBounds(20, 331, 175, 45);
 		frame.getContentPane().add(btnLeeren);
 
-		JButton btnExit = new JButton("Print");
+		JButton btnExit = new JButton("Drucken");
 		btnExit.setForeground(Color.RED);
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnExit.addActionListener(new ActionListener() {
@@ -373,7 +373,7 @@ public class Quiz_Verwaltung {
 		cb1.setBounds(334, 19, 85, 22);
 		frame.getContentPane().add(cb1);
 
-		JLabel lblSpielnr = new JLabel("Spiel_Nr:");
+		JLabel lblSpielnr = new JLabel("SpielNr:");
 		lblSpielnr.setForeground(Color.RED);
 		lblSpielnr.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblSpielnr.setBounds(237, 13, 85, 30);
@@ -459,13 +459,13 @@ public class Quiz_Verwaltung {
 		scrollPane_1.setViewportView(ta);
 		ta.setEditable(false);
 
-		JButton button_7 = new JButton("Print");
+		JButton button_7 = new JButton("Drucken");
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ta.print();
 				} catch (PrinterException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 			}
@@ -475,7 +475,7 @@ public class Quiz_Verwaltung {
 		button_7.setBounds(1624, 412, 97, 22);
 		frame.getContentPane().add(button_7);
 
-		JLabel lblFragenr = new JLabel("Frage_Nr:");
+		JLabel lblFragenr = new JLabel("FrageNr:");
 		lblFragenr.setForeground(Color.RED);
 		lblFragenr.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblFragenr.setBounds(237, 56, 85, 30);
@@ -525,7 +525,7 @@ public class Quiz_Verwaltung {
 		cb2.setBounds(334, 64, 85, 22);
 		frame.getContentPane().add(cb2);
 
-		JLabel label = new JLabel("Kneipe_Nummer:");
+		JLabel label = new JLabel("Kneipennummer:");
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		label.setBounds(1553, 13, 168, 16);
@@ -597,6 +597,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(comboBox);
 
 		JLabel lblNewLabel = new JLabel("");
+		//TODO
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image.jpg"));
 		lblNewLabel.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel);
