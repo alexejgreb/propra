@@ -70,7 +70,7 @@ public class UIFinishedGame extends JFrame {
         contentPane.add(LabelUserName);
 
         //Spielnummer
-        JLabel labelGameNr = new JLabel("Spiel Nr: "+ Login.guest.getGameNumber());
+        JLabel labelGameNr = new JLabel("Spiel Code: "+ Login.guest.getIDNumber());
         labelGameNr.setFont(new Font("Tahoma", Font.BOLD, 15));
         labelGameNr.setBounds(5, 157, 120, 14);
         contentPane.add(labelGameNr);
@@ -104,7 +104,7 @@ public class UIFinishedGame extends JFrame {
             public void actionPerformed(ActionEvent arg0) {
 
                 Login.guest.setPoints(0);
-                Login.guest.setPlacing(1);
+                Login.guest.setPlacing(0);
                 Login.guest.setGameNumber(0);
                 Login.guest.setGuestID(0);
                 Login.guest.setUserName("");
