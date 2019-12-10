@@ -300,8 +300,7 @@ public class Kneipen_Besitzer {
 		neu.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("");
-		//TODO
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\18006_krombacher_alkoholfrei_450x450 (1).jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/18006_krombacher_alkoholfrei_450x450 (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 1757, 733);
 		frame.getContentPane().add(lblNewLabel);
 	}

@@ -391,8 +391,7 @@ public class Fragen_Verwaltung {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
-		//TODO
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/image.jpg"));
 		lblNewLabel.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel);
 	}

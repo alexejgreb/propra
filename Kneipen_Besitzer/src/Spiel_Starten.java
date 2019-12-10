@@ -1463,8 +1463,7 @@ public class Spiel_Starten {
 		frame.getContentPane().add(fragen);
 
 		lblNewLabel_2 = new JLabel("New label");
-		//TODO
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\18006_krombacher_alkoholfrei_450x450.jpg"));
+		lblNewLabel_2.setIcon(new ImageIcon("Ressources/18006_krombacher_alkoholfrei_450x450.jpg"));
 		lblNewLabel_2.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel_2);
 	}

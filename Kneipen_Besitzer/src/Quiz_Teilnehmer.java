@@ -231,8 +231,7 @@ public class Quiz_Teilnehmer {
 		tt.setColumns(10);
 
 		lblNewLabel_1 = new JLabel("");
-		//TODO
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
+		lblNewLabel_1.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel_1.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel_1);
 	}

@@ -248,8 +248,7 @@ public class Winner {
 		test.setBounds(369, 42, 56, 16);
 		frame.getContentPane().add(test);
 		JLabel lblNewLabel = new JLabel("");
-		//TODO
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel);
 
