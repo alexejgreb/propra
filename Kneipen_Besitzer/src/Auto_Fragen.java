@@ -133,13 +133,13 @@ public class Auto_Fragen {
 
 		txt1 = new JTextField();
 		txt1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		txt1.setText("0");
+		txt1.setText("");
 		txt1.setBounds(12, 42, 99, 22);
 		frame.getContentPane().add(txt1);
 		txt1.setColumns(10);
 
 		txt2 = new JTextField();
-		txt2.setText("0");
+		txt2.setText("");
 		txt2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		txt2.setColumns(10);
 		txt2.setBounds(196, 42, 99, 22);
@@ -147,7 +147,7 @@ public class Auto_Fragen {
 
 		txt3 = new JTextField();
 		txt3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		txt3.setText("wir suchen dich");
+		txt3.setText("");
 		txt3.setColumns(10);
 		txt3.setBounds(375, 42, 99, 22);
 		frame.getContentPane().add(txt3);
