@@ -55,14 +55,14 @@ public class Spiel_Starten {
 	public static JTextArea ta;
 	public static  JComboBox cb,cc;
 	private static JComboBox c1;
-	private JButton btnNewButton_1;
+	private static JButton btnNewButton_1;
 	private static JButton btnAuto;
 	static Connection con =null;
 	private static JTextField tf;
 	private static JTextField tr;
 	private static JLabel l8;
 	private static JComboBox CB1;
-	private JButton btnBenden;
+	private static JButton btnBenden;
 	private JLabel label;
 	public static JTextField ff;
 	public static JTextField tvt;
@@ -85,7 +85,11 @@ public class Spiel_Starten {
 	private static JLabel n;
 	private static JTextField t2;
 	private JLabel lblNewLabel_2;
-
+	private static JButton bbb;
+	private static JLabel lblZulassungsnummer;
+	public int Tag;
+	public int Monat;
+	public int Jahre;
 	/**
 	 * Launch the application.
 	 * @throws UnsupportedLookAndFeelException
@@ -128,8 +132,11 @@ public class Spiel_Starten {
 					btnAuto.setEnabled(false);
 					n.setVisible(false);
 					////
-
-
+					lblZulassungsnummer.setVisible(false);
+					bbb.setVisible(false);
+					licence.setVisible(false);
+					aar.setVisible(false);
+					aar2.setVisible(false);
 
 					try{
 
@@ -218,6 +225,168 @@ public class Spiel_Starten {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+
+
+
+
+				/////////
+
+
+
+
+				//lbl.setText(ff.getText()+tvt.getText());
+				lbl.setText(ff.getText()+"#QUIZLIZENC"+ff.getText());
+				try{
+					String query2="select Licence_Nr from Spiel_Licence where vermerk ='"+ff.getText()+"' and Licence_Nr='"+lbl.getText()+"' limit 1";
+					PreparedStatement pst1=con.prepareStatement(query2);
+
+					ResultSet rs= pst1.executeQuery();
+
+					if (rs.next()){
+
+						btnNewButton_1.setEnabled(true);
+						btnBenden.setEnabled(true);
+						btnAuto.setEnabled(true);
+
+
+						String Licence_Nr = rs.getString("Licence_Nr");
+						licence.setText(Licence_Nr);
+						l.setText("2");
+						rs.close();
+						//	JOptionPane.showMessageDialog(null,"Sie dürfen Beliebig oft Spiele Starten , Die Krombacher behält das Recht ihre Lizenc jeder Zeit zu Kündigen sofern nicht anders vereinbart :)");
+
+						//bbb.setEnabled(false);
+						//lblZulassungsnummer.setVisible(false);
+						//bbb.setVisible(false);
+						//licence.setVisible(false);
+					}
+
+					/////
+					else{
+						JOptionPane.showMessageDialog(null,"Sie müssen eine Lizenc beantragen um einen Spiel Starten zu können");
+						cb.setEnabled(false);
+						cc.setEnabled(false);
+						btnNewButton_1.setEnabled(false);
+						//btnBenden.setEnabled(false);
+						lblZulassungsnummer.setVisible(true);
+						bbb.setVisible(true);
+						licence.setVisible(true);
+					}
+					int i2 =Integer.parseInt(l.getText());
+					if(i2==2){
+						cb.setEnabled(true);
+						cc.setEnabled(false);
+						btnNewButton_1.setEnabled(true);
+						btnBenden.setEnabled(true);
+						//
+						try {	 ///
+							String query0="select max(Spiel_Gnehmigt.Spiel_Nummer)from Spiel_Gnehmigt ";
+
+							PreparedStatement pst10=con.prepareStatement(query0);
+
+							ResultSet rs0= pst10.executeQuery();
+
+							if ((rs0.next()))
+							{
+
+								t1.setText(rs0.getString("max(Spiel_Gnehmigt.Spiel_Nummer)"));
+							}
+
+							pst10.close();
+
+
+						} catch (Exception e3) {
+							e3.printStackTrace();
+						}
+
+						//
+
+						int k =Integer.parseInt(t1.getText());
+						int k1=k+1;
+						t1.setText(String.valueOf(k1));
+
+						try{
+							String query22="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1 and Bar_Nr='"+ff.getText()+"'";
+							PreparedStatement pst11=con.prepareStatement(query22);
+
+							ResultSet rs1= pst11.executeQuery();
+
+							while (rs1.next()){
+								String Spiel_Nummer = rs1.getString("Spiel_Nummer");
+								CB1.addItem(Spiel_Nummer);
+
+							}
+
+							rs1.close();
+
+						}
+						catch(Exception e4){
+							//e2.printStackTrace();
+							JOptionPane.showMessageDialog(null,e4);
+
+						}
+						try{
+							String query23="select FrageNr from FragenPool where Besitzer =0 or Besitzer=1 or Besitzer='"+ff.getText()+"'";
+							PreparedStatement pst13=con.prepareStatement(query23);
+
+							ResultSet rs3= pst13.executeQuery();
+							while (rs3.next()){
+								String FrageNr = rs3.getString("FrageNr");
+								c1.addItem(FrageNr);
+
+							}
+
+							rs3.close();
+
+						}
+						catch(Exception e3){
+							//e2.printStackTrace();
+							JOptionPane.showMessageDialog(null,e3);
+
+						}
+						btnAuto.setEnabled(true);
+
+
+
+						//////
+
+
+
+
+
+
+					}}
+				catch(Exception e2){
+					//e2.printStackTrace();
+					JOptionPane.showMessageDialog(null,e2);
+
+				}
+
+
+
+
+
+
+
+
+
+
+
+				//////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			}
 		});
 	}
@@ -229,10 +398,15 @@ public class Spiel_Starten {
 
 	public void Clock(){
 		Calendar cal = new GregorianCalendar();
-		int Tag = cal.get(Calendar.DAY_OF_MONTH);
-		int Jahre = cal.get(Calendar.YEAR);
-		int Monat = cal.get(Calendar.MONTH);
+		Tag = cal.get(Calendar.DAY_OF_MONTH);
+		Monat = cal.get(Calendar.MONTH);
+		Jahre = cal.get(Calendar.YEAR);
+
 		Zeit.setText(+Tag+"/"+Monat+"/"+Jahre);
+
+		comboBox_2.setSelectedIndex(Tag-1);
+		comboBox_3.setSelectedIndex(Monat-1);
+		comboBox_4.setSelectedIndex(0);
 	}
 
 
@@ -260,8 +434,8 @@ public class Spiel_Starten {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 
-		JButton btnNewButton = new JButton("OK");
-		btnNewButton.addActionListener(new ActionListener() {
+		bbb = new JButton("OK");
+		bbb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 
@@ -514,10 +688,10 @@ public class Spiel_Starten {
 				}
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setForeground(new Color(255, 0, 0));
-		btnNewButton.setBounds(739, 25, 73, 25);
-		frame.getContentPane().add(btnNewButton);
+		bbb.setFont(new Font("Tahoma", Font.BOLD, 16));
+		bbb.setForeground(new Color(255, 0, 0));
+		bbb.setBounds(739, 25, 73, 25);
+		frame.getContentPane().add(bbb);
 
 		licence = new JTextField();
 		licence.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -657,127 +831,143 @@ public class Spiel_Starten {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				btnNewButton_1.setEnabled(true);
-				btnBenden.setEnabled(false);
-				btnAuto.setEnabled(false);
-				lb.setText(tf.getText());
-				lb2.setText(tr.getText());
 
-				int i =Integer.parseInt(lb.getText());
-				int i2 = Integer.parseInt(lb2.getText());
-				int i2121 =Integer.parseInt(cc.getSelectedItem().toString());
-				int s = i*i2;
-				l4.setText(String.valueOf(s));
-				l3.setText(cb.getSelectedItem().toString());
-				int i21 = Integer.parseInt(l4.getText());
-
-				int i11 =Integer.parseInt(l3.getText());
-				if(s!=0){
-
-
-					try{
-
-						// Quiz_Fragen_Hinzufügen
-
-						String sql = "insert into Quiz_Fragen(Spiel_Nummer,Frage_Nr,Bar_Nr) VALUES(?,?,?)";
-						PreparedStatement pst=con.prepareStatement(sql);
-						pst.setString(1, t1.getText());
-						pst.setString(2, c1.getSelectedItem().toString());
-						pst.setString(3,ff.getText());
+				/////////
 
 
 
-						pst.execute();
-						JOptionPane.showMessageDialog(null,"Die Frage wurde dem Quiz hinzugefügt.");
-						if(i11!=i21){
-
-							ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
-									" \t"+" \n======================================\n");
-						}
-						if(i11==i21 &i2121 !=1){
-
-							int i1112 =Integer.parseInt(l11.getText());
-							int i1113=i1112+1;
-							l8.setText(String.valueOf(i1113));
-							ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
-									" \t"+" \n======================================\n");
-						}
-
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+				int Select_Jahr=Integer.parseInt(comboBox_4.getSelectedItem().toString());
+				int Select_Monat=Integer.parseInt(comboBox_3.getSelectedItem().toString());
+				int Select_Tag=Integer.parseInt(comboBox_2.getSelectedItem().toString());
+				if(Select_Jahr>Jahre){
 
 
-					s=s-1;
-					tf.setText("1");
 
-					tr.setText(String.valueOf(s));
+
+
+
+
+					btnNewButton_1.setEnabled(true);
+					btnBenden.setEnabled(false);
+					btnAuto.setEnabled(false);
+					lb.setText(tf.getText());
+					lb2.setText(tr.getText());
+
+					int i =Integer.parseInt(lb.getText());
+					int i2 = Integer.parseInt(lb2.getText());
+					int i2121 =Integer.parseInt(cc.getSelectedItem().toString());
+					int s = i*i2;
 					l4.setText(String.valueOf(s));
-				}
-				if(s==0){
-					JOptionPane.showMessageDialog(null,"Maximale Anzahl der Fragen wurde erreicht.");
+					l3.setText(cb.getSelectedItem().toString());
+					int i21 = Integer.parseInt(l4.getText());
 
-					int i9 =Integer.parseInt(l.getText());
+					int i11 =Integer.parseInt(l3.getText());
+					if(s!=0){
 
-					if(i9==1){
+
 						try{
 
+							// Quiz_Fragen_Hinzufügen
 
-							String value115=licence.getText();
-							String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value115+"' ";
-							PreparedStatement pst3=con.prepareStatement(sql22);
-							pst3.execute();
-
-
-
-							String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+							String sql = "insert into Quiz_Fragen(Spiel_Nummer,Frage_Nr,Bar_Nr) VALUES(?,?,?)";
 							PreparedStatement pst=con.prepareStatement(sql);
 							pst.setString(1, t1.getText());
-							pst.setString(2, Zeit.getText());
-							pst.setString(3, licence.getText());
+							pst.setString(2, c1.getSelectedItem().toString());
+							pst.setString(3,ff.getText());
 
-							pst.setString(4, "1");
-							pst.setString(5, comboBox.getSelectedItem().toString());
-							pst.setString(6, comboBox_1.getSelectedItem().toString());
-							pst.setString(7, comboBox_2.getSelectedItem().toString());
-							pst.setString(8, comboBox_3.getSelectedItem().toString());
-							pst.setString(9, comboBox_4.getSelectedItem().toString());
-							pst.setString(10, cc.getSelectedItem().toString());
-							pst.setString(11, cb.getSelectedItem().toString());
-							pst.setString(12,ff.getText());
-							/////////////////////////////////////////////////////////////////////////////////////
+
+
 							pst.execute();
-							//TODO
-							JOptionPane.showMessageDialog(null,"Gespeichert.");
+							JOptionPane.showMessageDialog(null,"Die Frage wurde dem Quiz hinzugefügt.");
+							if(i11!=i21){
 
+								ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+										" \t"+" \n======================================\n");
+							}
+							if(i11==i21 &i2121 !=1){
 
+								int i1112 =Integer.parseInt(l11.getText());
+								int i1113=i1112+1;
+								l8.setText(String.valueOf(i1113));
+								ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+										" \t"+" \n======================================\n");
+							}
 
-
-
-
+						} catch (Exception e1) {
+							e1.printStackTrace();
 						}
-						catch(Exception e11){
-							e11.printStackTrace();
-						}
 
 
+						s=s-1;
+						tf.setText("1");
 
-						ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
-								" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
-
-						l.setText("0");
-						licence.setText("");
-						btnNewButton_1.setEnabled(false);
-						btnBenden.setEnabled(false);
-						t1.setText("");
-
+						tr.setText(String.valueOf(s));
+						l4.setText(String.valueOf(s));
 					}
-					if(i9==2){
+					if(s==0){
+						JOptionPane.showMessageDialog(null,"Maximale Anzahl der Fragen wurde erreicht.");
+
+						int i9 =Integer.parseInt(l.getText());
+
+						if(i9==1){
+							try{
 
 
-						////
+								String value115=licence.getText();
+								String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value115+"' ";
+								PreparedStatement pst3=con.prepareStatement(sql22);
+								pst3.execute();
 
-						try{
+
+
+								String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+								PreparedStatement pst=con.prepareStatement(sql);
+								pst.setString(1, t1.getText());
+								pst.setString(2, Zeit.getText());
+								pst.setString(3, licence.getText());
+
+								pst.setString(4, "1");
+								pst.setString(5, comboBox.getSelectedItem().toString());
+								pst.setString(6, comboBox_1.getSelectedItem().toString());
+								pst.setString(7, comboBox_2.getSelectedItem().toString());
+								pst.setString(8, comboBox_3.getSelectedItem().toString());
+								pst.setString(9, comboBox_4.getSelectedItem().toString());
+								pst.setString(10, cc.getSelectedItem().toString());
+								pst.setString(11, cb.getSelectedItem().toString());
+								pst.setString(12,ff.getText());
+								/////////////////////////////////////////////////////////////////////////////////////
+								pst.execute();
+								//TODO
+								JOptionPane.showMessageDialog(null,"Gespeichert.");
+
+
+
+
+
+
+							}
+							catch(Exception e11){
+								e11.printStackTrace();
+							}
+
+
+
+							ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+									" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
+
+							l.setText("0");
+							licence.setText("");
+							btnNewButton_1.setEnabled(false);
+							btnBenden.setEnabled(false);
+							t1.setText("");
+
+						}
+						if(i9==2){
+
+
+							////
+
+							try{
 						/*
 
 						String value115=licence.getText();
@@ -787,59 +977,468 @@ public class Spiel_Starten {
 
 				*/
 
-							String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
-							PreparedStatement pst=con.prepareStatement(sql);
-							pst.setString(1, t1.getText());
-							pst.setString(2, Zeit.getText());
-							pst.setString(3, licence.getText());
+								String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+								PreparedStatement pst=con.prepareStatement(sql);
+								pst.setString(1, t1.getText());
+								pst.setString(2, Zeit.getText());
+								pst.setString(3, licence.getText());
 
-							pst.setString(4, "1");
-							pst.setString(5, comboBox.getSelectedItem().toString());
-							pst.setString(6, comboBox_1.getSelectedItem().toString());
-							pst.setString(7, comboBox_2.getSelectedItem().toString());
-							pst.setString(8, comboBox_3.getSelectedItem().toString());
-							pst.setString(9, comboBox_4.getSelectedItem().toString());
-							pst.setString(10, cc.getSelectedItem().toString());
-							pst.setString(11, cb.getSelectedItem().toString());
-							pst.setString(12,ff.getText());
-							pst.execute();
-							JOptionPane.showMessageDialog(null,"Gespeichert");
+								pst.setString(4, "1");
+								pst.setString(5, comboBox.getSelectedItem().toString());
+								pst.setString(6, comboBox_1.getSelectedItem().toString());
+								pst.setString(7, comboBox_2.getSelectedItem().toString());
+								pst.setString(8, comboBox_3.getSelectedItem().toString());
+								pst.setString(9, comboBox_4.getSelectedItem().toString());
+								pst.setString(10, cc.getSelectedItem().toString());
+								pst.setString(11, cb.getSelectedItem().toString());
+								pst.setString(12,ff.getText());
+								pst.execute();
+								JOptionPane.showMessageDialog(null,"Gespeichert");
 
 
 
+
+
+
+							}
+							catch(Exception e11){
+								e11.printStackTrace();
+							}
+
+
+
+							ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+									" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
+
+							l.setText("0");
+							licence.setText("");
+							btnNewButton_1.setEnabled(false);
+							btnBenden.setEnabled(false);
+							t1.setText("");
+
+							/////
 
 
 
 						}
-						catch(Exception e11){
-							e11.printStackTrace();
-						}
-
-
-
-						ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
-								" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
-
-						l.setText("0");
-						licence.setText("");
-						btnNewButton_1.setEnabled(false);
-						btnBenden.setEnabled(false);
-						t1.setText("");
-
-						/////
-
-
+					}
+					if(i11==i21 & i2121 !=1){
+						JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
+						//DELETE Where FrageNr=
+						int i111 =Integer.parseInt(l11.getText());
+						i111=i111+1;
+						l11.setText(String.valueOf(i111));
 
 					}
-				}
-				if(i11==i21 & i2121 !=1){
-					JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
-					//DELETE Where FrageNr=
-					int i111 =Integer.parseInt(l11.getText());
-					i111=i111+1;
-					l11.setText(String.valueOf(i111));
 
+				}else if(Select_Jahr==Jahre){
+
+					if(Select_Monat< Monat ){
+						JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+					}else if(Select_Monat== Monat) {
+						if(Select_Tag< Tag){
+							JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+
+						}else{
+
+
+
+
+
+
+							btnNewButton_1.setEnabled(true);
+							btnBenden.setEnabled(false);
+							btnAuto.setEnabled(false);
+							lb.setText(tf.getText());
+							lb2.setText(tr.getText());
+
+							int i =Integer.parseInt(lb.getText());
+							int i2 = Integer.parseInt(lb2.getText());
+							int i2121 =Integer.parseInt(cc.getSelectedItem().toString());
+							int s = i*i2;
+							l4.setText(String.valueOf(s));
+							l3.setText(cb.getSelectedItem().toString());
+							int i21 = Integer.parseInt(l4.getText());
+
+							int i11 =Integer.parseInt(l3.getText());
+							if(s!=0){
+
+
+								try{
+
+									// Quiz_Fragen_Hinzufügen
+
+									String sql = "insert into Quiz_Fragen(Spiel_Nummer,Frage_Nr,Bar_Nr) VALUES(?,?,?)";
+									PreparedStatement pst=con.prepareStatement(sql);
+									pst.setString(1, t1.getText());
+									pst.setString(2, c1.getSelectedItem().toString());
+									pst.setString(3,ff.getText());
+
+
+
+									pst.execute();
+									JOptionPane.showMessageDialog(null,"Die Frage wurde dem Quiz hinzugefügt.");
+									if(i11!=i21){
+
+										ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+												" \t"+" \n======================================\n");
+									}
+									if(i11==i21 &i2121 !=1){
+
+										int i1112 =Integer.parseInt(l11.getText());
+										int i1113=i1112+1;
+										l8.setText(String.valueOf(i1113));
+										ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+												" \t"+" \n======================================\n");
+									}
+
+								} catch (Exception e1) {
+									e1.printStackTrace();
+								}
+
+
+								s=s-1;
+								tf.setText("1");
+
+								tr.setText(String.valueOf(s));
+								l4.setText(String.valueOf(s));
+							}
+							if(s==0){
+								JOptionPane.showMessageDialog(null,"Maximale Anzahl der Fragen wurde erreicht.");
+
+								int i9 =Integer.parseInt(l.getText());
+
+								if(i9==1){
+									try{
+
+
+										String value115=licence.getText();
+										String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value115+"' ";
+										PreparedStatement pst3=con.prepareStatement(sql22);
+										pst3.execute();
+
+
+
+										String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+										PreparedStatement pst=con.prepareStatement(sql);
+										pst.setString(1, t1.getText());
+										pst.setString(2, Zeit.getText());
+										pst.setString(3, licence.getText());
+
+										pst.setString(4, "1");
+										pst.setString(5, comboBox.getSelectedItem().toString());
+										pst.setString(6, comboBox_1.getSelectedItem().toString());
+										pst.setString(7, comboBox_2.getSelectedItem().toString());
+										pst.setString(8, comboBox_3.getSelectedItem().toString());
+										pst.setString(9, comboBox_4.getSelectedItem().toString());
+										pst.setString(10, cc.getSelectedItem().toString());
+										pst.setString(11, cb.getSelectedItem().toString());
+										pst.setString(12,ff.getText());
+										/////////////////////////////////////////////////////////////////////////////////////
+										pst.execute();
+										//TODO
+										JOptionPane.showMessageDialog(null,"Gespeichert.");
+
+
+
+
+
+
+									}
+									catch(Exception e11){
+										e11.printStackTrace();
+									}
+
+
+
+									ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+											" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
+
+									l.setText("0");
+									licence.setText("");
+									btnNewButton_1.setEnabled(false);
+									btnBenden.setEnabled(false);
+									t1.setText("");
+
+								}
+								if(i9==2){
+
+
+									////
+
+									try{
+						/*
+
+						String value115=licence.getText();
+				String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value115+"' ";
+				PreparedStatement pst3=con.prepareStatement(sql22);
+				pst3.execute();
+
+				*/
+
+										String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+										PreparedStatement pst=con.prepareStatement(sql);
+										pst.setString(1, t1.getText());
+										pst.setString(2, Zeit.getText());
+										pst.setString(3, licence.getText());
+
+										pst.setString(4, "1");
+										pst.setString(5, comboBox.getSelectedItem().toString());
+										pst.setString(6, comboBox_1.getSelectedItem().toString());
+										pst.setString(7, comboBox_2.getSelectedItem().toString());
+										pst.setString(8, comboBox_3.getSelectedItem().toString());
+										pst.setString(9, comboBox_4.getSelectedItem().toString());
+										pst.setString(10, cc.getSelectedItem().toString());
+										pst.setString(11, cb.getSelectedItem().toString());
+										pst.setString(12,ff.getText());
+										pst.execute();
+										JOptionPane.showMessageDialog(null,"Gespeichert");
+
+
+
+
+
+
+									}
+									catch(Exception e11){
+										e11.printStackTrace();
+									}
+
+
+
+									ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+											" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
+
+									l.setText("0");
+									licence.setText("");
+									btnNewButton_1.setEnabled(false);
+									btnBenden.setEnabled(false);
+									t1.setText("");
+
+									/////
+
+
+
+								}
+							}
+							if(i11==i21 & i2121 !=1){
+								JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
+								//DELETE Where FrageNr=
+								int i111 =Integer.parseInt(l11.getText());
+								i111=i111+1;
+								l11.setText(String.valueOf(i111));
+
+							}
+						}
+					}else{
+
+
+
+
+
+
+						btnNewButton_1.setEnabled(true);
+						btnBenden.setEnabled(false);
+						btnAuto.setEnabled(false);
+						lb.setText(tf.getText());
+						lb2.setText(tr.getText());
+
+						int i =Integer.parseInt(lb.getText());
+						int i2 = Integer.parseInt(lb2.getText());
+						int i2121 =Integer.parseInt(cc.getSelectedItem().toString());
+						int s = i*i2;
+						l4.setText(String.valueOf(s));
+						l3.setText(cb.getSelectedItem().toString());
+						int i21 = Integer.parseInt(l4.getText());
+
+						int i11 =Integer.parseInt(l3.getText());
+						if(s!=0){
+
+
+							try{
+
+								// Quiz_Fragen_Hinzufügen
+
+								String sql = "insert into Quiz_Fragen(Spiel_Nummer,Frage_Nr,Bar_Nr) VALUES(?,?,?)";
+								PreparedStatement pst=con.prepareStatement(sql);
+								pst.setString(1, t1.getText());
+								pst.setString(2, c1.getSelectedItem().toString());
+								pst.setString(3,ff.getText());
+
+
+
+								pst.execute();
+								JOptionPane.showMessageDialog(null,"Die Frage wurde dem Quiz hinzugefügt.");
+								if(i11!=i21){
+
+									ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+											" \t"+" \n======================================\n");
+								}
+								if(i11==i21 &i2121 !=1){
+
+									int i1112 =Integer.parseInt(l11.getText());
+									int i1113=i1112+1;
+									l8.setText(String.valueOf(i1113));
+									ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+											" \t"+" \n======================================\n");
+								}
+
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
+
+
+							s=s-1;
+							tf.setText("1");
+
+							tr.setText(String.valueOf(s));
+							l4.setText(String.valueOf(s));
+						}
+						if(s==0){
+							JOptionPane.showMessageDialog(null,"Maximale Anzahl der Fragen wurde erreicht.");
+
+							int i9 =Integer.parseInt(l.getText());
+
+							if(i9==1){
+								try{
+
+
+									String value115=licence.getText();
+									String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value115+"' ";
+									PreparedStatement pst3=con.prepareStatement(sql22);
+									pst3.execute();
+
+
+
+									String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+									PreparedStatement pst=con.prepareStatement(sql);
+									pst.setString(1, t1.getText());
+									pst.setString(2, Zeit.getText());
+									pst.setString(3, licence.getText());
+
+									pst.setString(4, "1");
+									pst.setString(5, comboBox.getSelectedItem().toString());
+									pst.setString(6, comboBox_1.getSelectedItem().toString());
+									pst.setString(7, comboBox_2.getSelectedItem().toString());
+									pst.setString(8, comboBox_3.getSelectedItem().toString());
+									pst.setString(9, comboBox_4.getSelectedItem().toString());
+									pst.setString(10, cc.getSelectedItem().toString());
+									pst.setString(11, cb.getSelectedItem().toString());
+									pst.setString(12,ff.getText());
+									/////////////////////////////////////////////////////////////////////////////////////
+									pst.execute();
+									//TODO
+									JOptionPane.showMessageDialog(null,"Gespeichert.");
+
+
+
+
+
+
+								}
+								catch(Exception e11){
+									e11.printStackTrace();
+								}
+
+
+
+								ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+										" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
+
+								l.setText("0");
+								licence.setText("");
+								btnNewButton_1.setEnabled(false);
+								btnBenden.setEnabled(false);
+								t1.setText("");
+
+							}
+							if(i9==2){
+
+
+								////
+
+								try{
+						/*
+
+						String value115=licence.getText();
+				String sql22="update Spiel_Licence set Vermerk=0 where Licence_Nr='"+value115+"' ";
+				PreparedStatement pst3=con.prepareStatement(sql22);
+				pst3.execute();
+
+				*/
+
+									String sql = "insert into Spiel_Gnehmigt (Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen,Bar_Nr)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+									PreparedStatement pst=con.prepareStatement(sql);
+									pst.setString(1, t1.getText());
+									pst.setString(2, Zeit.getText());
+									pst.setString(3, licence.getText());
+
+									pst.setString(4, "1");
+									pst.setString(5, comboBox.getSelectedItem().toString());
+									pst.setString(6, comboBox_1.getSelectedItem().toString());
+									pst.setString(7, comboBox_2.getSelectedItem().toString());
+									pst.setString(8, comboBox_3.getSelectedItem().toString());
+									pst.setString(9, comboBox_4.getSelectedItem().toString());
+									pst.setString(10, cc.getSelectedItem().toString());
+									pst.setString(11, cb.getSelectedItem().toString());
+									pst.setString(12,ff.getText());
+									pst.execute();
+									JOptionPane.showMessageDialog(null,"Gespeichert");
+
+
+
+
+
+
+								}
+								catch(Exception e11){
+									e11.printStackTrace();
+								}
+
+
+
+								ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+										" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
+
+								l.setText("0");
+								licence.setText("");
+								btnNewButton_1.setEnabled(false);
+								btnBenden.setEnabled(false);
+								t1.setText("");
+
+								/////
+
+
+
+							}
+						}
+						if(i11==i21 & i2121 !=1){
+							JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
+							//DELETE Where FrageNr=
+							int i111 =Integer.parseInt(l11.getText());
+							i111=i111+1;
+							l11.setText(String.valueOf(i111));
+
+						}
+					}
+
+				}else{
+					JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
 				}
+
+
+
+
+
+
+
+
+				////////
+
+
+
+
+
 
 			}
 
@@ -856,7 +1455,7 @@ public class Spiel_Starten {
 		scrollPane_1.setViewportView(ta);
 		ta.setEditable(false);
 
-		btnBenden = new JButton("Quiz löschen");
+		btnBenden = new JButton("Annulieren");
 		btnBenden.setEnabled(false);
 		btnBenden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1281,7 +1880,7 @@ public class Spiel_Starten {
 		tvt.setBounds(1560, 18, 93, 22);
 		frame.getContentPane().add(tvt);
 
-		JLabel lblZulassungsnummer = new JLabel("Zulassungsnummer:");
+		 lblZulassungsnummer = new JLabel("Zulassungsnummer:");
 		lblZulassungsnummer.setForeground(Color.RED);
 		lblZulassungsnummer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblZulassungsnummer.setBounds(345, 25, 177, 25);
@@ -1369,18 +1968,58 @@ public class Spiel_Starten {
 		btnAuto = new JButton("Auto.");
 		btnAuto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				aar.setVisible(true);
-				aar2.setVisible(true);
+				int Select_Jahr=Integer.parseInt(comboBox_4.getSelectedItem().toString());
+				int Select_Monat=Integer.parseInt(comboBox_3.getSelectedItem().toString());
+				int Select_Tag=Integer.parseInt(comboBox_2.getSelectedItem().toString());
+				if(Select_Jahr>Jahre){
 
-				btnNewButton_1.setEnabled(false);
-				btnBenden.setEnabled(false);
-				btnAuto.setEnabled(true);
+					btnNewButton_1.setEnabled(false);
+					btnBenden.setEnabled(false);
+					btnAuto.setEnabled(true);
 
-				aar.setText("Anzahl_Runden: "+cc.getSelectedItem().toString());
-				aar2.setText("Fragen/Runde :"+cb.getSelectedItem().toString());
-				btnNewButton_1.setEnabled(false);
-				Auto_Fragen FQ= new Auto_Fragen();
-				FQ.Fragen_Quiz();
+					aar.setText("Anzahl_Runden: "+cc.getSelectedItem().toString());
+					aar2.setText("Fragen/Runde :"+cb.getSelectedItem().toString());
+					btnNewButton_1.setEnabled(false);
+					Auto_Fragen FQ= new Auto_Fragen();
+					FQ.Fragen_Quiz();
+
+
+				}else if(Select_Jahr==Jahre){
+
+					if(Select_Monat< Monat ){
+						JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+					}else if(Select_Monat== Monat) {
+						if(Select_Tag< Tag){
+							JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+
+						}else{
+							btnNewButton_1.setEnabled(false);
+							btnBenden.setEnabled(false);
+							btnAuto.setEnabled(true);
+
+							aar.setText("Anzahl_Runden: "+cc.getSelectedItem().toString());
+							aar2.setText("Fragen/Runde :"+cb.getSelectedItem().toString());
+							btnNewButton_1.setEnabled(false);
+							Auto_Fragen FQ= new Auto_Fragen();
+							FQ.Fragen_Quiz();
+						}
+					}else{
+						btnNewButton_1.setEnabled(false);
+						btnBenden.setEnabled(false);
+						btnAuto.setEnabled(true);
+
+						aar.setText("Anzahl_Runden: "+cc.getSelectedItem().toString());
+						aar2.setText("Fragen/Runde :"+cb.getSelectedItem().toString());
+						btnNewButton_1.setEnabled(false);
+						Auto_Fragen FQ= new Auto_Fragen();
+						FQ.Fragen_Quiz();
+					}
+
+				}else{
+					JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+				}
+
+
 
 			}
 		});
@@ -1462,8 +2101,8 @@ public class Spiel_Starten {
 		fragen.setBounds(392, 106, 822, 28);
 		frame.getContentPane().add(fragen);
 
-		lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("Ressources/18006_krombacher_alkoholfrei_450x450.jpg"));
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("Ressources/18006_krombacher_alkoholfrei_450x450 (1).jpg"));
 		lblNewLabel_2.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel_2);
 	}

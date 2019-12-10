@@ -119,33 +119,46 @@ public class Winner {
 		JButton button = new JButton("Suchen");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DB_Anfragen.Select_Datum_Spiel(Integer.parseInt(nummers.getText()),lblDatum);
-				DB_Anfragen.Select_Info_Kunde_Spiel(Integer.parseInt(nummers.getText()),Integer.parseInt(id.getText()),kundenr,lblPunkte);
-				lblIdnummer.setText(id.getText());
-				DB_Anfragen.Winner_Punkte(Integer.parseInt(nummers.getText()),test);
-				int i = Integer.parseInt(test.getText());/// Max Punkte
-				int j = Integer.parseInt(lblPunkte.getText());
-				if(j!=i){
-					lblRang.setText("Leider nicht gewonnen beim nächsten mal :)");
-				}
+
+				int test1 = Integer.parseInt(id.getText());
+				if(test1==000000000){
 
 
-				if(j==i && j!= 0){
-					lblRang.setText("Sie haben gewonnen Herzlichen Glückwunsch !!! :)");
-				}
-
-				DB_Anfragen.Quiz_Ergebniss(table,Integer.parseInt(nummers.getText()));
 
 
-				ta.append("\t Winner: \n\n"+"Spiel_Nr:\t"+nummers.getText()+"\n======================================\n"+"ID_Nummer:\t"+id.getText()+"\n======================================\n"+"Datum:\t"+lblDatum.getText()+"\n======================================\n"+"Erreichte Punkte:\t"+lblPunkte.getText()+"\n\n"+"Beste_Ergebnis:\t"+test.getText()+"\n\n"+
-						" \t"+"\n======================================\n"+""+lblRang.getText()+"\n======================================\n");
+					DB_Anfragen.Quiz_Ergebniss(table,Integer.parseInt(nummers.getText()));
 
 
-				try {
-					ta.print();
-				} catch (PrinterException e1) {
+				}else{
 
-					e1.printStackTrace();
+					DB_Anfragen.Select_Datum_Spiel(Integer.parseInt(nummers.getText()),lblDatum);
+					DB_Anfragen.Select_Info_Kunde_Spiel(Integer.parseInt(nummers.getText()),Integer.parseInt(id.getText()),kundenr,lblPunkte);
+					lblIdnummer.setText(id.getText());
+					DB_Anfragen.Winner_Punkte(Integer.parseInt(nummers.getText()),test);
+					int i = Integer.parseInt(test.getText());/// Max Punkte
+					int j = Integer.parseInt(lblPunkte.getText());
+					if(j!=i){
+						lblRang.setText("Leider nicht gewonnen beim nächsten mal :)");
+					}
+
+
+					if(j==i && j!= 0){
+						lblRang.setText("Sie haben gewonnen Hertzlichen Glückwunsch !!! :)");
+					}
+
+					DB_Anfragen.Quiz_Ergebniss(table,Integer.parseInt(nummers.getText()));
+
+
+					ta.append("\t Winner: \n\n"+"Spiel_Nr:\t"+nummers.getText()+"\n======================================\n"+"ID_Nummer:\t"+id.getText()+"\n======================================\n"+"Datum:\t"+lblDatum.getText()+"\n======================================\n"+"Erreichte Punkte:\t"+lblPunkte.getText()+"\n\n"+"Beste_Ergebnis:\t"+test.getText()+"\n\n"+
+							" \t"+"\n======================================\n"+""+lblRang.getText()+"\n======================================\n");
+
+
+					try {
+						ta.print();
+					} catch (PrinterException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
