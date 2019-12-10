@@ -51,6 +51,7 @@ public class UIFinishedGame extends JFrame {
         contentPane = new JPanel(new BorderLayout());
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
+        //getContentPane().setLayout(null);
 
 
         northPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -66,13 +67,14 @@ public class UIFinishedGame extends JFrame {
 
         //Benutzername, bleibt leer wenn als Gast gespielt wird
         JLabel LabelUserName = new JLabel(""+ Login.guest.getUserName());
+        LabelUserName.setFont(new Font("Tahoma", Font.BOLD, 15));
         LabelUserName.setBounds(5, 64, 92, 14);
         contentPane.add(LabelUserName);
 
         //Spielnummer
         JLabel labelGameNr = new JLabel("Spiel Code: "+ Login.guest.getIDNumber());
         labelGameNr.setFont(new Font("Tahoma", Font.BOLD, 15));
-        labelGameNr.setBounds(5, 157, 120, 14);
+        labelGameNr.setBounds(5, 157, 170, 14);
         contentPane.add(labelGameNr);
 
         //Punkte
@@ -81,17 +83,17 @@ public class UIFinishedGame extends JFrame {
         labelPoints.setBounds(5, 126, 120, 14);
         contentPane.add(labelPoints);
 
-        //Hintergrund
-        JLabel background = new JLabel("");
-        background.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
-        background.setBounds(100, 100, 700, 500);
-        contentPane.add(background);
-
         //Platzierung
         JLabel labelUserPlacing = new JLabel("Platz: "+ Login.guest.getPlacing());
         labelUserPlacing.setFont(new Font("Tahoma", Font.BOLD, 15));
         labelUserPlacing.setBounds(5, 95, 120, 14);
         contentPane.add(labelUserPlacing);
+
+        //TODO Hintergrund
+        JLabel background = new JLabel("");
+        background.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
+        background.setBounds(100, 100, 700, 500);
+        contentPane.add(background);
 
 
         JButton buttonLogout = new JButton("Logout");
