@@ -183,7 +183,8 @@ public class Bar_Owner {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 1280, 720);
+        //frame.setBounds(100, 100, 1280, 720);
+        frame.setBounds(100, 100, 1280, 780);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
