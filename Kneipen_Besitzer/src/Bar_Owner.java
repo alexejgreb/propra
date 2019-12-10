@@ -183,7 +183,8 @@ public class Bar_Owner {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 1751, 768);
+        //frame.setBounds(100, 100, 1280, 720);
+        frame.setBounds(100, 100, 1280, 780);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
@@ -1359,22 +1360,19 @@ public class Bar_Owner {
         frame.getContentPane().add(nein);
 
         b1 = new JLabel("New label");
-        //TODO
-        b1.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image_content_828136805_20180122145147.jpg"));
+        b1.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
         b1.setBounds(0, 0, 1755, 789);
         frame.getContentPane().add(b1);
 
 
         b2 = new JLabel("");
-        //TODO
-        b2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\krombacher-spot-mood-flaschen.jpg"));
+        b2.setIcon(new ImageIcon("Ressources/krombacher-spot-mood-flaschen.jpg"));
         b2.setBounds(0, 0, 1755, 789);
         frame.getContentPane().add(b2);
 
 
         b3 = new JLabel("");
-        //TODO
-        b3.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\Krombacher-kuendigt-Preiserhoehung-an_big_teaser_article.jpg"));
+        b3.setIcon(new ImageIcon("Ressources/Krombacher-kuendigt-Preiserhoehung-an_big_teaser_article.jpg"));
         b3.setBounds(0, 0, 1755, 789);
         frame.getContentPane().add(b3);
 

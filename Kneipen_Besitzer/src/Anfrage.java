@@ -314,8 +314,8 @@ public class Anfrage {
 		scrollPane.setViewportView(ta);
 		ta.setEditable(false);
 
-		JLabel lblNewLabel = new JLabel("New label");//TODO
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel.setBounds(0, 3, 894, 539);
 		frame.getContentPane().add(lblNewLabel);
 	}

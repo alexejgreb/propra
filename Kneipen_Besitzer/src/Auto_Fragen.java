@@ -1,14 +1,5 @@
 import java.awt.EventQueue;
 
-
-
-
-
-
-
-
-
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -310,8 +301,7 @@ public class Auto_Fragen {
 		frame.getContentPane().add(t3);
 
 		lblNewLabel = new JLabel("");
-		//TODO
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel);
 	}

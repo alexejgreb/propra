@@ -405,8 +405,7 @@ public class Quiz_Fragen_Bearbeiten {
 		frame.getContentPane().add(tnummer);
 
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		//TODO
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
+		lblNewLabel_2.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
 		lblNewLabel_2.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel_2);
 	}

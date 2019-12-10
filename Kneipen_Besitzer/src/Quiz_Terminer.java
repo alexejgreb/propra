@@ -239,7 +239,7 @@ public class Quiz_Terminer {
                 }
                 catch(Exception e11){
                     //e11.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Anmeldung Unmöglich !!!");
+                    JOptionPane.showMessageDialog(null, "Anmeldung unmöglich!");
                 }
 
             }
@@ -289,8 +289,8 @@ public class Quiz_Terminer {
         btnExit_2.setFont(new Font("Tahoma", Font.BOLD, 18));
         btnExit_2.setBounds(596, 168, 153, 31);
         frame.getContentPane().add(btnExit_2);
-        lblNewLabel_1 = new JLabel("");//TODO
-        lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Haith\\Desktop\\Projekt1\\download Krombacher Hintergrundbild 1024x768-1.jpg"));
+        lblNewLabel_1 = new JLabel("");
+        lblNewLabel_1.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1.jpg"));
         lblNewLabel_1.setBounds(0, 0, 773, 265);
         frame.getContentPane().add(lblNewLabel_1);
 

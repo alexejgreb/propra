@@ -387,7 +387,7 @@ public class Fragen_Pool {
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		//TODO
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image_content_828136805_20180122145147.jpg"));
+		lblNewLabel_3.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel_3.setBounds(0, 0, 1733, 721);
 		frame.getContentPane().add(lblNewLabel_3);
 		CB1.addActionListener(new ActionListener() {

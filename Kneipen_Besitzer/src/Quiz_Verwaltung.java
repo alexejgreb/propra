@@ -595,10 +595,9 @@ public class Quiz_Verwaltung {
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox.setBounds(493, 64, 643, 22);
 		frame.getContentPane().add(comboBox);
-
+////
 		JLabel lblNewLabel = new JLabel("");
-		//TODO
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\image.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/image.jpg"));
 		lblNewLabel.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel);
 
