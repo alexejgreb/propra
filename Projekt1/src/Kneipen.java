@@ -225,7 +225,7 @@ public class Kneipen {
         btnNachrichtsenden.setBounds(12, 111, 204, 46);
         frame.getContentPane().add(btnNachrichtsenden);
 
-        JButton btnLeeren = new JButton("Felder leeren");
+        JButton btnLeeren = new JButton("Clear");
         btnLeeren.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 besitzer.setText("");
@@ -250,7 +250,7 @@ public class Kneipen {
                 } catch (ClassNotFoundException | InstantiationException
                         | IllegalAccessException
                         | UnsupportedLookAndFeelException e1) {
-                    // TODO Auto-generated catch block
+
                     e1.printStackTrace();
                 }
                 frame.dispose();
@@ -305,7 +305,7 @@ public class Kneipen {
 
         lblNewLabel = new JLabel("");
         //TODO
-        lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\2015-10-26_Krombacher Marke des Jahres (1).jpg"));
+        lblNewLabel.setIcon(new ImageIcon("Ressources/2015-10-26_Krombacher Marke des Jahres (1).jpg"));
         lblNewLabel.setBounds(0, 0, 1733, 721);
         frame.getContentPane().add(lblNewLabel);
     }

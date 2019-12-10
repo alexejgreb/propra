@@ -107,7 +107,7 @@ public class Admin {
 		frame.getContentPane().setForeground(new Color(244, 164, 96));
 		frame.setForeground(new Color(0, 0, 0));
 		//TODO
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Haith\\Desktop\\Projekt1\\2015-10-26_Krombacher Marke des Jahres.jpg"));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("Ressources/2015-10-26_Krombacher Marke des Jahres.jpg"));
 		frame.setFont(null);
 		frame.setBounds(100, 100, 1751, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -215,7 +215,7 @@ public class Admin {
 
 		JLabel lblNewLabel = new JLabel("");
 		//TODO
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\18006_krombacher_alkoholfrei_450x450 (1).jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/18006_krombacher_alkoholfrei_450x450 (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 1733, 721);
 		frame.getContentPane().add(lblNewLabel);
 	}

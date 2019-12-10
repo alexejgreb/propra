@@ -222,7 +222,7 @@ public class Teilnahme_Verwaltung {
 
 		lblNewLabel = new JLabel("");
 		//TODO
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Haith\\Downloads\\krombacher-spot-mood-flaschen (1).jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/krombacher-spot-mood-flaschen (1).jpg"));
 		lblNewLabel.setBounds(0, 0, 761, 253);
 		frame.getContentPane().add(lblNewLabel);
 	}
