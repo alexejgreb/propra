@@ -209,8 +209,8 @@ public class Bar_Owner {
         t1.setFont(new Font("Arial Black", Font.BOLD, 16));
         t1.setBounds(12, 80, 684, 29);
 
-        t2 = new JLabel("Kneipennummer:");
-        t2.setForeground(Color.BLUE);
+        t2 = new JLabel("KneipenNr:");
+        t2.setForeground(Color.RED);
         t2.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t2.setBounds(12, 141, 97, 29);
         frame.getContentPane().add(t2);
@@ -228,7 +228,7 @@ public class Bar_Owner {
         frame.getContentPane().add(BarNR);
         BarNR.setColumns(10);
         t3 = new JLabel("Name:");
-        t3.setForeground(Color.BLUE);
+        t3.setForeground(Color.RED);
         t3.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t3.setBounds(12, 191, 114, 29);
         frame.getContentPane().add(t3);
@@ -270,7 +270,7 @@ public class Bar_Owner {
 
 
                         BarNR.setText(tz.getText());
-                        t1.setText("Um ein neues Passwort zu erhalten, füllen Sie bitte dieses Formular aus.");
+                        t1.setText("Füllen Sie das Formular aus, um ein neues Passwort zu erhalten.");
                         Var = 66;
                         pwd.setText("Passwort:");
                         Benutzer.setText("Benutzername:");
@@ -366,7 +366,7 @@ public class Bar_Owner {
         tz.setBounds(470, 387, 21, 16);
         frame.getContentPane().add(tz);
         t4 = new JLabel("Vorname:");
-        t4.setForeground(Color.BLUE);
+        t4.setForeground(Color.RED);
         t4.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t4.setBounds(12, 241, 135, 29);
         frame.getContentPane().add(t4);
@@ -374,7 +374,7 @@ public class Bar_Owner {
         aktu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                BarNR.setText("");
+                //BarNR.setText("");
                 name.setText("");
                 vorname.setText("");
                 strasse.setText("");
@@ -482,8 +482,8 @@ public class Bar_Owner {
 
 
                         ta.setText("");
-                        ta.append("\t\t Bar_Registration: \n\n" + "Kneipe_Nr:\t" + BarNR.getText() + "\n============================================================================\n" + "Name:\t" + name.getText() + "\n\n" + "Vorname:\t" + vorname.getText() + "\n" + "\n\n============================================================================\n" +
-                                " " + "Straße:\t" + BarNR.getText() + "\n\n" + "PLZ:\t" + plz.getText() + "\n\n" + "Stadt:\t" + stadt.getText() + "\n\n" + "\n============================================================================\n" + tel.getText() + "\n\n" + email.getText() + "\n" + "\n============================================================================\n" + "Benutzer_Name:\t" + bname.getText() + "\n" + "Password:\t" + "\n\n" + PWD + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
+                        ta.append("\t\t Bar_Registration: \n\n" + "Kneipen_Nr:\t" + BarNR.getText() + "\n============================================================================\n" + "Name:\t" + name.getText() + "\n\n" + "Vorname:\t" + vorname.getText() + "\n" + "\n\n============================================================================\n" +
+                                " " + "Straße:\t" + BarNR.getText() + "\n\n" + "PLZ:\t" + plz.getText() + "\n\n" + "Stadt:\t" + stadt.getText() + "\n\n" + "\n============================================================================\n" + tel.getText() + "\n\n" + email.getText() + "\n" + "\n============================================================================\n" + "Benutzername:\t" + bname.getText() + "\n" + "Passwort:\t" + "\n\n" + PWD + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
 
                         BarNR.setText("");
                         name.setText("");
@@ -559,7 +559,7 @@ public class Bar_Owner {
                         b3.setVisible(false);
 
                     } catch (Exception e1) {
-                        JOptionPane.showMessageDialog(null, "Bitte gültige Anträger eingeben");
+                        JOptionPane.showMessageDialog(null, "Überprüfen Sie Ihre Eingaben.");
 
                     }
 
@@ -584,8 +584,8 @@ public class Bar_Owner {
 
                             DB_Anfragen.Update_Pass_Neu(x, z);
                             ta.setText("");
-                            ta.append("\t\t Password_Ersetzer: \n\n" + "Kneipe_Nr:\t" + BarNR.getText() + "\n============================================================================\n" + "Name:\t" + name.getText() + "\n\n" + "Vorname:\t" + vorname.getText() + "\n" + "\n\n============================================================================\n" +
-                                    " " + "Straße:\t" + BarNR.getText() + "\n\n" + "PLZ:\t" + plz.getText() + "\n\n" + "Stadt:\t" + stadt.getText() + "\n\n" + "\n============================================================================\n" + tel.getText() + "\n\n" + email.getText() + "\n" + "\n============================================================================\n" + "Benutzer_Name:\t" + bname.getText() + "\n" + "Password:\t" + "\n\n" + x + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
+                            ta.append("\t\t Neues Passwort: \n\n" + "Kneipen_Nr:\t" + BarNR.getText() + "\n============================================================================\n" + "Name:\t" + name.getText() + "\n\n" + "Vorname:\t" + vorname.getText() + "\n" + "\n\n============================================================================\n" +
+                                    " " + "Straße:\t" + BarNR.getText() + "\n\n" + "PLZ:\t" + plz.getText() + "\n\n" + "Stadt:\t" + stadt.getText() + "\n\n" + "\n============================================================================\n" + tel.getText() + "\n\n" + email.getText() + "\n" + "\n============================================================================\n" + "Benutzername:\t" + bname.getText() + "\n" + "Passwort:\t" + "\n\n" + x + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
 
                             BarNR.setText("");
                             name.setText("");
@@ -688,13 +688,13 @@ public class Bar_Owner {
         frame.getContentPane().add(vorname);
 
         t5 = new JLabel("Straße:");
-        t5.setForeground(Color.BLUE);
+        t5.setForeground(Color.RED);
         t5.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t5.setBounds(12, 291, 135, 29);
         frame.getContentPane().add(t5);
 
         t8 = new JLabel("TelefonNr:");
-        t8.setForeground(Color.BLUE);
+        t8.setForeground(Color.RED);
         t8.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t8.setBounds(12, 391, 135, 29);
         frame.getContentPane().add(t8);
@@ -721,25 +721,25 @@ public class Bar_Owner {
         frame.getContentPane().add(psp);
 
         t6 = new JLabel("Stadt:");
-        t6.setForeground(Color.BLUE);
+        t6.setForeground(Color.RED);
         t6.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
-        t6.setBounds(74, 336, 75, 29);
+        t6.setBounds(12, 336, 75, 29);
         frame.getContentPane().add(t6);
 
         stadt = new JTextField();
         stadt.setFont(new Font("Traditional Arabic", Font.BOLD, 14));
         stadt.setColumns(10);
-        stadt.setBounds(165, 337, 114, 37);
+        stadt.setBounds(155, 337, 114, 37);
         frame.getContentPane().add(stadt);
 
         t7 = new JLabel("PLZ:");
-        t7.setForeground(new Color(0, 0, 255));
+        t7.setForeground(Color.RED);
         t7.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t7.setBounds(295, 337, 37, 29);
         frame.getContentPane().add(t7);
 
         t9 = new JLabel("Email:");
-        t9.setForeground(Color.BLUE);
+        t9.setForeground(Color.RED);
         t9.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t9.setBounds(12, 441, 135, 29);
         frame.getContentPane().add(t9);
@@ -758,7 +758,7 @@ public class Bar_Owner {
         frame.getContentPane().add(plz);
 
         t10 = new JLabel("Kneipenname:");
-        t10.setForeground(Color.BLUE);
+        t10.setForeground(Color.RED);
         t10.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t10.setBounds(12, 491, 135, 29);
         frame.getContentPane().add(t10);
@@ -789,7 +789,7 @@ public class Bar_Owner {
         frame.getContentPane().add(labelname);
 
         t11 = new JLabel("Nachricht:");
-        t11.setForeground(Color.BLUE);
+        t11.setForeground(Color.RED);
         t11.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t11.setBounds(12, 537, 135, 29);
         frame.getContentPane().add(t11);
@@ -822,7 +822,7 @@ public class Bar_Owner {
             public void actionPerformed(ActionEvent e) {
 
 
-                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie ihre Passwort ändern?", "PW ändern", JOptionPane.YES_NO_OPTION);
+                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen Sie Ihr Passwort ändern?", "Passwort ändern", JOptionPane.YES_NO_OPTION);
 
                 if (YesorNo == 0) {
 
@@ -832,6 +832,7 @@ public class Bar_Owner {
                     int test221 = Integer.parseInt(test22.getText());
 
                     if (test221 == 0) {
+                        //Keine Ahnung wann das kommt oder was damit gemeint ist
                         JOptionPane.showMessageDialog(null, "Sie müssen ID eingeben (ZB: Email_Adresse)");
                     } else {
 
@@ -871,12 +872,9 @@ public class Bar_Owner {
 
                 if (Var == 0) {
 
-
                     try {
 
-
                         DB_Anfragen.Login(Name.getText(), ppwd, P1, labelname);
-
 
                         try {
 
@@ -891,7 +889,7 @@ public class Bar_Owner {
                                 if (Note1 == 1) {
 
 
-                                    int YesorNo = JOptionPane.showConfirmDialog(null, "Sie haben ihren Passwort noch nicht geändert, wollen Sie es jetzt ändern!", "PW ändern", JOptionPane.YES_NO_OPTION);
+                                    int YesorNo = JOptionPane.showConfirmDialog(null, "Sie haben ihr Passwort noch nicht geändert, wollen Sie es jetzt ändern?", "Passwort ändern", JOptionPane.YES_NO_OPTION);
 
                                     if (YesorNo == 0) {
 
@@ -925,7 +923,7 @@ public class Bar_Owner {
                                                 | InstantiationException
                                                 | IllegalAccessException
                                                 | UnsupportedLookAndFeelException e1) {
-                                            // TODO Auto-generated catch block
+
                                             e1.printStackTrace();
                                         }
                                         frame.dispose();
@@ -953,108 +951,22 @@ public class Bar_Owner {
                                     frame.dispose();
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "Ihr Passwort ist falsch");
+                                JOptionPane.showMessageDialog(null, "Ihr Passwort ist falsch.");
                             }
 
 
                         } catch (Exception e3) {
-                            JOptionPane.showMessageDialog(null, "Ungültiges Passwort");
+                            JOptionPane.showMessageDialog(null, "Ihr Passwort ist ungültig.");
                         }
 
 
                     } catch (Exception e2) {
-                        JOptionPane.showMessageDialog(null, "Nickname ist falsch");
+                        JOptionPane.showMessageDialog(null, "Ihr Benutzername ist falsch.");
 
                     }
 
 
                 }
-
-		 		/*
-		 		if(Var==2){
-		 			P3=0;
-		 			if(epwd.getText()!="0000000" && Name.getText()!="0000000"&&barnr0.getText()!="0000000" && pass.getText()!="0000000"){
-
-
-
-
-		 			try{
-
-
-		 				int Pass10 =Integer.parseInt(epwd.getText());
-		 				int Pass20= Integer.parseInt(Name.getText());
-		 				int BarNummer= Integer.parseInt(barnr0.getText());
-		 				int PassB=Integer.parseInt(pass.getText());
-
-		 				try{
-
-		 				if(PassB==Pass20){
-
-
-		 					DB_Anfragen.Update_PWD(Pass10, Pass20, BarNummer, P3);
-
-
-
-
-		 				}else{
-
-		 					JOptionPane.showMessageDialog(null,"Bitte Bestätigen sie Ihren Password!!!!");
-
-
-
-		 				}
-
-
-
-
-
-		 				}catch(Exception e4){
-
-
-		 					JOptionPane.showMessageDialog(null,"Password Kann nicht Akzeptiert werden , Prüfen sie ihre Angaben");
-
-
-
-		 				}
-
-
-
-		 			}catch (Exception e3) {
-						JOptionPane.showMessageDialog(null,"Nickname und Oder Ehemaliges Password und Bar_Nr müssen Richtig sein ");
-
-                    }}else{
-
-                    }
-
-		 			if(P3==5){
-
-
-
-
-
-	 					Kneipen_Besitzer KB= new Kneipen_Besitzer();
-						try {
-							KB.NewScreen();
-						} catch (ClassNotFoundException
-								| InstantiationException
-								| IllegalAccessException
-								| UnsupportedLookAndFeelException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						frame.dispose();
-
-
-
-
-
-		 			}
-
-
-		 		}
-
-		 		*/
-
 
                 if (Var == 2) {
 
@@ -1111,7 +1023,7 @@ public class Bar_Owner {
                         } else {
 
 
-                            JOptionPane.showMessageDialog(null, "Bestätigen Sie ihr Passwort ");
+                            JOptionPane.showMessageDialog(null, "Bestätigen Sie ihr Passwort.");
 
 
                         }
@@ -1142,8 +1054,8 @@ public class Bar_Owner {
 
                                     ta.setText("");
 
-                                    ta.append("\t\t Password_Ändern: \n\n" + "Kneipe_Nr:\t" + barnr0.getText() + "\n============================================================================\n" + "\n\n============================================================================\n" +
-                                            " " + "Neue_Password:\t" + pass.getText() + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
+                                    ta.append("\t\t Password ändern: \n\n" + "KneipenNr:\t" + barnr0.getText() + "\n============================================================================\n" + "\n\n============================================================================\n" +
+                                            " " + "Neues Passwort:\t" + pass.getText() + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
 
                                     ta.print();
 
@@ -1166,7 +1078,7 @@ public class Bar_Owner {
                                 } else {
 
 
-                                    JOptionPane.showMessageDialog(null, "Bitte bestätigen Sie ihr Passwort !!! ");
+                                    JOptionPane.showMessageDialog(null, "Bitte bestätigen Sie ihr Passwort");
 
 
                                 }
@@ -1174,7 +1086,7 @@ public class Bar_Owner {
                             } catch (Exception e55) {
 
 
-                                JOptionPane.showMessageDialog(null, "Ihr neues Passwort kann nicht akzeptiert werden, bitte nur Zahlen verwenden ");
+                                JOptionPane.showMessageDialog(null, "Ihr neues Passwort kann nicht akzeptiert werden, bitte nur Zahlen verwenden");
 
 
                             }
@@ -1208,7 +1120,7 @@ public class Bar_Owner {
             public void actionPerformed(ActionEvent arg0) {
 
 
-                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie diese Seite verlassen?", "PW ändern", JOptionPane.YES_NO_OPTION);
+                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen Sie das Fenster schließen?", "Fenster schließen", JOptionPane.YES_NO_OPTION);
 
                 if (YesorNo == 0) {
 
@@ -1371,7 +1283,7 @@ public class Bar_Owner {
 
 
         b3 = new JLabel("");
-        b3.setIcon(new ImageIcon("Ressources/Krombacher-kuendigt-Preiserhoehung-an_big_teaser_article.jpg"));
+        b3.setIcon(new ImageIcon("Ressources/krombacher-spot-mood-flaschen.jpg"));
         //b3.setIcon(new ImageIcon("Ressources/12_kp_zentriert_strich_neg.jpg"));
         b3.setBounds(0, 0, 1755, 789);
         frame.getContentPane().add(b3);

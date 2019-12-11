@@ -37,9 +37,9 @@ public class DB_Anfragen {
             pst.setLong(10,Note);
             pst.setLong(11,Password);
             pst.execute();
-            JOptionPane.showMessageDialog(null,"Save");
+            //JOptionPane.showMessageDialog(null,"Save");
         } catch (Exception e0) {
-            JOptionPane.showMessageDialog(null,"Ungültige Einträge !!!!!");
+            JOptionPane.showMessageDialog(null,"Überprüfen Sie Ihre eingegbenen Daten.");
         }
     }
 
@@ -59,7 +59,7 @@ public class DB_Anfragen {
                 pp=20;
                 Name.setText(Nickname);
             }else{
-                JOptionPane.showMessageDialog(null,"Prüfen sie ihren Nickname !!!!!");
+                JOptionPane.showMessageDialog(null,"Prüfen Sie Ihren Benutzernamen.");
             }
             pst1.close();
         } catch (Exception e3) {
@@ -98,7 +98,7 @@ public class DB_Anfragen {
             String sql22="update Bar set Password= '"+values114+"',Note=0 where  Bar_Nr = '"+Values116+"' ";
             PreparedStatement pst3=con.prepareStatement(sql22);
             pst3.execute();
-            JOptionPane.showMessageDialog(null,"Erfolgreich geändert");
+            JOptionPane.showMessageDialog(null,"Passwort geändert.");
         }catch(Exception e3){
             JOptionPane.showMessageDialog(null,e3);
         }
@@ -220,7 +220,7 @@ public class DB_Anfragen {
             String sql22="update Bar set Password= '"+Values114+"',Note=1 where  Bar_Nr = '"+Values116+"' ";
             PreparedStatement pst3=con.prepareStatement(sql22);
             pst3.execute();
-            JOptionPane.showMessageDialog(null,"Neue Password wurde erstellt !!!");
+            //JOptionPane.showMessageDialog(null,"");
         }catch(Exception e3){
             JOptionPane.showMessageDialog(null,e3);
         }
@@ -282,10 +282,10 @@ public class DB_Anfragen {
             pst.setString(6, RichtigeAntwort);
             pst.setLong(7, Besitzer);
             pst.execute();
-            JOptionPane.showMessageDialog(null,"Gespeichert");
+            JOptionPane.showMessageDialog(null,"Die Frage wurde dem Fragenpool hinzugefügt.");
         }
         catch(Exception e11){
-            JOptionPane.showMessageDialog(null,"Prüfen sie die Angegebene Daten Bitte !!!");
+            JOptionPane.showMessageDialog(null,"Prüfen Sie die angegebenen Daten.");
         }
         ta.append("\t Frage Hinzugefügt: \n\n"+"Frage:\t"+Frage+"\n============================================================================\n"+"A:\t"+ErsteWahl+"\n============================================================================\n"+"B:\t"+ZweiteWahl+"\n============================================================================\n"+"C:\t"+DritteWahl+"\n============================================================================\n"+"D:\t"+VierteWahl+""+
                 " \t"+"Antwort:\t"+RichtigeAntwort+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
@@ -300,10 +300,10 @@ public class DB_Anfragen {
             PreparedStatement pst3=con.prepareStatement(Delete);
             pst3.execute();
             pst3.close();
-            JOptionPane.showMessageDialog(null,"die Frage '"+FrageNr+"' ist entfernt worden!!!");
+            JOptionPane.showMessageDialog(null,"Die Frage '"+FrageNr+"' wurde entfernt.");
         }
         catch(Exception e11){
-            JOptionPane.showMessageDialog(null,"Prüfen sie die Angegebene Daten Bitte !!!");
+            JOptionPane.showMessageDialog(null,"Prüfen Sie die angegebenen Daten.");
         }
         ta.append("\t Frage Delete: \n\n"+"FrageNr:\t"+FrageNr+" \t"+"\n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
     }
@@ -416,11 +416,11 @@ public class DB_Anfragen {
             String sql22="update FragenPool set Frage='"+value223+"',ErsteWahl='"+value33+"',ZweiteWahl='"+value22+"',DritteWahl='"+value222+"',VierteWahl='"+value221+"',RichtigeAntwort='"+value2225+"' where FrageNr='"+value115+"' ";
             PreparedStatement pst3=con.prepareStatement(sql22);
             pst3.execute();
-            JOptionPane.showMessageDialog(null,"Erfolgreich UPDATE");
-            ta.append("\t Frage Update: \n\n"+"Frage:\t"+Question.getText()+"\n============================================================================\n"+"A:\t"+A.getText()+"\n============================================================================\n"+"B:\t"+B.getText()+"\n============================================================================\n"+"C:\t"+C.getText()+"\n============================================================================\n"+"D:\t"+D.getText()+""+
+            JOptionPane.showMessageDialog(null,"Die Frage wurde angepasst.");
+            ta.append("\t FragenUpdate: \n\n"+"Frage:\t"+Question.getText()+"\n============================================================================\n"+"A:\t"+A.getText()+"\n============================================================================\n"+"B:\t"+B.getText()+"\n============================================================================\n"+"C:\t"+C.getText()+"\n============================================================================\n"+"D:\t"+D.getText()+""+
                     " \t"+"Antwort:\t"+Answer.getText()+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
         }catch(Exception e3){
-            JOptionPane.showMessageDialog(null,"Prüfen sie die Angegebene Daten Bitte !!!");
+            JOptionPane.showMessageDialog(null,"Prüfen Sie die angegebenen Daten.");
         }
     }
 
@@ -521,7 +521,8 @@ public class DB_Anfragen {
             pst.setString(12,Bar.getText());
             /////////////////////////////////////////////////////////////////////////////////////
             pst.execute();
-            JOptionPane.showMessageDialog(null,"Gespeichert");
+            //Warum ist die Scheiße den in DBAnfragen???? :)
+            //JOptionPane.showMessageDialog(null,"Gespeichert");
         }
         catch(Exception e11){
             e11.printStackTrace();
@@ -641,7 +642,7 @@ public class DB_Anfragen {
                 txt1.setText(rs.getString("Tag_Spiel")+"/"+rs.getString("Monat_Spiel")+"/"+rs.getString("Jahr_Spiel")+"UM:"+rs.getString("Uhr_Spiel")+":"+rs.getString("Min_Spiel"));
 
             }else{
-                JOptionPane.showMessageDialog(null,"Prüfen sie das Spiel_Nummer");
+                JOptionPane.showMessageDialog(null,"Prüfen sie die Spielnummer");
             }
 
             pst1.close();
@@ -668,7 +669,7 @@ public class DB_Anfragen {
                 txt2.setText(rs.getString("Punkte"));
 
             }else{
-                JOptionPane.showMessageDialog(null,"Prüfen sie das Spiel_Nummer ggf auch das ID_Nummer");
+                JOptionPane.showMessageDialog(null,"Prüfen sie die Spielnummer ggf. auch die ID-Nummer");
             }
             pst1.close();
         } catch (Exception e3) {

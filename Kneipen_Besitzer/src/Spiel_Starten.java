@@ -1389,7 +1389,7 @@ public class Spiel_Starten {
 										" \t"+" \n======================================\n");
 
 
-								JOptionPane.showMessageDialog(null,"Erfolgreich beendet.");
+								JOptionPane.showMessageDialog(null,"Das Spiel wurde beendet.");
 
 								btnNewButton_1.setEnabled(false);
 							} catch (SQLException e1) {
@@ -1524,66 +1524,13 @@ public class Spiel_Starten {
 		btnbersicht.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
-
-
-				/*
-
-				try{
-
-
-					String query2="select FrageNr from Fragen_Pool ";
-					PreparedStatement pst1=con.prepareStatement(query2);
-
-					ResultSet rs= pst1.executeQuery();
-					//c1.removeAllItems();
-					while (rs.next()){
-
-
-						String FrageNr = rs.getString("FrageNr");
-						c1.addItem(FrageNr);
-
-					}
-
-					rs.close();
-
-					}
-				catch(Exception e2){
-					e2.printStackTrace();
-
-				}
-
-				try{
-					String query2="select Spiel_Nummer from Spiel_Gnehmigt WHERE status =1";
-					PreparedStatement pst1=con.prepareStatement(query2);
-
-					ResultSet rs= pst1.executeQuery();
-					CB1.removeAllItems();
-					while (rs.next()){
-						String Spiel_Nummer = rs.getString("Spiel_Nummer");
-						CB1.addItem(Spiel_Nummer);
-
-					}
-
-					rs.close();
-
-					}
-				catch(Exception e2){
-					e2.printStackTrace();
-
-				}
-
 				try {
-					String query="select Spiel_Nummer,Frage,ErsteWahl,ZweiteWahl,DritteWahl,VierteWahl,RichtigeAntwort from (Fragen_Pool  , Quiz_Fragen) where Quiz_Fragen.Frage_Nr=Fragen_Pool.FrageNr ORDER by Spiel_Nummer";
-					PreparedStatement pst=con.prepareStatement(query);
-					ResultSet rs= pst.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs));
+					ta.print();
+				} catch (PrinterException e1) {
 
-
-				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				*/
+
 			}
 		});
 		btnbersicht.setFont(new Font("Tahoma", Font.BOLD, 16));
