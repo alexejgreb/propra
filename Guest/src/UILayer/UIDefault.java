@@ -57,7 +57,6 @@ public class UIDefault extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		contentPane = new JPanel();
@@ -103,7 +102,7 @@ public class UIDefault extends JFrame {
 		JButton buttonRegistration = new JButton("Anmelden");
 		buttonRegistration.setFont(new Font("Tahoma", Font.BOLD, 15));
 		buttonRegistration.setForeground(new Color(255, 0, 0));
-		buttonRegistration.setBounds(5, 330, 110, 22);
+		buttonRegistration.setBounds(735, 5, 150, 22);
 		contentPane.add(buttonRegistration);
 		buttonRegistration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -116,7 +115,7 @@ public class UIDefault extends JFrame {
 		JButton buttonGuest = new JButton("Weiter als Gast");
 		buttonGuest.setFont(new Font("Tahoma", Font.BOLD, 15));
 		buttonGuest.setForeground(new Color(255, 0, 0));
-		buttonGuest.setBounds(338, 330, 150, 22);
+		buttonGuest.setBounds(735, 40, 150, 22);
 		contentPane.add(buttonGuest);
 		buttonGuest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,15 +153,20 @@ public class UIDefault extends JFrame {
 		LabelLoginPw.setBounds(5, 95, 67, 14);
 		contentPane.add(LabelLoginPw);
 		
-		JLabel LabelRegistration = new JLabel("Noch nicht angemeldet? Jetzt anmelden!");
+		JLabel LabelRegistration = new JLabel("Noch nicht angemeldet?");
 		LabelRegistration.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		LabelRegistration.setBounds(5, 248, 327, 20);
+		LabelRegistration.setBounds(560, 5, 150, 20);
 		contentPane.add(LabelRegistration);
 
 		JLabel LabelGuest = new JLabel("Oder Spiel als Gast");
 		LabelGuest.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		LabelGuest.setBounds(338, 248, 215, 22);
+		LabelGuest.setBounds(560, 40, 150, 20);
 		contentPane.add(LabelGuest);
+
+		ImageIcon imageIcon = new ImageIcon("Ressources/Startbild.jpg");
+		JLabel backgroundImage = new JLabel(imageIcon);
+		backgroundImage.setBounds(0, 0, 900, 577);
+		contentPane.add(backgroundImage);
 	}
 }
 

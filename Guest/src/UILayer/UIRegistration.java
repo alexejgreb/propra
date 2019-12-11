@@ -48,7 +48,7 @@ public class UIRegistration extends JFrame {
 	 */
 	public UIRegistration() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 300);
+		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -152,10 +152,10 @@ public class UIRegistration extends JFrame {
 			}
 		});
 
-		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon("Ressources\\index.jpg"));
-		background.setBounds(100, 100, 700, 500);
-		contentPane.add(background);
+		ImageIcon imageIcon = new ImageIcon("Ressources/Startbild.jpg");
+		JLabel backgroundImage = new JLabel(imageIcon);
+		backgroundImage.setBounds(0, 0, 900, 577);
+		contentPane.add(backgroundImage);
 	}
 
 }

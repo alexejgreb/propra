@@ -51,7 +51,7 @@ public class UIGuest extends JFrame {
 	 */
 	public UIGuest() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 500);
+		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -78,11 +78,11 @@ public class UIGuest extends JFrame {
 		textFieldGameID.setBounds(0, 0, 0, 0);
 		southPanel.add(textFieldGameID);
 		textFieldGameID.setColumns(20);
-		
-		JLabel background = new JLabel("");
-		background.setBounds(0, 0, 0, 0);
-		background.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
-		contentPane.add(background);
+
+		ImageIcon imageIcon = new ImageIcon("Ressources/Startbild.jpg");
+		JLabel backgroundImage = new JLabel(imageIcon);
+		backgroundImage.setBounds(0, 0, 900, 577);
+		contentPane.add(backgroundImage);
 		
 		JButton buttonLogin = new JButton("Weiter zum Spiel");
 		buttonLogin.setFont(new Font("Tahoma",Font.BOLD,15));

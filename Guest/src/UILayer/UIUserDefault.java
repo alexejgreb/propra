@@ -60,9 +60,12 @@ public class UIUserDefault extends JFrame {
 		contentPane.add(southPanel,BorderLayout.SOUTH);
 		southPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
+		ImageIcon imageIcon = new ImageIcon("Ressources/Startbild.jpg");
+		JLabel backgroundImage = new JLabel(imageIcon);
+		backgroundImage.setBounds(0, 0, 900, 577);
+		contentPane.add(backgroundImage);
 
-
-		JLabel labelheader = new JLabel("Hole dir an der Theke einen Spiel-Code und gib sie ein.");
+		JLabel labelheader = new JLabel("Hol dir an der Theke einen Spiel-Code und gib ihn ein.");
 		labelheader.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelheader.setBounds(0, 0, 100, 0);
 		contentPane.add(labelheader,BorderLayout.NORTH);
