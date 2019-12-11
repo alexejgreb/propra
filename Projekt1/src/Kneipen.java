@@ -106,14 +106,14 @@ public class Kneipen {
         btnSperren.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie die Kneipe Nr: '"+nr.getSelectedItem().toString()+"' entfernen?","Bar_Delete",JOptionPane.YES_NO_OPTION);
+                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen Sie die Kneipe Nr: '"+nr.getSelectedItem().toString()+"' entfernen?","Kneipe entfernen",JOptionPane.YES_NO_OPTION);
 
                 if(YesorNo==0){}
 
 
             }
         });
-        btnSperren.setBounds(12, 52, 204, 46);
+        btnSperren.setBounds(12, 111, 204, 46);
         frame.getContentPane().add(btnSperren);
 
         lblKneipenr = new JLabel("KneipenNr:");
@@ -223,7 +223,8 @@ public class Kneipen {
         btnNachrichtsenden.setForeground(Color.RED);
         btnNachrichtsenden.setFont(new Font("Tahoma", Font.BOLD, 17));
         btnNachrichtsenden.setBounds(12, 111, 204, 46);
-        frame.getContentPane().add(btnNachrichtsenden);
+        //keine Actionperformed also weg damit
+        //frame.getContentPane().add(btnNachrichtsenden);
 
         JButton btnLeeren = new JButton("Clear");
         btnLeeren.addActionListener(new ActionListener() {

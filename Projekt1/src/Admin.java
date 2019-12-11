@@ -207,11 +207,11 @@ public class Admin {
 
 			public void actionPerformed(ActionEvent arg0) {
 
-
+				//Hier passiert nichts, daher auskommentiert
 			}
 		});
 		btnNewButton.setBounds(25, 378, 291, 51);
-		frame.getContentPane().add(btnNewButton);
+		//frame.getContentPane().add(btnNewButton);
 
 		JLabel lblNewLabel = new JLabel("");
 		//TODO

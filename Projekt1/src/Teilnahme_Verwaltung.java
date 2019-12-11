@@ -77,13 +77,6 @@ public class Teilnahme_Verwaltung {
 					*/
 					DB_Anfragen.Bar_Nr_1(nummer);
 
-
-
-
-
-
-
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -197,16 +190,16 @@ public class Teilnahme_Verwaltung {
 				DB_Anfragen.Update_Lizenc2(nummer);
 			}
 		});
-		btnLizencbeenden.setForeground(Color.ORANGE);
+		btnLizencbeenden.setForeground(Color.RED);
 		btnLizencbeenden.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnLizencbeenden.setBounds(563, 11, 186, 31);
+		btnLizencbeenden.setBounds(563, 55, 186, 31);
 		frame.getContentPane().add(btnLizencbeenden);
 
 		JButton btnExit = new JButton("Drucken");
-		btnExit.setForeground(Color.ORANGE);
+		btnExit.setForeground(Color.RED);
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnExit.setBounds(566, 55, 183, 31);
-		frame.getContentPane().add(btnExit);
+		//frame.getContentPane().add(btnExit);
 
 		JButton button = new JButton("Schließen");
 		button.addActionListener(new ActionListener() {
@@ -215,7 +208,7 @@ public class Teilnahme_Verwaltung {
 				frame.dispose();
 			}
 		});
-		button.setForeground(Color.ORANGE);
+		button.setForeground(Color.RED);
 		button.setFont(new Font("Tahoma", Font.BOLD, 18));
 		button.setBounds(566, 95, 183, 31);
 		frame.getContentPane().add(button);

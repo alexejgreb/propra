@@ -136,8 +136,8 @@ public class Kneipe_Verwaltung {
 		int Seconde = cal.get(Calendar.SECOND);
 		int Minute= cal.get(Calendar.MINUTE);
 		int Stunde = cal.get(Calendar.HOUR);
-		Zeit.setText(+Tag+"/"+Monat+"/"+Jahre);
-		h.setText(""+Stunde+":"+Minute+":"+Seconde);
+		Zeit.setText(+Tag+"/"+(Monat+1)+"/"+Jahre);
+		h.setText(""+(Stunde+12)+":"+Minute);
 
 
 	}
@@ -210,7 +210,7 @@ public class Kneipe_Verwaltung {
 					DB_Anfragen.Update_Bar_Member(C1);
 
 
-					ta1.append("\t Teilnahme_Beenden: \n\n"+"Kneipe_Nr:\t"+C1.getSelectedItem().toString()+"\n======================================\n"+"Besitzer:\t"+txt3.getText()+"\n\n"+"Telefon_Nr:\t"
+					ta1.append("\t Teilnahme_Beenden: \n\n"+"Kneipen_Nr:\t"+C1.getSelectedItem().toString()+"\n======================================\n"+"Besitzer:\t"+txt3.getText()+"\n\n"+"Telefon_Nr:\t"
 							+txt4.getText()+"\n\n"+"Email:\t"+txt5.getText()+" \t"+"Adresse:\t"+txt2.getText()+" \n======================================\n");
 					txt1.setText("");
 					txt2.setText("");
@@ -282,7 +282,7 @@ public class Kneipe_Verwaltung {
 					int i11 =Integer.parseInt(test.getText());
 
 					if(i11==1){
-						JOptionPane.showMessageDialog(null,"Sie haben eine dauerhafte Lizenz bekommen ");
+						JOptionPane.showMessageDialog(null,"Sie haben eine dauerhafte Lizenz erhalten.");
 					}
 					if(i11==0)	{
 						//////
@@ -370,7 +370,7 @@ public class Kneipe_Verwaltung {
 		btnGenhemigen.setBounds(12, 71, 240, 46);
 		frame.getContentPane().add(btnGenhemigen);
 
-		JButton btnAktualisieren = new JButton("Leeren");
+		JButton btnAktualisieren = new JButton("Clear");
 		btnAktualisieren.setForeground(Color.RED);
 		btnAktualisieren.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnAktualisieren.addActionListener(new ActionListener() {
@@ -501,7 +501,7 @@ public class Kneipe_Verwaltung {
 					int i11 =Integer.parseInt(test.getText());
 
 					if(i11==1){
-						JOptionPane.showMessageDialog(null,"Sie haben eine dauerhafte Lizenz bekommen ");
+						JOptionPane.showMessageDialog(null,"Sie haben eine dauerhafte Lizenz bekommen.");
 					}
 					if(i11==0)	{
 						lb.setText(C1.getSelectedItem().toString()+tk.getText()+C1.getSelectedItem().toString());
@@ -521,7 +521,7 @@ public class Kneipe_Verwaltung {
    					JOptionPane.showMessageDialog(null,"Dauerhaft Lizenc erteilt");
 */
 						DB_Anfragen.Insert_Lizenc(lb, txt1, Zeit, C1);
-						ta1.append("\t Lizenc_Erteilt: \n===============================================================\n"+"	Lizenc_Nr:\t"+lb.getText()+"\n===============================================================\n"+"Kneipe_Nr:\t"+C1.getSelectedItem().toString()+"\n===============================================================\n"+"Adresse:\t"+txt2.getText()+"\n===============================================================\n"+"Besitzer:\t"+txt3.getText()+"\n===============================================================\n"+"Telefon_Nr:\t"+txt4.getText()+"\n===============================================================\n"
+						ta1.append("\t Lizenz erteilt: \n===============================================================\n"+"	Lizenz_Nr:\t"+lb.getText()+"\n===============================================================\n"+"KneipenNr:\t"+C1.getSelectedItem().toString()+"\n===============================================================\n"+"Adresse:\t"+txt2.getText()+"\n===============================================================\n"+"Besitzer:\t"+txt3.getText()+"\n===============================================================\n"+"Telefon_Nr:\t"+txt4.getText()+"\n===============================================================\n"
 								+"Email:\t"+txt5.getText()+"\n===============================================================\n"+"\t"+"\n===============================================================\n"+" \t"+" \n===============================================================\n");
    					/*
    				} catch (Exception e1) {
@@ -546,8 +546,8 @@ public class Kneipe_Verwaltung {
 					*/
 
 						DB_Anfragen.Update_Lizenc(C1);
-						ta1.append("\t Lizenc_Bestätigt: \n===============================================================\n"+
-								"\n===============================================================\n"+" \t\n===============================================================\n"+"Registriert unter der Nummer:\t"+lb.getText()+" \n===============================================================\n"+"Datum:\t"+Zeit.getText()+"\n===============================================================\n"+"\n Wir haben das Recht dieser Genehmigung jeder Zeit ohne Angabe von Gründen zu Wiederrufen \n"+"\n===============================================================\n");
+						ta1.append("\t Lizenz bestätigt: \n===============================================================\n"+
+								"\n===============================================================\n"+" \t\n===============================================================\n"+"Registriert unter der Nummer:\t"+lb.getText()+" \n===============================================================\n"+"Datum:\t"+Zeit.getText()+"\n===============================================================\n"+"\n Wir haben das Recht diese Genehmigung jeder Zeit ohne Angabe von Gründen zu widerrufen \n"+"\n===============================================================\n");
 						txt1.setText("");
 						txt2.setText("");
 						txt3.setText("");

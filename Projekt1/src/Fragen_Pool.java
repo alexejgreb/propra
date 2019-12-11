@@ -150,7 +150,7 @@ public class Fragen_Pool {
 				lb1.setVisible(false);
 				lb2.setVisible(false);
 				//con=Database1.dbConnector();
-				int YesorNo = JOptionPane.showConfirmDialog(null, " Sind Sie sicher wollen sie dieses Frage mit dem FrageNr:  ,"+CB1.getSelectedItem().toString()+",   entfernen !!!!!","Frage Entfernen",JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, "Sind Sie sicher, dass Sie diese Frage mit der FrageNr: "+CB1.getSelectedItem().toString()+" entfernen wollen?","Frage entfernen",JOptionPane.YES_NO_OPTION);
 
 				if(YesorNo==0){
 
@@ -170,7 +170,7 @@ public class Fragen_Pool {
 
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"OK Sie haben nichts entfernt");
+					JOptionPane.showMessageDialog(null,"Es wurde nichts entfernt");
 				}
 
 
@@ -231,7 +231,7 @@ public class Fragen_Pool {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 				frame.dispose();
@@ -240,7 +240,7 @@ public class Fragen_Pool {
 		Btp_zurueck.setBounds(28, 266, 118, 45);
 		frame.getContentPane().add(Btp_zurueck);
 
-		JButton Btp_Aktualisieren = new JButton("Felder leeren");
+		JButton Btp_Aktualisieren = new JButton("Clear");
 		Btp_Aktualisieren.setForeground(Color.RED);
 		Btp_Aktualisieren.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Btp_Aktualisieren.addActionListener(new ActionListener() {
@@ -278,8 +278,12 @@ public class Fragen_Pool {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ta.print();
+				} catch (PrinterException e) {
 
-
+					e.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_1.setBounds(28, 203, 118, 45);
@@ -326,7 +330,7 @@ public class Fragen_Pool {
 		CB1.setBounds(320, 66, 70, 22);
 		frame.getContentPane().add(CB1);
 
-		JLabel lblNewLabel_2 = new JLabel("Frage Nr:");
+		JLabel lblNewLabel_2 = new JLabel("FragenNr:");
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel_2.setBounds(182, 60, 85, 30);

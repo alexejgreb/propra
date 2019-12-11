@@ -76,7 +76,7 @@ public class DB_Anfragen {
 		//con=Database1.dbConnector();
 
 		try {
-			String query="select DISTINCT Kneipe_Nr ,Adresse, Telefon_Nr, Besitzer, Email from Kneipe_Teilnehmer where Vermerk =1";
+			String query="select DISTINCT Kneipe_Nr AS Kneipennummer ,Adresse AS Adresse, Telefon_Nr AS Telefonnummer, Besitzer AS Besitzer, Email AS Email from Kneipe_Teilnehmer where Vermerk =1";
 			PreparedStatement pst=con.prepareStatement(query);
 			ResultSet rs= pst.executeQuery();
 			t.setModel(DbUtils.resultSetToTableModel(rs));
@@ -569,7 +569,7 @@ public class DB_Anfragen {
 		//con=Database1.dbConnector();
 
 		try {
-			String query="select Bar_Nr as Kneipe_Nummer,Surname as Vorname,First_Name as Nachname,Street as Strasse,City as Stadt,Post as PLZ,Mobil as TalefonNummer,Mail as Email_Adresse,Nickname as Kneipe_Name from Bar where Note=1 or Note =0";
+			String query="select Bar_Nr as Kneipennummer,Surname as Vorname,First_Name as Nachname,Street as Strasse,City as Stadt,Post as PLZ,Mobil as Telefonnummer,Mail as Email,Nickname as Kneipenname from Bar where Note=1 or Note =0";
 			PreparedStatement pst=con.prepareStatement(query);
 			ResultSet rs= pst.executeQuery();
 			t.setModel(DbUtils.resultSetToTableModel(rs));

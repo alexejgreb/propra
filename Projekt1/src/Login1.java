@@ -87,10 +87,10 @@ import javax.swing.SwingConstants;public class Login1 {
 		frame.getContentPane().add(txtAdmin);
 		txtAdmin.setColumns(10);
 
-		JButton btnNewButton = new JButton("Ok");
+		JButton btnNewButton = new JButton("Login");
 		btnNewButton.setBackground(Color.ORANGE);
 		btnNewButton.setForeground(Color.RED);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int pwd;
@@ -126,8 +126,8 @@ import javax.swing.SwingConstants;public class Login1 {
 		});
 		btnNewButton_1.setBackground(Color.ORANGE);
 		btnNewButton_1.setForeground(Color.RED);
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton_1.setBounds(913, 397, 87, 40);
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnNewButton_1.setBounds(870, 397, 117, 40);
 		frame.getContentPane().add(btnNewButton_1);
 
 		pwd1 = new JPasswordField();
