@@ -372,10 +372,11 @@ public class Spiel_Starten {
 		Monat = cal.get(Calendar.MONTH);
 		Jahre = cal.get(Calendar.YEAR);
 
-		Zeit.setText(+Tag+"/"+Monat+"/"+Jahre);
+
+		Zeit.setText(+Tag+"/"+(Monat+1)+"/"+Jahre);
 
 		comboBox_2.setSelectedIndex(Tag-1);
-		comboBox_3.setSelectedIndex(Monat-1);
+		comboBox_3.setSelectedIndex(Monat);
 		comboBox_4.setSelectedIndex(0);
 	}
 
@@ -1874,10 +1875,8 @@ public class Spiel_Starten {
 					}
 
 				}else{
-					JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+					JOptionPane.showMessageDialog(null,"Wähle ein Datum in der Zukunft aus");
 				}
-
-
 
 			}
 		});
