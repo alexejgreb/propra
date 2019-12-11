@@ -1454,7 +1454,7 @@ public class Spiel_Starten {
 										" \t"+" \n======================================\n");
 
 
-								JOptionPane.showMessageDialog(null,"Erfolgreich beendet.");
+								//JOptionPane.showMessageDialog(null,"Das Spiel wurde beendet .");
 
 								btnNewButton_1.setEnabled(false);
 							} catch (SQLException e1) {

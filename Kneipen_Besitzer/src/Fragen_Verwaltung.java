@@ -131,7 +131,7 @@ public class Fragen_Verwaltung {
 
 			}
 		});
-		delete.setBounds(20, 99, 118, 45);
+		delete.setBounds(20, 157, 118, 45);
 		frame.getContentPane().add(delete);
 
 		JButton update = new JButton("Anpassen");
@@ -150,7 +150,7 @@ public class Fragen_Verwaltung {
 				}
 			}
 		});
-		update.setBounds(20, 157, 118, 45);
+		update.setBounds(20, 99, 118, 45);
 		frame.getContentPane().add(update);
 
 		JButton print = new JButton("Drucken");
@@ -168,7 +168,7 @@ public class Fragen_Verwaltung {
 
 			}
 		});
-		print.setBounds(20, 215, 118, 45);
+		print.setBounds(20, 273, 118, 45);
 		frame.getContentPane().add(print);
 
 		JButton zurueck = new JButton("Zurück");
@@ -192,7 +192,7 @@ public class Fragen_Verwaltung {
 
 			}
 		});
-		zurueck.setBounds(20, 273, 118, 45);
+		zurueck.setBounds(20, 331, 118, 45);
 		frame.getContentPane().add(zurueck);
 
 		JButton leeren = new JButton("Clear");
@@ -208,7 +208,7 @@ public class Fragen_Verwaltung {
 				t6.setText("");
 			}
 		});
-		leeren.setBounds(20, 331, 118, 45);
+		leeren.setBounds(20, 215, 118, 45);
 		frame.getContentPane().add(leeren);
 
 		scrollPane_1 = new JScrollPane();
@@ -319,7 +319,8 @@ public class Fragen_Verwaltung {
 			}
 		});
 		exit.setBounds(20, 389, 118, 45);
-		frame.getContentPane().add(exit);
+		//Button macht das gleiche wie zurück
+		//frame.getContentPane().add(exit);
 
 		Tfrage = new JComboBox();
 		Tfrage.setFont(new Font("Tahoma", Font.BOLD, 13));

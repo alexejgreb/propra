@@ -214,7 +214,6 @@ public class Auto_Fragen {
 									if(Lokal>0){
 										System.out.println("lokal"+Integer.parseInt(ff.getText())+" "+Lokal);
 										DB_Anfragen.Select_FrageNR_FragenPool(Integer.parseInt(ff.getText()),Lokal,s1,ff);
-										System.out.println("bin fertig");
 										JOptionPane.showMessageDialog(null," Die '"+Lokal+"'  Fragen aus der Kategorie Lokal wurden erfolgreich für das Spiel'"+s1.getText()+"' hinzugefügt.");
 									}
 									DB_Anfragen.Insert_Spiel_Fragen(s1,Spiel_Starten.Zeit,Spiel_Starten.licence,Spiel_Starten.comboBox,Spiel_Starten.comboBox_1,Spiel_Starten.comboBox_2,Spiel_Starten.comboBox_3,Spiel_Starten.comboBox_4,Spiel_Starten.cc,Spiel_Starten.cb,ff);

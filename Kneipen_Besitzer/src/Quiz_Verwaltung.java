@@ -92,7 +92,7 @@ public class Quiz_Verwaltung {
 					}
 
 					try {
-						String query="select Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen from (Spiel_Gnehmigt) where Bar_Nr='"+tnummer.getText()+"'";
+						String query="select Spiel_Nummer AS Spielnummer,Datum AS Datum,Lizenc AS Lizenz,Status AS Status,Uhr_Spiel AS Stunde,Min_Spiel As Minute,Tag_Spiel AS Tag,Monat_Spiel AS Monat,Jahr_Spiel AS Jahr,Anzahl_Runden AS Runden,Anzahl_Fragen AS Fragen from (Spiel_Gnehmigt) where Bar_Nr='"+tnummer.getText()+"'";
 						PreparedStatement pst=con.prepareStatement(query);
 						ResultSet rs= pst.executeQuery();
 						table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -161,7 +161,7 @@ public class Quiz_Verwaltung {
 		btnInsert.setBounds(20, 41, 175, 45);
 		frame.getContentPane().add(btnInsert);
 
-		JButton btnQuizteilnehmer = new JButton("Teilnehmer");
+		JButton btnQuizteilnehmer = new JButton("Quizteilnehmer");
 		btnQuizteilnehmer.setForeground(Color.RED);
 		btnQuizteilnehmer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnQuizteilnehmer.addActionListener(new ActionListener() {
@@ -249,14 +249,15 @@ public class Quiz_Verwaltung {
 
 			}
 		});
-		button_4.setBounds(20, 273, 175, 45);
+		button_4.setBounds(20, 331, 175, 45);
 		frame.getContentPane().add(button_4);
 
 		JButton btnLeeren = new JButton("Clear");
 		btnLeeren.setForeground(Color.RED);
 		btnLeeren.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnLeeren.setBounds(20, 331, 175, 45);
-		frame.getContentPane().add(btnLeeren);
+		//frame.getContentPane().add(btnLeeren);
+		//keine Actionperformed ist auch unnötig
 
 		JButton btnExit = new JButton("Drucken");
 		btnExit.setForeground(Color.RED);
@@ -264,23 +265,15 @@ public class Quiz_Verwaltung {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
-
-
 				try {
 					ta.print();
 				} catch (PrinterException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
-
-
-
-
 			}
 		});
-		btnExit.setBounds(20, 389, 175, 45);
+		btnExit.setBounds(20, 273, 175, 45);
 		frame.getContentPane().add(btnExit);
 
 		JScrollPane scrollPane = new JScrollPane();

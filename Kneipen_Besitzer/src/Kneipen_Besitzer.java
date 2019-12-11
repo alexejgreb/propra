@@ -65,7 +65,7 @@ public class Kneipen_Besitzer {
 
 
 					try {
-						String query="select Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen from (Spiel_Gnehmigt) where status =1 and Bar_Nr='"+ff.getText()+"'";
+						String query="select Spiel_Nummer AS Spielnummer,Datum AS Datum,Lizenc AS Linzenz,Status AS Status,Uhr_Spiel AS Stunde,Min_Spiel AS Minute,Tag_Spiel AS Tag,Monat_Spiel AS Monat,Jahr_Spiel AS Jahr,Anzahl_Runden AS Runden,Anzahl_Fragen AS Fragen from (Spiel_Gnehmigt) where status =1 and Bar_Nr='"+ff.getText()+"'";
 						PreparedStatement pst=con.prepareStatement(query);
 						ResultSet rs= pst.executeQuery();
 						table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -126,7 +126,7 @@ public class Kneipen_Besitzer {
 		JButton btnNewButton = new JButton("Statistiken");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton.setForeground(new Color(255, 0, 0));
-		btnNewButton.setBounds(33, 230, 194, 51);
+		btnNewButton.setBounds(33, 294, 194, 51);
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnAnfragesenden = new JButton("Anfrage senden");
@@ -148,7 +148,7 @@ public class Kneipen_Besitzer {
 
 			}
 		});
-		btnAnfragesenden.setBounds(33, 164, 194, 53);
+		btnAnfragesenden.setBounds(33, 358, 194, 53);
 		frame.getContentPane().add(btnAnfragesenden);
 
 		JButton btnFragenverwalten = new JButton("Fragen verwalten");
@@ -172,7 +172,7 @@ public class Kneipen_Besitzer {
 
 			}
 		});
-		btnFragenverwalten.setBounds(33, 91, 194, 60);
+		btnFragenverwalten.setBounds(33, 164, 194, 60);
 		frame.getContentPane().add(btnFragenverwalten);
 
 		JButton btnQuizstarten = new JButton("Quiz starten");
@@ -218,7 +218,7 @@ public class Kneipen_Besitzer {
 		});
 		btnQuizverwaltung.setForeground(new Color(255, 0, 0));
 		btnQuizverwaltung.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnQuizverwaltung.setBounds(33, 294, 194, 51);
+		btnQuizverwaltung.setBounds(33, 91, 194, 51);
 		frame.getContentPane().add(btnQuizverwaltung);
 
 		JButton btnbersicht = new JButton("Logout");
@@ -277,7 +277,7 @@ public class Kneipen_Besitzer {
 		});
 		btnAnmeldung.setForeground(Color.RED);
 		btnAnmeldung.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnAnmeldung.setBounds(33, 358, 194, 55);
+		btnAnmeldung.setBounds(33, 230, 194, 55);
 		frame.getContentPane().add(btnAnmeldung);
 
 		info = new JTextArea();

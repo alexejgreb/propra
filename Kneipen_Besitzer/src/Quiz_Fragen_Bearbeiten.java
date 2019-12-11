@@ -164,7 +164,7 @@ public class Quiz_Fragen_Bearbeiten {
 		lblNewLabel.setBounds(12, 28, 153, 16);
 		frame.getContentPane().add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Fragenummer:");
+		JLabel lblNewLabel_1 = new JLabel("FragenNr:");
 		lblNewLabel_1.setForeground(Color.RED);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(12, 81, 85, 16);
@@ -190,7 +190,7 @@ public class Quiz_Fragen_Bearbeiten {
 
 
 
-				int YesorNo = JOptionPane.showConfirmDialog(null, " Wollen Sie die Frage Nr:'"+t1.getText()+"' mit der Frage Nr  '"+t2.getText()+"',   für das Spiel Nr :'"+t.getText()+"' ändern?","Frage ändern", JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, " Wollen Sie die Frage Nr:'"+t1.getText()+"' mit der Frage Nr '"+t2.getText()+"' ersetzen?","Frage ändern", JOptionPane.YES_NO_OPTION);
 
 				if(YesorNo==0){
 
@@ -201,18 +201,18 @@ public class Quiz_Fragen_Bearbeiten {
 						String sql22="update Quiz_Fragen set Frage_Nr='"+t2.getText()+"'where Spiel_Nummer='"+t.getText()+"' and Frage_Nr='"+t1.getText()+"' and Bar_Nr='"+tnummer.getText()+"'";
 						PreparedStatement pst3=con.prepareStatement(sql22);
 						pst3.execute();
-						JOptionPane.showMessageDialog(null,"Erfolgreich geändert ");
+						//JOptionPane.showMessageDialog(null,"Erfolgreich geändert ");
 					}catch(Exception e11){
 						e11.printStackTrace();
 					}
 
 
-					Quiz_Verwaltung.ta.append("\t Frage_Ändern: \n\n"+"Spiel_Nr: "+t.getText()+"\n======================================\n"+"Ehemalige_FrageNr:"+t1.getText()+"\n\n"+"Die Frage:"+l3.getText()+"\n======================================\n"+"Neue Frage_Nr:"+t2.getText()+"\n\n"+"Die neue Frage :\t"+l2.getText()+"\n\n"+
+					Quiz_Verwaltung.ta.append("\t Frage ändern: \n\n"+"Spiel Nr: "+t.getText()+"\n======================================\n"+"Ehemalige_FrageNr:"+t1.getText()+"\n\n"+"Die Frage:"+l3.getText()+"\n======================================\n"+"Neue Frage_Nr:"+t2.getText()+"\n\n"+"Die neue Frage :\t"+l2.getText()+"\n\n"+
 							" \t"+" \n======================================\n");
 
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"Es ist nichts passiert!!!!");
+					//JOptionPane.showMessageDialog(null,"Es ist nichts passiert!!!!");
 				}
 
 			}
@@ -227,7 +227,7 @@ public class Quiz_Fragen_Bearbeiten {
 			public void actionPerformed(ActionEvent e) {
 
 
-				int YesorNo = JOptionPane.showConfirmDialog(null, " Wollen sie die Frage Nr:'"+t2.getText()+"' für den Spiel Nr :'"+t.getText()+"' hinzufügen!!!!","Frage_Insert", JOptionPane.YES_NO_OPTION);
+				int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen Sie die Frage Nr:'"+t2.getText()+"' dem Spiel Nr :'"+t.getText()+"' hinzufügen?","Frage hinzufügen", JOptionPane.YES_NO_OPTION);
 
 				if(YesorNo==0){
 
@@ -241,11 +241,7 @@ public class Quiz_Fragen_Bearbeiten {
 
 
 						pst.execute();
-						JOptionPane.showMessageDialog(null,"die Frage '"+t2.getText()+"' ist erfolgreich zum Spiel '"+t.getText()+"' hinzugefügt");
-
-
-
-
+						JOptionPane.showMessageDialog(null,"Die Frage '"+t2.getText()+"' wurde dem Spiel '"+t.getText()+"' hinzugefügt");
 
 
 					}
@@ -254,12 +250,12 @@ public class Quiz_Fragen_Bearbeiten {
 					}
 
 
-					Quiz_Verwaltung.ta.append("\t Frage_Hinzufügen: \n\n"+"Spiel_Nr:\t"+t.getText()+"\n======================================\n"+"Neue_FrageNr:\t"+t2.getText()+"\n\n"+"Die Frage:\t"+l2.getText()+"\n======================================\n"+"\"\n\n"+":\t\n\n"+
+					Quiz_Verwaltung.ta.append("\t Frage hinzugefügt: \n\n"+"Spiel Nr:\t"+t.getText()+"\n======================================\n"+"Neue_FrageNr:\t"+t2.getText()+"\n\n"+"Die Frage:\t"+l2.getText()+"\n======================================\n"+"\"\n\n"+":\t\n\n"+
 							" \t"+" \n======================================\n");
 
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"Es ist nichts passiert!!!!");
+					//JOptionPane.showMessageDialog(null,"Es ist nichts passiert!!!!");
 				}
 
 
@@ -299,7 +295,7 @@ public class Quiz_Fragen_Bearbeiten {
 
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"Es ist nichts passiert.");
+					//JOptionPane.showMessageDialog(null,"Es ist nichts passiert.");
 				}
 
 			}
@@ -386,7 +382,7 @@ public class Quiz_Fragen_Bearbeiten {
 
 		JLabel label = new JLabel("Kneipennummer:");
 		label.setForeground(Color.RED);
-		label.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		label.setFont(new Font("Tahoma", Font.BOLD, 16));
 		label.setBounds(593, 13, 168, 16);
 		frame.getContentPane().add(label);
 
