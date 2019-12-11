@@ -395,7 +395,7 @@ public class Spiel_Starten {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1751, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -652,8 +652,8 @@ public class Spiel_Starten {
 		licence.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("FragenNr:");
-		lblNewLabel.setForeground(new Color(0, 0, 0));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblNewLabel.setBounds(182, 104, 118, 29);
 		frame.getContentPane().add(lblNewLabel);
 
@@ -694,38 +694,38 @@ public class Spiel_Starten {
 		frame.getContentPane().add(c1);
 
 		JLabel lblFrage = new JLabel("Frage:");
-		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblFrage.setForeground(Color.BLACK);
+		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblFrage.setForeground(Color.WHITE);
 		lblFrage.setBounds(202, 156, 85, 25);
 		frame.getContentPane().add(lblFrage);
 
 		JLabel lblNewLabel_1 = new JLabel("A:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblNewLabel_1.setForeground(Color.BLACK);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setBounds(255, 273, 41, 28);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		JLabel lblZweitewahl = new JLabel("B:");
-		lblZweitewahl.setForeground(Color.BLACK);
-		lblZweitewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblZweitewahl.setForeground(Color.WHITE);
+		lblZweitewahl.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblZweitewahl.setBounds(255, 331, 41, 25);
 		frame.getContentPane().add(lblZweitewahl);
 
 		JLabel lblDrittewahl = new JLabel("C:");
-		lblDrittewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblDrittewahl.setForeground(Color.BLACK);
+		lblDrittewahl.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblDrittewahl.setForeground(Color.WHITE);
 		lblDrittewahl.setBounds(255, 387, 41, 24);
 		frame.getContentPane().add(lblDrittewahl);
 
 		JLabel lblViertewahl = new JLabel("D:");
-		lblViertewahl.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblViertewahl.setForeground(Color.BLACK);
+		lblViertewahl.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblViertewahl.setForeground(Color.WHITE);
 		lblViertewahl.setBounds(255, 445, 41, 29);
 		frame.getContentPane().add(lblViertewahl);
 
 		JLabel lblRichtigeantwort = new JLabel("Antwort:");
-		lblRichtigeantwort.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblRichtigeantwort.setForeground(Color.BLACK);
+		lblRichtigeantwort.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblRichtigeantwort.setForeground(Color.WHITE);
 		lblRichtigeantwort.setBounds(182, 213, 118, 33);
 		frame.getContentPane().add(lblRichtigeantwort);
 
@@ -1480,7 +1480,7 @@ public class Spiel_Starten {
 		btnBenden.setBounds(12, 320, 129, 53);
 		frame.getContentPane().add(btnBenden);
 
-		JLabel lblZeit = new JLabel("Spiel Nummer:");
+		JLabel lblZeit = new JLabel("Spielnummer:");
 		lblZeit.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblZeit.setForeground(new Color(255, 0, 0));
 		lblZeit.setBounds(12, 7, 129, 29);
@@ -1668,7 +1668,7 @@ public class Spiel_Starten {
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Tahoma", Font.BOLD, 16));
 		label.setBounds(1397, 7, 147, 42);
-		frame.getContentPane().add(label);
+		//frame.getContentPane().add(label);
 
 		ff = new JTextField();
 		ff.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -1676,7 +1676,7 @@ public class Spiel_Starten {
 		ff.setEditable(false);
 		ff.setColumns(10);
 		ff.setBounds(1665, 18, 68, 22);
-		frame.getContentPane().add(ff);
+		//frame.getContentPane().add(ff);
 
 		tvt = new JTextField();
 		tvt.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -1684,7 +1684,7 @@ public class Spiel_Starten {
 		tvt.setEditable(false);
 		tvt.setColumns(10);
 		tvt.setBounds(1560, 18, 93, 22);
-		frame.getContentPane().add(tvt);
+		//frame.getContentPane().add(tvt);
 
 		 lblZulassungsnummer = new JLabel("Zulassungsnummer:");
 		lblZulassungsnummer.setForeground(Color.RED);
@@ -1748,7 +1748,7 @@ public class Spiel_Starten {
 		s.setBounds(312, 503, 41, 16);
 		frame.getContentPane().add(s);
 
-		lblNewLabel_3 = new JLabel("Offene Quiz:");
+		lblNewLabel_3 = new JLabel("Offenes Quiz:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3.setForeground(Color.RED);
 		lblNewLabel_3.setBounds(23, 456, 119, 28);
@@ -1902,7 +1902,7 @@ public class Spiel_Starten {
 		frame.getContentPane().add(fragen);
 
 		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("Ressources/18006_krombacher_alkoholfrei_450x450 (1).jpg"));
+		lblNewLabel_2.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel_2.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel_2);
 	}

@@ -76,7 +76,7 @@ public class Winner {
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 779, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JLabel label = new JLabel("Spielnummer:");

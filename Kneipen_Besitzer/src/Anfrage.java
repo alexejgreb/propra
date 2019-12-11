@@ -98,35 +98,35 @@ public class Anfrage {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 900, 577);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JLabel lblNewLabel_5 = new JLabel("KneipenNr:");
-		lblNewLabel_5.setForeground(new Color(0, 0, 255));
+		lblNewLabel_5.setForeground(Color.WHITE);
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 20));
 		lblNewLabel_5.setBounds(25, 124, 170, 50);
 		frame.getContentPane().add(lblNewLabel_5);
 
 		JLabel lblAdresse = new JLabel("Adresse:");
-		lblAdresse.setForeground(new Color(0, 0, 255));
+		lblAdresse.setForeground(Color.WHITE);
 		lblAdresse.setFont(new Font("Arial", Font.BOLD, 20));
 		lblAdresse.setBounds(25, 171, 164, 50);
 		frame.getContentPane().add(lblAdresse);
 
 		JLabel lblTelephonnr = new JLabel("Telefon:");
-		lblTelephonnr.setForeground(new Color(0, 0, 255));
+		lblTelephonnr.setForeground(Color.WHITE);
 		lblTelephonnr.setFont(new Font("Arial", Font.BOLD, 20));
 		lblTelephonnr.setBounds(25, 227, 164, 50);
 		frame.getContentPane().add(lblTelephonnr);
 
 		JLabel lblBesitzer = new JLabel("Wirt:");
-		lblBesitzer.setForeground(new Color(0, 0, 255));
+		lblBesitzer.setForeground(Color.WHITE);
 		lblBesitzer.setFont(new Font("Arial", Font.BOLD, 20));
 		lblBesitzer.setBounds(25, 273, 164, 50);
 		frame.getContentPane().add(lblBesitzer);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setForeground(new Color(0, 0, 255));
+		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font("Arial", Font.BOLD, 20));
 		lblEmail.setBounds(25, 333, 121, 42);
 		frame.getContentPane().add(lblEmail);

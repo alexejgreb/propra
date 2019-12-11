@@ -140,7 +140,7 @@ public class Quiz_Terminer {
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(100, 100, 779, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
         tname = new JTextField();

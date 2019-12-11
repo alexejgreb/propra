@@ -103,7 +103,7 @@ public class Fragen_Verwaltung {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1751, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JButton insert = new JButton("Einfügen");
@@ -219,7 +219,7 @@ public class Fragen_Verwaltung {
 		scrollPane_1.setViewportView(table);
 
 		JLabel label = new JLabel("FragenNr:");
-		label.setForeground(Color.RED);
+		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Tahoma", Font.BOLD, 19));
 		label.setBounds(188, 46, 106, 30);
 		frame.getContentPane().add(label);
@@ -230,7 +230,7 @@ public class Fragen_Verwaltung {
 		frame.getContentPane().add(t1);
 
 		JLabel label_1 = new JLabel("Frage:");
-		label_1.setForeground(Color.RED);
+		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 19));
 		label_1.setBounds(188, 95, 106, 36);
 		frame.getContentPane().add(label_1);
@@ -242,7 +242,7 @@ public class Fragen_Verwaltung {
 		frame.getContentPane().add(t2);
 
 		JLabel label_2 = new JLabel("Antwort:");
-		label_2.setForeground(Color.RED);
+		label_2.setForeground(Color.WHITE);
 		label_2.setFont(new Font("Tahoma", Font.BOLD, 19));
 		label_2.setBounds(177, 192, 117, 36);
 		frame.getContentPane().add(label_2);
@@ -266,7 +266,7 @@ public class Fragen_Verwaltung {
 		frame.getContentPane().add(t5);
 
 		JLabel lblC = new JLabel("C:");
-		lblC.setForeground(Color.RED);
+		lblC.setForeground(Color.WHITE);
 		lblC.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblC.setBounds(277, 333, 25, 36);
 		frame.getContentPane().add(lblC);
@@ -333,7 +333,7 @@ public class Fragen_Verwaltung {
 			}
 		});
 		Tfrage.setBounds(397, 52, 666, 22);
-		frame.getContentPane().add(Tfrage);
+		//frame.getContentPane().add(Tfrage);
 
 		JLabel label_7 = new JLabel("Kneipennummer:");
 		label_7.setForeground(Color.RED);
@@ -356,19 +356,19 @@ public class Fragen_Verwaltung {
 		frame.getContentPane().add(tnummer);
 
 		JLabel lblD = new JLabel("D:");
-		lblD.setForeground(Color.RED);
+		lblD.setForeground(Color.WHITE);
 		lblD.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblD.setBounds(279, 391, 25, 36);
 		frame.getContentPane().add(lblD);
 
 		JLabel lblB = new JLabel("B:");
-		lblB.setForeground(Color.RED);
+		lblB.setForeground(Color.WHITE);
 		lblB.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblB.setBounds(277, 290, 25, 36);
 		frame.getContentPane().add(lblB);
 
 		JLabel lblA = new JLabel("A:");
-		lblA.setForeground(Color.RED);
+		lblA.setForeground(Color.WHITE);
 		lblA.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblA.setBounds(277, 241, 25, 36);
 		frame.getContentPane().add(lblA);
@@ -392,7 +392,7 @@ public class Fragen_Verwaltung {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
-		lblNewLabel.setIcon(new ImageIcon("Ressources/image.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel);
 	}

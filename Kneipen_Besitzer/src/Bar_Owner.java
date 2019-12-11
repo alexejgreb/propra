@@ -188,13 +188,13 @@ public class Bar_Owner {
         frame.getContentPane().setLayout(null);
 
         Benutzer = new JLabel("Benutzername:");
-        Benutzer.setForeground(Color.RED);
+        Benutzer.setForeground(Color.WHITE);
         Benutzer.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
         Benutzer.setBounds(554, 265, 176, 29);
         frame.getContentPane().add(Benutzer);
 
         pwd = new JLabel("Passwort:");
-        pwd.setForeground(Color.RED);
+        pwd.setForeground(Color.WHITE);
         pwd.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
         pwd.setBounds(554, 335, 176, 29);
         frame.getContentPane().add(pwd);
@@ -205,12 +205,12 @@ public class Bar_Owner {
         frame.getContentPane().add(Name);
         Name.setColumns(10);
         t1 = new JLabel("Bitte füllen Sie das Anmeldeformular aus\r\n");
-        t1.setForeground(Color.RED);
+        t1.setForeground(Color.WHITE);
         t1.setFont(new Font("Arial Black", Font.BOLD, 16));
         t1.setBounds(12, 80, 684, 29);
 
         t2 = new JLabel("KneipenNr:");
-        t2.setForeground(Color.RED);
+        t2.setForeground(Color.WHITE);
         t2.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t2.setBounds(12, 141, 97, 29);
         frame.getContentPane().add(t2);
@@ -228,7 +228,7 @@ public class Bar_Owner {
         frame.getContentPane().add(BarNR);
         BarNR.setColumns(10);
         t3 = new JLabel("Name:");
-        t3.setForeground(Color.RED);
+        t3.setForeground(Color.WHITE);
         t3.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t3.setBounds(12, 191, 114, 29);
         frame.getContentPane().add(t3);
@@ -347,7 +347,7 @@ public class Bar_Owner {
         frame.getContentPane().add(pwd01);
 
         t001 = new JLabel("Kneipennummer:");
-        t001.setForeground(Color.RED);
+        t001.setForeground(Color.WHITE);
         t001.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
         t001.setBounds(554, 137, 176, 35);
         frame.getContentPane().add(t001);
@@ -358,7 +358,7 @@ public class Bar_Owner {
         name.setBounds(155, 187, 303, 37);
         frame.getContentPane().add(name);
         t01 = new JLabel("Altes Passwort:");
-        t01.setForeground(Color.RED);
+        t01.setForeground(Color.WHITE);
         t01.setFont(new Font("Traditional Arabic", Font.BOLD, 19));
         t01.setBounds(554, 202, 189, 29);
         frame.getContentPane().add(t01);
@@ -366,7 +366,7 @@ public class Bar_Owner {
         tz.setBounds(470, 387, 21, 16);
         frame.getContentPane().add(tz);
         t4 = new JLabel("Vorname:");
-        t4.setForeground(Color.RED);
+        t4.setForeground(Color.WHITE);
         t4.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t4.setBounds(12, 241, 135, 29);
         frame.getContentPane().add(t4);
@@ -688,13 +688,13 @@ public class Bar_Owner {
         frame.getContentPane().add(vorname);
 
         t5 = new JLabel("Straße:");
-        t5.setForeground(Color.RED);
+        t5.setForeground(Color.WHITE);
         t5.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t5.setBounds(12, 291, 135, 29);
         frame.getContentPane().add(t5);
 
         t8 = new JLabel("TelefonNr:");
-        t8.setForeground(Color.RED);
+        t8.setForeground(Color.WHITE);
         t8.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t8.setBounds(12, 391, 135, 29);
         frame.getContentPane().add(t8);
@@ -721,7 +721,7 @@ public class Bar_Owner {
         frame.getContentPane().add(psp);
 
         t6 = new JLabel("Stadt:");
-        t6.setForeground(Color.RED);
+        t6.setForeground(Color.WHITE);
         t6.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t6.setBounds(12, 336, 75, 29);
         frame.getContentPane().add(t6);
@@ -733,13 +733,13 @@ public class Bar_Owner {
         frame.getContentPane().add(stadt);
 
         t7 = new JLabel("PLZ:");
-        t7.setForeground(Color.RED);
+        t7.setForeground(Color.WHITE);
         t7.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t7.setBounds(295, 337, 37, 29);
         frame.getContentPane().add(t7);
 
         t9 = new JLabel("Email:");
-        t9.setForeground(Color.RED);
+        t9.setForeground(Color.WHITE);
         t9.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t9.setBounds(12, 441, 135, 29);
         frame.getContentPane().add(t9);
@@ -758,7 +758,7 @@ public class Bar_Owner {
         frame.getContentPane().add(plz);
 
         t10 = new JLabel("Kneipenname:");
-        t10.setForeground(Color.RED);
+        t10.setForeground(Color.WHITE);
         t10.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t10.setBounds(12, 491, 135, 29);
         frame.getContentPane().add(t10);
@@ -789,7 +789,7 @@ public class Bar_Owner {
         frame.getContentPane().add(labelname);
 
         t11 = new JLabel("Nachricht:");
-        t11.setForeground(Color.RED);
+        t11.setForeground(Color.WHITE);
         t11.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t11.setBounds(12, 537, 135, 29);
         frame.getContentPane().add(t11);
@@ -833,7 +833,7 @@ public class Bar_Owner {
 
                     if (test221 == 0) {
                         //Keine Ahnung wann das kommt oder was damit gemeint ist
-                        JOptionPane.showMessageDialog(null, "Sie müssen ID eingeben (ZB: Email_Adresse)");
+                        JOptionPane.showMessageDialog(null, "Geben Sie Benutzername und Passwort ein.");
                     } else {
 
                         barnr0.setText(test22.getText());

@@ -135,7 +135,7 @@ public class Quiz_Verwaltung {
 
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1751, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JButton btnInsert = new JButton("Quiz bearbeiten");
@@ -339,7 +339,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(cb1);
 
 		JLabel lblSpielnr = new JLabel("SpielNr:");
-		lblSpielnr.setForeground(Color.RED);
+		lblSpielnr.setForeground(Color.WHITE);
 		lblSpielnr.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblSpielnr.setBounds(237, 13, 85, 30);
 		frame.getContentPane().add(lblSpielnr);
@@ -351,7 +351,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(t1);
 
 		JLabel label_1 = new JLabel("Frage:");
-		label_1.setForeground(Color.RED);
+		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 17));
 		label_1.setBounds(237, 101, 64, 36);
 		frame.getContentPane().add(label_1);
@@ -363,7 +363,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(t2);
 
 		JLabel label_2 = new JLabel("Antwort:");
-		label_2.setForeground(Color.RED);
+		label_2.setForeground(Color.WHITE);
 		label_2.setFont(new Font("Tahoma", Font.BOLD, 17));
 		label_2.setBounds(226, 192, 97, 36);
 		frame.getContentPane().add(label_2);
@@ -375,7 +375,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(t3);
 
 		JLabel lblA = new JLabel("A:");
-		lblA.setForeground(Color.RED);
+		lblA.setForeground(Color.WHITE);
 		lblA.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblA.setBounds(281, 241, 35, 36);
 		frame.getContentPane().add(lblA);
@@ -387,7 +387,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(t4);
 
 		JLabel lblB = new JLabel("B:");
-		lblB.setForeground(Color.RED);
+		lblB.setForeground(Color.WHITE);
 		lblB.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblB.setBounds(281, 290, 35, 36);
 		frame.getContentPane().add(lblB);
@@ -399,7 +399,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(t5);
 
 		JLabel lblC = new JLabel("C:");
-		lblC.setForeground(Color.RED);
+		lblC.setForeground(Color.WHITE);
 		lblC.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblC.setBounds(281, 333, 35, 36);
 		frame.getContentPane().add(lblC);
@@ -411,7 +411,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(t6);
 
 		JLabel lblD = new JLabel("D:");
-		lblD.setForeground(Color.RED);
+		lblD.setForeground(Color.WHITE);
 		lblD.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblD.setBounds(281, 379, 35, 43);
 		frame.getContentPane().add(lblD);
@@ -441,7 +441,7 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(button_7);
 
 		JLabel lblFragenr = new JLabel("FrageNr:");
-		lblFragenr.setForeground(Color.RED);
+		lblFragenr.setForeground(Color.WHITE);
 		lblFragenr.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblFragenr.setBounds(237, 56, 85, 30);
 		frame.getContentPane().add(lblFragenr);
@@ -507,10 +507,10 @@ public class Quiz_Verwaltung {
 		frame.getContentPane().add(tname);
 
 		JLabel lblFrage = new JLabel("Frage:");
-		lblFrage.setForeground(Color.RED);
+		lblFrage.setForeground(Color.WHITE);
 		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblFrage.setBounds(431, 56, 64, 30);
-		frame.getContentPane().add(lblFrage);
+		//frame.getContentPane().add(lblFrage);
 
 		comboBox = new JComboBox();
 		comboBox.addActionListener(new ActionListener() {
@@ -547,10 +547,11 @@ public class Quiz_Verwaltung {
 		});
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox.setBounds(493, 64, 643, 22);
-		frame.getContentPane().add(comboBox);
+		//verbuggte Combobox
+		//frame.getContentPane().add(comboBox);
 ////
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Ressources/image.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel);
 	}

@@ -113,7 +113,7 @@ public class Kneipen_Besitzer {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1751, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
@@ -237,7 +237,7 @@ public class Kneipen_Besitzer {
 		btnbersicht.setBounds(33, 422, 194, 55);
 		frame.getContentPane().add(btnbersicht);
 
-		JLabel lblKneipenummer = new JLabel("KneipenNr:");
+		JLabel lblKneipenummer = new JLabel("Kneipennummer:");
 		lblKneipenummer.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		lblKneipenummer.setForeground(new Color(255, 0, 0));
 		lblKneipenummer.setBounds(1560, 13, 168, 16);
@@ -295,7 +295,7 @@ public class Kneipen_Besitzer {
 		neu.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Ressources/18006_krombacher_alkoholfrei_450x450 (1).jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel.setBounds(0, 0, 1757, 733);
 		frame.getContentPane().add(lblNewLabel);
 	}
