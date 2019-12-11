@@ -146,11 +146,6 @@ public class Kneipen_Besitzer {
 					e1.printStackTrace();
 				}
 
-
-
-
-
-
 			}
 		});
 		btnAnfragesenden.setBounds(33, 164, 194, 53);
@@ -226,12 +221,12 @@ public class Kneipen_Besitzer {
 		btnQuizverwaltung.setBounds(33, 294, 194, 51);
 		frame.getContentPane().add(btnQuizverwaltung);
 
-		JButton btnbersicht = new JButton("Schließen");
+		JButton btnbersicht = new JButton("Logout");
 		btnbersicht.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Bar_Owner BO= new Bar_Owner();
 
-				BO.main(null);
+				BO.main(DataBaseConnector.getArgs());
 
 
 				frame.dispose();
@@ -242,7 +237,7 @@ public class Kneipen_Besitzer {
 		btnbersicht.setBounds(33, 422, 194, 55);
 		frame.getContentPane().add(btnbersicht);
 
-		JLabel lblKneipenummer = new JLabel("Kneipennummer:");
+		JLabel lblKneipenummer = new JLabel("KneipenNr:");
 		lblKneipenummer.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		lblKneipenummer.setForeground(new Color(255, 0, 0));
 		lblKneipenummer.setBounds(1560, 13, 168, 16);
@@ -288,8 +283,8 @@ public class Kneipen_Besitzer {
 		info = new JTextArea();
 		info.setBackground(Color.RED);
 		info.setFont(new Font("Monospaced", Font.BOLD, 18));
-		//TODO
-		info.setText("Hallo und Herzlichen Willkommen!\r\n\r\n\r\nmit dieser Anwendung kannst du in deiner Kneipe Quizabende veranstalten. .\r\nBevor du einen Quizabend durchführen kannst, senden Sie zunächst eine Anfrage (--> ANFRAGE SENDEN).\r\nSobald deine Kneipe geprüft wurde, bekommst du eine E-Mail mit der Bestätigung.\r\n\r\n----> Diese Meldung wird Ihnen auch gezeigt, weil sie ihr Passwort nicht geändert haben.\r\nÄndern Sie bitte ihr Passwort\r\n\r\n\r\n");
+
+		info.setText("Hallo und Herzlichen Willkommen!\r\n\r\n\r\nmit dieser Anwendung kannst du in deiner Kneipe Quizabende veranstalten.\r\nBevor du einen Quizabend durchführen kannst, senden Sie zunächst eine Anfrage (Anfrage senden).\r\nSobald deine Kneipe geprüft wurde, bekommst du eine E-Mail mit der Bestätigung.\r\n\r\nDiese Meldung wird Ihnen auch gezeigt, weil sie ihr Passwort nicht geändert haben.\r\nÄndern Sie bitte ihr Passwort.\r\n\r\n\r\n");
 		info.setBounds(431, 132, 1117, 230);
 		frame.getContentPane().add(info);
 

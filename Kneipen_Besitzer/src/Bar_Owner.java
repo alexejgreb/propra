@@ -209,7 +209,7 @@ public class Bar_Owner {
         t1.setFont(new Font("Arial Black", Font.BOLD, 16));
         t1.setBounds(12, 80, 684, 29);
 
-        t2 = new JLabel("Kneipennummer:");
+        t2 = new JLabel("KneipenNr:");
         t2.setForeground(Color.BLUE);
         t2.setFont(new Font("Traditional Arabic", Font.BOLD, 16));
         t2.setBounds(12, 141, 97, 29);
@@ -559,7 +559,7 @@ public class Bar_Owner {
                         b3.setVisible(false);
 
                     } catch (Exception e1) {
-                        JOptionPane.showMessageDialog(null, "Bitte gültige Anträger eingeben");
+                        JOptionPane.showMessageDialog(null, "Bitte überprüfen Sie Ihre Eingaben");
 
                     }
 
@@ -584,8 +584,8 @@ public class Bar_Owner {
 
                             DB_Anfragen.Update_Pass_Neu(x, z);
                             ta.setText("");
-                            ta.append("\t\t Password_Ersetzer: \n\n" + "Kneipe_Nr:\t" + BarNR.getText() + "\n============================================================================\n" + "Name:\t" + name.getText() + "\n\n" + "Vorname:\t" + vorname.getText() + "\n" + "\n\n============================================================================\n" +
-                                    " " + "Straße:\t" + BarNR.getText() + "\n\n" + "PLZ:\t" + plz.getText() + "\n\n" + "Stadt:\t" + stadt.getText() + "\n\n" + "\n============================================================================\n" + tel.getText() + "\n\n" + email.getText() + "\n" + "\n============================================================================\n" + "Benutzer_Name:\t" + bname.getText() + "\n" + "Password:\t" + "\n\n" + x + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
+                            ta.append("\t\t Neues Passwort: \n\n" + "KneipenNr:\t" + BarNR.getText() + "\n============================================================================\n" + "Name:\t" + name.getText() + "\n\n" + "Vorname:\t" + vorname.getText() + "\n" + "\n\n============================================================================\n" +
+                                    " " + "Straße:\t" + BarNR.getText() + "\n\n" + "PLZ:\t" + plz.getText() + "\n\n" + "Stadt:\t" + stadt.getText() + "\n\n" + "\n============================================================================\n" + tel.getText() + "\n\n" + email.getText() + "\n" + "\n============================================================================\n" + "Benutzername:\t" + bname.getText() + "\n" + "Passwort:\t" + "\n\n" + x + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
 
                             BarNR.setText("");
                             name.setText("");
@@ -805,7 +805,7 @@ public class Bar_Owner {
         msg.setFont(new Font("Arial", Font.BOLD, 14));
 
 
-        Zeit = new JLabel("New label");
+        Zeit = new JLabel("");
         Zeit.setBounds(1614, 33, 88, 23);
         frame.getContentPane().add(Zeit);
 
@@ -822,7 +822,7 @@ public class Bar_Owner {
             public void actionPerformed(ActionEvent e) {
 
 
-                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie ihre Passwort ändern?", "PW ändern", JOptionPane.YES_NO_OPTION);
+                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie ihr Passwort ändern?", "PW ändern", JOptionPane.YES_NO_OPTION);
 
                 if (YesorNo == 0) {
 
@@ -848,7 +848,7 @@ public class Bar_Owner {
                         barnr0.setVisible(true);
                         t01.setVisible(true);
                         epwd.setVisible(true);
-                        Benutzer.setText("Neue Passwort:");
+                        Benutzer.setText("Neues Passwort:");
                         pwd.setText("Bestätigen:");
                         login.setText("Ändern");
                         pwd1.setVisible(false);
@@ -891,7 +891,7 @@ public class Bar_Owner {
                                 if (Note1 == 1) {
 
 
-                                    int YesorNo = JOptionPane.showConfirmDialog(null, "Sie haben ihren Passwort noch nicht geändert, wollen Sie es jetzt ändern!", "PW ändern", JOptionPane.YES_NO_OPTION);
+                                    int YesorNo = JOptionPane.showConfirmDialog(null, "Sie haben ihr Passwort noch nicht geändert, wollen Sie es jetzt ändern?", "Passwort ändern", JOptionPane.YES_NO_OPTION);
 
                                     if (YesorNo == 0) {
 
@@ -907,6 +907,7 @@ public class Bar_Owner {
                                         pass.setText("");
                                         pwd01.setVisible(false);
 
+                                        //TODO
                                         barnr0.setText("0000000");
                                         epwd.setText("0000000");
                                         Name.setText("0000000");
@@ -925,7 +926,6 @@ public class Bar_Owner {
                                                 | InstantiationException
                                                 | IllegalAccessException
                                                 | UnsupportedLookAndFeelException e1) {
-                                            // TODO Auto-generated catch block
                                             e1.printStackTrace();
                                         }
                                         frame.dispose();
@@ -963,7 +963,7 @@ public class Bar_Owner {
 
 
                     } catch (Exception e2) {
-                        JOptionPane.showMessageDialog(null, "Nickname ist falsch");
+                        JOptionPane.showMessageDialog(null, "Ihr Benutzername ist falsch");
 
                     }
 
@@ -1039,7 +1039,7 @@ public class Bar_Owner {
 								| InstantiationException
 								| IllegalAccessException
 								| UnsupportedLookAndFeelException e1) {
-							// TODO Auto-generated catch block
+
 							e1.printStackTrace();
 						}
 						frame.dispose();
@@ -1142,8 +1142,8 @@ public class Bar_Owner {
 
                                     ta.setText("");
 
-                                    ta.append("\t\t Password_Ändern: \n\n" + "Kneipe_Nr:\t" + barnr0.getText() + "\n============================================================================\n" + "\n\n============================================================================\n" +
-                                            " " + "Neue_Password:\t" + pass.getText() + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
+                                    ta.append("\t\t Passwort ändern: \n\n" + "KneipenNr:\t" + barnr0.getText() + "\n============================================================================\n" + "\n\n============================================================================\n" +
+                                            " " + "Neues Passwort:\t" + pass.getText() + "\n============================================================================\n" + Zeit.getText() + "\n============================================================================\n");
 
                                     ta.print();
 
@@ -1166,7 +1166,7 @@ public class Bar_Owner {
                                 } else {
 
 
-                                    JOptionPane.showMessageDialog(null, "Bitte bestätigen Sie ihr Passwort !!! ");
+                                    JOptionPane.showMessageDialog(null, "Bitte bestätigen Sie ihr Passwort");
 
 
                                 }
@@ -1174,7 +1174,7 @@ public class Bar_Owner {
                             } catch (Exception e55) {
 
 
-                                JOptionPane.showMessageDialog(null, "Ihr neues Passwort kann nicht akzeptiert werden, bitte nur Zahlen verwenden ");
+                                JOptionPane.showMessageDialog(null, "Ihr neues Passwort kann nicht akzeptiert werden, bitte nur Zahlen verwenden");
 
 
                             }
@@ -1208,7 +1208,7 @@ public class Bar_Owner {
             public void actionPerformed(ActionEvent arg0) {
 
 
-                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen sie diese Seite verlassen?", "PW ändern", JOptionPane.YES_NO_OPTION);
+                int YesorNo = JOptionPane.showConfirmDialog(null, "Sind Sie sicher, dass Sie das Fenster schließen wollen?", "Fenster schließen", JOptionPane.YES_NO_OPTION);
 
                 if (YesorNo == 0) {
 
@@ -1358,7 +1358,7 @@ public class Bar_Owner {
         nein.setBounds(947, 37, 82, 25);
         frame.getContentPane().add(nein);
 
-        b1 = new JLabel("New label");
+        b1 = new JLabel("");
         b1.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
         b1.setBounds(0, 0, 1755, 789);
         frame.getContentPane().add(b1);

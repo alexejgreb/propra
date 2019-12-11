@@ -67,7 +67,7 @@ public class UIGuest extends JFrame {
 		labelHeader.setBounds(0, 0, 0, 0);
 		northPanel.add(labelHeader);
 		
-		JLabel labelGameID = new JLabel("Spiel-ID: ");
+		JLabel labelGameID = new JLabel("Spiel-Code: ");
 		labelGameID.setFont(new Font("Tahoma",Font.BOLD,15));
 		labelGameID.setBounds(0, 0, 0, 0);
 		southPanel.add(labelGameID);

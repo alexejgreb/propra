@@ -54,11 +54,6 @@ public class Quiz_Verwaltung {
 	 * @throws InstantiationException
 	 * @throws ClassNotFoundException
 	 */
-
-
-
-
-
 	public static void Screen2() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 
@@ -96,16 +91,6 @@ public class Quiz_Verwaltung {
 
 					}
 
-
-
-
-
-
-
-
-
-
-
 					try {
 						String query="select Spiel_Nummer,Datum,Lizenc,Status,Uhr_Spiel,Min_Spiel,Tag_Spiel,Monat_Spiel,Jahr_Spiel,Anzahl_Runden,Anzahl_Fragen from (Spiel_Gnehmigt) where Bar_Nr='"+tnummer.getText()+"'";
 						PreparedStatement pst=con.prepareStatement(query);
@@ -116,12 +101,6 @@ public class Quiz_Verwaltung {
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
-
-
-
-
-
-
 
 
 				} catch (Exception e) {
@@ -340,9 +319,6 @@ public class Quiz_Verwaltung {
 
 				}
 
-
-
-
 				try{
 					String query2="select Frage from (FragenPool , Quiz_Fragen) where Quiz_Fragen.Frage_Nr = FragenPool.FrageNr and Quiz_Fragen.Spiel_Nummer ='"+cb1.getSelectedItem().toString()+"' and Quiz_Fragen.Bar_Nr ='"+tnummer.getText()+"'";
 					PreparedStatement pst1=con.prepareStatement(query2);
@@ -363,10 +339,6 @@ public class Quiz_Verwaltung {
 					e2.printStackTrace();
 
 				}
-
-
-
-
 
 			}
 		});
@@ -514,12 +486,6 @@ public class Quiz_Verwaltung {
 					e3.printStackTrace();
 				}
 
-
-
-
-
-
-
 			}
 		});
 		cb2.setBounds(334, 64, 85, 22);
@@ -584,12 +550,6 @@ public class Quiz_Verwaltung {
 					e3.printStackTrace();
 				}
 
-
-
-
-
-
-
 			}
 		});
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -600,9 +560,5 @@ public class Quiz_Verwaltung {
 		lblNewLabel.setIcon(new ImageIcon("Ressources/image.jpg"));
 		lblNewLabel.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel);
-
-
-
-
 	}
 }

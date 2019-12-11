@@ -1,25 +1,14 @@
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 import java.awt.Font;
 import java.awt.Color;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.print.PrinterException;
 import java.sql.Connection;
-
-import javax.swing.JTable;
-import javax.swing.ImageIcon;
-import javax.swing.JScrollPane;
 
 
 public class Winner {
@@ -116,15 +105,12 @@ public class Winner {
 		id.setBounds(150, 72, 195, 22);
 		frame.getContentPane().add(id);
 
-		JButton button = new JButton("Suchen");
+		JButton button = new JButton("Prüfen");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				int test1 = Integer.parseInt(id.getText());
 				if(test1==000000000){
-
-
-
 
 					DB_Anfragen.Quiz_Ergebniss(table,Integer.parseInt(nummers.getText()));
 
@@ -138,12 +124,14 @@ public class Winner {
 					int i = Integer.parseInt(test.getText());/// Max Punkte
 					int j = Integer.parseInt(lblPunkte.getText());
 					if(j!=i){
-						lblRang.setText("Leider nicht gewonnen beim nächsten mal :)");
+						//lblRang.setText("Nicht gewonnen");
+						JOptionPane.showMessageDialog(null, "Nicht gewonnen");
 					}
 
 
 					if(j==i && j!= 0){
-						lblRang.setText("Sie haben gewonnen Hertzlichen Glückwunsch !!! :)");
+						//lblRang.setText("Gewonnen!");
+						JOptionPane.showMessageDialog(null, "Gewonnen!");
 					}
 
 					DB_Anfragen.Quiz_Ergebniss(table,Integer.parseInt(nummers.getText()));
@@ -202,7 +190,7 @@ public class Winner {
 
 		JLabel label_1 = new JLabel("Kneipennummer:");
 		label_1.setForeground(Color.RED);
-		label_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		label_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		label_1.setBounds(583, 13, 168, 16);
 		frame.getContentPane().add(label_1);
 
@@ -231,14 +219,13 @@ public class Winner {
 		lblPunkte.setForeground(Color.RED);
 		lblPunkte.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPunkte.setBounds(298, 139, 153, 16);
-		frame.getContentPane().add(lblPunkte);
-
+		//frame.getContentPane().add(lblPunkte);
 
 		lblIdnummer = new JLabel("ID Nummer");
 		lblIdnummer.setForeground(Color.RED);
 		lblIdnummer.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblIdnummer.setBounds(12, 103, 129, 16);
-		frame.getContentPane().add(lblIdnummer);
+		//frame.getContentPane().add(lblIdnummer);
 
 		lblDatum = new JLabel("Datum");
 		lblDatum.setForeground(Color.RED);
@@ -246,8 +233,8 @@ public class Winner {
 		lblDatum.setBounds(12, 139, 225, 16);
 		frame.getContentPane().add(lblDatum);
 
-		lblRang = new JLabel("Rang");
-		lblRang.setForeground(Color.ORANGE);
+		lblRang = new JLabel("");
+		lblRang.setForeground(Color.RED);
 		lblRang.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblRang.setBounds(357, 64, 404, 37);
 		frame.getContentPane().add(lblRang);
@@ -256,7 +243,7 @@ public class Winner {
 		kundenr.setForeground(Color.RED);
 		kundenr.setFont(new Font("Tahoma", Font.BOLD, 15));
 		kundenr.setBounds(287, 103, 129, 16);
-		frame.getContentPane().add(kundenr);
+		//frame.getContentPane().add(kundenr);
 		test = new JLabel("0");
 		test.setBounds(369, 42, 56, 16);
 		frame.getContentPane().add(test);

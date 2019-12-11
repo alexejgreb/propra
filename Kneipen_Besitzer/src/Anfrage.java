@@ -101,7 +101,7 @@ public class Anfrage {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel_5 = new JLabel("Kneipennummer:");
+		JLabel lblNewLabel_5 = new JLabel("KneipenNr:");
 		lblNewLabel_5.setForeground(new Color(0, 0, 255));
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 20));
 		lblNewLabel_5.setBounds(25, 124, 170, 50);
@@ -205,10 +205,6 @@ public class Anfrage {
 
 
 
-
-
-
-
 					try{
 
 						//
@@ -225,9 +221,9 @@ public class Anfrage {
 						pst.setString(6, "0");
 
 						pst.execute();
-						JOptionPane.showMessageDialog(null,"Versendet!");
+						JOptionPane.showMessageDialog(null,"Die Anfrage wurde versendet.");
 
-						ta.append("\tDie Anfrage wurde versendet: \n\n"+"Kneipe_Nr:\t"+t1.getText()+"\n======================================\n"+"Besitzer:\t"+t4.getText()+"\n\n"+"Telefon_Nr:\t"+t3.getText()+"\n\n"+
+						ta.append("\tDie Anfrage wurde versendet: \n\n"+"Kneipen_Nr:\t"+t1.getText()+"\n======================================\n"+"Besitzer:\t"+t4.getText()+"\n\n"+"Telefon_Nr:\t"+t3.getText()+"\n\n"+
 								" \t"+" \n======================================\n");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -244,7 +240,7 @@ public class Anfrage {
 		btnNewButton.setBounds(461, 384, 112, 36);
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnNewButton_1 = new JButton("Exit");
+		JButton btnNewButton_1 = new JButton("Schließen");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_1.setForeground(new Color(255, 0, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -253,7 +249,7 @@ public class Anfrage {
 			}
 		});
 		btnNewButton_1.setBounds(461, 482, 112, 36);
-		frame.getContentPane().add(btnNewButton_1);
+		//frame.getContentPane().add(btnNewButton_1);
 
 		JButton btnZurck = new JButton("Zurück");
 		btnZurck.setForeground(new Color(255, 0, 0));
@@ -267,7 +263,7 @@ public class Anfrage {
 				} catch (ClassNotFoundException | InstantiationException
 						| IllegalAccessException
 						| UnsupportedLookAndFeelException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 				frame.dispose();
@@ -314,7 +310,7 @@ public class Anfrage {
 		scrollPane.setViewportView(ta);
 		ta.setEditable(false);
 
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel.setBounds(0, 3, 894, 539);
 		frame.getContentPane().add(lblNewLabel);

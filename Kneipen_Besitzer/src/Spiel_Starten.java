@@ -263,7 +263,7 @@ public class Spiel_Starten {
 
 					/////
 					else{
-						JOptionPane.showMessageDialog(null,"Sie müssen eine Lizenc beantragen um einen Spiel Starten zu können");
+						JOptionPane.showMessageDialog(null,"Sie müssen eine Lizenz beantragen um ein Spiel starten zu können");
 						cb.setEnabled(false);
 						cc.setEnabled(false);
 						btnNewButton_1.setEnabled(false);
@@ -347,42 +347,12 @@ public class Spiel_Starten {
 						btnAuto.setEnabled(true);
 
 
-
-						//////
-
-
-
-
-
-
 					}}
 				catch(Exception e2){
 					//e2.printStackTrace();
 					JOptionPane.showMessageDialog(null,e2);
 
 				}
-
-
-
-
-
-
-
-
-
-
-
-				//////////////
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -464,13 +434,6 @@ public class Spiel_Starten {
 				}
 
 				////
-
-
-
-
-
-
-
 
 
 				//c1.removeAllItems();
@@ -664,25 +627,12 @@ public class Spiel_Starten {
 							}
 							btnAuto.setEnabled(true);
 
-
-
-							//////
-
-
-
-
-
-
 						}}
 					catch(Exception e2){
 						//e2.printStackTrace();
 						JOptionPane.showMessageDialog(null,e2);
 
 					}
-
-
-
-
 
 
 				}
@@ -711,8 +661,6 @@ public class Spiel_Starten {
 		c1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
-
 				try {	 ///
 
 					String query="select  Frage ,ErsteWahl ,ZweiteWahl,DritteWahl,VierteWahl,RichtigeAntwort from FragenPool WHERE FrageNr= ? ";
@@ -738,13 +686,6 @@ public class Spiel_Starten {
 				} catch (Exception e3) {
 					e3.printStackTrace();
 				}
-
-
-
-
-
-
-
 
 			}
 		});
@@ -843,10 +784,6 @@ public class Spiel_Starten {
 
 
 
-
-
-
-
 					btnNewButton_1.setEnabled(true);
 					btnBenden.setEnabled(false);
 					btnAuto.setEnabled(false);
@@ -881,7 +818,7 @@ public class Spiel_Starten {
 							JOptionPane.showMessageDialog(null,"Die Frage wurde dem Quiz hinzugefügt.");
 							if(i11!=i21){
 
-								ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+								ta.append("\t Frage hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"RundenNr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort:\t"+t4.getText()+"\n\n"+
 										" \t"+" \n======================================\n");
 							}
 							if(i11==i21 &i2121 !=1){
@@ -889,7 +826,7 @@ public class Spiel_Starten {
 								int i1112 =Integer.parseInt(l11.getText());
 								int i1113=i1112+1;
 								l8.setText(String.valueOf(i1113));
-								ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+								ta.append("\t Frage hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"RundenNr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort:\t"+t4.getText()+"\n\n"+
 										" \t"+" \n======================================\n");
 							}
 
@@ -905,7 +842,7 @@ public class Spiel_Starten {
 						l4.setText(String.valueOf(s));
 					}
 					if(s==0){
-						JOptionPane.showMessageDialog(null,"Maximale Anzahl der Fragen wurde erreicht.");
+						JOptionPane.showMessageDialog(null,"Die maximale Anzahl an Fragen wurde erreicht.");
 
 						int i9 =Integer.parseInt(l.getText());
 
@@ -938,12 +875,7 @@ public class Spiel_Starten {
 								/////////////////////////////////////////////////////////////////////////////////////
 								pst.execute();
 								//TODO
-								JOptionPane.showMessageDialog(null,"Gespeichert.");
-
-
-
-
-
+								//JOptionPane.showMessageDialog(null,"Gespeichert.");
 
 							}
 							catch(Exception e11){
@@ -952,7 +884,7 @@ public class Spiel_Starten {
 
 
 
-							ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+							ta.append("\t Spiel angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenz_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
 									" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
 
 							l.setText("0");
@@ -993,12 +925,8 @@ public class Spiel_Starten {
 								pst.setString(11, cb.getSelectedItem().toString());
 								pst.setString(12,ff.getText());
 								pst.execute();
-								JOptionPane.showMessageDialog(null,"Gespeichert");
-
-
-
-
-
+								//TODO
+								//JOptionPane.showMessageDialog(null,"Gespeichert");
 
 							}
 							catch(Exception e11){
@@ -1007,7 +935,7 @@ public class Spiel_Starten {
 
 
 
-							ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+							ta.append("\t Spiel angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenz_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
 									" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
 
 							l.setText("0");
@@ -1023,7 +951,7 @@ public class Spiel_Starten {
 						}
 					}
 					if(i11==i21 & i2121 !=1){
-						JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
+						//JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
 						//DELETE Where FrageNr=
 						int i111 =Integer.parseInt(l11.getText());
 						i111=i111+1;
@@ -1034,17 +962,12 @@ public class Spiel_Starten {
 				}else if(Select_Jahr==Jahre){
 
 					if(Select_Monat< Monat ){
-						JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+						JOptionPane.showMessageDialog(null,"Wähle ein Datum in der Zukunft aus");
 					}else if(Select_Monat== Monat) {
 						if(Select_Tag< Tag){
-							JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+							JOptionPane.showMessageDialog(null,"Wähle ein Datum in der Zukunft aus");
 
 						}else{
-
-
-
-
-
 
 							btnNewButton_1.setEnabled(true);
 							btnBenden.setEnabled(false);
@@ -1080,7 +1003,7 @@ public class Spiel_Starten {
 									JOptionPane.showMessageDialog(null,"Die Frage wurde dem Quiz hinzugefügt.");
 									if(i11!=i21){
 
-										ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+										ta.append("\t Frage hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort:\t"+t4.getText()+"\n\n"+
 												" \t"+" \n======================================\n");
 									}
 									if(i11==i21 &i2121 !=1){
@@ -1088,7 +1011,7 @@ public class Spiel_Starten {
 										int i1112 =Integer.parseInt(l11.getText());
 										int i1113=i1112+1;
 										l8.setText(String.valueOf(i1113));
-										ta.append("\t Frage_Hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort :\t"+t4.getText()+"\n\n"+
+										ta.append("\t Frage hinzugefügt: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n======================================\n"+"Runde_Nr:\t"+l11.getText()+"\n======================================\n"+"FrageNr:\t"+c1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+t2.getText()+"\n\n"+"Antwort:\t"+t4.getText()+"\n\n"+
 												" \t"+" \n======================================\n");
 									}
 
@@ -1104,7 +1027,7 @@ public class Spiel_Starten {
 								l4.setText(String.valueOf(s));
 							}
 							if(s==0){
-								JOptionPane.showMessageDialog(null,"Maximale Anzahl der Fragen wurde erreicht.");
+								JOptionPane.showMessageDialog(null,"Die maximale Anzahl an Fragen wurde erreicht.");
 
 								int i9 =Integer.parseInt(l.getText());
 
@@ -1137,12 +1060,7 @@ public class Spiel_Starten {
 										/////////////////////////////////////////////////////////////////////////////////////
 										pst.execute();
 										//TODO
-										JOptionPane.showMessageDialog(null,"Gespeichert.");
-
-
-
-
-
+										//JOptionPane.showMessageDialog(null,"Gespeichert.");
 
 									}
 									catch(Exception e11){
@@ -1151,7 +1069,7 @@ public class Spiel_Starten {
 
 
 
-									ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+									ta.append("\t Spiel angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenz_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
 											" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
 
 									l.setText("0");
@@ -1192,21 +1110,14 @@ public class Spiel_Starten {
 										pst.setString(11, cb.getSelectedItem().toString());
 										pst.setString(12,ff.getText());
 										pst.execute();
-										JOptionPane.showMessageDialog(null,"Gespeichert");
 
-
-
-
-
-
+										//TODO
+										//JOptionPane.showMessageDialog(null,"Gespeichert");
 									}
 									catch(Exception e11){
 										e11.printStackTrace();
 									}
-
-
-
-									ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+									ta.append("\t Spiel angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenz_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
 											" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
 
 									l.setText("0");
@@ -1214,10 +1125,6 @@ public class Spiel_Starten {
 									btnNewButton_1.setEnabled(false);
 									btnBenden.setEnabled(false);
 									t1.setText("");
-
-									/////
-
-
 
 								}
 							}
@@ -1231,11 +1138,6 @@ public class Spiel_Starten {
 							}
 						}
 					}else{
-
-
-
-
-
 
 						btnNewButton_1.setEnabled(true);
 						btnBenden.setEnabled(false);
@@ -1295,7 +1197,7 @@ public class Spiel_Starten {
 							l4.setText(String.valueOf(s));
 						}
 						if(s==0){
-							JOptionPane.showMessageDialog(null,"Maximale Anzahl der Fragen wurde erreicht.");
+							JOptionPane.showMessageDialog(null,"Die maximale Anzahl an Fragen wurde erreicht.");
 
 							int i9 =Integer.parseInt(l.getText());
 
@@ -1328,12 +1230,7 @@ public class Spiel_Starten {
 									/////////////////////////////////////////////////////////////////////////////////////
 									pst.execute();
 									//TODO
-									JOptionPane.showMessageDialog(null,"Gespeichert.");
-
-
-
-
-
+									//JOptionPane.showMessageDialog(null,"Gespeichert.");
 
 								}
 								catch(Exception e11){
@@ -1341,8 +1238,7 @@ public class Spiel_Starten {
 								}
 
 
-
-								ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
+								ta.append("\t Spiel angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenz_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
 										" \t"+" \n============================================================================\n"+" \n============================================================================\n"+Zeit.getText()+"\n============================================================================\n"+"\n============================================================================\n"+"\n============================================================================\n");
 
 								l.setText("0");
@@ -1353,9 +1249,6 @@ public class Spiel_Starten {
 
 							}
 							if(i9==2){
-
-
-								////
 
 								try{
 						/*
@@ -1383,18 +1276,15 @@ public class Spiel_Starten {
 									pst.setString(11, cb.getSelectedItem().toString());
 									pst.setString(12,ff.getText());
 									pst.execute();
-									JOptionPane.showMessageDialog(null,"Gespeichert");
 
-
-
-
+									//TODO
+									//JOptionPane.showMessageDialog(null,"Gespeichert");
 
 
 								}
 								catch(Exception e11){
 									e11.printStackTrace();
 								}
-
 
 
 								ta.append("\t Spiel_angemeldet: \n\n"+"Spiel_Nr:\t"+t1.getText()+"\n============================================================================\n"+"Anzahl_Runden:\t"+cc.getSelectedItem().toString()+"\n============================================================================\n"+"Lizenc_Nummer:\t"+licence.getText()+"\n============================================================================\n"+"Start:\t"+comboBox.getSelectedItem().toString()+":"+comboBox_1.getSelectedItem().toString()+"\n============================================================================\n"+"Datum:\t"+comboBox_2.getSelectedItem().toString()+"/"+comboBox_3.getSelectedItem().toString()+"/"+comboBox_4.getSelectedItem().toString()+"\n\n"+
@@ -1406,14 +1296,11 @@ public class Spiel_Starten {
 								btnBenden.setEnabled(false);
 								t1.setText("");
 
-								/////
-
-
-
 							}
 						}
 						if(i11==i21 & i2121 !=1){
-							JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
+							//TODO
+							//JOptionPane.showMessageDialog(null,"Erste Runde erledigt");
 							//DELETE Where FrageNr=
 							int i111 =Integer.parseInt(l11.getText());
 							i111=i111+1;
@@ -1423,21 +1310,8 @@ public class Spiel_Starten {
 					}
 
 				}else{
-					JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+					JOptionPane.showMessageDialog(null,"Wähle ein Datum in der Zukunft aus");
 				}
-
-
-
-
-
-
-
-
-				////////
-
-
-
-
 
 
 			}
@@ -1468,7 +1342,7 @@ public class Spiel_Starten {
 
 				if(i==1){
 
-					int YesorNo = JOptionPane.showConfirmDialog(null, " Sind Sie sicher, dass Sie das Spiel mit der SpielNr:  ,"+s.getText()+",   beenden wollen?","Spiel beenden",JOptionPane.YES_NO_OPTION);
+					int YesorNo = JOptionPane.showConfirmDialog(null, "Sind Sie sicher, dass Sie das Spiel mit der SpielNr:  "+s.getText()+"   beenden wollen?","Spiel beenden",JOptionPane.YES_NO_OPTION);
 
 					if(YesorNo==0){
 
@@ -1510,7 +1384,7 @@ public class Spiel_Starten {
 								pst3 = con.prepareStatement(sql22);
 								pst3.execute();
 
-								ta.append("\t\t Spiel_Beendet: \n\n"+"Spiel_Nr:\t"+s.getText()+"\n======================================\n"+"Datum:\t"+Zeit.getText()+"\n======================================\n"+"Kneipe_Nr:\t"+ff.getText()+"\n\n"+"\n\n======================================\n\n"+
+								ta.append("\t\t Spiel beendet: \n\n"+"Spiel_Nr:\t"+s.getText()+"\n======================================\n"+"Datum:\t"+Zeit.getText()+"\n======================================\n"+"Kneipe_Nr:\t"+ff.getText()+"\n\n"+"\n\n======================================\n\n"+
 										" \t"+" \n======================================\n");
 
 
@@ -1521,9 +1395,6 @@ public class Spiel_Starten {
 
 								e1.printStackTrace();
 							}
-
-
-							////
 
 
 							try{
@@ -1561,19 +1432,13 @@ public class Spiel_Starten {
 								pst3 = con.prepareStatement(sql22);
 								pst3.execute();
 
-
-
 								btnNewButton_1.setEnabled(false);
 							} catch (SQLException e1) {
 
 								e1.printStackTrace();
 							}
 
-							////
 						}else if(d==1){
-
-
-
 
 							String value1155=CB1.getSelectedItem().toString();
 							try {
@@ -1595,19 +1460,15 @@ public class Spiel_Starten {
 								e1.printStackTrace();
 							}
 
-
-
-
 						}
-
 
 					}
 					else{
-						JOptionPane.showMessageDialog(null,"Es ist nichts passiert.");
+						//JOptionPane.showMessageDialog(null,"Es ist nichts passiert.");
 					}
 
 				}
-				//TODO wann kommt das? :)
+				//TODO wann kommt das?
 				if(i==0){
 					JOptionPane.showMessageDialog(null,"Gültigen Antrag eingeben");
 				}
@@ -1765,7 +1626,7 @@ public class Spiel_Starten {
 				tf.setText(cb.getSelectedItem().toString());
 			}
 		});
-		cb.setModel(new DefaultComboBoxModel(new String[] {"10", "15", "20"}));
+		cb.setModel(new DefaultComboBoxModel(new String[] {"5","10", "15", "20"}));
 		cb.setBounds(1043, 53, 56, 22);
 		frame.getContentPane().add(cb);
 
@@ -1830,9 +1691,6 @@ public class Spiel_Starten {
 		CB1 = new JComboBox();
 		CB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-
-
 
 				tz.setText(CB1.getSelectedItem().toString());
 
@@ -1987,10 +1845,10 @@ public class Spiel_Starten {
 				}else if(Select_Jahr==Jahre){
 
 					if(Select_Monat< Monat ){
-						JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+						JOptionPane.showMessageDialog(null,"Wähle ein Datum in der Zukunft aus");
 					}else if(Select_Monat== Monat) {
 						if(Select_Tag< Tag){
-							JOptionPane.showMessageDialog(null,"Whäle ein Datum in der Zukunft aus");
+							JOptionPane.showMessageDialog(null,"Wähle ein Datum in der Zukunft aus");
 
 						}else{
 							btnNewButton_1.setEnabled(false);
@@ -2090,10 +1948,6 @@ public class Spiel_Starten {
 				} catch (Exception e3) {
 					e3.printStackTrace();
 				}
-
-
-
-
 
 
 			}

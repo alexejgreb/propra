@@ -134,7 +134,7 @@ public class Fragen_Verwaltung {
 		delete.setBounds(20, 99, 118, 45);
 		frame.getContentPane().add(delete);
 
-		JButton update = new JButton("Update");
+		JButton update = new JButton("Anpassen");
 		update.setForeground(Color.RED);
 		update.setFont(new Font("Tahoma", Font.BOLD, 16));
 		update.addActionListener(new ActionListener() {
@@ -195,7 +195,7 @@ public class Fragen_Verwaltung {
 		zurueck.setBounds(20, 273, 118, 45);
 		frame.getContentPane().add(zurueck);
 
-		JButton leeren = new JButton("Felder leeren");
+		JButton leeren = new JButton("Clear");
 		leeren.setForeground(Color.RED);
 		leeren.setFont(new Font("Tahoma", Font.BOLD, 16));
 		leeren.addActionListener(new ActionListener() {

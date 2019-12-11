@@ -9,6 +9,14 @@ public class DataBaseConnector {
     private static String serverUsername = null;
     private static String serverPassword = null;
 
+    public static String[] getArgs(){
+        String[] args= new String[3];
+        args[0]=serverAddress;
+        args[1]=serverUsername;
+        args[2]=serverPassword;
+        return args;
+    }
+
     public static String getServerAddress() {
         return serverAddress;
     }

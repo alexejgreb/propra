@@ -34,6 +34,7 @@ public class Quiz_Terminer {
     private static JComboBox CB1;
     private static JLabel lblNewLabel;
     private JTextArea ta;
+
     /**
      * Launch the application.
      * @throws UnsupportedLookAndFeelException
@@ -45,14 +46,11 @@ public class Quiz_Terminer {
 
         UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 
-
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     Quiz_Terminer window = new Quiz_Terminer();
                     window.frame.setVisible(true);
-
-
 
                     tname.setText(Kneipen_Besitzer.txtkneipexxxy.getText());
                     tnummer.setText(Kneipen_Besitzer.ff.getText());
@@ -67,18 +65,14 @@ public class Quiz_Terminer {
                             String Spiel_Nummer = rs.getString("Spiel_Nummer");
                             CB1.addItem(Spiel_Nummer);
                         }
-
                         rs.close();
 
                     }
                     catch(Exception e2){
                         e2.printStackTrace();
-
                     }
 
-
                     try{
-
 
                         String query2="select max(ID_Nummer )from Kunde_Spiel ";
                         PreparedStatement pst1=con.prepareStatement(query2);
@@ -101,22 +95,11 @@ public class Quiz_Terminer {
                         lblNewLabel.setText(String.valueOf(s));
 
 
-
-
-
-
-
                         JButton btnExit_1 = new JButton("Schließen");
                         btnExit_1.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent arg0) {
                             }
                         });
-
-
-
-
-
-
 
 
 
@@ -128,9 +111,6 @@ public class Quiz_Terminer {
 
 
                 }
-
-
-
 
 
                 catch (Exception e) {
@@ -198,14 +178,16 @@ public class Quiz_Terminer {
         lblEmail.setForeground(Color.RED);
         lblEmail.setFont(new Font("Tahoma", Font.BOLD, 15));
         lblEmail.setBounds(12, 116, 56, 16);
-        frame.getContentPane().add(lblEmail);
+        //frame.getContentPane().add(lblEmail);
 
+        //TESTFIELD t1 muss 0000 bleiben!
         t1 = new JTextField();
         t1.setText("0000");
         t1.setFont(new Font("Tahoma", Font.BOLD, 13));
         t1.setBounds(101, 114, 197, 22);
-        frame.getContentPane().add(t1);
+        //frame.getContentPane().add(t1);
         t1.setColumns(10);
+
 
         JButton btnExit = new JButton("Anmelden");
         btnExit.addActionListener(new ActionListener() {
@@ -215,6 +197,8 @@ public class Quiz_Terminer {
 
                 try{
 
+                    int temp =Integer.parseInt(lblNewLabel.getText())+1;
+                    lblNewLabel.setText(String.valueOf(temp));
 
                     String sql2 = "insert into Kunde_Spiel (Kunden_Nr,Spiel_Nr,ID_Nummer,Vermerk,Punkte,Bar_Nr)values (?,?,?,?,?,?)";
                     PreparedStatement pst=con.prepareStatement(sql2);
@@ -225,13 +209,12 @@ public class Quiz_Terminer {
                     pst.setString(5,"0");
                     pst.setString(6, tnummer.getText());
                     pst.execute();
-                    JOptionPane.showMessageDialog(null,"Für den Spiel '"+CB1.getSelectedItem().toString()+"' erfolgreich angemeldet ");
+                    JOptionPane.showMessageDialog(null,"Für das Spiel '"+CB1.getSelectedItem().toString()+"' erfolgreich angemeldet ");
 
 
 
-                    ta.append("\t Anmeldung_Spiel: \n\n"+"Spiel_Nr: "+CB1.getSelectedItem().toString()+"\n======================================\n"+"\n======================================\n"+"Zugang_Daten :\t"+lblNewLabel.getText()+"\n\n"+
-                            " \t"+" \n======================================\n"+" \n======================================\n"+" \n Wichtig!! Die Zugangsnummer aufbewahren\n");
-
+                    ta.append("\t Anmeldung_Spiel: \n\n"+"Spiel_Nr: "+CB1.getSelectedItem().toString()+"\n======================================\n"+"\n======================================\n"+"Zugangsdaten :\t"+lblNewLabel.getText()+"\n\n"+
+                            " \t"+" \n======================================\n"+" \n======================================\n"+" \n Wichtig! Die Zugangsnummer aufbewahren.\n");
 
 
 
@@ -239,12 +222,12 @@ public class Quiz_Terminer {
                 }
                 catch(Exception e11){
                     //e11.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Anmeldung unmöglich!");
+                    JOptionPane.showMessageDialog(null, "Anmeldung nicht möglich.");
                 }
 
             }
         });
-        btnExit.setForeground(Color.ORANGE);
+        btnExit.setForeground(Color.RED);
         btnExit.setFont(new Font("Tahoma", Font.BOLD, 18));
         btnExit.setBounds(596, 125, 153, 31);
         frame.getContentPane().add(btnExit);
@@ -260,7 +243,7 @@ public class Quiz_Terminer {
                 }
             }
         });
-        btnPrint.setForeground(Color.ORANGE);
+        btnPrint.setForeground(Color.RED);
         btnPrint.setFont(new Font("Tahoma", Font.BOLD, 18));
         btnPrint.setBounds(596, 209, 153, 31);
         frame.getContentPane().add(btnPrint);
@@ -285,7 +268,7 @@ public class Quiz_Terminer {
                 frame.dispose();
             }
         });
-        btnExit_2.setForeground(Color.ORANGE);
+        btnExit_2.setForeground(Color.RED);
         btnExit_2.setFont(new Font("Tahoma", Font.BOLD, 18));
         btnExit_2.setBounds(596, 168, 153, 31);
         frame.getContentPane().add(btnExit_2);
