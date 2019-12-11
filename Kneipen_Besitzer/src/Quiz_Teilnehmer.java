@@ -104,14 +104,14 @@ public class Quiz_Teilnehmer {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnSuchen.setForeground(Color.ORANGE);
+		btnSuchen.setForeground(Color.RED);
 		btnSuchen.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnSuchen.setBounds(602, 87, 153, 50);
-		frame.getContentPane().add(btnSuchen);
+		//frame.getContentPane().add(btnSuchen);
 
 		JButton btnExit = new JButton("Schließen");
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnExit.setForeground(Color.ORANGE);
+		btnExit.setForeground(Color.RED);
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -127,10 +127,10 @@ public class Quiz_Teilnehmer {
 		frame.getContentPane().add(lblNewLabel);
 
 		JButton btnPrint = new JButton("Drucken");
-		btnPrint.setForeground(Color.ORANGE);
+		btnPrint.setForeground(Color.RED);
 		btnPrint.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnPrint.setBounds(602, 213, 153, 39);
-		frame.getContentPane().add(btnPrint);
+		//frame.getContentPane().add(btnPrint);
 
 		JLabel label_1 = new JLabel("Kneipennummer:");
 		label_1.setForeground(Color.RED);
