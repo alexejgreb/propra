@@ -175,7 +175,7 @@ public class Kneipen_Besitzer {
 		btnFragenverwalten.setBounds(33, 164, 194, 60);
 		frame.getContentPane().add(btnFragenverwalten);
 
-		JButton btnQuizstarten = new JButton("Quiz starten");
+		JButton btnQuizstarten = new JButton("Quiz planen");
 		btnQuizstarten.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnQuizstarten.setForeground(new Color(255, 0, 0));
 		btnQuizstarten.addActionListener(new ActionListener() {
@@ -284,7 +284,7 @@ public class Kneipen_Besitzer {
 		info.setBackground(Color.LIGHT_GRAY);
 		info.setFont(new Font("Monospaced", Font.BOLD, 18));
 
-		info.setText("Hallo und Herzlich Willkommen!\r\n\r\n\r\nmit dieser Anwendung kannst du in deiner Kneipe Quizabende veranstalten.\r\nBevor du einen Quizabend durchführen kannst, senden Sie zunächst eine Anfrage (Anfrage senden).\r\nSobald deine Kneipe geprüft wurde, bekommst du eine E-Mail mit der Bestätigung.\r\n\r\nDiese Meldung wird Ihnen auch gezeigt, weil sie ihr Passwort nicht geändert haben.\r\nÄndern Sie bitte ihr Passwort.\r\n\r\n\r\n");
+		info.setText("Hallo und Herzlich Willkommen!\r\n\r\n\r\nmit dieser Anwendung können Sie in Ihrer Kneipe Quizabende veranstalten.\r\nBevor Sie einen Quizabend durchführen können, senden Sie zunächst eine Anfrage (Anfrage senden).\r\nDiese Meldung wird Ihnen gezeigt, weil Sie ihr Passwort nicht geändert haben.\r\nÄndern Sie bitte ihr Passwort.\r\n\r\n\r\n");
 		info.setBounds(431, 132, 1117, 230);
 		frame.getContentPane().add(info);
 
