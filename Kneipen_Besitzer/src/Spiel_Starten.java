@@ -475,7 +475,7 @@ public class Spiel_Starten {
 
 					} catch (Exception e31) {
 						e31.printStackTrace();
-						JOptionPane.showMessageDialog(null,e31);
+						//JOptionPane.showMessageDialog(null,e31);
 					}
 
 					//
@@ -501,7 +501,7 @@ public class Spiel_Starten {
 					}
 					catch(Exception e0){
 						//e2.printStackTrace();
-						JOptionPane.showMessageDialog(null,e0);
+						//JOptionPane.showMessageDialog(null,e0);
 					}
 					try{
 						String query4="select FrageNr from FragenPool where Besitzer = 0 or Besitzer=1 or Besitzer='"+ff.getText()+"'";
@@ -519,7 +519,7 @@ public class Spiel_Starten {
 					}
 					catch(Exception e1){
 						//e2.printStackTrace();
-						JOptionPane.showMessageDialog(null,e1);
+						//JOptionPane.showMessageDialog(null,e1);
 					}
 
 				}

@@ -19,11 +19,13 @@ public class UIGameWaitingroom extends JFrame {
      * Launch the application.
      */
     public static void showWaitingroom(int numberOfGame) {
-        try {
+       /* try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
+
+        */
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -42,9 +44,10 @@ public class UIGameWaitingroom extends JFrame {
 
     private void startTimer() {
         quizAlreadyStarted = false;
-        new ClockSeconds().execute();
         LocalDateTime dateTime = TimeHandler.getStartTimeOfQuiz(numberOfGame).toLocalDateTime();
         lblGameClock.setText("Das Spiel startet am " + dateTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + " um " + dateTime.format(DateTimeFormatter.ofPattern("HH:mm")));
+        new ClockSeconds().execute();
+
     }
 
     class ClockSeconds extends SwingWorker<Integer, Integer> {
