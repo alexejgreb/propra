@@ -281,10 +281,10 @@ public class Kneipen_Besitzer {
 		frame.getContentPane().add(btnAnmeldung);
 
 		info = new JTextArea();
-		info.setBackground(Color.RED);
+		info.setBackground(Color.LIGHT_GRAY);
 		info.setFont(new Font("Monospaced", Font.BOLD, 18));
 
-		info.setText("Hallo und Herzlichen Willkommen!\r\n\r\n\r\nmit dieser Anwendung kannst du in deiner Kneipe Quizabende veranstalten.\r\nBevor du einen Quizabend durchführen kannst, senden Sie zunächst eine Anfrage (Anfrage senden).\r\nSobald deine Kneipe geprüft wurde, bekommst du eine E-Mail mit der Bestätigung.\r\n\r\nDiese Meldung wird Ihnen auch gezeigt, weil sie ihr Passwort nicht geändert haben.\r\nÄndern Sie bitte ihr Passwort.\r\n\r\n\r\n");
+		info.setText("Hallo und Herzlich Willkommen!\r\n\r\n\r\nmit dieser Anwendung kannst du in deiner Kneipe Quizabende veranstalten.\r\nBevor du einen Quizabend durchführen kannst, senden Sie zunächst eine Anfrage (Anfrage senden).\r\nSobald deine Kneipe geprüft wurde, bekommst du eine E-Mail mit der Bestätigung.\r\n\r\nDiese Meldung wird Ihnen auch gezeigt, weil sie ihr Passwort nicht geändert haben.\r\nÄndern Sie bitte ihr Passwort.\r\n\r\n\r\n");
 		info.setBounds(431, 132, 1117, 230);
 		frame.getContentPane().add(info);
 
