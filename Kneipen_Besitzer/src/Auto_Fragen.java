@@ -89,7 +89,7 @@ public class Auto_Fragen {
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		label.setBounds(581, 0, 168, 29);
-		frame.getContentPane().add(label);
+		//frame.getContentPane().add(label);
 
 		tt = new JTextField();
 		tt.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -97,7 +97,7 @@ public class Auto_Fragen {
 		tt.setEditable(false);
 		tt.setColumns(10);
 		tt.setBounds(581, 31, 93, 22);
-		frame.getContentPane().add(tt);
+		//frame.getContentPane().add(tt);
 
 		ff = new JTextField();
 		ff.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -105,7 +105,7 @@ public class Auto_Fragen {
 		ff.setEditable(false);
 		ff.setColumns(10);
 		ff.setBounds(681, 31, 68, 22);
-		frame.getContentPane().add(ff);
+		//frame.getContentPane().add(ff);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setEditable(true);
@@ -308,7 +308,7 @@ public class Auto_Fragen {
 		frame.getContentPane().add(t3);
 
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1 (1).jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel.setBounds(0, 0, 773, 265);
 		frame.getContentPane().add(lblNewLabel);
 	}
