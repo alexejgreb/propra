@@ -475,7 +475,7 @@ public class Bar_Owner {
                         long Bar_PLZ = Long.parseLong(plz.getText());
                         long Bar_tel = Long.parseLong(tel.getText());
                         int Note = 1;
-                        long PWD = Bar_PLZ + 100000;
+                        long PWD = Bar_PLZ + 123456;
                         long tempBar_Nr = Long.parseLong(BarNR.getText());
 
 
