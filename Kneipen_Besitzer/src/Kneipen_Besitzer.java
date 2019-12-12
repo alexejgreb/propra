@@ -65,7 +65,7 @@ public class Kneipen_Besitzer {
 
 
 					try {
-						String query="select Spiel_Nummer AS Spielnummer,Datum AS Datum,Lizenc AS Linzenz,Status AS Status,Uhr_Spiel AS Stunde,Min_Spiel AS Minute,Tag_Spiel AS Tag,Monat_Spiel AS Monat,Jahr_Spiel AS Jahr,Anzahl_Runden AS Runden,Anzahl_Fragen AS Fragen from (Spiel_Gnehmigt) where status =1 and Bar_Nr='"+ff.getText()+"'";
+						String query="select Spiel_Nummer AS Spielnummer,Datum AS Datum,Lizenc AS Lizenz,Status AS Status,Uhr_Spiel AS Stunde,Min_Spiel AS Minute,Tag_Spiel AS Tag,Monat_Spiel AS Monat,Jahr_Spiel AS Jahr,Anzahl_Runden AS Runden,Anzahl_Fragen AS Fragen from (Spiel_Gnehmigt) where status =1 and Bar_Nr='"+ff.getText()+"'";
 						PreparedStatement pst=con.prepareStatement(query);
 						ResultSet rs= pst.executeQuery();
 						table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -127,7 +127,7 @@ public class Kneipen_Besitzer {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton.setForeground(new Color(255, 0, 0));
 		btnNewButton.setBounds(33, 294, 194, 51);
-		frame.getContentPane().add(btnNewButton);
+		//frame.getContentPane().add(btnNewButton);
 
 		JButton btnAnfragesenden = new JButton("Anfrage senden");
 		btnAnfragesenden.setForeground(new Color(255, 0, 0));
@@ -148,7 +148,7 @@ public class Kneipen_Besitzer {
 
 			}
 		});
-		btnAnfragesenden.setBounds(33, 358, 194, 53);
+		btnAnfragesenden.setBounds(33, 294, 194, 53);
 		frame.getContentPane().add(btnAnfragesenden);
 
 		JButton btnFragenverwalten = new JButton("Fragen verwalten");
@@ -234,7 +234,7 @@ public class Kneipen_Besitzer {
 		});
 		btnbersicht.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnbersicht.setForeground(new Color(255, 0, 0));
-		btnbersicht.setBounds(33, 422, 194, 55);
+		btnbersicht.setBounds(33, 358, 194, 55);
 		frame.getContentPane().add(btnbersicht);
 
 		JLabel lblKneipenummer = new JLabel("Kneipennummer:");
