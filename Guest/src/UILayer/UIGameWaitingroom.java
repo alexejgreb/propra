@@ -13,6 +13,7 @@ public class UIGameWaitingroom extends JFrame {
     private int numberOfGame;
     JLabel lblGameClock;
     JLabel labelClock;
+    boolean quizAlreadyStarted;
 
     /**
      * Launch the application.
@@ -40,6 +41,7 @@ public class UIGameWaitingroom extends JFrame {
 
 
     private void startTimer() {
+        quizAlreadyStarted = false;
         new ClockSeconds().execute();
         LocalDateTime dateTime = TimeHandler.getStartTimeOfQuiz(numberOfGame).toLocalDateTime();
         lblGameClock.setText("Das Spiel startet am " + dateTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + " um " + dateTime.format(DateTimeFormatter.ofPattern("HH:mm")));
@@ -49,8 +51,9 @@ public class UIGameWaitingroom extends JFrame {
 
         @Override
         protected Integer doInBackground() throws Exception {
-            if (TimeHandler.getMillisWaitingUntilStartQuiz(numberOfGame) < 0) {
+            if (TimeHandler.getMillisWaitingUntilStartQuiz(numberOfGame) <= 0) {
                 lblGameClock.setText("Das Spiel hat schon angefangen. Sei beim nächsten Quiz dabei.");
+                quizAlreadyStarted = true;
                 return 0;
             }
             System.out.println("numberOfGame: " + numberOfGame);
@@ -68,6 +71,7 @@ public class UIGameWaitingroom extends JFrame {
                 }
             } while (result > 0);
             return 0;
+
         }
 
         @Override
@@ -81,13 +85,15 @@ public class UIGameWaitingroom extends JFrame {
 
         @Override
         protected void done() {
-            try {
-                int i = get();
-                labelClock.setText("" + i + "s");
-                UIGame.showGame();
-                dispose();
-            } catch ( /* InterruptedException, ExecutionException */ Exception e) {
-                e.printStackTrace();
+            if (!quizAlreadyStarted) {
+                try {
+                    int i = get();
+                    labelClock.setText("" + i + "s");
+                    UIGame.showGame();
+                    dispose();
+                } catch ( /* InterruptedException, ExecutionException */ Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
 
