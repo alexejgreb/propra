@@ -85,16 +85,18 @@ public class UIGameWaitingroom extends JFrame {
 
         @Override
         protected void done() {
-            if (!quizAlreadyStarted) {
+
                 try {
                     int i = get();
                     labelClock.setText("" + i + "s");
-                    UIGame.showGame();
-                    dispose();
+                    if (!quizAlreadyStarted) {
+                        UIGame.showGame();
+                        dispose();
+                    }
                 } catch ( /* InterruptedException, ExecutionException */ Exception e) {
                     e.printStackTrace();
                 }
-            }
+
         }
 
 
