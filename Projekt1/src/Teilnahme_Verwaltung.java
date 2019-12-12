@@ -103,7 +103,7 @@ public class Teilnahme_Verwaltung {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 779, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
@@ -153,31 +153,31 @@ public class Teilnahme_Verwaltung {
 		frame.getContentPane().add(nummer);
 
 		JLabel lblKneipenummer = new JLabel("Kneipennummer:");
-		lblKneipenummer.setForeground(Color.RED);
+		lblKneipenummer.setForeground(Color.WHITE);
 		lblKneipenummer.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblKneipenummer.setBounds(12, 14, 143, 16);
 		frame.getContentPane().add(lblKneipenummer);
 
 		adresse = new JLabel("Adresse von der Kneipe, Straße und Hausnummer");
-		adresse.setForeground(Color.RED);
+		adresse.setForeground(Color.WHITE);
 		adresse.setFont(new Font("Tahoma", Font.BOLD, 15));
 		adresse.setBounds(178, 45, 376, 16);
 		frame.getContentPane().add(adresse);
 
 		tel = new JLabel("Tel Nr der Kneipe");
-		tel.setForeground(Color.RED);
+		tel.setForeground(Color.WHITE);
 		tel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		tel.setBounds(178, 74, 228, 16);
 		frame.getContentPane().add(tel);
 
 		besitzer = new JLabel("Besitzer der Kneipe");
-		besitzer.setForeground(Color.RED);
+		besitzer.setForeground(Color.WHITE);
 		besitzer.setFont(new Font("Tahoma", Font.BOLD, 15));
 		besitzer.setBounds(178, 14, 228, 16);
 		frame.getContentPane().add(besitzer);
 
 		email = new JLabel("Email der Kneipenbesitzer");
-		email.setForeground(Color.RED);
+		email.setForeground(Color.WHITE);
 		email.setFont(new Font("Tahoma", Font.BOLD, 15));
 		email.setBounds(178, 103, 376, 16);
 		frame.getContentPane().add(email);
@@ -215,7 +215,7 @@ public class Teilnahme_Verwaltung {
 
 		lblNewLabel = new JLabel("");
 		//TODO
-		lblNewLabel.setIcon(new ImageIcon("Ressources/krombacher-spot-mood-flaschen (1).jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/download Krombacher Hintergrundbild 1024x768-1.jpg"));
 		lblNewLabel.setBounds(0, 0, 761, 253);
 		frame.getContentPane().add(lblNewLabel);
 	}

@@ -90,7 +90,7 @@ public class Kneipen {
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(100, 100, 1751, 768);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
         JScrollPane scrollPane_1 = new JScrollPane();
@@ -106,56 +106,56 @@ public class Kneipen {
         btnSperren.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen Sie die Kneipe Nr: '"+nr.getSelectedItem().toString()+"' entfernen?","Kneipe entfernen",JOptionPane.YES_NO_OPTION);
+                int YesorNo = JOptionPane.showConfirmDialog(null, "Wollen Sie die Kneipe Nr: '"+nr.getSelectedItem().toString()+"' sperren?","Kneipe sperren",JOptionPane.YES_NO_OPTION);
 
-                if(YesorNo==0){}
-
-
+                if(YesorNo==0){
+                   // JOptionPane.showMessageDialog(null,"");
+                }
             }
         });
-        btnSperren.setBounds(12, 111, 204, 46);
+        btnSperren.setBounds(12, 108, 204, 46);
         frame.getContentPane().add(btnSperren);
 
         lblKneipenr = new JLabel("KneipenNr:");
-        lblKneipenr.setForeground(Color.RED);
+        lblKneipenr.setForeground(Color.WHITE);
         lblKneipenr.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblKneipenr.setBounds(278, 58, 106, 30);
         frame.getContentPane().add(lblKneipenr);
 
         lblBesitzer = new JLabel("Besitzer:");
-        lblBesitzer.setForeground(Color.RED);
+        lblBesitzer.setForeground(Color.WHITE);
         lblBesitzer.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblBesitzer.setBounds(278, 101, 122, 30);
+        lblBesitzer.setBounds(278, 113, 122, 30);
         frame.getContentPane().add(lblBesitzer);
 
         lblAdresse = new JLabel("Adresse:");
-        lblAdresse.setForeground(Color.RED);
+        lblAdresse.setForeground(Color.WHITE);
         lblAdresse.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblAdresse.setBounds(278, 161, 122, 30);
         frame.getContentPane().add(lblAdresse);
 
         lblTelefon = new JLabel("TelefonNr:");
-        lblTelefon.setForeground(Color.RED);
+        lblTelefon.setForeground(Color.WHITE);
         lblTelefon.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblTelefon.setBounds(278, 210, 122, 30);
         frame.getContentPane().add(lblTelefon);
 
         lblEmail = new JLabel("Email:");
-        lblEmail.setForeground(Color.RED);
+        lblEmail.setForeground(Color.WHITE);
         lblEmail.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblEmail.setBounds(278, 259, 122, 30);
         frame.getContentPane().add(lblEmail);
 
         lblKneipename = new JLabel("Kneipenname:");
-        lblKneipename.setForeground(Color.RED);
+        lblKneipename.setForeground(Color.WHITE);
         lblKneipename.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblKneipename.setBounds(278, 302, 142, 30);
         frame.getContentPane().add(lblKneipename);
 
         lblNachricht = new JLabel("Nachricht:");
-        lblNachricht.setForeground(Color.RED);
+        lblNachricht.setForeground(Color.WHITE);
         lblNachricht.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblNachricht.setBounds(278, 381, 122, 30);
+        lblNachricht.setBounds(278, 345, 122, 30);
         frame.getContentPane().add(lblNachricht);
 
         nr = new JComboBox();
@@ -217,7 +217,7 @@ public class Kneipen {
         button.setForeground(Color.RED);
         button.setFont(new Font("Tahoma", Font.BOLD, 15));
         button.setBounds(1624, 433, 97, 30);
-        frame.getContentPane().add(button);
+        //frame.getContentPane().add(button);
 
         JButton btnNachrichtsenden = new JButton("Nachricht senden");
         btnNachrichtsenden.setForeground(Color.RED);
@@ -266,7 +266,7 @@ public class Kneipen {
         btnPrint.setForeground(Color.RED);
         btnPrint.setFont(new Font("Tahoma", Font.BOLD, 17));
         btnPrint.setBounds(12, 324, 204, 46);
-        frame.getContentPane().add(btnPrint);
+        //frame.getContentPane().add(btnPrint);
 
         JButton btnExit = new JButton("Schließen");
         btnExit.addActionListener(new ActionListener() {
@@ -276,7 +276,7 @@ public class Kneipen {
         });
         btnExit.setForeground(Color.RED);
         btnExit.setFont(new Font("Tahoma", Font.BOLD, 17));
-        btnExit.setBounds(12, 386, 204, 46);
+        btnExit.setBounds(12, 324, 204, 46);
         frame.getContentPane().add(btnExit);
 
         name = new JTextField();
@@ -306,7 +306,7 @@ public class Kneipen {
 
         lblNewLabel = new JLabel("");
         //TODO
-        lblNewLabel.setIcon(new ImageIcon("Ressources/2015-10-26_Krombacher Marke des Jahres (1).jpg"));
+        lblNewLabel.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
         lblNewLabel.setBounds(0, 0, 1733, 721);
         frame.getContentPane().add(lblNewLabel);
     }

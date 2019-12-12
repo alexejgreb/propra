@@ -110,7 +110,7 @@ public class Admin {
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("Ressources/2015-10-26_Krombacher Marke des Jahres.jpg"));
 		frame.setFont(null);
 		frame.setBounds(100, 100, 1751, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -143,7 +143,8 @@ public class Admin {
 			}
 		});
 		btAr.setBounds(25, 207, 291, 51);
-		frame.getContentPane().add(btAr);
+		//Kneipen verwalten macht garnichts
+		//frame.getContentPane().add(btAr);
 
 		JButton btEx = new JButton("Schließen");
 		btEx.setForeground(Color.RED);
@@ -176,7 +177,7 @@ public class Admin {
 
 			}
 		});
-		btKW.setBounds(25, 127, 291, 51);
+		btKW.setBounds(25, 207, 291, 51);
 		frame.getContentPane().add(btKW);
 
 		JButton btFr = new JButton("Fragen verwalten");
@@ -197,7 +198,7 @@ public class Admin {
 				frame.dispose();
 			}
 		});
-		btFr.setBounds(25, 50, 291, 51);
+		btFr.setBounds(25, 127, 291, 51);
 		frame.getContentPane().add(btFr);
 
 		JButton btnNewButton = new JButton("Drucken");
@@ -215,7 +216,7 @@ public class Admin {
 
 		JLabel lblNewLabel = new JLabel("");
 		//TODO
-		lblNewLabel.setIcon(new ImageIcon("Ressources/18006_krombacher_alkoholfrei_450x450 (1).jpg"));
+		lblNewLabel.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel.setBounds(0, 0, 1733, 721);
 		frame.getContentPane().add(lblNewLabel);
 	}

@@ -65,15 +65,10 @@ public class Fragen_Pool {
 					Fragen_Pool window = new Fragen_Pool();
 					window.frame.setVisible(true);
 
-
-
 					DB_Anfragen.Table_Question(table);
 					CB1.removeAllItems();
 
-
 					DB_Anfragen.Question_Nr(CB1);
-
-
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -105,7 +100,7 @@ public class Fragen_Pool {
 		frame = new JFrame();
 		frame.setBackground(new Color(240, 240, 240));
 		frame.setBounds(100, 100, 1751, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JButton Btp_Hinzufügen = new JButton("Einfügen");
@@ -125,7 +120,7 @@ public class Fragen_Pool {
 				lb2.setText(String.valueOf(z));
 
 				DB_Anfragen.Insert_Question(lb2,ff,w1,w2,w3,w4,a);
-				ta.append("\t Frage-Save: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
+				ta.append("\t Frage gespeichert: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
 						" \t"+" \n======================================\n");
 				ff.setText("");
 				w1.setText("");
@@ -139,7 +134,7 @@ public class Fragen_Pool {
 			//
 
 		});
-		Btp_Hinzufügen.setBounds(28, 34, 118, 45);
+		Btp_Hinzufügen.setBounds(28, 70, 118, 45);
 		frame.getContentPane().add(Btp_Hinzufügen);
 
 		JButton Btp_Delet = new JButton("Löschen");
@@ -156,7 +151,7 @@ public class Fragen_Pool {
 
 
 					DB_Anfragen.Delete_Question(CB1);
-					ta.append("\t Frage-Delete: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
+					ta.append("\t Frage löschen: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
 							" \t"+" \n======================================\n");
 
 
@@ -170,13 +165,13 @@ public class Fragen_Pool {
 
 				}
 				else{
-					JOptionPane.showMessageDialog(null,"Es wurde nichts entfernt");
+					//JOptionPane.showMessageDialog(null,"Es wurde nichts entfernt");
 				}
 
 
 			}
 		});
-		Btp_Delet.setBounds(28, 92, 118, 45);
+		Btp_Delet.setBounds(28, 180, 118, 45);
 		frame.getContentPane().add(Btp_Delet);
 
 		JButton Btp_edit = new JButton("Anpassen");
@@ -190,7 +185,7 @@ public class Fragen_Pool {
 
 
 				DB_Anfragen.Update_Question(ff, w1, w2, w3, w4, a, CB1);
-				ta.append("\t Frage-Update: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
+				ta.append("\t Frage angepasst: \n\n"+"Frage_Nr:\t"+CB1.getSelectedItem().toString()+"\n======================================\n"+"Frage:\t"+ff.getText()+"\n\n"+"Antwort :\t"+a.getText()+"\n\n"+
 						" \t"+" \n======================================\n");
 				ff.setText("");
 				w1.setText("");
@@ -200,12 +195,8 @@ public class Fragen_Pool {
 				w4.setText("");
 			}
 
-
-
-
-
 		});
-		Btp_edit.setBounds(28, 150, 118, 45);
+		Btp_edit.setBounds(28, 125, 118, 45);
 		frame.getContentPane().add(Btp_edit);
 
 		JButton Btp_Exit = new JButton("Schließen");
@@ -237,7 +228,7 @@ public class Fragen_Pool {
 				frame.dispose();
 			}
 		});
-		Btp_zurueck.setBounds(28, 266, 118, 45);
+		Btp_zurueck.setBounds(28, 345, 118, 45);
 		frame.getContentPane().add(Btp_zurueck);
 
 		JButton Btp_Aktualisieren = new JButton("Clear");
@@ -255,7 +246,7 @@ public class Fragen_Pool {
 				w4.setText("");
 			}
 		});
-		Btp_Aktualisieren.setBounds(28, 324, 118, 45);
+		Btp_Aktualisieren.setBounds(28, 290, 118, 45);
 		frame.getContentPane().add(Btp_Aktualisieren);
 
 		scrollPane = new JScrollPane();
@@ -286,7 +277,7 @@ public class Fragen_Pool {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(28, 203, 118, 45);
+		btnNewButton_1.setBounds(28, 235, 118, 45);
 		frame.getContentPane().add(btnNewButton_1);
 
 		JButton btnNewButton = new JButton("Drucken");
@@ -315,13 +306,13 @@ public class Fragen_Pool {
 
 		w3 = new JTextField();
 		w3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		w3.setBounds(320, 360, 820, 36);
+		w3.setBounds(320, 352, 820, 36);
 		frame.getContentPane().add(w3);
 		w3.setColumns(10);
 
 		w4 = new JTextField();
 		w4.setFont(new Font("Tahoma", Font.BOLD, 13));
-		w4.setBounds(320, 409, 820, 36);
+		w4.setBounds(320, 393, 820, 36);
 		frame.getContentPane().add(w4);
 		w4.setColumns(10);
 
@@ -331,45 +322,45 @@ public class Fragen_Pool {
 		frame.getContentPane().add(CB1);
 
 		JLabel lblNewLabel_2 = new JLabel("FragenNr:");
-		lblNewLabel_2.setForeground(Color.RED);
+		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel_2.setBounds(182, 60, 85, 30);
 		frame.getContentPane().add(lblNewLabel_2);
 
 		JLabel lblFrage = new JLabel("Frage:");
-		lblFrage.setForeground(Color.RED);
+		lblFrage.setForeground(Color.WHITE);
 		lblFrage.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblFrage.setBounds(206, 121, 70, 36);
 		frame.getContentPane().add(lblFrage);
 
 		JLabel lblNewLabel = new JLabel("Antwort:");
-		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setBounds(191, 210, 97, 36);
 		frame.getContentPane().add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("A:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1.setForeground(Color.RED);
+		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setBounds(254, 268, 34, 36);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		JLabel lblMglichkeit = new JLabel("B:");
-		lblMglichkeit.setForeground(Color.RED);
+		lblMglichkeit.setForeground(Color.WHITE);
 		lblMglichkeit.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblMglichkeit.setBounds(254, 309, 34, 36);
 		frame.getContentPane().add(lblMglichkeit);
 
 		JLabel lblMglichkeit_1 = new JLabel("C:");
 		lblMglichkeit_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblMglichkeit_1.setForeground(Color.RED);
-		lblMglichkeit_1.setBounds(254, 358, 34, 36);
+		lblMglichkeit_1.setForeground(Color.WHITE);
+		lblMglichkeit_1.setBounds(254, 350, 34, 36);
 		frame.getContentPane().add(lblMglichkeit_1);
 
 		JLabel lblMglichkeit_2 = new JLabel("D:");
-		lblMglichkeit_2.setForeground(Color.RED);
+		lblMglichkeit_2.setForeground(Color.WHITE);
 		lblMglichkeit_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblMglichkeit_2.setBounds(254, 404, 34, 43);
+		lblMglichkeit_2.setBounds(254, 391, 34, 43);
 		frame.getContentPane().add(lblMglichkeit_2);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -387,17 +378,14 @@ public class Fragen_Pool {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox.setBounds(402, 66, 738, 22);
-		frame.getContentPane().add(comboBox);
+		//frame.getContentPane().add(comboBox);
 
 		JLabel lblNewLabel_3 = new JLabel("");
-		//TODO
 		lblNewLabel_3.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel_3.setBounds(0, 0, 1733, 721);
 		frame.getContentPane().add(lblNewLabel_3);
 		CB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-
 
 				DB_Anfragen.Select_Question(ff, a, w1, w2, w3, w4, CB1);
 			}

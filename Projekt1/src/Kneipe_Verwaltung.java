@@ -137,7 +137,7 @@ public class Kneipe_Verwaltung {
 		int Minute= cal.get(Calendar.MINUTE);
 		int Stunde = cal.get(Calendar.HOUR);
 		Zeit.setText(+Tag+"/"+(Monat+1)+"/"+Jahre);
-		h.setText(""+(Stunde+12)+":"+Minute);
+		h.setText(""+(Stunde)+":"+Minute);
 
 
 	}
@@ -159,7 +159,7 @@ public class Kneipe_Verwaltung {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1751, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JButton btnNewButton = new JButton("Zurück");
@@ -180,7 +180,7 @@ public class Kneipe_Verwaltung {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(12, 425, 240, 46);
+		btnNewButton.setBounds(12, 366, 240, 46);
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnSperren = new JButton("Ablehnen");
@@ -195,18 +195,7 @@ public class Kneipe_Verwaltung {
 					JOptionPane.showMessageDialog(null,"Wählen Sie eine offene Anfrage");
 				}
 				if(i1!=0){
-				
-				/*
-			
-				try{
-					 
-					
-					String value115=C1.getSelectedItem().toString();
-			String sql22="update Kneipe_Teilnehmer set Vermerk=0 where Kneipe_Nr='"+value115+"' ";
-			PreparedStatement pst3=con.prepareStatement(sql22);
-			pst3.execute();
-			JOptionPane.showMessageDialog(null,"Erfolgreich Gespeert");
-			*/
+
 					DB_Anfragen.Update_Bar_Member(C1);
 
 
@@ -219,11 +208,7 @@ public class Kneipe_Verwaltung {
 					txt5.setText("");
 					txt6.setText("");
 			
-			/*
-		}catch(Exception e3){
-			JOptionPane.showMessageDialog(null,e3);
-		}
-			*/
+
 				}}
 		});
 		btnSperren.setBounds(12, 189, 240, 46);
@@ -237,7 +222,7 @@ public class Kneipe_Verwaltung {
 				frame.dispose();
 			}
 		});
-		btnExit.setBounds(12, 366, 240, 46);
+		btnExit.setBounds(12, 425, 240, 46);
 		frame.getContentPane().add(btnExit);
 
 		JButton btnGenhemigen = new JButton("Einmal");
@@ -329,7 +314,7 @@ public class Kneipe_Verwaltung {
 							pst.setString(4, "1");
 
 							pst.execute();
-							JOptionPane.showMessageDialog(null,"Teilnahme Bestätigung");
+							//JOptionPane.showMessageDialog(null,"Teilnahme Bestätigung");
 
 							// DB_Anfragen.Insert_Lizenc_1(lb, txt1, Zeit);
 							ta1.append("\t Genehmigung_Spiel: \n======================================\n"+"Spiel_Nr:\t"+lb.getText()+"\n======================================\n"+"Kneipe_Nr:\t"+C1.getSelectedItem().toString()+"\n======================================\n"+"Adresse:\t"+txt2.getText()+"\n======================================\n"+"Besitzer:\t"+txt3.getText()+"\n======================================\n"+"Telefon_Nr:\t"+txt4.getText()+"\n======================================\n"
@@ -428,7 +413,8 @@ public class Kneipe_Verwaltung {
 		h = new JLabel("New label");
 		h.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		h.setBounds(1587, 44, 106, 16);
-		frame.getContentPane().add(h);
+		//Uhrzeit braucht er nicht
+		//frame.getContentPane().add(h);
 
 		text = new JTextField();
 		text.setEnabled(false);
@@ -438,7 +424,7 @@ public class Kneipe_Verwaltung {
 		frame.getContentPane().add(text);
 		text.setColumns(10);
 
-		JButton btnPrint = new JButton("Teilnahme Verwaltung");
+		JButton btnPrint = new JButton("Kneipen verwalten");
 		btnPrint.setForeground(Color.RED);
 		btnPrint.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnPrint.addActionListener(new ActionListener() {
@@ -468,35 +454,8 @@ public class Kneipe_Verwaltung {
 				}
 
 				if(i1!=0){
-					/////
-	        			
-	            	
-	            	/*
-	        			try {	 /// 		
-	        			    String query="select * from Spiel_Licence where Vermerk ='"+C1.getSelectedItem().toString()+"'";
-	        			    
-	        				PreparedStatement pst1=con.prepareStatement(query);
-	        				
-	        				ResultSet rs= pst1.executeQuery();
-	        				
-	        				 if ((rs.next()))
-	        				 {
-	        					
-	        					 test.setText("1");
-	        				 }
-	        				
-	        					pst1.close();
-	        					
 
-	        				} catch (Exception e3) {
-	        					e3.printStackTrace();
-	        				}
-	        			*/
-
-					//
 					DB_Anfragen.Select_Lizenc(C1, test);
-					//
-
 
 					int i11 =Integer.parseInt(test.getText());
 
@@ -505,45 +464,11 @@ public class Kneipe_Verwaltung {
 					}
 					if(i11==0)	{
 						lb.setText(C1.getSelectedItem().toString()+tk.getText()+C1.getSelectedItem().toString());
-		 	 	/*
-   				try{
-   					
-   					// 
-   					
-   					String sql = "INSERT INTO Spiel_Licence (Licence_Nr, Kneipe_Nr, Datum, Vermerk)VALUES (?,?,?,?)" ;
-   					PreparedStatement pst=con.prepareStatement(sql);
-   					pst.setString(1, lb.getText());
-   					pst.setString(2, txt1.getText());
-   					pst.setString(3, Zeit.getText());
-   					pst.setString(4, C1.getSelectedItem().toString());
-   					
-   					pst.execute();
-   					JOptionPane.showMessageDialog(null,"Dauerhaft Lizenc erteilt");
-*/
+
 						DB_Anfragen.Insert_Lizenc(lb, txt1, Zeit, C1);
 						ta1.append("\t Lizenz erteilt: \n===============================================================\n"+"	Lizenz_Nr:\t"+lb.getText()+"\n===============================================================\n"+"KneipenNr:\t"+C1.getSelectedItem().toString()+"\n===============================================================\n"+"Adresse:\t"+txt2.getText()+"\n===============================================================\n"+"Besitzer:\t"+txt3.getText()+"\n===============================================================\n"+"Telefon_Nr:\t"+txt4.getText()+"\n===============================================================\n"
 								+"Email:\t"+txt5.getText()+"\n===============================================================\n"+"\t"+"\n===============================================================\n"+" \t"+" \n===============================================================\n");
-   					/*
-   				} catch (Exception e1) {
-   					e1.printStackTrace();
-   				}	
-				*/
-						///
-   				
-   				
-   				
-   				
-   				
-				/*try{
-					 
-						
-							String value115=C1.getSelectedItem().toString();
-					String sql22="update Kneipe_Teilnehmer set Vermerk=1 where Kneipe_Nr='"+value115+"' ";
-					PreparedStatement pst3=con.prepareStatement(sql22);
-					pst3.execute();
-					JOptionPane.showMessageDialog(null,"Erfolgreich Genehmigt");
-					
-					*/
+
 
 						DB_Anfragen.Update_Lizenc(C1);
 						ta1.append("\t Lizenz bestätigt: \n===============================================================\n"+
@@ -555,14 +480,6 @@ public class Kneipe_Verwaltung {
 						txt5.setText("");
 						txt6.setText("");
 						text.setText("0");
-					
-					/*
-				}catch(Exception e3){
-					JOptionPane.showMessageDialog(null,e3);
-				}
-				*/
-
-						//
 
 
 					}}}
@@ -575,24 +492,24 @@ public class Kneipe_Verwaltung {
 		frame.getContentPane().add(test);
 
 		C1 = new JComboBox();
-		C1.setBounds(469, 42, 183, 22);
+		C1.setBounds(469, 71, 183, 22);
 		frame.getContentPane().add(C1);
 
 		JLabel lblNewLabel_2 = new JLabel("Anfrage:");
-		lblNewLabel_2.setForeground(Color.RED);
+		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_2.setBounds(300, 30, 154, 40);
+		lblNewLabel_2.setBounds(300, 69, 154, 40);
 		frame.getContentPane().add(lblNewLabel_2);
 
 		txt6 = new JTextField();
-		txt6.setBounds(469, 16, 66, 16);
+		txt6.setBounds(469, 51, 66, 16);
 		frame.getContentPane().add(txt6);
 		txt6.setColumns(10);
 
 		JLabel lblNewLabel_1 = new JLabel("Nachricht:");
-		lblNewLabel_1.setForeground(Color.RED);
+		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1.setBounds(290, 425, 154, 40);
+		lblNewLabel_1.setBounds(300, 375, 154, 40);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		txt5 = new JTextField();
@@ -601,53 +518,53 @@ public class Kneipe_Verwaltung {
 		txt5.setColumns(10);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setForeground(Color.RED);
+		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblEmail.setBounds(300, 324, 154, 40);
 		frame.getContentPane().add(lblEmail);
 
 		txt4 = new JTextField();
-		txt4.setBounds(469, 263, 755, 40);
+		txt4.setBounds(469, 275, 755, 40);
 		frame.getContentPane().add(txt4);
 		txt4.setColumns(10);
 
 		JLabel lblTelephonnummer = new JLabel("Tel:");
-		lblTelephonnummer.setForeground(Color.RED);
+		lblTelephonnummer.setForeground(Color.WHITE);
 		lblTelephonnummer.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblTelephonnummer.setBounds(300, 260, 167, 40);
+		lblTelephonnummer.setBounds(300, 273, 167, 40);
 		frame.getContentPane().add(lblTelephonnummer);
 
 		txt3 = new JTextField();
-		txt3.setBounds(469, 210, 755, 40);
+		txt3.setBounds(469, 224, 755, 40);
 		frame.getContentPane().add(txt3);
 		txt3.setColumns(10);
 
 		JLabel lblBesitzer = new JLabel("Besitzer:");
-		lblBesitzer.setForeground(Color.RED);
+		lblBesitzer.setForeground(Color.WHITE);
 		lblBesitzer.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblBesitzer.setBounds(301, 207, 153, 40);
+		lblBesitzer.setBounds(300, 222, 153, 40);
 		frame.getContentPane().add(lblBesitzer);
 
 		txt2 = new JTextField();
-		txt2.setBounds(469, 147, 755, 40);
+		txt2.setBounds(469, 173, 755, 40);
 		frame.getContentPane().add(txt2);
 		txt2.setColumns(10);
 
 		JLabel lblAdresse = new JLabel("Adresse:");
-		lblAdresse.setForeground(Color.RED);
+		lblAdresse.setForeground(Color.WHITE);
 		lblAdresse.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblAdresse.setBounds(296, 144, 158, 40);
+		lblAdresse.setBounds(300, 171, 158, 40);
 		frame.getContentPane().add(lblAdresse);
 
 		txt1 = new JTextField();
-		txt1.setBounds(469, 94, 755, 40);
+		txt1.setBounds(469, 122, 755, 40);
 		frame.getContentPane().add(txt1);
 		txt1.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("Kneipenname:");
-		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel.setBounds(300, 94, 158, 40);
+		lblNewLabel.setBounds(300, 120, 158, 40);
 		frame.getContentPane().add(lblNewLabel);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -672,40 +589,14 @@ public class Kneipe_Verwaltung {
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		//TODO
-		lblNewLabel_3.setIcon(new ImageIcon("Ressources/2015-10-26_Krombacher Marke des Jahres (1).jpg"));
+		lblNewLabel_3.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel_3.setBounds(0, 0, 1721, 731);
 		frame.getContentPane().add(lblNewLabel_3);
 		C1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				text.setText(C1.getSelectedItem().toString());
-	/*	  		
-try {	 
-					
-				    String query="select Adresse,Telefon_Nr,Besitzer,Email,Vermerk from Kneipe_Teilnehmer where Kneipe_Nr= ? ";
-				    
-					PreparedStatement pst1=con.prepareStatement(query);
-					pst1.setString(1, C1.getSelectedItem().toString());
-					ResultSet rs= pst1.executeQuery();
-					
-					 if ((rs.next()))
-					 {
-						
-						txt1.setText(C1.getSelectedItem().toString());
-						txt2.setText(rs.getString("Adresse"));
-						txt3.setText(rs.getString("Besitzer"));
-					txt4.setText(rs.getString("Telefon_Nr"));
-					txt5.setText(rs.getString("Email"));
-					txt6.setText(rs.getString("Vermerk"));
-					 }
-					
-						pst1.close();
-						
 
-					} catch (Exception e3) {
-						e3.printStackTrace();
-					}
-		  		*/
 				DB_Anfragen.Select_Bar(txt1, txt2, txt3, txt4, txt5, txt6, C1);
 
 			}

@@ -135,7 +135,7 @@ public class DB_Anfragen {
 			pst.setString(7, "0");
 
 			pst.execute();
-			JOptionPane.showMessageDialog(null,"Save");
+			JOptionPane.showMessageDialog(null,"Die Frage wurde dem Fragenpool hinzugefügt");
 
 
 		} catch (Exception e1) {
@@ -160,7 +160,7 @@ public class DB_Anfragen {
 			PreparedStatement pst3=con.prepareStatement(Delete);
 			pst3.execute();
 			pst3.close();
-			JOptionPane.showMessageDialog(null,"OK Sie haben es gelöscht");
+			JOptionPane.showMessageDialog(null,"Die Frage wurde gelöscht");
 
 		} catch(Exception e1){
 			e1.printStackTrace();
@@ -186,7 +186,7 @@ public class DB_Anfragen {
 			String sql22="update FragenPool set Frage='"+value223+"',ErsteWahl='"+value33+"',ZweiteWahl='"+value22+"',DritteWahl='"+value222+"',VierteWahl='"+value221+"',RichtigeAntwort='"+value2225+"' where FrageNr='"+value115+"' ";
 			PreparedStatement pst3=con.prepareStatement(sql22);
 			pst3.execute();
-			JOptionPane.showMessageDialog(null,"Erfolgreich UPDATE");
+			JOptionPane.showMessageDialog(null,"Die Frage wurde angepasst.");
 
 
 		}catch(Exception e3){
@@ -331,7 +331,7 @@ public class DB_Anfragen {
 			String sql22="update Kneipe_Teilnehmer set Vermerk=1 where Kneipe_Nr='"+value115+"' ";
 			PreparedStatement pst3=con.prepareStatement(sql22);
 			pst3.execute();
-			JOptionPane.showMessageDialog(null,"Erfolgreich Genehmigt");
+			JOptionPane.showMessageDialog(null,"Lizenz erteilt");
 
 
 
@@ -359,7 +359,7 @@ public class DB_Anfragen {
 			pst.setString(4, CB.getSelectedItem().toString());
 
 			pst.execute();
-			JOptionPane.showMessageDialog(null,"Dauerhaft Lizenc erteilt");
+			JOptionPane.showMessageDialog(null,"Dauerhafte Lizenz wurde erteilt.");
 
 
 		} catch (Exception e1) {
@@ -528,11 +528,11 @@ public class DB_Anfragen {
 			pst3.execute();
 
 
-			JOptionPane.showMessageDialog(null,"Gespeert");
+			//JOptionPane.showMessageDialog(null,"Gespeert");
 
 
 		}catch(Exception e3){
-			JOptionPane.showMessageDialog(null,"Ungültiges Eintrag");
+			JOptionPane.showMessageDialog(null,"Ungültiger Eintrag");
 		}
 
 
@@ -553,11 +553,11 @@ public class DB_Anfragen {
 			pst3.execute();
 
 
-			JOptionPane.showMessageDialog(null,"Die Kneipe NR : '"+value115+"' wurde erfolgreich gespeert");
+			JOptionPane.showMessageDialog(null,"Die Kneipe Nr: '"+value115+"' wurde erfolgreich gespeert");
 
 
 		}catch(Exception e3){
-			JOptionPane.showMessageDialog(null,"Prüfen sie ihre Daten");
+			JOptionPane.showMessageDialog(null,"Prüfen Sie ihre Eingabe");
 		}
 
 

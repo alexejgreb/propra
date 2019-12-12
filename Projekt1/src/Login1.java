@@ -64,32 +64,32 @@ import javax.swing.SwingConstants;public class Login1 {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1751, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Benutzername:");
-		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(605, 267, 186, 32);
+		lblNewLabel.setBounds(661, 267, 186, 32);
 		frame.getContentPane().add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Passwort:");
-		lblNewLabel_1.setForeground(Color.RED);
+		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(601, 335, 153, 32);
+		lblNewLabel_1.setBounds(661, 335, 153, 32);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		txtAdmin = new JTextField();
 		txtAdmin.setEditable(false);
 		txtAdmin.setText("Admin");
-		txtAdmin.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		txtAdmin.setFont(new Font("Tahoma", Font.BOLD, 15));
 		txtAdmin.setBounds(803, 264, 296, 40);
 		frame.getContentPane().add(txtAdmin);
 		txtAdmin.setColumns(10);
 
 		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setBackground(Color.ORANGE);
-		btnNewButton.setForeground(Color.RED);
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -124,8 +124,8 @@ import javax.swing.SwingConstants;public class Login1 {
 				frame.dispose();
 			}
 		});
-		btnNewButton_1.setBackground(Color.ORANGE);
-		btnNewButton_1.setForeground(Color.RED);
+		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.setForeground(Color.BLACK);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton_1.setBounds(870, 397, 117, 40);
 		frame.getContentPane().add(btnNewButton_1);
@@ -138,7 +138,7 @@ import javax.swing.SwingConstants;public class Login1 {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		//TODO
-		lblNewLabel_2.setIcon(new ImageIcon("Ressources/2015-10-26_Krombacher Marke des Jahres (1).jpg"));
+		lblNewLabel_2.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));
 		lblNewLabel_2.setBounds(0, 0, 1745, 733);
 		frame.getContentPane().add(lblNewLabel_2);
 	}
