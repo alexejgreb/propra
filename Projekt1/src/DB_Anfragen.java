@@ -331,7 +331,7 @@ public class DB_Anfragen {
 			String sql22="update Kneipe_Teilnehmer set Vermerk=1 where Kneipe_Nr='"+value115+"' ";
 			PreparedStatement pst3=con.prepareStatement(sql22);
 			pst3.execute();
-			JOptionPane.showMessageDialog(null,"Lizenz erteilt");
+			//JOptionPane.showMessageDialog(null,"Lizenz erteilt");
 
 
 
