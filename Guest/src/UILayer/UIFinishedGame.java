@@ -47,7 +47,7 @@ public class UIFinishedGame extends JFrame {
      */
     public UIFinishedGame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 300, 400);
+        setBounds(100, 100, 900, 600);
         contentPane = new JPanel(new BorderLayout());
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -61,7 +61,7 @@ public class UIFinishedGame extends JFrame {
         contentPane.add(southPanel,BorderLayout.SOUTH);
 
         JLabel lblHeader = new JLabel("Ergebnis");
-        lblHeader.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblHeader.setFont(new Font("Tahoma", Font.BOLD, 18));
         lblHeader.setBounds(5, 5, 424, 14);
         northPanel.add(lblHeader);
 
@@ -88,12 +88,6 @@ public class UIFinishedGame extends JFrame {
         labelUserPlacing.setFont(new Font("Tahoma", Font.BOLD, 15));
         labelUserPlacing.setBounds(5, 95, 120, 14);
         contentPane.add(labelUserPlacing);
-
-        //TODO Hintergrund
-        JLabel background = new JLabel("");
-        background.setIcon(new ImageIcon("Ressources\\Imag\\index.jpg"));
-        background.setBounds(100, 100, 700, 500);
-        contentPane.add(background);
 
 
         JButton buttonLogout = new JButton("Logout");
@@ -140,7 +134,11 @@ public class UIFinishedGame extends JFrame {
 
             }
         });
-
+        //Hintergrundbild
+        ImageIcon imageIcon = new ImageIcon("Ressources/Startbild.jpg");
+        JLabel backgroundImage = new JLabel(imageIcon);
+        backgroundImage.setBounds(0, 0, 900, 577);
+        contentPane.add(backgroundImage);
 
     }
 
