@@ -18,7 +18,7 @@ public class DB_Anfragen {
         con=DataBaseConnector.dbConnectorMariaDB();
     }
 
-    public static void Bar_Registration(String Surname,String Firstname,String Street,String City,long post,long mobil,String mail,String Nickname,String Message,int Note,long Password){ //// Tabelle Fragen
+    public static void Bar_Registration(long Bar_Nr,String Surname,String Firstname,String Street,String City,long post,long mobil,String mail,String Nickname,String Message,int Note,long Password){ //// Tabelle Fragen
 
         //con=Database.dbConnector();
         con = DataBaseConnector.dbConnectorMariaDB();
@@ -37,7 +37,10 @@ public class DB_Anfragen {
             pst.setLong(10,Note);
             pst.setLong(11,Password);
             pst.execute();
-            //JOptionPane.showMessageDialog(null,"Save");
+
+            String message = showPw(Bar_Nr);
+            JOptionPane.showMessageDialog(null,message);
+
         } catch (Exception e0) {
             JOptionPane.showMessageDialog(null,"Überprüfen Sie Ihre eingegbenen Daten.");
         }
@@ -710,5 +713,29 @@ public class DB_Anfragen {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+    }
+    public static String showPw(long barNr){
+        String tempresult = "";
+        String tempresult2 = "";
+        String result = "";
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        try{
+            String query = "SELECT * FROM Bar WHERE Bar_Nr='"+barNr+"'";
+
+            PreparedStatement pst = con.prepareStatement(query);
+
+            ResultSet res1 = pst.executeQuery();
+            while(res1.next()) {
+
+                tempresult = res1.getString("Nickname");
+                tempresult2 += res1.getInt("Password");
+            }
+            res1.close();
+            pst.close();
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+        return result = "Ihr Benutzername ist: "+tempresult+ " und ihr Passwort ist: " +tempresult2+"\nNotieren Sie es sich.";
     }
 }

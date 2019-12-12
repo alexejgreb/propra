@@ -1899,7 +1899,7 @@ public class Spiel_Starten {
 			}
 		});
 		fragen.setBounds(392, 106, 822, 28);
-		frame.getContentPane().add(fragen);
+		//frame.getContentPane().add(fragen);
 
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon("Ressources/image_content_828136805_20180122145147.jpg"));

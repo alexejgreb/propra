@@ -476,9 +476,10 @@ public class Bar_Owner {
                         long Bar_tel = Long.parseLong(tel.getText());
                         int Note = 1;
                         long PWD = Bar_PLZ + 100000;
+                        long tempBar_Nr = Long.parseLong(BarNR.getText());
 
 
-                        DB_Anfragen.Bar_Registration(name.getText(), vorname.getText(), strasse.getText(), stadt.getText(), Bar_PLZ, Bar_tel, email.getText(), bname.getText(), msg.getText(), Note, PWD);
+                        DB_Anfragen.Bar_Registration(tempBar_Nr,name.getText(), vorname.getText(), strasse.getText(), stadt.getText(), Bar_PLZ, Bar_tel, email.getText(), bname.getText(), msg.getText(), Note, PWD);
 
 
                         ta.setText("");
@@ -668,7 +669,7 @@ public class Bar_Owner {
 
 
                     } catch (Exception ee) {
-
+                        ee.printStackTrace();
                     }
 
 
