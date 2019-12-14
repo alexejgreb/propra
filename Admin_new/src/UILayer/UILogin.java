@@ -79,16 +79,20 @@ public class UILogin {
         frame.getContentPane().add(loginButton);
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-
-                try {
-                    UIMainMenu.main(null);
-                } catch (ClassNotFoundException
-                        | UnsupportedLookAndFeelException
-                        | InstantiationException
-                        | IllegalAccessException ex) {
-                    ex.printStackTrace();
+                String tempPassword = passwordField.getText();
+                if(tempPassword.equals("1212")) {
+                    try {
+                        UIMainMenu.main(null);
+                    } catch (ClassNotFoundException
+                            | UnsupportedLookAndFeelException
+                            | InstantiationException
+                            | IllegalAccessException ex) {
+                        ex.printStackTrace();
+                    }
+                    frame.dispose();
+                } else{
+                    JOptionPane.showMessageDialog(null,"Falsches Passwort.");
                 }
-                frame.dispose();
             }
         });
 

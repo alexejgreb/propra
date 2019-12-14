@@ -1,5 +1,7 @@
 package UILayer;
 
+import DataLayer.DataBaseConnector;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +24,6 @@ public class UIMainMenu {
                     mainMenu.frame.setVisible(true);
 
                     //Tabelle füllen
-                    // TODO DB_Anfragen.Table_Bar(table);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -96,7 +97,14 @@ public class UIMainMenu {
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-
+                try {
+                    UILogin.main(DataBaseConnector.getArgs());
+                } catch (ClassNotFoundException
+                        | UnsupportedLookAndFeelException
+                        | InstantiationException
+                        | IllegalAccessException ex) {
+                    ex.printStackTrace();
+                }
                 frame.dispose();
             }
         });
