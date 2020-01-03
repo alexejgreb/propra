@@ -1,5 +1,6 @@
 package UILayer;
 
+import DataLayer.DataBase;
 import DataLayer.DataBaseConnector;
 import javax.swing.*;
 import java.awt.*;
@@ -80,7 +81,8 @@ public class UILogin {
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 String tempPassword = passwordField.getText();
-                if(tempPassword.equals("1212")) {
+                DataBase db = new DataBase();
+                if(db.adminLogin(adminField.getText(),passwordField.getText())) {
                     try {
                         UIMainMenu.main(null);
                     } catch (ClassNotFoundException
@@ -91,7 +93,7 @@ public class UILogin {
                     }
                     frame.dispose();
                 } else{
-                    JOptionPane.showMessageDialog(null,"Falsches Passwort.");
+                    JOptionPane.showMessageDialog(null,"Falscher Benutzername oder Passwort");
                 }
             }
         });

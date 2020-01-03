@@ -88,11 +88,24 @@ public class UIMainMenu {
             }
         });
 
+        JButton btnBarManager = new JButton("Bars Verwalten");
+        btnBarManager.setForeground(Color.BLACK);
+        btnBarManager.setBackground(Color.WHITE);
+        btnBarManager.setFont(new Font("Tahoma", Font.BOLD, 17));
+        btnBarManager.setBounds(25, 286, 291, 51);
+        frame.getContentPane().add(btnBarManager);
+        btnBarManager.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                UIBarManager.main(null);
+                frame.dispose();
+            }
+        });
+
         JButton logoutButton = new JButton("Logout");
         logoutButton.setForeground(Color.BLACK);
         logoutButton.setBackground(Color.WHITE);
         logoutButton.setFont(new Font("Tahoma", Font.BOLD, 17));
-        logoutButton.setBounds(25, 286, 291, 51);
+        logoutButton.setBounds(25, 365, 291, 51);
         frame.getContentPane().add(logoutButton);
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
