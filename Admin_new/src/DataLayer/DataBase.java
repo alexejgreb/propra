@@ -25,6 +25,35 @@ public class DataBase {
         }
         return status;
     }
+    public int getNewAdminID(){
+        int id=0;
+        String query="Select ID FROM ADMIN";
+        try{
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet res = pstmt.executeQuery(query);
+
+            while(res.next()){
+                id++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        id++;
+        return id;
+    }
+    public void insertNewAdmin(int id, String user,String password){
+        String insert="INSERT IN TO Admin (ID, User, Password) VALUES (?,?,?)";
+        try{
+            PreparedStatement pstmt = con.prepareStatement(insert);
+            pstmt.setInt(1,id);
+            pstmt.setString(2,user);
+            pstmt.setString(3,password);
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public int getNewBarNumber(){
         int barNumber=-2;
         String query = "SELECT Bar_Nr FROM Bar WHERE Bar_Nr ";

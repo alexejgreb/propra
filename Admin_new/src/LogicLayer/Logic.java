@@ -128,4 +128,25 @@ public class Logic {
         }
         return error;
     }
+
+    public void addNewAdmin(String user,String password){
+        int id = db.getNewAdminID();
+        boolean error=false;
+
+        //prüfen ob Strings leer sind
+        if (user.isEmpty()){
+            error=true;
+        }
+        if (password.isEmpty()){
+            error=true;
+        }
+
+        //
+        if (error == false){
+            db.insertNewAdmin(id,user,password);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Bitte überprüfen Sie ihre eingaben!");
+        }
+    }
 }
