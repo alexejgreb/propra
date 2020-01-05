@@ -1,5 +1,6 @@
 package DataLayer;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,14 +27,14 @@ public class DataBase {
         return status;
     }
     public int getNewAdminID(){
-        int id=0;
-        String query="Select ID FROM ADMIN";
+        int id=-2;
+        String query="SELECT ID FROM Admin ORDER BY ID DESC LIMIT 1";
         try{
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet res = pstmt.executeQuery(query);
 
             while(res.next()){
-                id++;
+                id=res.getInt("ID");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -42,7 +43,8 @@ public class DataBase {
         return id;
     }
     public void insertNewAdmin(int id, String user,String password){
-        String insert="INSERT IN TO Admin (ID, User, Password) VALUES (?,?,?)";
+
+        String insert="INSERT INTO Admin (ID, User, Password) VALUES (?,?,?)";
         try{
             PreparedStatement pstmt = con.prepareStatement(insert);
             pstmt.setInt(1,id);
@@ -50,19 +52,21 @@ public class DataBase {
             pstmt.setString(3,password);
             pstmt.executeUpdate();
             pstmt.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
     public int getNewBarNumber(){
         int barNumber=-2;
-        String query = "SELECT Bar_Nr FROM Bar WHERE Bar_Nr ";
+        String query = "SELECT Bar_Nr FROM Bar ORDER BY Bar_Nr DESC LIMIT 1";
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet res = pstmt.executeQuery(query);
 
             while (res.next()) {
-                barNumber=res.getInt(query);
+                barNumber=res.getInt("Bar_Nr");
             }
             res.close();
             pstmt.close();
@@ -73,9 +77,9 @@ public class DataBase {
         return barNumber;
     }
 
-    public void insertBar(int Bar_Nr,String surename,String firstname, String street, String city, int post, int mobile, String mail, String nickname, int password){
-        String insert="INSERT IN TO Bar (Bar_Nr, Surename, Firstname, Street, City, Post, Mobil, Mail, Nickname, Note, Password) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-
+    public boolean insertBar(int Bar_Nr,String surename,String firstname, String street, String city, int post, int mobile, String mail, String nickname, int password){
+        String insert="INSERT INTO Bar (Bar_Nr, Surname, First_name, Street, City, Post, Mobil, Mail, Nickname, Note, Password) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        boolean status=false;
         try {
             PreparedStatement pstmt = con.prepareStatement(insert);
             pstmt.setInt(1, Bar_Nr);
@@ -93,9 +97,11 @@ public class DataBase {
             pstmt.executeUpdate();
             pstmt.close();
 
+            status=true;
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
+        return status;
     }
 
 }

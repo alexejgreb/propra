@@ -70,7 +70,7 @@ public class UIAddBar extends JFrame {
 		
 		textFieldBarNumber = new JTextField();
 		textFieldBarNumber.setEditable(false);
-		//textFieldBarNumber.setText(""+db.getNewBarNumber());
+		textFieldBarNumber.setText(""+db.getNewBarNumber());
 		contentPane.add(textFieldBarNumber);
 		textFieldBarNumber.setColumns(10);
 		

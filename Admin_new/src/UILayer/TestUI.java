@@ -12,7 +12,9 @@ public class TestUI {
         DataBaseConnector.setServerUsername(args[1]);
         DataBaseConnector.setServerPassword(args[2]);
         DataBase db =new DataBase();
-        System.out.println(db.getNewBarNumber());
+        System.out.println(db.getNewAdminID()+" "+db.getNewBarNumber());
+        UIEditAdmin ea=new UIEditAdmin();
+        ea.main(null);
     }
 
 }

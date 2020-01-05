@@ -49,6 +49,15 @@ public class UIBarManager extends JFrame {
 				UIAddBar.main(null);
 			}
 		});
+
+		JButton btnAddAdmin = new JButton("Admin hinzufügen");
+		btnAddAdmin.setBounds(10, 51, 115, 23);
+		contentPane.add(btnAddAdmin);
+		btnAddAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UIAddBar.main(null);
+			}
+		});
 		
 		JButton btnBack = new JButton("Zurück");
 		btnBack.setBounds(10, 227, 89, 23);

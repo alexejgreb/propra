@@ -12,7 +12,7 @@ public class Logic {
     public boolean addBar(String barNumber, String barName, String preName, String sureName, String telefoneNumber, String streetAndHN, String city, String postCode, String eMail, String password){
         //ToDo:boolean einbinden um detaliertere Fehlerausgabe zu ermöglichen!
         boolean booleanBarNumber=false,booleanBarName=false,booleanPreName=false,booleanSureName=false, booleanTelefoneNumber =false,booleanStreetAndHN=false,booleanCity=false,booleanPostCode=false,booleanEMail=false,booleanPassword=false;
-
+        boolean statusDB=false;
         boolean error=false;
         int intBarNumber=0, intTelefoneNumber=0, intPostCode=0, intPassword=0;
         // Prüfen ob Variabeln leer sind
@@ -120,18 +120,23 @@ public class Logic {
         }
         else{
             try{
-              //  db.insertBar(intBarNumber,sureName,preName,streetAndHN,city,intPostCode,intTelefoneNumber,eMail,barName,intPassword);
-                JOptionPane.showMessageDialog(null,"Bar wurde hinzugefügt!");
+                statusDB=db.insertBar(intBarNumber,sureName,preName,streetAndHN,city,intPostCode,intTelefoneNumber,eMail,barName,intPassword);
+                if (statusDB == true){
+                    JOptionPane.showMessageDialog(null,"Bar wurde hinzugefügt!");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Fehler beim hinzufügen!");
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,"Fehler beim hinzufügen!");
             }
         }
         return error;
     }
 
-    public void addNewAdmin(String user,String password){
+    public boolean addNewAdmin(String user,String password){
         int id = db.getNewAdminID();
         boolean error=false;
+        boolean status=false;
 
         //prüfen ob Strings leer sind
         if (user.isEmpty()){
@@ -144,9 +149,12 @@ public class Logic {
         //
         if (error == false){
             db.insertNewAdmin(id,user,password);
+            JOptionPane.showMessageDialog(null,"Hinzufügen erfolgreich");
+            status=true;
         }
         else{
             JOptionPane.showMessageDialog(null,"Bitte überprüfen Sie ihre eingaben!");
         }
+        return status;
     }
 }
