@@ -42,22 +42,42 @@ public class DataBase {
         id++;
         return id;
     }
-    public void insertNewAdmin(int id, String user,String password){
+    public void insertNewAdmin(int id, String user,String password,int master){
 
-        String insert="INSERT INTO Admin (ID, User, Password) VALUES (?,?,?)";
+        String insert="INSERT INTO Admin (ID, User, Password, Master) VALUES (?,?,?,?)";
         try{
             PreparedStatement pstmt = con.prepareStatement(insert);
             pstmt.setInt(1,id);
             pstmt.setString(2,user);
             pstmt.setString(3,password);
+            pstmt.setInt(4,master);
             pstmt.executeUpdate();
             pstmt.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+    public String[] searchAdmin(int id){
+        String query ="SELECT * FROM Admin WHERE ID = '"+ id+"'";
+        String data [] =new String[4];
+
+        try{
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet res =pstmt.executeQuery(query);
+            if(res.next()){
+                data[0]=res.getString(1);
+                data[1]=res.getString(2);
+                data[2]=res.getString(3);
+                data[3]=res.getString(4);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return data;
+        //System.out.println(data[1]+data[0]);
+    }
+
     public int getNewBarNumber(){
         int barNumber=-2;
         String query = "SELECT Bar_Nr FROM Bar ORDER BY Bar_Nr DESC LIMIT 1";
@@ -77,6 +97,29 @@ public class DataBase {
         return barNumber;
     }
 
+    public boolean deleteAdmin(int id){
+        boolean status=false;
+        String delete="DELETE FROM Admin WHERE ID = '" + id + "'";
+        try {
+            PreparedStatement pstmt = con.prepareStatement(delete);
+            pstmt.execute();
+            pstmt.close();
+            status=true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
+    public void editAdmin(int id, String user,String password,int master){
+        String update="Update Admin SET User = '"+user+"', Password = '"+password+"',Master = '"+master+ "'WHERE ID = '"+id+"'";
+        try {
+            PreparedStatement pstmt = con.prepareStatement(update);
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
     public boolean insertBar(int Bar_Nr,String surename,String firstname, String street, String city, int post, int mobile, String mail, String nickname, int password){
         String insert="INSERT INTO Bar (Bar_Nr, Surname, First_name, Street, City, Post, Mobil, Mail, Nickname, Note, Password) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         boolean status=false;

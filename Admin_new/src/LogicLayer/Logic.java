@@ -3,6 +3,7 @@ package LogicLayer;
 import DataLayer.DataBase;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Logic {
     //DataBase
@@ -133,7 +134,7 @@ public class Logic {
         return error;
     }
 
-    public boolean addNewAdmin(String user,String password){
+    public boolean addNewAdmin(String user,String password,int master){
         int id = db.getNewAdminID();
         boolean error=false;
         boolean status=false;
@@ -148,7 +149,7 @@ public class Logic {
 
         //
         if (error == false){
-            db.insertNewAdmin(id,user,password);
+            db.insertNewAdmin(id,user,password,master);
             JOptionPane.showMessageDialog(null,"Hinzufügen erfolgreich");
             status=true;
         }
@@ -156,5 +157,64 @@ public class Logic {
             JOptionPane.showMessageDialog(null,"Bitte überprüfen Sie ihre eingaben!");
         }
         return status;
+    }
+
+    public boolean deleteAdmin(String id){
+        boolean status=false;
+        int tempId=-1;
+
+        if (id.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Das ID Feld ist leer!");
+        }else{
+            try{
+                tempId=Integer.valueOf(id);
+                db.deleteAdmin(tempId);
+                JOptionPane.showMessageDialog(null,"Löschen erfolgreich");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null,"Löschen fehlgschlagen");
+            }
+        }
+        return status;
+    }
+
+    public String[] searchAdmin(String id){
+        int tempId=-2;
+        String[] data = new String[4];
+
+        if(id.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Bitte geben Sie eine ID ein zum suchen!");
+        }
+        else{
+            try {
+                tempId= Integer.valueOf(id);
+                data=db.searchAdmin(tempId);
+                } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+    public void editAdmin(int id, String user, String password, int master){
+        boolean error=false;
+        if (user.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Name darf nicht leer sein!");
+            error=true;
+        }
+        if(password.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Passwort darf nich leer sein!");
+            error=true;
+        }
+        if (error==false){
+            try{
+                db.editAdmin(id, user, password, master);
+                JOptionPane.showMessageDialog(null,"Änderungen gespeichert!");
+            } catch (HeadlessException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"Fehler! \nÄnderungen wurden nicht gespeischert!");
+        }
+
     }
 }

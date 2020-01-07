@@ -41,7 +41,7 @@ public class UIBarManager extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnAddBar = new JButton("Bar hinzufügen");
+		JButton btnAddBar = new JButton("Bar bearbeiten");
 		btnAddBar.setBounds(10, 51, 115, 23);
 		contentPane.add(btnAddBar);
 		btnAddBar.addActionListener(new ActionListener() {
@@ -50,12 +50,12 @@ public class UIBarManager extends JFrame {
 			}
 		});
 
-		JButton btnAddAdmin = new JButton("Admin hinzufügen");
-		btnAddAdmin.setBounds(10, 51, 115, 23);
+		JButton btnAddAdmin = new JButton("Admin bearbeiten");
+		btnAddAdmin.setBounds(10, 101, 115, 23);
 		contentPane.add(btnAddAdmin);
 		btnAddAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UIAddBar.main(null);
+				UIEditAdmin.main(null);
 			}
 		});
 		

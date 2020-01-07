@@ -12,9 +12,11 @@ public class TestUI {
         DataBaseConnector.setServerUsername(args[1]);
         DataBaseConnector.setServerPassword(args[2]);
         DataBase db =new DataBase();
-        System.out.println(db.getNewAdminID()+" "+db.getNewBarNumber());
-        UIEditAdmin ea=new UIEditAdmin();
-        ea.main(null);
+        String[] s= new String[4];
+     //   s=db.searchAdmin(100001);
+     //   System.out.println(""+s[0]+s[1]+s[2]+" "+s[3]);
+        db.editAdmin(100002,"test","test1",1);
+
     }
 
 }

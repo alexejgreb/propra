@@ -3,24 +3,15 @@ package UILayer;
 import DataLayer.DataBase;
 import LogicLayer.Logic;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JTextField;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Box;
-import javax.swing.JButton;
 import javax.xml.crypto.Data;
 
 public class UIEditAdmin extends JFrame {
-
+	private boolean status;
 	private JPanel contentPane;
 	private JTextField textFieldAdminId;
 	private JTextField textFieldUserName;
@@ -41,7 +32,9 @@ public class UIEditAdmin extends JFrame {
 	private JTextField textFieldPasswordEdit;
 	private JButton btnSafe;
 	private JButton btnBack;
-
+	private JButton btnDelete;
+	private JCheckBox checkBoxMaster;
+	private JCheckBox checkBoxMasterEdit;
 	/**
 	 * Launch the application.
 	 */
@@ -64,6 +57,7 @@ public class UIEditAdmin extends JFrame {
 	public UIEditAdmin() {
 		DataBase db= new DataBase();
 		Logic logic= new Logic();
+
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 606, 398);
@@ -164,6 +158,26 @@ public class UIEditAdmin extends JFrame {
 		gbc_btnSearch.gridx = 4;
 		gbc_btnSearch.gridy = 3;
 		contentPane.add(btnSearch, gbc_btnSearch);
+		btnSearch.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[] data = new String[3];
+				data=logic.searchAdmin(textFieldUserIdSearch.getText());
+				textFieldUserIdEdit.setText(data[0]);
+				textFieldUserNameEdit.setText(data[1]);
+				textFieldPasswordEdit.setText(data[2]);
+				try {
+					if(Integer.valueOf(data[3])!=0) {
+						checkBoxMasterEdit.setSelected(true);
+					}
+					else{
+						checkBoxMasterEdit.setSelected(false);
+					}
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null,"ID-Nummer nicht vergeben!");
+				}
+			}
+		});
 		
 		JLabel lblAdminPassword = new JLabel("Passwort");
 		GridBagConstraints gbc_lblAdminPassword = new GridBagConstraints();
@@ -181,6 +195,13 @@ public class UIEditAdmin extends JFrame {
 		gbc_textFieldPassword.gridy = 4;
 		contentPane.add(textFieldPassword, gbc_textFieldPassword);
 		textFieldPassword.setColumns(10);
+
+		checkBoxMaster= new JCheckBox("Master");
+		GridBagConstraints gbc_checkBoxMaster = new GridBagConstraints();
+		gbc_checkBoxMaster.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxMaster.gridx = 1;
+		gbc_checkBoxMaster.gridy = 5;
+		contentPane.add(checkBoxMaster, gbc_checkBoxMaster);
 		
 		btnAdd = new JButton("erstellen");
 		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
@@ -191,8 +212,15 @@ public class UIEditAdmin extends JFrame {
 		btnAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int master=0;
+				if (checkBoxMaster.isSelected()){
+					master=1;
+				}
+				else{
+					master=0;
+				}
 				boolean tempStatus=false;
-				tempStatus=logic.addNewAdmin(textFieldUserName.getText(),textFieldPassword.getText());
+				tempStatus=logic.addNewAdmin(textFieldUserName.getText(),textFieldPassword.getText(),master);
 				//reset
 				if (tempStatus==true) {
 					dispose();
@@ -253,19 +281,60 @@ public class UIEditAdmin extends JFrame {
 		gbc_textFieldPasswordEdit.gridy = 8;
 		contentPane.add(textFieldPasswordEdit, gbc_textFieldPasswordEdit);
 		textFieldPasswordEdit.setColumns(10);
+
+		checkBoxMasterEdit = new JCheckBox("Master");
+		GridBagConstraints gbc_checkBoxMasterEdit = new GridBagConstraints();
+		gbc_checkBoxMasterEdit.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxMasterEdit.gridx = 4;
+		gbc_checkBoxMasterEdit.gridy = 9;
+		contentPane.add(checkBoxMasterEdit, gbc_checkBoxMasterEdit);
 		
-		btnSafe = new JButton("\u00C4nderungen Speichern");
+		btnSafe = new JButton("Änderungen Speichern");
 		GridBagConstraints gbc_btnSafe = new GridBagConstraints();
 		gbc_btnSafe.insets = new Insets(0, 0, 5, 5);
 		gbc_btnSafe.gridx = 4;
 		gbc_btnSafe.gridy = 10;
 		contentPane.add(btnSafe, gbc_btnSafe);
+		btnSafe.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int master;
+				if(checkBoxMasterEdit.isSelected()){
+					master=1;
+				}
+				else{
+					master=0;
+				}
+				logic.editAdmin(Integer.valueOf(textFieldUserIdEdit.getText()),textFieldUserNameEdit.getText(),textFieldPasswordEdit.getText(),master);
+			}
+		});
+
+		btnDelete = new JButton("Benutzer löschen");
+		GridBagConstraints gbc_btnDelete = new GridBagConstraints();
+		gbc_btnDelete.insets = new Insets(0, 0, 5, 5);
+		gbc_btnDelete.gridx = 4;
+		gbc_btnDelete.gridy = 11;
+		contentPane.add(btnDelete, gbc_btnDelete);
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//status ist ein boolean
+				status=logic.deleteAdmin(textFieldUserIdEdit.getText());
+			}
+		});
 		
-		btnBack = new JButton("Zur\u00FCck");
+		btnBack = new JButton("Zurück");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
 		gbc_btnBack.gridx = 0;
 		gbc_btnBack.gridy = 12;
 		contentPane.add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UIBarManager.main(null);
+				dispose();
+			}
+		});
 	}
 }

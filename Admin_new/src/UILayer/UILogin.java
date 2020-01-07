@@ -2,6 +2,8 @@ package UILayer;
 
 import DataLayer.DataBase;
 import DataLayer.DataBaseConnector;
+import LogicLayer.Admin;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -59,7 +61,6 @@ public class UILogin {
         frame.getContentPane().add(passwordLabel);
 
         JTextField adminField = new JTextField();
-        adminField.setEditable(false);
         adminField.setText("Admin");
         adminField.setFont(new Font("Tahoma", Font.BOLD, 15));
         adminField.setBounds(803, 264, 296, 40);
@@ -84,6 +85,7 @@ public class UILogin {
                 DataBase db = new DataBase();
                 if(db.adminLogin(adminField.getText(),passwordField.getText())) {
                     try {
+                      //  Admin admin = new Admin(1,adminField.getText(),passwordField.getText(););
                         UIMainMenu.main(null);
                     } catch (ClassNotFoundException
                             | UnsupportedLookAndFeelException
