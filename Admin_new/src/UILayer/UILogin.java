@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UILogin {
-
+    static Admin admin= new Admin(-2,"2",-2);
     private JFrame frame;
 
 
@@ -85,7 +85,8 @@ public class UILogin {
                 DataBase db = new DataBase();
                 if(db.adminLogin(adminField.getText(),passwordField.getText())) {
                     try {
-                      //  Admin admin = new Admin(1,adminField.getText(),passwordField.getText(););
+
+                        //db.creatAdmin(adminField.getText(),passwordField.getText());
                         UIMainMenu.main(null);
                     } catch (ClassNotFoundException
                             | UnsupportedLookAndFeelException

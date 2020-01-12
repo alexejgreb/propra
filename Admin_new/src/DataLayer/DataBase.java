@@ -1,5 +1,7 @@
 package DataLayer;
 
+import LogicLayer.Admin;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +10,40 @@ import java.sql.SQLException;
 
 public class DataBase {
     private static Connection con = DataBaseConnector.dbConnectorMariaDB();
+    public Admin admin=new Admin(-1,"-1",-1);
+
+    public Admin creatAdmin(String loginUser, String loginPassword){
+        String query ="SELECT* FROM Admin WHERE User = '"+ loginUser + "' AND Password = '"+ loginPassword +"'";
+        boolean status= false;
+        String user=loginUser;
+        int id = -1;
+        int master = -1;
+
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet res = pstmt.executeQuery(query);
+
+            while (res.next()) {
+                status = true;
+                id=res.getInt("ID");
+                master=res.getInt("Master");
+            }
+            res.close();
+            pstmt.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (status == true){
+
+            admin.setId(id);
+            admin.setUser(user);
+            admin.setId(master);
+            System.out.println("hat geklappt"+admin.getId()+" "+admin.getMaster());
+            return admin;
+        }
+        return null;
+    }
     public boolean adminLogin(String user,String password){
         String query = "SELECT* FROM Admin WHERE User = '"+ user + "' AND Password = '"+ password +"'";
         boolean status= false;
@@ -146,5 +182,27 @@ public class DataBase {
         }
         return status;
     }
+    public boolean deletBar(int id) {
+        String delete = "DELET FROM Bar WEHRE Bar_Nr =" + id;
+        boolean error = true;
+
+        try {
+            PreparedStatement pstmt = con.prepareStatement(delete);
+            pstmt.execute();
+            pstmt.close();
+            error = false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return error;
+    }
+
+    public boolean selectBar(int id){
+        boolean error=true;
+        String querry="SELCET*"
+
+        return error;
+    }
+
 
 }
