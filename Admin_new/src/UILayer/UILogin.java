@@ -85,7 +85,9 @@ public class UILogin {
                 DataBase db = new DataBase();
                 if(db.adminLogin(adminField.getText(),passwordField.getText())) {
                     try {
-
+                       // admin.setUser(adminField.getText());
+                       // admin.setPassword(passwordField.getText());
+                        //admin.setId(//TODO);
                         //db.creatAdmin(adminField.getText(),passwordField.getText());
                         UIMainMenu.main(null);
                     } catch (ClassNotFoundException

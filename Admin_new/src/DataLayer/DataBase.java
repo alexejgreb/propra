@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class DataBase {
     private static Connection con = DataBaseConnector.dbConnectorMariaDB();
-    public Admin admin=new Admin(-1,"-1",-1);
+   // public Admin admin=new Admin(-1,"-1",-1);
 
     public Admin creatAdmin(String loginUser, String loginPassword){
         String query ="SELECT* FROM Admin WHERE User = '"+ loginUser + "' AND Password = '"+ loginPassword +"'";
@@ -18,6 +18,7 @@ public class DataBase {
         String user=loginUser;
         int id = -1;
         int master = -1;
+        Admin admin=new Admin(-1,"-1",-1);
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
@@ -34,15 +35,14 @@ public class DataBase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if (status == true){
-
+        if (status){
             admin.setId(id);
             admin.setUser(user);
             admin.setId(master);
             System.out.println("hat geklappt"+admin.getId()+" "+admin.getMaster());
             return admin;
         }
-        return null;
+        return admin;
     }
     public boolean adminLogin(String user,String password){
         String query = "SELECT* FROM Admin WHERE User = '"+ user + "' AND Password = '"+ password +"'";
@@ -183,7 +183,7 @@ public class DataBase {
         return status;
     }
     public boolean deletBar(int id) {
-        String delete = "DELET FROM Bar WEHRE Bar_Nr =" + id;
+        String delete = "DELETE FROM Bar WHERE Bar_Nr =" + id;
         boolean error = true;
 
         try {
@@ -199,7 +199,7 @@ public class DataBase {
 
     public boolean selectBar(int id){
         boolean error=true;
-        String querry="SELCET*"
+        String querry="SELCET* FROM Bar WHERE Bar_Nr="+id;
 
         return error;
     }
