@@ -1,6 +1,7 @@
 package LogicLayer;
 
 import DataLayer.DataBaseConnector;
+import DataLayer.Question;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.*;

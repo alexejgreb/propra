@@ -1,7 +1,7 @@
 package UILayer;
 
 import LogicLayer.ManageQuestions;
-import LogicLayer.Question;
+import DataLayer.Question;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;

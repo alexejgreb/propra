@@ -1,4 +1,4 @@
-package LogicLayer;
+package DataLayer;
 
 public class Admin {
 
@@ -8,7 +8,10 @@ public class Admin {
     private String password;
     private int id;
 
-    public Admin(int id, String user, int master){
+    public Admin(){
+
+    }
+    public Admin(int id, String user,String password, int master){
         this.id=id;
         this.user=user;
         this.password=password;
@@ -33,7 +36,7 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public int getId() {
         return id;
     }

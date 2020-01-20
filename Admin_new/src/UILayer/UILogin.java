@@ -2,7 +2,7 @@ package UILayer;
 
 import DataLayer.DataBase;
 import DataLayer.DataBaseConnector;
-import LogicLayer.Admin;
+import DataLayer.Admin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UILogin {
-    static Admin admin= new Admin(-2,"2",-2);
+    static Admin admin= new Admin();
     private JFrame frame;
 
 
@@ -85,10 +85,13 @@ public class UILogin {
                 DataBase db = new DataBase();
                 if(db.adminLogin(adminField.getText(),passwordField.getText())) {
                     try {
-                       // admin.setUser(adminField.getText());
-                       // admin.setPassword(passwordField.getText());
-                        //admin.setId(//TODO);
-                        //db.creatAdmin(adminField.getText(),passwordField.getText());
+                        admin.setUser(adminField.getText());
+                        admin.setPassword(passwordField.getText());
+                        int[] idAndMaster=new int[2];
+                        idAndMaster=db.getAdminIdAndMaster(adminField.getText(),passwordField.getText());
+                        admin.setId(idAndMaster[0]);
+                        admin.setMaster(idAndMaster[1]);
+                        System.out.println(""+admin.getPassword()+" "+admin.getUser());
                         UIMainMenu.main(null);
                     } catch (ClassNotFoundException
                             | UnsupportedLookAndFeelException

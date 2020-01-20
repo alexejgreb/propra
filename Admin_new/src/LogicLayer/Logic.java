@@ -1,5 +1,6 @@
 package LogicLayer;
 
+import DataLayer.Bar;
 import DataLayer.DataBase;
 
 import javax.swing.*;
@@ -215,6 +216,30 @@ public class Logic {
         else {
             JOptionPane.showMessageDialog(null,"Fehler! \nÄnderungen wurden nicht gespeischert!");
         }
+    }
 
+    public boolean deleteBar(String id){
+        boolean error =false;
+        int tempId=-1;
+        if(id.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Bitte geben Sie eine ID-Nummer an!");
+        }
+        else{
+            try{
+                tempId=Integer.valueOf(id);
+                db.deleteBar(tempId);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null,"Die ID enthält unerlaubte Zeichen!");
+            }
+        }
+        return  error;
+    }
+
+    public Bar updateBar(Bar bar){
+        Bar tempBar= new Bar();
+        String test ="";
+
+
+        return tempBar;
     }
 }
