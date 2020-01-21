@@ -16,9 +16,9 @@ public class UILogin {
 
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 
-        DataBaseConnector.setServerAddress(args[0]);
-        DataBaseConnector.setServerUsername(args[1]);
-        DataBaseConnector.setServerPassword(args[2]);
+      //  DataBaseConnector.setServerAddress(args[0]);
+      //  DataBaseConnector.setServerUsername(args[1]);
+      //  DataBaseConnector.setServerPassword(args[2]);
 
         UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
         //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

@@ -10,9 +10,9 @@ public class TestUI {
 
     public static void main(String args[]){
 
-        DataBaseConnector.setServerAddress(args[0]);
-        DataBaseConnector.setServerUsername(args[1]);
-        DataBaseConnector.setServerPassword(args[2]);
+       // DataBaseConnector.setServerAddress(args[0]);
+     //   DataBaseConnector.setServerUsername(args[1]);
+     //   DataBaseConnector.setServerPassword(args[2]);
         DataBase db =new DataBase();
         String[] s= new String[4];
         int[] i=new int[2];
