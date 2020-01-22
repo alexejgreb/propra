@@ -83,9 +83,14 @@ public class UIMainMenu {
             public void actionPerformed(ActionEvent e) {
 
 
-                //frame.dispose();
 
+                    UIStatistik.main(null);
+
+
+                frame.dispose();
             }
+
+
         });
 
         JButton btnBarManager = new JButton("Bars Verwalten");
