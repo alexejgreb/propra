@@ -7,7 +7,7 @@ public class Bar {
     private String street;
     private String city;
     private int post;
-    private int telefonenummer;
+    private long telefonenummer;
     private String mail;
     private String BarName;
     private String message;
@@ -17,7 +17,7 @@ public class Bar {
     public Bar (){
 
     }
-    public Bar(int id, String surename, String firstname, String street, String city, int post, int telefonenummer, String mail, String barName, String message, int note, int passwort) {
+    public Bar(int id, String surename, String firstname, String street, String city, int post, long telefonenummer, String mail, String barName, String message, int note, int passwort) {
         this.id = id;
         this.surename = surename;
         this.firstname = firstname;
@@ -80,11 +80,11 @@ public class Bar {
         this.post = post;
     }
 
-    public int getTelefonenummer() {
+    public long getTelefonenummer() {
         return telefonenummer;
     }
 
-    public void setTelefonenummer(int telefonenummer) {
+    public void setTelefonenummer(long telefonenummer) {
         this.telefonenummer = telefonenummer;
     }
 

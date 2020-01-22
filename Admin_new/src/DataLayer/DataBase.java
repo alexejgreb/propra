@@ -1,9 +1,12 @@
 package DataLayer;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataBase {
     private static Connection con = DataBaseConnector.dbConnectorMariaDB();
@@ -226,5 +229,37 @@ public class DataBase {
             e.printStackTrace();
         }
         return error;
+    }
+
+    public ArrayList<Bar> searchBar(int id) {
+        String search ="SELECT * FROM Bar WHERE Bar_Nr LIKE '%"+id+"%'";
+        ArrayList<Bar> barList = new ArrayList<Bar>();
+        int i=0;
+        try{
+            PreparedStatement pstmt = con.prepareStatement(search);
+            ResultSet res = pstmt.executeQuery(search);
+            while(res.next()){
+                Bar bar = new Bar();
+                bar.setId(res.getInt(1));
+                bar.setSurename(res.getString(2));
+                bar.setFirstname(res.getString(3));
+                bar.setStreet(res.getString(4));
+                bar.setCity(res.getString(5));
+                bar.setPost(res.getInt(6));
+                bar.setTelefonenummer(res.getLong(7));
+                bar.setMail(res.getString(8));
+                bar.setBarName(res.getString(9));
+                bar.setMessage(res.getString(10));
+                bar.setNote(res.getInt(11));
+                bar.setPasswort(res.getInt(12));
+                barList.add(bar);
+                System.out.println(barList.get(i).getBarName());
+                i++;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Fehler beim Suchen!");
+            e.printStackTrace();
+        }
+        return barList;
     }
 }
