@@ -242,4 +242,72 @@ public class Logic {
 
         return tempBar;
     }
+
+    public void GUI_Edit(JLabel TextInfo,JRadioButton ZeitP,JRadioButton Date,JCheckBox BarNr,JComboBox T1,JComboBox T2, JComboBox M1, JComboBox M2, JComboBox J1, JComboBox J2, JComboBox Bar,JCheckBox Tag1, JCheckBox Tag2, JCheckBox Mo1, JCheckBox Mo2, JCheckBox Ja1, JCheckBox Ja2, JButton Anzeigen,JButton Anull ,int Vermerk)
+
+    {
+if(Vermerk==0){
+        TextInfo.setVisible(false);
+        ZeitP.setVisible(false);
+        Date.setVisible(false);
+        BarNr.setVisible(false);
+        T1.setVisible(false);
+        T2.setVisible(false);
+        M1.setVisible(false);
+        M2.setVisible(false);
+        J1.setVisible(false);
+        J2.setVisible(false);
+        Bar.setVisible(false);
+        Tag1.setVisible(false);
+        Tag2.setVisible(false);
+        Mo1.setVisible(false);
+        Mo2.setVisible(false);
+        Ja1.setVisible(false);
+        Ja2.setVisible(false);
+        Anzeigen.setVisible(false);
+        Anull.setVisible(false);
+    }
+    if(Vermerk==1){
+
+
+        TextInfo.setVisible(true);
+        ZeitP.setVisible(true);
+        Date.setVisible(true);
+        BarNr.setVisible(true);
+        T1.setVisible(true);
+        T2.setVisible(true);
+        M1.setVisible(true);
+        M2.setVisible(true);
+        J1.setVisible(true);
+        J2.setVisible(true);
+        Bar.setVisible(true);
+        Tag1.setVisible(true);
+        Tag2.setVisible(true);
+        Mo1.setVisible(true);
+        Mo2.setVisible(true);
+        Ja1.setVisible(true);
+        Ja2.setVisible(true);
+        Anzeigen.setVisible(true);
+        Anull.setVisible(true);
+
+
+    }
+
+
+
+
+    }
+    public void GUI_Edit0(JLabel TextInfo, JRadioButton Zeit, JRadioButton Date, int Vermerk){
+
+        if(Vermerk==1){
+
+            TextInfo.setVisible(true);
+            Zeit.setVisible(true);
+            Date.setVisible(true);
+
+        }
+
+
+    }
+
 }
