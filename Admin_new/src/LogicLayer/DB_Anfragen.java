@@ -14,20 +14,35 @@ public class DB_Anfragen {
 
     public static void Table_Jahr_QuizTeilnehmer(JTable t,int J1, int J2) {
 
-      con = DataBaseConnector.dbConnectorMariaDB();
+        con = DataBaseConnector.dbConnectorMariaDB();
         //con=Database1.dbConnector();
 
         try {
-            String query="select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Jahr from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"' group by PlannedGames.Jahr ";
-            PreparedStatement pst=con.prepareStatement(query);
-            ResultSet rs= pst.executeQuery();
+            String query = "select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Jahr from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr between  '" + J1 + "' and '" + J2 + "' group by PlannedGames.Jahr ";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
             t.setModel(DbUtils.resultSetToTableModel(rs));
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+        public static void Table_Monat_QuizTeilnehmer(JTable t,int M1, int M2) {
 
+            con = DataBaseConnector.dbConnectorMariaDB();
+            //con=Database1.dbConnector();
+
+            try {
+                String query="select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Monat from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' group by PlannedGames.Monat ";
+                PreparedStatement pst=con.prepareStatement(query);
+                ResultSet rs= pst.executeQuery();
+                t.setModel(DbUtils.resultSetToTableModel(rs));
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
     }
 
