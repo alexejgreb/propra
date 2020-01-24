@@ -3,16 +3,13 @@ package UILayer;
 import DataLayer.Bar;
 import DataLayer.DataBase;
 import LogicLayer.BarListCellRenderer;
-
-import java.awt.EventQueue;
+import LogicLayer.Logic;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class UIEditBar extends JFrame {
@@ -28,7 +25,7 @@ public class UIEditBar extends JFrame {
 	private JTextField textFieldPassword;
 	private JTextField textFieldBarName;
 	private JTextField textFieldPasswordRepeat;
-	private JTextField textField;
+	private JTextField textFieldMessage;
 	private JTextField textFieldPostcode;
 	private JTextField textSearch;
 	private ArrayList<Bar> barList = new ArrayList<>();
@@ -54,6 +51,7 @@ public class UIEditBar extends JFrame {
 	 */
 	public UIEditBar() {
 		DataBase db= new DataBase();
+		Logic logic = new Logic();
 
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -163,7 +161,7 @@ public class UIEditBar extends JFrame {
 		contentPane.add(list, gbc_list);
 
 
-		JLabel lblStreet = new JLabel("Stra\u00DFe und Hausnummer");
+		JLabel lblStreet = new JLabel("Straße und Hausnummer");
 		GridBagConstraints gbc_lblStreet = new GridBagConstraints();
 		gbc_lblStreet.anchor = GridBagConstraints.EAST;
 		gbc_lblStreet.insets = new Insets(0, 0, 5, 5);
@@ -307,15 +305,15 @@ public class UIEditBar extends JFrame {
 		gbc_lblMessage.gridy = 17;
 		contentPane.add(lblMessage, gbc_lblMessage);
 
-		textField = new JTextField("hallo");
+		textFieldMessage = new JTextField("");
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridheight = 2;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.BOTH;
 		gbc_textField.gridx = 1;
 		gbc_textField.gridy = 17;
-		contentPane.add(textField, gbc_textField);
-		textField.setColumns(10);
+		contentPane.add(textFieldMessage, gbc_textField);
+		textFieldMessage.setColumns(10);
 
 		JCheckBox chckbxBarDeaktivieren = new JCheckBox("Bar deaktivieren");
 		GridBagConstraints gbc_chckbxBarDeaktivieren = new GridBagConstraints();
@@ -323,6 +321,7 @@ public class UIEditBar extends JFrame {
 		gbc_chckbxBarDeaktivieren.gridx = 1;
 		gbc_chckbxBarDeaktivieren.gridy = 19;
 		contentPane.add(chckbxBarDeaktivieren, gbc_chckbxBarDeaktivieren);
+
 
 		JButton btnBack = new JButton("Zurück");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
@@ -337,6 +336,22 @@ public class UIEditBar extends JFrame {
 		gbc_btnAddBar.gridx = 1;
 		gbc_btnAddBar.gridy = 20;
 		contentPane.add(btnAddBar, gbc_btnAddBar);
+		btnAddBar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				boolean barIsActive =true;
+				if (chckbxBarDeaktivieren.isSelected()){
+					barIsActive=false;
+				}
+				//Vergleiche ob beide Passwörter übereinstimmen
+				if (textFieldPassword.getText()==textFieldPasswordRepeat.getText()){
+					//logic.addBar(textFieldId.getText(),textFieldBarName.getText(),textFieldFirstname.getText(),textFieldSurename.getText(),textFieldMobil.getText(),textFieldStreet.getText(),textFieldCity.getText(),textFieldPostcode.getText(),textFieldEMail.getText(),textFieldPassword.getText(),textFieldMessage.getText(),barIsActive,);
+				}
+				else{
+					JOptionPane.showMessageDialog(null,"Passwörtfelder stimmen nicht überein!");
+				}
+			}
+		});
 
 		JButton btnSearch = new JButton("Suchen");
 		btnSearch.addActionListener(new ActionListener() {
@@ -348,9 +363,7 @@ public class UIEditBar extends JFrame {
 				while(j<barList.size()){
 					bar=barList.get(j);
 					model.addElement(barList.get(j));
-					System.out.println(barList.get(j).getBarName());
 					j++;
-					//model.addElement(barList.get(j));
 				}
 			}
 		});
