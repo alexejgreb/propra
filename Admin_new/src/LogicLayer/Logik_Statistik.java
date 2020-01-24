@@ -86,7 +86,7 @@ public class Logik_Statistik {
             while (rs.next()){
                 String  Anzahl_QuizTeilnehmer= rs.getString("count(Kunde_Spiel.Kunden_Nr)");
                 label2.setText(Anzahl_QuizTeilnehmer);
-                String Monat = rs.getString("PlannedGames.Jahr");
+                String Monat = rs.getString("PlannedGames.Monat");
                 label1.setText(Monat);
                 int x1 = Integer.parseInt(label2.getText())	;
 

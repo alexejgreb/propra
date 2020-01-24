@@ -142,7 +142,7 @@ public class UIAddBar extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Logic temp = new Logic();
 				try {
-					temp.addBar(textFieldBarNumber.getText(),textFieldBarName.getText(),textFieldFirstname.getText(),textFieldSurename.getText(),textFieldPhoneNumber.getText(),textFieldStreet.getText(),textFieldCity.getText(),textFieldPostCode.getText(),textFieldBarEMail.getText(),textFieldPassword.getText());
+				//	temp.addBar(textFieldBarNumber.getText(),textFieldBarName.getText(),textFieldFirstname.getText(),textFieldSurename.getText(),textFieldPhoneNumber.getText(),textFieldStreet.getText(),textFieldCity.getText(),textFieldPostCode.getText(),textFieldBarEMail.getText(),textFieldPassword.getText());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
