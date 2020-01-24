@@ -34,7 +34,7 @@ public class DB_Anfragen {
             //con=Database1.dbConnector();
 
             try {
-                String query="select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Monat from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' group by PlannedGames.Monat ";
+                String query="select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Monat from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat BETWEEN '"+M1+"' and '"+M2+"' group by PlannedGames.Monat ASC";
                 PreparedStatement pst=con.prepareStatement(query);
                 ResultSet rs= pst.executeQuery();
                 t.setModel(DbUtils.resultSetToTableModel(rs));
