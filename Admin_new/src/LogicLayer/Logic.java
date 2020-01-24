@@ -5,13 +5,14 @@ import DataLayer.DataBase;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Date;
 
 public class Logic {
     //DataBase
     DataBase db = new DataBase();
     //Add Bar
     //                                                                                              streetAndHN = Straße und Hausnummer
-    public boolean addBar(String barNumber, String barName, String preName, String sureName, String telefoneNumber, String streetAndHN, String city, String postCode, String eMail, String password){
+    public boolean addBar(String barNumber, String barName, String preName, String sureName, String telefoneNumber, String streetAndHN, String city, String postCode, String eMail, String password, String message, boolean note, Date date){
         //ToDo:boolean einbinden um detaliertere Fehlerausgabe zu ermöglichen!
         boolean booleanBarNumber=false,booleanBarName=false,booleanPreName=false,booleanSureName=false, booleanTelefoneNumber =false,booleanStreetAndHN=false,booleanCity=false,booleanPostCode=false,booleanEMail=false,booleanPassword=false;
         boolean statusDB=false;
@@ -31,13 +32,11 @@ public class Logic {
                 // e.printStackTrace();
             }
         }
-
         if (barName.isEmpty()){
             error=true;
         }else{
             booleanBarName=true;
         }
-
         if (preName.isEmpty()){
             error=true;
         }
@@ -246,7 +245,7 @@ public class Logic {
     public void GUI_Edit(JLabel TextInfo,JRadioButton ZeitP,JRadioButton Date,JCheckBox BarNr,JComboBox T1,JComboBox T2, JComboBox M1, JComboBox M2, JComboBox J1, JComboBox J2, JComboBox Bar,JCheckBox Tag1, JCheckBox Tag2, JCheckBox Mo1, JCheckBox Mo2, JCheckBox Ja1, JCheckBox Ja2, JButton Anzeigen,JButton Anull ,int Vermerk)
 
     {
-if(Vermerk==0){
+    if(Vermerk==0){
         TextInfo.setVisible(false);
         ZeitP.setVisible(false);
         Date.setVisible(false);
@@ -267,13 +266,11 @@ if(Vermerk==0){
         Anzeigen.setVisible(false);
         Anull.setVisible(false);
     }
-    if(Vermerk==1){
-
-
-        TextInfo.setVisible(true);
-        ZeitP.setVisible(true);
-        Date.setVisible(true);
-        BarNr.setVisible(true);
+        if(Vermerk==1){
+            TextInfo.setVisible(true);
+            ZeitP.setVisible(true);
+            Date.setVisible(true);
+            BarNr.setVisible(true);
         T1.setVisible(true);
         T2.setVisible(true);
         M1.setVisible(true);
@@ -289,13 +286,7 @@ if(Vermerk==0){
         Ja2.setVisible(true);
         Anzeigen.setVisible(true);
         Anull.setVisible(true);
-
-
-    }
-
-
-
-
+        }
     }
     public void GUI_Edit0(JLabel TextInfo, JRadioButton Zeit, JRadioButton Date, int Vermerk){
 
@@ -304,10 +295,9 @@ if(Vermerk==0){
             TextInfo.setVisible(true);
             Zeit.setVisible(true);
             Date.setVisible(true);
-
         }
-
-
     }
+
+
 
 }

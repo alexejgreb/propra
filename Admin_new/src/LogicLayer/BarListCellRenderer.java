@@ -10,7 +10,7 @@ public class BarListCellRenderer extends JLabel implements ListCellRenderer {
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
         Bar bar = (Bar) value;
 
-        this.setText(bar.getBarName());
+        this.setText(bar.getId()+"  "+bar.getBarName()+"  "+bar.getCity());
 
         this.setOpaque(true);
 
