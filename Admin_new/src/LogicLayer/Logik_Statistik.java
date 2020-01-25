@@ -1,28 +1,18 @@
 package LogicLayer;
+
 import DataLayer.DataBaseConnector;
-import LogicLayer.DB_Anfragen;
-import LogicLayer.Logic;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-import DataLayer.DataBaseConnector;
-import DataLayer.Question;
-import net.proteanit.sql.DbUtils;
 
 import javax.swing.*;
-import javax.swing.table.TableColumnModel;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
 public class Logik_Statistik {
     private static Connection con = DataBaseConnector.dbConnectorMariaDB();
 
@@ -109,6 +99,64 @@ public class Logik_Statistik {
 
 
     }
+
+
+    public static void Statistik__QuizTeilnehmer(JLabel label1,JLabel label2) {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Nicht_Regestrierte_QuizTeilnehmer from Kunde_Spiel where Kunde_Spiel.Kunden_Nr=0";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()) {
+                String Nicht_Regestrierte_QuizTeilnehmer = rs.getString("Nicht_Regestrierte_QuizTeilnehmer");
+                label2.setText(Nicht_Regestrierte_QuizTeilnehmer);
+            }
+            pst.close();
+            String query2="select count(Kunde_Spiel.Kunden_Nr)as Regestrierte_QuizTeilnehmer from Kunde_Spiel where Kunde_Spiel.Kunden_Nr>0";
+
+            PreparedStatement pst2=con.prepareStatement(query2);
+
+            ResultSet rs2= pst2.executeQuery();
+
+            while (rs2.next()) {
+                String Regestrierte_QuizTeilnehmer = rs2.getString("Regestrierte_QuizTeilnehmer");
+                label1.setText(Regestrierte_QuizTeilnehmer);
+
+            }
+            pst2.close();
+            int x1 = Integer.parseInt(label2.getText())	;
+            int x2 = Integer.parseInt(label1.getText())	;
+            dataset.setValue(x1,"","Registrierte Quiz_Teilnehmer");
+            dataset.setValue(x2,"","Nicht Registrierte Quiz_Teilnehmer");
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Registrierte VS nicht Registrierte Gäste","", "Anzahl_Gäste", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+
+
+
+
 
 
 }

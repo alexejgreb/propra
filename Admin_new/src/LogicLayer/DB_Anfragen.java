@@ -46,6 +46,51 @@ public class DB_Anfragen {
 
     }
 
+    public static void Table_QuizTeilnehmer(JTable t) {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+        //con=Database1.dbConnector();
+
+        try {
+            String query = "select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, Kunde_Spiel.Bar as Kneipe_Nummer from Kunde_Spiel  group by Kunde_Spiel.Kunden_Nr ASC";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            t.setModel(DbUtils.resultSetToTableModel(rs));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void Select_BarNR(JComboBox c){ ////
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        //con=Database.dbConnector();
+        try {	 ///
+            String query="select Bar_Nr from Bar";
+
+            PreparedStatement pst=con.prepareStatement(query);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()){
+                String Bar_Nr = rs.getString("Bar_Nr");
+                c.addItem(Bar_Nr);
+
+            }
+            pst.close();
+
+
+        } catch (Exception e3) {
+            e3.printStackTrace();
+        }
+    }
+
+
+
 
 
 }
