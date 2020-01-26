@@ -196,7 +196,7 @@ public class Logik_Statistik {
 
     }
 
-    public static void Statistik_JahrUNDMonatUNDKnr_QuizTeilnehmer(JLabel label1,JLabel label2,int Jahr1,int Jahr2,int Monat1,int Monat2,float K) {
+    public static void Statistik_JahrUNDMonatUNDKnr_QuizTeilnehmer(JLabel label1,JLabel label2,int Jahr1,int Jahr2,int Monat1,int Monat2,int K) {
 
         con = DataBaseConnector.dbConnectorMariaDB();
 
@@ -204,7 +204,7 @@ public class Logik_Statistik {
 
 
         try{
-            String query1="select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Monat from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr BETWEEN '"+Jahr1+"'and '"+Jahr2+"' and PlannedGames.Monat BETWEEN '"+Monat1+"' and '"+Monat2+"' and PlannedGames.Barowner='"+K+"'group by PlannedGames.Monat ";
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Monat from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr BETWEEN '"+Jahr1+"'and '"+Jahr2+"' and PlannedGames.Monat BETWEEN '"+Monat1+"' and '"+Monat2+"' and PlannedGames.Barowner='"+K+"'group by PlannedGames.Monat";
 
             PreparedStatement pst=con.prepareStatement(query1);
 
@@ -236,5 +236,131 @@ public class Logik_Statistik {
 
 
     }
+    public static void Statistik_JahrUNDKnr_QuizTeilnehmer(JLabel label1,JLabel label2,int Jahr1,int Jahr2,int K) {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Jahr as Jahr from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr BETWEEN '"+Jahr1+"'and '"+Jahr2+"' and PlannedGames.Barowner='"+K+"'group by PlannedGames.Monat";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()){
+                String  Anzahl_QuizTeilnehmer= rs.getString("Anzahl_QuizTeilnehmer");
+                label2.setText(Anzahl_QuizTeilnehmer);
+                String Jahr = rs.getString("PlannedGames.Jahr");
+                label1.setText(Jahr);
+                int x1 = Integer.parseInt(label2.getText())	;
+
+                dataset.setValue(x1,"",label1.getText());
+            }
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Anzahl_Quiz_Teilnehmer_ProJahr_KneipeNR'"+K+"'","Jahr", "Anzahl_Quiz_Teilnehmer", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+    public static void Statistik_MonatUNDKnr_QuizTeilnehmer(JLabel label1,JLabel label2,int Monat1,int Monat2,int K) {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr), PlannedGames.Monat from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+Monat1+"' and '"+Monat2+"' and PlannedGames.Barowner='"+K+"' group by PlannedGames.Monat ";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()){
+                String  Anzahl_QuizTeilnehmer= rs.getString("count(Kunde_Spiel.Kunden_Nr)");
+                label2.setText(Anzahl_QuizTeilnehmer);
+                String Monat = rs.getString("PlannedGames.Monat");
+                label1.setText(Monat);
+                int x1 = Integer.parseInt(label2.getText())	;
+
+                dataset.setValue(x1,"",label1.getText());
+            }
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Anzahl_Quiz_Teilnehmer_Pro_Monat_Kneipe_Nr '"+K+"'","Monat", "Anzahl_Quiz_Teilnehmer", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+
+
+
+
+    public static void Statistik_Knr_QuizTeilnehmer(JLabel label1,JLabel label2) {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Anzahl_QuizTeilnehmer, PlannedGames.Barowner as Kneipe_Nr from Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID group by PlannedGames.Barowner";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()){
+                String  Anzahl_QuizTeilnehmer= rs.getString("Anzahl_QuizTeilnehmer");
+                label2.setText(Anzahl_QuizTeilnehmer);
+                String Bar_Nr = rs.getString("Kneipe_Nr");
+                label1.setText(Bar_Nr);
+                int x1 = Integer.parseInt(label2.getText())	;
+
+                dataset.setValue(x1,"",label1.getText());
+            }
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Anzahl_Quiz_Teilnehmer_Pro_Kneipe","Kneipe_Nr", "Anzahl_Quiz_Teilnehmer", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+
+
 
 }
