@@ -60,6 +60,7 @@ public class UIBar extends JFrame {
 		gbc_textFieldSearchId.gridy = 1;
 		contentPane.add(textFieldSearchId, gbc_textFieldSearchId);
 		textFieldSearchId.setColumns(10);
+
 		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
 		gbc_btnSearch.insets = new Insets(0, 0, 5, 0);
 		gbc_btnSearch.gridx = 2;
