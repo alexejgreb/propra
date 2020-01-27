@@ -3,16 +3,11 @@ package UILayer;
 import DataLayer.DataBase;
 import LogicLayer.Logic;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class UIAddBar extends JFrame {
@@ -142,7 +137,7 @@ public class UIAddBar extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Logic temp = new Logic();
 				try {
-					temp.addBar(textFieldBarNumber.getText(),textFieldBarName.getText(),textFieldFirstname.getText(),textFieldSurename.getText(),textFieldPhoneNumber.getText(),textFieldStreet.getText(),textFieldCity.getText(),textFieldPostCode.getText(),textFieldBarEMail.getText(),textFieldPassword.getText());
+					//temp.addBar(textFieldBarNumber.getText(),textFieldBarName.getText(),textFieldFirstname.getText(),textFieldSurename.getText(),textFieldPhoneNumber.getText(),textFieldStreet.getText(),textFieldCity.getText(),textFieldPostCode.getText(),textFieldBarEMail.getText(),textFieldPassword.getText());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

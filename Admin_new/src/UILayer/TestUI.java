@@ -14,6 +14,7 @@ public class TestUI {
         //   DataBaseConnector.setServerPassword(args[2]);
         DataBase db = new DataBase();
         UIEditBar1.main(null);
+        UIBar.main(null);
 
 
 
