@@ -121,7 +121,7 @@ public class Logic {
         }
         else{
             try{
-                statusDB=db.insertBar(intBarNumber,sureName,preName,streetAndHN,city,intPostCode,intTelefoneNumber,eMail,barName,intPassword);
+                statusDB=db.insertBar(intBarNumber,sureName,preName,streetAndHN,city,intPostCode,intTelefoneNumber,eMail,barName,intPassword,date);
                 if (statusDB == true){
                     JOptionPane.showMessageDialog(null,"Bar wurde hinzugefügt!");
                 }

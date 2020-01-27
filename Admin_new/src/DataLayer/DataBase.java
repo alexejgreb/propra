@@ -6,13 +6,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class DataBase {
     private static Connection con = DataBaseConnector.dbConnectorMariaDB();
     // public Admin admin=new Admin(-1,"-1",-1);
 
-    public int[] getAdminIdAndMaster(String user,String password){
+    public Date getDate() {
+        String query = "SELECT Date(now())";
+        java.sql.Date date=new java.sql.Date(1,1,1);
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet res = pstmt.executeQuery(query);
+            while(res.next()){
+                date=res.getDate(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+        public int[] getAdminIdAndMaster(String user,String password){
         String query = "SELECT* FROM Admin WHERE User = '" + user + "' AND Password = '" + password + "'";
         int[] idAndMaster=new int[2];
         idAndMaster[0]=-1;
@@ -151,8 +166,8 @@ public class DataBase {
         }
     }
 
-    public boolean insertBar(int Bar_Nr, String surename, String firstname, String street, String city, int post, int mobile, String mail, String nickname, int password) {
-        String insert = "INSERT INTO Bar (Bar_Nr, Surname, First_name, Street, City, Post, Mobil, Mail, Nickname, Note, Password) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    public boolean insertBar(int Bar_Nr, String surename, String firstname, String street, String city, int post, int mobile, String mail, String nickname, int password, java.sql.Date date) {
+        String insert = "INSERT INTO Bar (Bar_Nr, Surname, First_name, Street, City, Post, Mobil, Mail, Nickname, Note, Password, Date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         boolean status = false;
         try {
             PreparedStatement pstmt = con.prepareStatement(insert);
@@ -168,6 +183,7 @@ public class DataBase {
             //pstmt.setString(10,message);
             pstmt.setInt(10, 1);
             pstmt.setInt(11, password);
+            pstmt.setDate(12,date);
             pstmt.executeUpdate();
             pstmt.close();
 
