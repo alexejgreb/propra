@@ -2,7 +2,6 @@ package UILayer;
 
 import DataLayer.Bar;
 import DataLayer.DataBase;
-import LogicLayer.BarListCellRenderer;
 import LogicLayer.Logic;
 
 import javax.swing.*;
@@ -151,7 +150,7 @@ public class UIEditBar extends JFrame {
 
 		DefaultListModel<Bar> model = new DefaultListModel<Bar>();
 		JList<Bar> list = new JList(model);
-		list.setCellRenderer(new BarListCellRenderer());
+		//list.setCellRenderer(new JTableModell());
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.gridheight = 15;
 		gbc_list.insets = new Insets(0, 0, 5, 0);
