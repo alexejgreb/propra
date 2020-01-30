@@ -235,13 +235,23 @@ public class Logic {
         return  error;
     }
 
-        public void updateBar (String barNumber, String barName, String preName, String sureName, String telefoneNumber, String streetAndHN, String city, String postCode, String eMail, String password, String message, boolean note){
+        public void updateBar (String id, String barNumber, String barName, String preName, String sureName, String telefoneNumber, String streetAndHN, String city, String postCode, String eMail, String password, String message, boolean note){
             //ToDo:boolean einbinden um detaliertere Fehlerausgabe zu ermöglichen!
             boolean booleanBarNumber=false,booleanBarName=false,booleanPreName=false,booleanSureName=false, booleanTelefoneNumber =false,booleanStreetAndHN=false,booleanCity=false,booleanPostCode=false,booleanEMail=false,booleanPassword=false;
             boolean statusDB=false;
             boolean error=false;
-            int intBarNumber=0, intTelefoneNumber=0, intPostCode=0, intPassword=0;
+            int intBarNumber=0, intTelefoneNumber=0, intPostCode=0, intPassword=0, intId=0;
             // Prüfen ob Variabeln leer sind
+            if (id.isEmpty()){
+                error=true;
+            }
+            else{
+                try{
+                    intId=Integer.valueOf(id);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
 
             if (barNumber.isEmpty()) {
                 error=true;
@@ -340,6 +350,7 @@ public class Logic {
             else{
                 try{
                     Bar bar = new Bar();
+                    bar.setId(intId);
                     bar.setBarName(barName);
                     bar.setSurename(sureName);
                     bar.setFirstname(preName);
@@ -357,12 +368,12 @@ public class Logic {
                     bar.setPasswort(intPassword);
                     bar.setTelefonenummer(intTelefoneNumber);
 
-                    db.updateBar(bar);
+                    statusDB=db.updateBar(bar);
                     if (statusDB == true){
                         JOptionPane.showMessageDialog(null,"Bearbeitung erfolgreich");
                     }
                     else{
-                        JOptionPane.showMessageDialog(null,"Fehler beim hinzufügen!");
+                        JOptionPane.showMessageDialog(null,"Fehler beim bearbeiten!");
                     }
                 } catch (Exception e) {
                 }

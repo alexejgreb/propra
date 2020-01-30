@@ -18,6 +18,7 @@ public class TestUI {
         UIBar.main(null);
         t t=new t();
        // t.main(null);
+        UIEditBar1.main(null);
 
 
 

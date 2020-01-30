@@ -230,22 +230,21 @@ public class DataBase {
         }
         return bart;
     }
-
     public boolean updateBar(Bar bar) {
-        boolean error = false;
-        String update = "Update Bar SET Surename= " + bar.getSurename() + ", First_Name=" + bar.getFirstname() + ", Street=" + bar.getStreet() +
-                ", City=" + bar.getCity() + ", Post=" + bar.getPost() + ", Mobil=" + bar.getTelefonenummer() + ", Mail=" + bar.getMail() +
-                ", Nickname=" + bar.getBarName() + ", Message=" + bar.getMessage() + ", Note=" + bar.getNote() + ", Password=" + bar.getPasswort() +
-                " WHERE ID=" + bar.getId();
+        boolean status = false;
+        String update = "Update Bar SET Surname = '" + bar.getSurename() + "',First_Name='" + bar.getFirstname() + "', Street='" + bar.getStreet() +
+                "', City='" + bar.getCity() + "', Post='" + bar.getPost() + "', Mobil='" + bar.getTelefonenummer() + "', Mail='" + bar.getMail() +
+                "', Nickname='" + bar.getBarName() + "', Message='" + bar.getMessage() + "', Note='" + bar.getNote() + "', Password='" + bar.getPasswort() +
+                "'WHERE Bar_NR = '" + bar.getId() + "'";
         try {
             PreparedStatement pstmt = con.prepareStatement(update);
             pstmt.executeUpdate();
             pstmt.close();
+            status=true;
         } catch (SQLException e) {
-            error = true;
             e.printStackTrace();
         }
-        return error;
+        return status;
     }
 
     public ArrayList<Bar> searchBar(int id) {
