@@ -84,7 +84,7 @@ public class UIMainMenu {
 
 
 
-                   // UIStatistik.main(null);
+                   UIStatistik.main(null);
 
 
                 frame.dispose();

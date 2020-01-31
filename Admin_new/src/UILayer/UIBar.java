@@ -22,9 +22,7 @@ public class UIBar extends JFrame {
 	private JTable table;
 	private final JButton btnSearch = new JButton("Suchen");
 	private ArrayList<Bar> barList = new ArrayList<Bar>();
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -38,9 +36,7 @@ public class UIBar extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
 	public UIBar() {
 		Logic logic = new Logic();
 		DataBase db= new DataBase();
@@ -119,8 +115,8 @@ public class UIBar extends JFrame {
 					String valueInCell = String.valueOf(table.getValueAt(row, column));
 					String g=valueInCell;
 					GlobalId globalId= new GlobalId(Integer.valueOf(g));
-					UIEditBaredit ui = new UIEditBaredit(Integer.valueOf(g));
-					ui.setVisible(true);
+					//UIEditBaredit ui = new UIEditBaredit(Integer.valueOf(g));
+					//ui.setVisible(true);
 					System.out.println(g);
 					// your valueChanged overridden method
 				}
