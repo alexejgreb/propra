@@ -6,24 +6,39 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class DataBase {
     private static Connection con = DataBaseConnector.dbConnectorMariaDB();
     // public Admin admin=new Admin(-1,"-1",-1);
 
-    public int[] getAdminIdAndMaster(String user,String password){
+    public Date getDate() {
+        String query = "SELECT Date(now())";
+        java.sql.Date date = new java.sql.Date(1, 1, 1);
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet res = pstmt.executeQuery(query);
+            while (res.next()) {
+                date = res.getDate(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    public int[] getAdminIdAndMaster(String user, String password) {
         String query = "SELECT* FROM Admin WHERE User = '" + user + "' AND Password = '" + password + "'";
-        int[] idAndMaster=new int[2];
-        idAndMaster[0]=-1;
-        idAndMaster[1]=-1;
+        int[] idAndMaster = new int[2];
+        idAndMaster[0] = -1;
+        idAndMaster[1] = -1;
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet res = pstmt.executeQuery(query);
 
             if (res.next()) {
-                idAndMaster[0]=res.getInt(1);
-                idAndMaster[1]=res.getInt(4);
+                idAndMaster[0] = res.getInt(1);
+                idAndMaster[1] = res.getInt(4);
             }
             res.close();
             pstmt.close();
@@ -151,8 +166,8 @@ public class DataBase {
         }
     }
 
-    public boolean insertBar(int Bar_Nr, String surename, String firstname, String street, String city, int post, int mobile, String mail, String nickname, int password) {
-        String insert = "INSERT INTO Bar (Bar_Nr, Surname, First_name, Street, City, Post, Mobil, Mail, Nickname, Note, Password) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    public boolean insertBar(int Bar_Nr, String surename, String firstname, String street, String city, int post, int mobile, String mail, String nickname, int password, java.sql.Date date) {
+        String insert = "INSERT INTO Bar (Bar_Nr, Surname, First_name, Street, City, Post, Mobil, Mail, Nickname, Note, Password, Date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         boolean status = false;
         try {
             PreparedStatement pstmt = con.prepareStatement(insert);
@@ -168,6 +183,7 @@ public class DataBase {
             //pstmt.setString(10,message);
             pstmt.setInt(10, 1);
             pstmt.setInt(11, password);
+            pstmt.setDate(12, date);
             pstmt.executeUpdate();
             pstmt.close();
 
@@ -214,31 +230,31 @@ public class DataBase {
         }
         return bart;
     }
-    public boolean updateBar(Bar bar){
-        boolean error=false;
-        String update="Update Bar SET Surename= "+bar.getSurename()+", First_Name="+bar.getFirstname()+", Street="+bar.getStreet()+
-                ",City="+bar.getCity()+", Post="+bar.getPost()+", Mobil="+bar.getTelefonenummer()+", Mail="+bar.getMail()+
-                ", Nickname="+bar.getBarName()+", Message="+bar.getMessage()+", Note="+bar.getNote()+", Password="+bar.getPasswort()+
-                " WHERE ID="+bar.getId();
+    public boolean updateBar(Bar bar) {
+        boolean status = false;
+        String update = "Update Bar SET Surname = '" + bar.getSurename() + "',First_Name='" + bar.getFirstname() + "', Street='" + bar.getStreet() +
+                "', City='" + bar.getCity() + "', Post='" + bar.getPost() + "', Mobil='" + bar.getTelefonenummer() + "', Mail='" + bar.getMail() +
+                "', Nickname='" + bar.getBarName() + "', Message='" + bar.getMessage() + "', Note='" + bar.getNote() + "', Password='" + bar.getPasswort() +
+                "'WHERE Bar_NR = '" + bar.getId() + "'";
         try {
             PreparedStatement pstmt = con.prepareStatement(update);
             pstmt.executeUpdate();
             pstmt.close();
+            status=true;
         } catch (SQLException e) {
-            error=true;
             e.printStackTrace();
         }
-        return error;
+        return status;
     }
 
     public ArrayList<Bar> searchBar(int id) {
-        String search ="SELECT * FROM Bar WHERE Bar_Nr LIKE '%"+id+"%'";
+        String search = "SELECT * FROM Bar WHERE Bar_Nr LIKE '%" + id + "%'";
         ArrayList<Bar> barList = new ArrayList<Bar>();
-        int i=0;
-        try{
+        int i = 0;
+        try {
             PreparedStatement pstmt = con.prepareStatement(search);
             ResultSet res = pstmt.executeQuery(search);
-            while(res.next()){
+            while (res.next()) {
                 Bar bar = new Bar();
                 bar.setId(res.getInt(1));
                 bar.setSurename(res.getString(2));
@@ -253,13 +269,39 @@ public class DataBase {
                 bar.setNote(res.getInt(11));
                 bar.setPasswort(res.getInt(12));
                 barList.add(bar);
-                System.out.println(barList.get(i).getBarName());
                 i++;
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Fehler beim Suchen!");
+            JOptionPane.showMessageDialog(null, "Fehler beim Suchen!");
             e.printStackTrace();
         }
         return barList;
+    }
+
+    public Bar getBar(int id) {
+        String search = "SELECT * FROM Bar WHERE Bar_Nr="+id;
+        Bar bar = new Bar();
+        try {
+            PreparedStatement pstmt = con.prepareStatement(search);
+            ResultSet res = pstmt.executeQuery(search);
+            while (res.next()) {
+                bar.setId(res.getInt(1));
+                bar.setSurename(res.getString(2));
+                bar.setFirstname(res.getString(3));
+                bar.setStreet(res.getString(4));
+                bar.setCity(res.getString(5));
+                bar.setPost(res.getInt(6));
+                bar.setTelefonenummer(res.getLong(7));
+                bar.setMail(res.getString(8));
+                bar.setBarName(res.getString(9));
+                bar.setMessage(res.getString(10));
+                bar.setNote(res.getInt(11));
+                bar.setPasswort(res.getInt(12));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bar;
     }
 }

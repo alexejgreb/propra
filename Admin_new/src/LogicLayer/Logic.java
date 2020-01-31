@@ -6,6 +6,7 @@ import DataLayer.DataBase;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Logic {
     //DataBase
@@ -121,7 +122,7 @@ public class Logic {
         }
         else{
             try{
-                statusDB=db.insertBar(intBarNumber,sureName,preName,streetAndHN,city,intPostCode,intTelefoneNumber,eMail,barName,intPassword);
+                statusDB=db.insertBar(intBarNumber,sureName,preName,streetAndHN,city,intPostCode,intTelefoneNumber,eMail,barName,intPassword,date);
                 if (statusDB == true){
                     JOptionPane.showMessageDialog(null,"Bar wurde hinzugefügt!");
                 }
@@ -234,13 +235,152 @@ public class Logic {
         return  error;
     }
 
-    public Bar updateBar(Bar bar){
-        Bar tempBar= new Bar();
-        String test ="";
+        public void updateBar (String id, String barNumber, String barName, String preName, String sureName, String telefoneNumber, String streetAndHN, String city, String postCode, String eMail, String password, String message, boolean note){
+            //ToDo:boolean einbinden um detaliertere Fehlerausgabe zu ermöglichen!
+            boolean booleanBarNumber=false,booleanBarName=false,booleanPreName=false,booleanSureName=false, booleanTelefoneNumber =false,booleanStreetAndHN=false,booleanCity=false,booleanPostCode=false,booleanEMail=false,booleanPassword=false;
+            boolean statusDB=false;
+            boolean error=false;
+            int intBarNumber=0, intTelefoneNumber=0, intPostCode=0, intPassword=0, intId=0;
+            // Prüfen ob Variabeln leer sind
+            if (id.isEmpty()){
+                error=true;
+            }
+            else{
+                try{
+                    intId=Integer.valueOf(id);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (barNumber.isEmpty()) {
+                error=true;
+            }
+            else{
+                try {
+                    intBarNumber = Integer.valueOf(barNumber);
+                    booleanBarNumber=true;
+                } catch (Exception e) {
+                    error=true;
+                    // e.printStackTrace();
+                }
+            }
+            if (barName.isEmpty()){
+                error=true;
+            }else{
+                booleanBarName=true;
+            }
+            if (preName.isEmpty()){
+                error=true;
+            }
+            else{
+                booleanPreName=true;
+            }
+
+            if (sureName.isEmpty()){
+                error=true;
+            }else{
+                booleanSureName=true;
+            }
+
+            if (telefoneNumber.isEmpty()){
+                error=true;
+            }
+            else{
+                try{
+                    intTelefoneNumber= Integer.valueOf(telefoneNumber);
+                    booleanTelefoneNumber =true;
+                } catch (NumberFormatException e) {
+                    error=true;
+                    JOptionPane.showMessageDialog(null,"Die Telefonnummer enthält nicht erlaubte Zeichen!");
+                    // e.printStackTrace();
+                }
+            }
+
+            if (streetAndHN.isEmpty()){
+                error=true;
+            }
+            else{
+                booleanStreetAndHN=true;
+            }
+
+            if (city.isEmpty()){
+                error=true;
+            }else{
+                booleanCity=true;
+            }
+
+            if (postCode.isEmpty()){
+                error=true;
+            }
+            else{
+                try{
+                    intPostCode = Integer.valueOf(postCode);
+                    booleanPostCode=true;
+                }
+                catch (Exception e) {
+                    error=true;
+                    JOptionPane.showMessageDialog(null,"Die Postleitzahl enthält nicht erlaubte Zeichen!");
+                    // e.printStackTrace();
+                }
+            }
+
+            if (eMail.isEmpty()){
+                error=true;
+            }else{
+                booleanEMail=true;
+            }
+
+            if (password.isEmpty()){
+                error=true;
+            }else{
+                try{
+                    intPassword = Integer.valueOf(password);
+                    booleanPassword=true;
+                } catch (Exception e) {
+                    error=true;
+                    JOptionPane.showMessageDialog(null,"Das Passwort darf nur aus Zahlen bestehen!");
+                    // e.printStackTrace();
+                }
+            }
+
+            if (error==true){
+                JOptionPane.showMessageDialog(null,"Bitte prüfen Sie noch mal Ihre Angaben!");
+            }
+            else{
+                try{
+                    Bar bar = new Bar();
+                    bar.setId(intId);
+                    bar.setBarName(barName);
+                    bar.setSurename(sureName);
+                    bar.setFirstname(preName);
+                    bar.setCity(city);
+                    bar.setStreet(streetAndHN);
+                    bar.setPost(intPostCode);
+                    bar.setMail(eMail);
+                    bar.setMessage(message);
+                    if (note==false){
+                        bar.setNote(1);
+                    }
+                    else{
+                        bar.setNote(0);
+                    }
+                    bar.setPasswort(intPassword);
+                    bar.setTelefonenummer(intTelefoneNumber);
+
+                    statusDB=db.updateBar(bar);
+                    if (statusDB == true){
+                        JOptionPane.showMessageDialog(null,"Bearbeitung erfolgreich");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Fehler beim bearbeiten!");
+                    }
+                } catch (Exception e) {
+                }
+            }
+        }
 
 
-        return tempBar;
-    }
 
     public void GUI_Edit(JLabel TextInfo,JRadioButton ZeitP,JRadioButton Date,JCheckBox BarNr,JComboBox T1,JComboBox T2, JComboBox M1, JComboBox M2, JComboBox J1, JComboBox J2, JComboBox Bar,JCheckBox Tag1, JCheckBox Tag2, JCheckBox Mo1, JCheckBox Mo2, JCheckBox Ja1, JCheckBox Ja2, JButton Anzeigen,JButton Anull ,int Vermerk)
 
@@ -347,5 +487,21 @@ public class Logic {
             Anull.setVisible(true);
         }
     }
+    public String[] getTableColumns(){
+        String[] columnTitels = {"ID","Barname","Stadt",};//"Nachname","Vorname","Email","Aktiv"};
+        return columnTitels;
+    }
+    public Object [][] getTableData(ArrayList<Bar> bar) {
+        int row=3;
+        Object[] a= new Object[row];
+        Object tableData[][] = new Object[bar.size()][row];
+        for(int i=0;i<=bar.size();i++){
 
+            for(int j=0; j<row;j++){
+                a= new Object[]{bar.get(i).getStreet(), bar.get(i).getBarName(), String.valueOf(bar.get(i).getId())};
+            }
+
+        }
+        return tableData;
+    }
 }
