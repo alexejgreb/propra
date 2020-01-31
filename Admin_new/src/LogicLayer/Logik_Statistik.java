@@ -154,6 +154,328 @@ public class Logik_Statistik {
 
     }
 
+    public static void Statistik__QuizTeilnehmer_t_M(JLabel label1,JLabel label2,int M1,int M2)
+    {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Nicht_Regestrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' and Kunde_Spiel.Kunden_Nr=0 group by PlannedGames.Monat ";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()) {
+                String Nicht_Regestrierte_QuizTeilnehmer = rs.getString("Nicht_Regestrierte_QuizTeilnehmer");
+                label2.setText(Nicht_Regestrierte_QuizTeilnehmer);
+            }
+            pst.close();
+            String query2="select count(Kunde_Spiel.Kunden_Nr)as Regestrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' and Kunde_Spiel.Kunden_Nr>0 group by PlannedGames.Monat";
+
+            PreparedStatement pst2=con.prepareStatement(query2);
+
+            ResultSet rs2= pst2.executeQuery();
+
+            while (rs2.next()) {
+                String Regestrierte_QuizTeilnehmer = rs2.getString("Regestrierte_QuizTeilnehmer");
+                label1.setText(Regestrierte_QuizTeilnehmer);
+
+            }
+            pst2.close();
+            int x1 = Integer.parseInt(label2.getText())	;
+            int x2 = Integer.parseInt(label1.getText())	;
+            dataset.setValue(x1,"","Registrierte Quiz_Teilnehmer");
+            dataset.setValue(x2,"","Nicht Registrierte Quiz_Teilnehmer");
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Registrierte VS nicht Registrierte Gäste","", "Anzahl_Gäste", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+
+    public static void Statistik__QuizTeilnehmer_t_J(JLabel label1,JLabel label2,int J1,int J2)
+    {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Nicht_Regestrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"' and Kunde_Spiel.Kunden_Nr=0 group by PlannedGames.Jahr ";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()) {
+                String Nicht_Regestrierte_QuizTeilnehmer = rs.getString("Nicht_Regestrierte_QuizTeilnehmer");
+                label2.setText(Nicht_Regestrierte_QuizTeilnehmer);
+            }
+            pst.close();
+            String query2="select count(Kunde_Spiel.Kunden_Nr)as Regestrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"' and Kunde_Spiel.Kunden_Nr>0 group by PlannedGames.Jahr";
+
+            PreparedStatement pst2=con.prepareStatement(query2);
+
+            ResultSet rs2= pst2.executeQuery();
+
+            while (rs2.next()) {
+                String Regestrierte_QuizTeilnehmer = rs2.getString("Regestrierte_QuizTeilnehmer");
+                label1.setText(Regestrierte_QuizTeilnehmer);
+
+            }
+            pst2.close();
+            int x1 = Integer.parseInt(label2.getText())	;
+            int x2 = Integer.parseInt(label1.getText())	;
+            dataset.setValue(x1,"","Registrierte Quiz_Teilnehmer");
+            dataset.setValue(x2,"","Nicht Registrierte Quiz_Teilnehmer");
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Registrierte VS nicht Registrierte Gäste","", "Anzahl_Gäste", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+    public static void Statistik__QuizTeilnehmer_Knrr_J(JLabel label1,JLabel label2,int J1,int J2,int K)
+    {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Nicht_Registrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"' and PlannedGames.Barowner='"+K+"' and Kunde_Spiel.Kunden_Nr=0 group by PlannedGames.Jahr ";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()) {
+                String Nicht_Regestrierte_QuizTeilnehmer = rs.getString("Nicht_Registrierte_QuizTeilnehmer");
+                label2.setText(Nicht_Regestrierte_QuizTeilnehmer);
+            }
+            pst.close();
+            String query2="select count(Kunde_Spiel.Kunden_Nr)as Registrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"' and PlannedGames.Barowner='"+K+"' and Kunde_Spiel.Kunden_Nr>0 group by PlannedGames.Jahr";
+
+            PreparedStatement pst2=con.prepareStatement(query2);
+
+            ResultSet rs2= pst2.executeQuery();
+
+            while (rs2.next()) {
+                String Regestrierte_QuizTeilnehmer = rs2.getString("Registrierte_QuizTeilnehmer");
+                label1.setText(Regestrierte_QuizTeilnehmer);
+
+            }
+            pst2.close();
+            int x1 = Integer.parseInt(label2.getText())	;
+            int x2 = Integer.parseInt(label1.getText())	;
+            dataset.setValue(x1,"","Registrierte Quiz_Teilnehmer");
+            dataset.setValue(x2,"","Nicht Registrierte Quiz_Teilnehmer");
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Registrierte VS nicht Registrierte Gäste Pro Jahr Jneipe_Nr:'"+K+"'","", "Anzahl_Gäste", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+
+    public static void Statistik__QuizTeilnehmer_Knrr_M(JLabel label1,JLabel label2,int M1,int M2,int K)
+    {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Nicht_Registrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' and PlannedGames.Barowner='"+K+"' and Kunde_Spiel.Kunden_Nr=0 group by PlannedGames.Monat ";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()) {
+                String Nicht_Regestrierte_QuizTeilnehmer = rs.getString("Nicht_Registrierte_QuizTeilnehmer");
+                label2.setText(Nicht_Regestrierte_QuizTeilnehmer);
+            }
+            pst.close();
+            String query2="select count(Kunde_Spiel.Kunden_Nr)as Registrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' and PlannedGames.Barowner='"+K+"' and Kunde_Spiel.Kunden_Nr>0 group by PlannedGames.Monat";
+
+            PreparedStatement pst2=con.prepareStatement(query2);
+
+            ResultSet rs2= pst2.executeQuery();
+
+            while (rs2.next()) {
+                String Regestrierte_QuizTeilnehmer = rs2.getString("Registrierte_QuizTeilnehmer");
+                label1.setText(Regestrierte_QuizTeilnehmer);
+
+            }
+            pst2.close();
+            int x1 = Integer.parseInt(label2.getText())	;
+            int x2 = Integer.parseInt(label1.getText())	;
+            dataset.setValue(x1,"","Registrierte Quiz_Teilnehmer");
+            dataset.setValue(x2,"","Nicht Registrierte Quiz_Teilnehmer");
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Registrierte VS nicht Registrierte Gäste Pro Monat Jneipe_Nr:'"+K+"'","", "Anzahl_Gäste", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+
+    public static void Statistik__QuizTeilnehmer_t_J(JLabel label1,JLabel label2,int M1,int M2,int J1,int J2)
+    {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Nicht_Registrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"' and Kunde_Spiel.Kunden_Nr=0 group by PlannedGames.Monat ";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()) {
+                String Nicht_Regestrierte_QuizTeilnehmer = rs.getString("Nicht_Registrierte_QuizTeilnehmer");
+                label2.setText(Nicht_Regestrierte_QuizTeilnehmer);
+            }
+            pst.close();
+            String query2="select count(Kunde_Spiel.Kunden_Nr)as Registrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"' and Kunde_Spiel.Kunden_Nr>0 group by PlannedGames.Monat";
+
+            PreparedStatement pst2=con.prepareStatement(query2);
+
+            ResultSet rs2= pst2.executeQuery();
+
+            while (rs2.next()) {
+                String Regestrierte_QuizTeilnehmer = rs2.getString("Registrierte_QuizTeilnehmer");
+                label1.setText(Regestrierte_QuizTeilnehmer);
+
+            }
+            pst2.close();
+            int x1 = Integer.parseInt(label2.getText())	;
+            int x2 = Integer.parseInt(label1.getText())	;
+            dataset.setValue(x1,"","Registrierte Quiz_Teilnehmer");
+            dataset.setValue(x2,"","Nicht Registrierte Quiz_Teilnehmer");
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Registrierte VS nicht Registrierte Gäste","", "Anzahl_Gäste", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
+
+    public static void Statistik__QuizTeilnehmer_t_J_Knrr(JLabel label1,JLabel label2,int M1,int M2,int J1,int J2,int K)
+    {
+
+        con = DataBaseConnector.dbConnectorMariaDB();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        try{
+            String query1="select count(Kunde_Spiel.Kunden_Nr)as Nicht_Regestrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"' and PlannedGames.Barowner='"+K+"' and Kunde_Spiel.Kunden_Nr=0 group by PlannedGames.Monat ";
+
+            PreparedStatement pst=con.prepareStatement(query1);
+
+            ResultSet rs= pst.executeQuery();
+
+            while (rs.next()) {
+                String Nicht_Regestrierte_QuizTeilnehmer = rs.getString("Nicht_Regestrierte_QuizTeilnehmer");
+                label2.setText(Nicht_Regestrierte_QuizTeilnehmer);
+            }
+            pst.close();
+            String query2="select count(Kunde_Spiel.Kunden_Nr)as Regestrierte_QuizTeilnehmer from  Kunde_Spiel,PlannedGames where Kunde_Spiel.Spiel_Nr = PlannedGames.GameID and PlannedGames.Monat between  '"+M1+"' and '"+M2+"' and PlannedGames.Jahr between  '"+J1+"' and '"+J2+"'  and PlannedGames.Barowner='"+K+"' and Kunde_Spiel.Kunden_Nr>0 group by PlannedGames.Monat";
+
+            PreparedStatement pst2=con.prepareStatement(query2);
+
+            ResultSet rs2= pst2.executeQuery();
+
+            while (rs2.next()) {
+                String Regestrierte_QuizTeilnehmer = rs2.getString("Regestrierte_QuizTeilnehmer");
+                label1.setText(Regestrierte_QuizTeilnehmer);
+
+            }
+            pst2.close();
+            int x1 = Integer.parseInt(label2.getText())	;
+            int x2 = Integer.parseInt(label1.getText())	;
+            dataset.setValue(x1,"","Registrierte Quiz_Teilnehmer");
+            dataset.setValue(x2,"","Nicht Registrierte Quiz_Teilnehmer");
+        }
+        catch(Exception e1){
+            e1.printStackTrace();
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart("Registrierte VS nicht Registrierte Gäste Kneipe_Nr:'"+K+"'","", "Anzahl_Gäste", dataset,PlotOrientation.VERTICAL,false,true,false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.blue);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.green);
+        ChartFrame frame1= new ChartFrame("",chart);
+
+        frame1.setVisible(true);
+        frame1.setSize(500,500);
+
+
+    }
 
     public static void Statistik_JahrUNDMonat_QuizTeilnehmer(JLabel label1,JLabel label2,int Jahr1,int Jahr2,int Monat1,int Monat2) {
 
